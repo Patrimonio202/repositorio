@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "cultura-402216",
+  "private_key_id": "e8d13a0300836e705e26886331b563b63008b0ca",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDAcFsmCJUcoka+\nOZwCpDKZG8E4SbHhc6nmUofRU0QT6HM4PClJy/bAJY3S3kaCNBBUd7gJ9LJcJnX5\nBZxPrMB8BVpFBcGK56p7Z7XcQjoQ18Pmbw0Ha9BmBHGoVj31+RnqC9LGPiU22ICu\na+sreeEGE5j0jRF6uXrx0CWY+K5pPFKWzzUWTR94A5fvZFS700d1QQrHoBjpZN2A\nJGEqeYcsX1a+FDI3yL4cma6lJxcUtQFSdEYorKAnKRQR7OXnvcieAAL0SnEnAUzY\nFTX+zdUvncXD1U40nC4Qrz8Pg33EMZKKEWVAR0bXZQUae1kYgisajFXGjfjL4nVA\nN4/f3vgxAgMBAAECggEAA/s0bVN7vZiNikrmNwWp5qdmpm2NcKVgsn7OOZXnR5Nh\nzqMrxkh+gUuq76wWLvYjnnX41R7JLjN9KrkKobIhZP92IQ2ahBnrtkJFf4FCef+P\n4JLTpPwTupZd5NLeYyE6nBrWdb5VO3z/ropVwTr7Mq4uDw+b+PCLl5UTI2M+YLer\n1hDANY1anKHnGxW6tkVivanj17QxVitoF1ULbif6jNRGY+6twssemGr4Oi2iqarF\nKQjAcM1MmCB+zmWvZ25VPNDzEVh1EydwINjlyLRsVmTCtu9sjt9UvxnKiOiMFv3E\n2F7Ne9uegPdK/XcDLfOAv7UHirOh10WQHd4oVbcNVQKBgQD3+8qO4/VXEITo94Cx\nlebISRM1mOjnKxosEGq16vFu/IhXLdY/eM2w3LvfOgdWPLW+Ad4PCkCLHELZ+hAd\nubA2Cml14XdEqqNZHHOXcicxotxrE9EsMBxbxwR9Ye1a5mnPXLNP/n55kyVRTLCr\nTnhO2Fi31YQST1mhlkC7sZnx7QKBgQDGqOZ2EPwsf0Asg3TCpIH1Ym060AqwFqE+\npGIBn0vgq8uLWTjp3IlIh1r9ccTQS5Zxb+S1EN3UCwDHH37ADLRNRVaZD0kERO2K\niG7HSWv1TWl6wj3Y1vhH2xSLDajUJsw5nl+wcbJJQF06WbW5pNcJujS5SoR3dUnn\n7/X7nm2m1QKBgQDWsmR4udwbeO3ZVQ9SsNmR5dJ/wNdD7QlHxR7eSX6l/HV+JO0t\nHsXWrgTqCy929jDTRIKgutuOlPU8C0gQtEdfQjx0FrRP+vxZlkxtfiN40evLuOiM\nPUsQGopEk5gP7xUEttl4FHojf8X7UU5Twihe+ug0oOMrhw+u2otI9Ua3MQKBgCwi\nmhDg9SVtn/RDwEz9/2Fk3J+UWMuGO4yPOLbjjRf9EtuClwJd3KIgcDaeb/tWz7Wk\nBkuz05SoXSPf+2jvaZ9BKFwY6T/pkFyWswXTagi1ihmbzeG+4KoWIhpCjp+TfwvO\nA7RPjix4AD5Wb+kulhezJsODqqpfhGvjA+NC71mBAoGAZvBtNeZBkR5bZZ3vFBED\nCy2NT2WOUk2AyZ9quBDSjOdSDtfMeDR6x64ae8Hszw+t9Y97VU01ouALVj7ZaP1F\nTFGG9BZhJV2d0HsO5gKgpAZJq+z5PX3r1hTc36lYwnuALyLvNVA17pi0z7XDHTPr\nNmYOv07Ain94yvfVu9J1CLs=\n-----END PRIVATE KEY-----\n",
+  "client_email": "cultura-driver-app@cultura-402216.iam.gserviceaccount.com",
+  "client_id": "106507992796133050724",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/cultura-driver-app%40cultura-402216.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
