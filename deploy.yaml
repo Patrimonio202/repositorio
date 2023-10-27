@@ -8,8 +8,8 @@ config:
 hosts:
   curso:
       remote_user: root
-      hostname: 198.199.80.62
-      deploy_path: '/var/www/Repositorio-virtual'
+      hostname: repositorioelsantuario.online
+      deploy_path: '/var/www/{{hostname}}'
 
 tasks:  
   deploy:   
