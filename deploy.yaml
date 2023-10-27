@@ -8,7 +8,7 @@ config:
 hosts:
   curso:
       remote_user: root
-      hostname: repositorioelsantuario.online
+      hostname: patrimonioelsantuario.gov.co
       deploy_path: '/var/www/{{hostname}}'
 
 tasks:  
