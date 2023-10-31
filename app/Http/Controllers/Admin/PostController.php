@@ -145,4 +145,19 @@ class PostController extends Controller
         $post->delete();
         return redirect()->route('admin.posts.index')->with('info', 'El post se eliminó con exito');
     }
+
+    public function imagenes(){
+        return view('admin.posts.imagenes');
+    }
+
+    public function updateimagenes(Request $request){
+       // dd($request->idimagen);
+       if ($request->file('file')) {
+       // dd($request->file('file')->getClientOriginalExtension());
+        $namearchivo=$request->idimagen.'.'.  $request->file('file')->getClientOriginalExtension();           
+         $urlarchivo=  Storage::putFileAs('Imagenes', $request->file('file'),$namearchivo,'public');         
+       } 
+        return redirect()->route('admin.updateimagenes')->with('info', 'la imagen se actualizó correctamente');
+    }
+
 }

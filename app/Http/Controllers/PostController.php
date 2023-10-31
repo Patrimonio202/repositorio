@@ -63,4 +63,6 @@ class PostController extends Controller
       //return $votes[1] ;
       return view('posts.destacado');
     }
+
+   
 }

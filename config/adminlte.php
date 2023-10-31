@@ -318,6 +318,12 @@ return [
             'can'  => 'admin.home'          
         ],
         [
+            'text'        => 'Imagenes',
+            'route'         => 'admin.imagenes',
+            'icon'        => 'fas fa-image fa-fw',  
+            'can'  => 'admin.home'          
+        ],
+        [
             'text'        => 'Usuarios',
             'route'         => 'admin.users.index',
             'icon'        => 'fas fa-users fa-fw',  

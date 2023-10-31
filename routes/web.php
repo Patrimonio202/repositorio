@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\PostController as AdminPostController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PostController;
 
@@ -84,3 +85,7 @@ Route::post('/email/verification-notification', function (Request $request) {
  
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
+//ruta para cargar las imagenes
+Route::get('/admin/imagenes', [AdminPostController::class,'imagenes'])->name('admin.imagenes');
+Route::post('/admin/imagenes', [AdminPostController::class,'updateimagenes'] )->name('admin.updateimagenes');//este metodo es para actualizar formulario
