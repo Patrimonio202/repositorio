@@ -148,7 +148,7 @@ class PostController extends Controller
     }
 
     public function imagenes(){
-        return view('admin.posts.imagenes');
+        return view('admin.posts.Imagenes');
     }
 
     public function updateimagenes(Request $request){
