@@ -71,6 +71,9 @@ class RoleSeeder extends Seeder
                         'description' =>'Editar posts'])->syncRoles([$role1,$role2]);
      Permission::create(['name'=>'admin.posts.destroy',
                         'description' =>'Eliminar posts'])->syncRoles([$role1,$role2]);
+    //permisos de subir imagenes
+    Permission::create(['name'=>'admin.imagenes',
+    'description'=>'Actualizar imagenes'])->syncRoles([$role1]);
      
     }
 }

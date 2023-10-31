@@ -321,7 +321,7 @@ return [
             'text'        => 'Imagenes',
             'route'         => 'admin.imagenes',
             'icon'        => 'fas fa-image fa-fw',  
-            'can'  => 'admin.home'          
+            'can'  => 'admin.imagenes'          
         ],
         [
             'text'        => 'Usuarios',

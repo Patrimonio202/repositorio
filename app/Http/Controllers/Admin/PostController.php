@@ -19,6 +19,7 @@ class PostController extends Controller
         $this->middleware('can:admin.posts.create')->only('create', 'store');
         $this->middleware('can:admin.posts.edit')->only('edit', 'update');
         $this->middleware('can:admin.posts.destroy')->only('destroy');
+        $this->middleware('can:admin.imagenes')->only('imagenes');
     }
     /**
      * Display a listing of the resource.
