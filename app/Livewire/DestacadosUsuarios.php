@@ -44,7 +44,9 @@ class DestacadosUsuarios extends Component
 
     public function render()
     {
-        $posts=Post::paginate($this->posts_per_page);
+        //$posts=Post::paginate($this->posts_per_page);
+        $votes= Vote::select('post_id')->where('user_id', auth()->user()->id)->get();
+        $posts= Post::whereIn('id', $votes->toArray())->get();
         return view('livewire.destacados-usuarios',[
             'posts'=>$posts
         ]);

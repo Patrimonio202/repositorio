@@ -26,10 +26,10 @@
                                 <a href="" class="text-gray-900">{{ $post->autor }}</a></small>
                         </p>
                     </div>
-                    <p class="mb-8 pb-2 ">
+                    <div class="mb-8 pb-2 ">
                         {!! Str::limit($post->body, 100) !!} <a class="font-bold text-blue-600 no-underline hover:underline"
                             href="{{ route('posts.show', $post) }}">Leer mas</a>
-                    </p>
+                    </div>
                 </div>
 
                 <div class="absolute bottom-5 right-0 px-6 ">

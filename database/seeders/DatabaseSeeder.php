@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
        // Tag::factory(8)->create();  
         $this->call(TagSeeder::class);
         $this->call(TemaSeeder::class);
-        $this->call(PostSeeder::class);
+        //$this->call(PostSeeder::class);
        
 
     }

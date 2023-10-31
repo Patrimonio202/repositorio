@@ -15,9 +15,15 @@ class Vote extends Model
         'voto'      
     ];
 
+    public function getRouteKeyName()
+    {
+         return 'slug';  // esto es para optimizarlo a nivel de ceo
+    }  
+
     //relacion muchos a muchos
     public function posts(){
-        return $this->belongsToMany(Post::class);
-    }
+        //return $this->belongsToMany(Post::class);
+        return $this->belongsTo(Post::class);
+    }     
 
 }

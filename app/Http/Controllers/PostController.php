@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
+use App\Models\Vote;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 
@@ -57,6 +58,9 @@ class PostController extends Controller
 
     //mostramos todos los post destacados que tiene un usuario
     public function destacado(){     
+     // $votes=Vote::where('user_id', auth()->user()->id)->get();
+      //dd($votes);      
+      //return $votes[1] ;
       return view('posts.destacado');
     }
 }

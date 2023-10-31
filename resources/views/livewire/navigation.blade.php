@@ -127,6 +127,12 @@
                                         {{ __('Administración') }} <!-- Profile-->
                                     </x-dropdown-link>
                                 @endcan
+
+                                @can('home')
+                                    <x-dropdown-link href="{{ route('posts.destacado') }}">
+                                        {{ __('Mis preferidos') }} <!-- Profile-->
+                                    </x-dropdown-link>
+                                @endcan
                               
 
                                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
@@ -172,7 +178,7 @@
                             <x-dropdown-link href="{{ route('login') }}">
                                 {{ __('Ingresar') }} <!-- Profile-->
                             </x-dropdown-link>
-                            
+
                             @if (Route::has('register'))
                                 <x-dropdown-link href="{{ route('register') }}">
                                     {{ __('Registrarse') }} <!-- Profile-->
