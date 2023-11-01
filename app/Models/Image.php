@@ -9,7 +9,7 @@ class Image extends Model
 {
     use HasFactory;
 
-    protected $fillable=['url','urlarchivo'];
+    protected $fillable=['url','urlarchivo', 'urlyoutube'];
 
     //relacion polimorfica
     public function imageable(){

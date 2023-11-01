@@ -19,6 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('imageable_id');
             $table->string('imageable_type');
             $table->string('urlarchivo')->nullable();
+            $table->string('urlyoutube')->nullable();
 
             $table->timestamps();
         });

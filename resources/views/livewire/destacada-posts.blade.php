@@ -4,17 +4,28 @@
             <ul class="glider">
                 @foreach ($posts as $post)
                     <li class="bg-white rounded-lg shadow {{ $loop->last ? '' : 'sm:mr-4 py-6' }} relative">
-                        <article >
-                            <figure>
-                                <div class="relative overflow-hidden bg-no-repeat bg-cover relative overflow-hidden bg-no-repeat bg-cover shadow-lg rounded-lg mx-4 -mt-4"
-                                    data-mdb-ripple="true" data-mdb-ripple-color="light">
-                                    <img src="{{ Storage::url($post->image->url) }}" class="w-full" />
-                                    <a href="{{ route('posts.show', $post) }}">
-                                        <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed opacity-0 hover:opacity-100 transition duration-300 ease-in-out"
-                                            style="background-color: rgba(251, 251, 251, 0.15)"></div>
-                                    </a>
-                                </div>
-                            </figure>
+                        <article>
+                            @if($post->category_id=='4')
+                               <figure>
+                                <div class="relative overflow-hidden bg-no-repeat bg-cover relative overflow-hidden bg-no-repeat bg-cover shadow-lg rounded-lg mx-4 mt-4"
+                                data-mdb-ripple="true" data-mdb-ripple-color="light">
+                                    <x-embed
+                                        url="{{$post->image->urlyoutube}}"
+                                          />
+                                    </div>  
+                                </figure>   
+                            @else
+                                <figure>
+                                    <div class="relative overflow-hidden bg-no-repeat bg-cover relative overflow-hidden bg-no-repeat bg-cover shadow-lg rounded-lg mx-4 -mt-2"
+                                        data-mdb-ripple="true" data-mdb-ripple-color="light">
+                                        <img src="{{ Storage::url($post->image->url) }}" class="w-full h-70 " />
+                                        <a href="{{ route('posts.show', $post) }}">
+                                            <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed opacity-0 hover:opacity-100 transition duration-300 ease-in-out"
+                                                style="background-color: rgba(251, 251, 251, 0.15)"></div>
+                                        </a>
+                                    </div>
+                                </figure>
+                            @endif
                             <div class="p-6">
                                 <h1 class=" text-center text-lg font-semibold">
                                     <a href="">{{ Str::limit($post->name, 40) }}</a>

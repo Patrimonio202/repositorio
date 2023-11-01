@@ -54,7 +54,7 @@ class PostController extends Controller
             $urlarchivo="";
             
             //validamos si es un audio2 o un libro3
-            if ($request->category_id == '2') {
+            if ($request->category_id == '2' || $request->category_id == '3' ) {
                 if ($request->file('archivo')) {                    
                     //el disco original es public
                     //$urlarchivo=  Storage::disk('public')->put('archivos', $request->file('archivo'));  //me almacena la informacion de la carpeta temporal a la public
@@ -63,20 +63,26 @@ class PostController extends Controller
                     //guardamos el post-> image
                     $post->image()->create([
                         'url' => $url,
-                        'urlarchivo'=>$urlarchivo                   
+                        'urlarchivo'=>$urlarchivo,   
+                        'urlyoutube'=>''                 
                     ]);  
                 }
             } else {
                 $post->image()->create([
                     'url' => $url,
-                    'urlarchivo'=>$urlarchivo                   
+                    'urlarchivo'=>$urlarchivo,
+                    'urlyoutube'=>$request->urlyoutube              
                 ]);              
             }
+        }else{
+       //hasta aqui        
+        if ($request->category_id == '4') {          
+                $post->image()->create([
+                    'url' => '',
+                    'urlarchivo'=>'',
+                    'urlyoutube'=>$request->urlyoutube           
+                ]);  
         }
-        //hasta aqui
-        
-        if ($request->category_id == '2') {
-           
         }
 
         //con este creamos las etiquetas que son de uno a muchos
@@ -103,7 +109,7 @@ class PostController extends Controller
         $temas = Tema::pluck('name', 'id'); // esto es para pasarle a laravel collection   
         $categories = Category::pluck('name', 'id'); // esto es para pasarle a laravel collection   
         $tags = Tag::all();
-        return view('admin.posts.edit', compact('post', 'categories', 'tags', 'temas'));
+        return view('admin.posts.edit', compact('post', 'categories', 'tags', 'temas'))->with('info', 'El post se creó con exito');
     }
 
     /**
