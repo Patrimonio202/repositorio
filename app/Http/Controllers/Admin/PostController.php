@@ -103,7 +103,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        $this->authorize('author', $post);
+        //$this->authorize('author', $post);
         $temas = Tema::pluck('name', 'id'); // esto es para pasarle a laravel collection   
         $categories = Category::pluck('name', 'id'); // esto es para pasarle a laravel collection   
         $tags = Tag::all();
