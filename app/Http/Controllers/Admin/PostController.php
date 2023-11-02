@@ -119,11 +119,12 @@ class PostController extends Controller
     {
         $this->authorize('author', $post);
         $post->update($request->all());
-        //validamos si trae una imagen la variable file
-        if ($request->file('file')) {
-            $url =  Storage::put('archivos', $request->file('file'));  //me almacena la informacion de la carpeta temporal a la public
-
-            if ($post->image) {
+        //validamos si tiene una imagen el posts
+        if ($request->file('file')) { 
+             $nameimagen=$request->file('file')->getClientOriginalName();           
+             $url =  Storage::putFileAs('archivos', $request->file('file'),$nameimagen,'public');   //me almacena la informacion de la carpeta temporal a la public
+             //si tiene la imagen
+             if ($post->image) {
                 Storage::delete($post->image->url);
                 $post->image->update([
                     'url' => $url

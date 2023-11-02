@@ -48,7 +48,9 @@ class DestacadaPosts extends Component
 
   public function mount()
   {
-    $this->posts = Post::all();
+    $this->posts = Post::where('status',2)
+                        ->where('destacada',2)
+                        ->get();
   }
 
   public function render()

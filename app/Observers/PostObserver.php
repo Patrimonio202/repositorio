@@ -26,7 +26,14 @@ class PostObserver
     public function deleting(Post $post): void
     {
         if($post->image){
-            Storage::disk('public')->delete($post->image->url);
+            //Eliminamnos los archivos de imagen
+            if($post->image->url){
+               Storage::disk('s3')->delete($post->image->url);
+            }
+            // eliminamos los pdf  o archivos de musica
+            if($post->image->urlarchivo){
+                Storage::disk('s3')->delete($post->image->urlarchivo);
+             }
         }
     
     }

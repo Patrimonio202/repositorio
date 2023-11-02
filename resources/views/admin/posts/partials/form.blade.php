@@ -139,7 +139,7 @@
 
 <div class="form-group">
     {!! Form::label('urlyoutube', 'Url de youtube:') !!}
-    {!! Form::text('urlyoutube', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la url de youtube']) !!}
+    {!! Form::text('urlyoutube',  (isset($post->image))  ? $post->image->urlyoutube : '' , ['class' => 'form-control', 'placeholder' => 'Ingrese la url de youtube']) !!}
 
     @error('urlyoutube')
         <small class="text-danger">{{ $message }}</small>
