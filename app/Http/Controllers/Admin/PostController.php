@@ -139,7 +139,7 @@ class PostController extends Controller
             Storage::delete($post->image->urlarchivo);  // con este eliminamos la foto cargada
             $nameimagen = $request->file('archivo')->getClientOriginalName();
             $urlarchivo=Storage::putFileAs('archivos', $request->file('archivo'), $nameimagen, 'public');   //me almacena la informacion de la carpeta temporal a la public
-           
+            $urlarchivo='archivos/'.$urlarchivo;
             //si tiene la imagen
             if ($post->image) {
                 $post->image->update([
