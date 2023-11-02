@@ -21,10 +21,13 @@ class PostIndex extends Component
 
     public function render()
     {
-        $posts=Post::where('user_id', auth()->user()->id)
-                    ->where('name','LIKE','%'.$this->search.'%')
-                    ->latest('id')
-                    ->paginate(5);
+        // $posts=Post::where('user_id', auth()->user()->id)
+        //             ->where('name','LIKE','%'.$this->search.'%')
+        //             ->latest('id')
+        //             ->paginate(5);
+        $posts=Post::where('name','LIKE','%'.$this->search.'%')
+                   ->latest('id')
+                   ->paginate(5);
         return view('livewire.admin.post-index',compact('posts'));
     }
 }
