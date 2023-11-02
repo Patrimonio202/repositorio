@@ -1,17 +1,15 @@
 <div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  my-2  ">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  my-2 -mr-4  ">
         @foreach ($posts as $post)
             <article class=" relative bg-white  rounded-xl mr-4 my-6 ">
-                @if($post->category_id=='4')
-                <figure>
-                    <div class="relative overflow-hidden bg-no-repeat bg-cover relative overflow-hidden bg-no-repeat bg-cover shadow-lg rounded-lg mx-4 -mt-4 "
-                    data-mdb-ripple="true" data-mdb-ripple-color="light">
-                        <x-embed
-                            url="{{$post->image->urlyoutube}}"
-                             />
-                        </div>                      
+                @if ($post->category_id == '4')
+                    <figure>
+                        <div class="relative overflow-hidden bg-no-repeat bg-cover relative overflow-hidden bg-no-repeat bg-cover shadow-lg rounded-lg mx-4 -mt-4 "
+                            data-mdb-ripple="true" data-mdb-ripple-color="light">
+                            <x-embed url="{{ $post->image->urlyoutube }}" />
+                        </div>
 
-                </figure>
+                    </figure>
                 @else
                     <figure>
                         <div class="relative overflow-hidden bg-no-repeat bg-cover relative overflow-hidden bg-no-repeat bg-cover shadow-lg rounded-lg mx-4 -mt-4"
@@ -31,8 +29,9 @@
                         </h1>
 
                         <p class="text-gray-500 mb-4">
-                            <a href=" {{ route('posts.category', $post->category->slug) }}"
-                                class="inline-block bg-green-600 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{{ $post->category->name }}
+                            <a href="{{ route('posts.category', $post->category->slug) }}">
+                                <img src="{{ Storage::url('Imagenes/' . $post->category->rutaimagen) }}"
+                                    class="inline-block w-5 h-5 rounded-xl" alt="...">
                             </a>
                             <small>Creado en <u>{{ $post->anocreacion }}</u> por
                                 <a href="" class="text-gray-900">{{ $post->autor }}</a></small>
@@ -47,22 +46,26 @@
                 <div class="absolute bottom-5 right-0 px-6 ">
                     <i onclick="changeState('compartirjtc-{{ $post->id }}')"
                         class="fa-solid fa-share-nodes fa-lg"></i>
+                    @auth
+                        <i wire:click="meinteresa({{ $post->id }})"
+                            class=" @if ($post->userVotes) fa-solid fa-heart fa-lg @else fa-regular fa-heart fa-lg @endif"></i>
 
-                        <i wire:click="meinteresa({{ $post->id }})" 
-                            class=" @if( $post->userVotes ) fa-solid fa-heart fa-lg @else fa-regular fa-heart fa-lg  @endif"
-                            ></i>
-                   
-                    <i wire:click="megusta({{ $post->id }})" 
-                        class="@if( $post->userVoteslike ) fa-solid fa-thumbs-up fa-lg @else fa-regular fa-thumbs-up fa-lg  @endif "
-                        id="fastc-{{ $post->id }}"></i>
+                        <i wire:click="megusta({{ $post->id }})"
+                            class="@if ($post->userVoteslike) fa-solid fa-thumbs-up fa-lg @else fa-regular fa-thumbs-up fa-lg @endif "
+                            id="fastc-{{ $post->id }}"></i>
+                    @else
+                    <a href="{{ route('login') }}">
+                         <i class="fa-solid fa-right-to-bracket"></i>
+                     </a>
+                    @endauth
                 </div>
             </article>
         @endforeach
         <div x-intersect="$wire.loadMore()"></div>
     </div>
-  @if ($posts_per_page >= $totalRecords)
-  <h1 class=" text-center text-lg  font-semibold text-gray-700 "> 
-    No hay mas registros...
-  </h1>
-   @endif 
+    @if ($posts_per_page >= $totalRecords)
+        <h1 class=" text-center text-lg  font-semibold text-gray-700 ">
+            No hay mas registros...
+        </h1>
+    @endif
 </div>

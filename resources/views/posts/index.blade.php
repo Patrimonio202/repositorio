@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="container my-4 px-6 mx-auto " >
+    <div class="container my:-0 md:my-4 lg:my-4 px-6 mx-auto " >
         <x-carrousel />
     </div>   
 
@@ -18,9 +18,7 @@
         <!--Multimedia publicada -->
         <div class="container my-4 px-6 mx-auto " >
             <section>
-                <h1 class=" text-center text-lg uppercase font-semibold text-gray-700 ">              
-                    Ultima información multimedia
-                </h1>
+                <h2 class="text-lg md:text-3xl lg:text-3xl font-bold pb-1 text-center">Ultima información multimedia</h2>              
                
                     @livewire('multimedia-publicada') 
              
