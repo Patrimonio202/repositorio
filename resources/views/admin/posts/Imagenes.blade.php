@@ -25,6 +25,7 @@
                     <option value="Imagen-barner-4">Barner 4</option>
                     <option value="Imagen-barner-5">Barner 5</option>
                     <option value="Favicon">Favicon</option>
+                    <option value="Logo">Logo</option>
                   </select>
             </div>
 
@@ -49,7 +50,9 @@
                         {!! Form::file('file', ['class' => 'form-control-file', 'accept' => 'image/*']) !!} 
                    </div>
                     <p>
-                        Esta imagen es la mejor
+                        Las imagenes para el banner deben de estar en formato .jpg  </br>
+                        Las imagenes para el Favicon deben de estar en .png </br>
+                        Las imagenes para el Logo deben de estar en .png </br>
                     </p>
                 </div>
             </div>

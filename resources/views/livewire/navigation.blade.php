@@ -12,19 +12,28 @@
               
 
                 <!-- Links de navegacion computador - carrusel -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                {{-- <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link href="{{ route('posts.carrusel') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Carrusel') }}
+                    </x-nav-link>
+                </div> --}}
+
+                <!-- Links de navegacion computador - Imagenes -->
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link href="{{  route('posts.category', 'imagenes') }}" :active="request()->routeIs('index')">
+                        <img src="{{ Storage::url('Imagenes/Imagenes.jpg') }}" class="w-50 h-10 rounded-lg" alt="...">
                     </x-nav-link>
                 </div>
 
                 <!-- Cargar datos desde base de datos -->
                 @foreach ($categories as $category)
-                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-nav-link href="{{ route('posts.category', $category) }}" :active="request()->routeIs('Imagenes')">
-                            {{ $category->name }}
-                        </x-nav-link>
-                    </div>
+                   @if($category->id!=1)
+                        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <x-nav-link href="{{ route('posts.category', $category) }}" :active="request()->routeIs('Imagenes')">
+                                {{ $category->name }}
+                            </x-nav-link>
+                        </div>
+                    @endif
                 @endforeach
 
             </div>

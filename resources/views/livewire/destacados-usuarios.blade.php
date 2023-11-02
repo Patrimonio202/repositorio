@@ -3,7 +3,12 @@
         @foreach ($posts as $post)       
             <article class=" relative bg-white  rounded-xl mr-4 my-6 ">
                 @if($post->category_id=='4')
-                    
+                   <div class="relative overflow-hidden bg-no-repeat bg-cover relative overflow-hidden bg-no-repeat bg-cover shadow-lg rounded-lg mx-4 -mt-4"
+                            data-mdb-ripple="true" data-mdb-ripple-color="light">
+                    <x-embed
+                        url="{{$post->image->urlyoutube}}"
+                         />
+                    </div>   
                 @else
                     <figure>
                         <div class="relative overflow-hidden bg-no-repeat bg-cover relative overflow-hidden bg-no-repeat bg-cover shadow-lg rounded-lg mx-4 -mt-4"
@@ -46,7 +51,9 @@
     </div>
     
     @if ($posts_per_page >= $totalRecords)
-        <p class="text-center"> no hay mas registros</p>
+        <h1 class=" text-center text-lg  font-semibold text-gray-700 "> 
+            No hay mas registros...
+        </h1>
     @endif 
 
     

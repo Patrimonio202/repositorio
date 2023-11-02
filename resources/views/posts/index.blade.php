@@ -1,21 +1,20 @@
 <x-app-layout>
     <div class="container my-4 px-6 mx-auto " >
         <x-carrousel />
-    </div>
+    </div>   
 
-   
-
-    <div class="container my-6 px-6 mx-auto">
+     <!-- <div class="container my-6 px-6 mx-auto">
         <section>
             <h1 class=" text-center text-lg uppercase font-semibold text-gray-700 ">               
                 Multimedia destacada
             </h1>
 
                 {{-- @livewire('destacada-posts', ['posts' => $posts])    --}}
-                <livewire:destacada-posts :lazy=false />            
+                {{-- <livewire:destacada-posts :lazy=false />             --}}
 
         </section>
-    </div>
+    </div> --}}-->
+
         <!--Multimedia publicada -->
         <div class="container my-4 px-6 mx-auto " >
             <section>
