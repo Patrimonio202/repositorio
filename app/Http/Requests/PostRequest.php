@@ -27,27 +27,40 @@ class PostRequest extends FormRequest
      */
     public function rules(): array
     {
-       $post = $this->route()->parameter('post');
-       
+        $post = $this->route()->parameter('post');
+
         $rules = [
             'name' => 'required',
             'slug' => 'required|unique:posts', // ,slug,$category->id",
             'anocreacion' => 'required',
             'autor' => 'required',
             'status' => 'required|in:1,2',
-            'file'=>'image'
+            'file' => 'image'
         ];
-        
+
         //si tiene informacion en el post, agregamos la siguiente validacion
-        if($post){
-            $rules['slug']='required|unique:posts,slug,'.$post->id;
+        if ($post) {
+            $rules['slug'] = 'required|unique:posts,slug,' . $post->id;
         }
-     
-          
+
+
         if ($this->status == 2) {
+            if (!$post) { //validamos esto solo cuando se crea
+                if ($this->category_id == 1 || $this->category_id == 2 || $this->category_id == 3) { // este es para las imagenes
+                    $rules['file'] = 'image|required';
+                }
+
+                if ($this->category_id == 2 || $this->category_id == 3) { // este es para los adjuntos de audio y libros
+                    $rules['archivo'] = 'required';
+                }
+                if ($this->category_id == 4) { // este es para archivos de youtube
+                    $rules['urlyoutube'] = 'required';
+                }
+            }
+
             $rules = array_merge($rules, [
                 'category_id' => 'required',
-                'tags' => 'required',                
+                'tags' => 'required',
                 'body' => 'required',
                 'tema_id' => 'required',
                 'destacada' => 'required|in:1,2'

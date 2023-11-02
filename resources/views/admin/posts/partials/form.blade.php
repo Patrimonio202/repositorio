@@ -96,13 +96,14 @@
     <div class="col">
         <div class="image-wrapper">
             @isset($post->image) {{-- se utiliza cuando la variable post no puede ser declara --}}
-                @if ($post->category_id = '4')
+                @if ($post->category_id == '4'  )
                     <img id="picture" src="https://cdn.pixabay.com/photo/2023/10/03/08/24/goose-8290811_1280.jpg"
                         alt="">
                 @else
                     <img id="picture" src="{{ Storage::url($post->image->url) }}" alt="">
                 @endif
             @else
+            
                 <img id="picture" src="https://cdn.pixabay.com/photo/2023/10/03/08/24/goose-8290811_1280.jpg"
                     alt="">
             @endisset
@@ -118,10 +119,7 @@
             @enderror
 
         </div>
-
-
-
-        <p>
+      <p>
             Esta imagen es la mejor
         </p>
     </div>

@@ -40,49 +40,47 @@ class PostController extends Controller
         return view('admin.posts.create', compact('categories', 'tags', 'temas'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(PostRequest $request)
     {
         // tener pendiente, en produccion cambiamos las rutas
         $post = Post::create($request->all());
-        if ($request->file('file')) {   
-            $nameimagen=$request->file('file')->getClientOriginalName();           
-            $url =  Storage::putFileAs('archivos', $request->file('file'),$nameimagen,'public');   //me almacena la informacion de la carpeta temporal a la public
+        if ($request->file('file')) {
+            $nameimagen = $request->file('file')->getClientOriginalName();
+            $url =  Storage::putFileAs('archivos', $request->file('file'), $nameimagen, 'public');   //me almacena la informacion de la carpeta temporal a la public
             //$url=Storage::put('archivos', $request->file('file')); 
-            $urlarchivo="";
-            
+            $urlarchivo = '';
+
             //validamos si es un audio2 o un libro3
-            if ($request->category_id == '2' || $request->category_id == '3' ) {
-                if ($request->file('archivo')) {                    
-                    //el disco original es public
-                    //$urlarchivo=  Storage::disk('public')->put('archivos', $request->file('archivo'));  //me almacena la informacion de la carpeta temporal a la public
-                    $namearchivo=$request->file('archivo')->getClientOriginalName();        
-                    $urlarchivo=  Storage::putFileAs('archivos', $request->file('archivo'),$namearchivo,'public');
+            if ($request->category_id == '2' || $request->category_id == '3') {
+                if ($request->file('archivo')) {
+                    //el disco original es public                   
+                    $namearchivo = $request->file('archivo')->getClientOriginalName();
+                    // dd($namearchivo);   
+                    $urlarchivo = Storage::putFileAs('archivos', $request->file('archivo'), $namearchivo, 'public');
                     //guardamos el post-> image
                     $post->image()->create([
                         'url' => $url,
-                        'urlarchivo'=>$urlarchivo,   
-                        'urlyoutube'=>''                 
-                    ]);  
+                        'urlarchivo' => $urlarchivo,
+                        'urlyoutube' => ''
+                    ]);
                 }
             } else {
                 $post->image()->create([
                     'url' => $url,
-                    'urlarchivo'=>$urlarchivo,
-                    'urlyoutube'=>$request->urlyoutube              
-                ]);              
+                    'urlarchivo' => $urlarchivo,
+                    'urlyoutube' => $request->urlyoutube
+                ]);
             }
-        }else{
-       //hasta aqui        
-        if ($request->category_id == '4') {          
+        } else {
+            //hasta aqui        
+            if ($request->category_id == '4') {
                 $post->image()->create([
                     'url' => '',
-                    'urlarchivo'=>'',
-                    'urlyoutube'=>$request->urlyoutube           
-                ]);  
-        }
+                    'urlarchivo' => '',
+                    'urlyoutube' => $request->urlyoutube
+                ]);
+            }
         }
 
         //con este creamos las etiquetas que son de uno a muchos
@@ -120,18 +118,43 @@ class PostController extends Controller
         $this->authorize('author', $post);
         $post->update($request->all());
         //validamos si tiene una imagen el posts
-        if ($request->file('file')) { 
-             $nameimagen=$request->file('file')->getClientOriginalName();           
-             $url =  Storage::putFileAs('archivos', $request->file('file'),$nameimagen,'public');   //me almacena la informacion de la carpeta temporal a la public
-             //si tiene la imagen
-             if ($post->image) {
-                Storage::delete($post->image->url);
+        if ($request->file('file')) {
+            Storage::delete($post->image->url);  // con este eliminamos la foto cargada
+            $nameimagen = $request->file('file')->getClientOriginalName();
+            $url =  Storage::putFileAs('archivos', $request->file('file'), $nameimagen, 'public');   //me almacena la informacion de la carpeta temporal a la public
+            //si tiene la imagen
+            if ($post->image) {
                 $post->image->update([
                     'url' => $url
                 ]);
             } else {
                 $post->image()->create([
                     'url' => $url
+                ]);
+            }
+        }
+
+        //validamos si tiene un archivo como audio o pdf
+        if ($request->file('archivo')) {
+            Storage::delete($post->image->urlarchivo);  // con este eliminamos la foto cargada
+            $nameimagen = $request->file('archivo')->getClientOriginalName();
+            $url =  Storage::putFileAs('archivos', $request->file('archivo'), $nameimagen, 'public');   //me almacena la informacion de la carpeta temporal a la public
+            //si tiene la imagen
+            if ($post->image) {
+                $post->image->update([
+                    'urlarchivo' => $url
+                ]);
+            } else {
+                $post->image()->create([
+                    'urlarchivo' => $url
+                ]);
+            }
+        }
+        //validamos si es un video
+        if ($request->category_id == '4') {
+            if ($post->image) {
+                $post->image()->update([                   
+                    'urlyoutube' => $request->urlyoutube
                 ]);
             }
         }
@@ -154,18 +177,19 @@ class PostController extends Controller
         return redirect()->route('admin.posts.index')->with('info', 'El post se eliminó con exito');
     }
 
-    public function imagenes(){
+    public function imagenes()
+    {
         return view('admin.posts.Imagenes');
     }
 
-    public function updateimagenes(Request $request){
-       // dd($request->idimagen);
-       if ($request->file('file')) {
-       // dd($request->file('file')->getClientOriginalExtension());
-        $namearchivo=$request->idimagen.'.'.  $request->file('file')->getClientOriginalExtension();           
-         $urlarchivo=  Storage::putFileAs('Imagenes', $request->file('file'),$namearchivo,'public');         
-       } 
+    public function updateimagenes(Request $request)
+    {
+        // dd($request->idimagen);
+        if ($request->file('file')) {
+            // dd($request->file('file')->getClientOriginalExtension());
+            $namearchivo = $request->idimagen . '.' .  $request->file('file')->getClientOriginalExtension();
+            $urlarchivo =  Storage::putFileAs('Imagenes', $request->file('file'), $namearchivo, 'public');
+        }
         return redirect()->route('admin.updateimagenes')->with('info', 'la imagen se actualizó correctamente');
     }
-
 }

@@ -50,7 +50,7 @@
                 @if ($post->category->id == 4)
                     <div>
                         <x-embed
-                            url="https://www.youtube.com/watch?v=zLX_GcXt2pI&list=RDzLX_GcXt2pI&start_radio=1&ab_channel=ManuelMedrano"
+                            url="{{ $post->image->urlyoutube }}"
                             aspect-ratio="4:3" />
                     </div>
                 @endif
