@@ -115,7 +115,7 @@ class PostController extends Controller
      */
     public function update(PostRequest $request, Post $post)
     {
-        $this->authorize('author', $post);
+       // $this->authorize('author', $post);
         $post->update($request->all());
         //validamos si tiene una imagen el posts
         if ($request->file('file')) {
