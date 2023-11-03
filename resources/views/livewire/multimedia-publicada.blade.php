@@ -55,7 +55,7 @@
                             id="fastc-{{ $post->id }}"></i>
                     @else
                     <a href="{{ route('login') }}">
-                         <i class="fa-solid fa-right-to-bracket"></i>
+                         <i class="fa-solid fa-right-to-bracket fa-lg"></i>
                      </a>
                     @endauth
                 </div>

@@ -47,11 +47,24 @@
                     </div>
                 @endif
 
+                @if ($post->category->id == 3)
+                    <figure>
+                        <div class="relative overflow-hidden bg-no-repeat bg-cover relative overflow-hidden bg-no-repeat bg-cover shadow-lg rounded-lg  "
+                            data-mdb-ripple="true" data-mdb-ripple-color="light">
+                            <iframe width="100%" height="500"
+                                src="{{ Storage::url('archivos/CP-510-47-994000022586-0.PDF') }}#toolbar=0&navpanes=0&scrollbar=0"></iframe>
+                            {{-- <embed src="{{ Storage::url('archivos/CP-510-47-994000022586-0.PDF') }}" type="application/pdf" width="100%" height="500px" /> --}}
+                            {{-- <embed
+                                src="{{ Storage::url('archivos/CP-510-47-994000022586-0.PDF') }}#toolbar=0&navpanes=0&scrollbar=0"
+                                type="application/pdf" width="100%" height="500px" /> --}}
+                            <div>
+                    </figure>
+                @endif
+
                 @if ($post->category->id == 4)
-                    <div>
-                        <x-embed
-                            url="{{ $post->image->urlyoutube }}"
-                            aspect-ratio="4:3" />
+                    <div class="relative overflow-hidden bg-no-repeat bg-cover relative overflow-hidden bg-no-repeat bg-cover shadow-lg rounded-lg  "
+                        data-mdb-ripple="true" data-mdb-ripple-color="light">
+                        <x-embed url="{{ $post->image->urlyoutube }}" aspect-ratio="4:3" />
                     </div>
                 @endif
 

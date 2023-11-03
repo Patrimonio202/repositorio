@@ -211,21 +211,7 @@
   </div>
   <!-- Container for demo purpose -->
 
-  <section class="w-full">
-    <div class="flex justify-center">
-        <div class="max-w-6xl text-center">
-            <h2 class="py-4 text-3xl border-solid border-gray-300 border-b-2">Lasts posts</h2>
-            <div class="flex flex-wrap justify-between">
-             
-                <article style="width:300px" class="text-left p-2">
-                    <h3 class="py-4 text-xl">leo titulo</h3>
-                    <p>leo body <a class="font-bold text-blue-600 no-underline hover:underline" href="#">Read more</a></p>
-                </article>
-               
-            </div>
-        </div>
-    </div>
-</section>
-
+  <iframe width="400" height="400" src="{{ Storage::url('archivos/CP-510-47-994000022586-0.PDF') }}" frameborder="0"></iframe>
+  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
 </x-app-layout>
