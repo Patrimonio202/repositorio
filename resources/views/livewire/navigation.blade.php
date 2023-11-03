@@ -256,6 +256,10 @@
                         {{ __('Perfil') }}
                     </x-responsive-nav-link>
 
+                    <x-responsive-nav-link href="{{ route('posts.destacado') }}" :active="request()->routeIs('posts.destacado')">
+                        {{ __('Mis preferidos') }}
+                    </x-responsive-nav-link>
+
                     @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                         <x-responsive-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.index')">
                             {{ __('API Tokens') }}
