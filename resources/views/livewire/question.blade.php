@@ -1,4 +1,5 @@
 <div>
+    @auth
     <div class="flex">
         <figure class="mr-4">
             <img class="w-12 h-12 object-cover object-center rounded-full" src="{{ Auth::user()->profile_photo_url }}"
@@ -23,7 +24,7 @@
         </div>
 
     </div>
-
+    @endauth
     <p class="text-lg font-semibold mt-6 mb-4">
         {{$model->questions()->count()}}  Comentarios:
     </p>
