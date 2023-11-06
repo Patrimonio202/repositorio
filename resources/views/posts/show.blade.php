@@ -98,7 +98,11 @@
                     </ul>
                 </h1>
             </aside>
-
-        </div>
+            <div class="mt-6 lg:col-span-2">
+                @livewire('question', ['model'=>$post])
+            </div> 
+        </div>   
+            
     </div>
+   
 </x-app-layout>

@@ -53,4 +53,9 @@ class Post extends Model
        return $this->votes()->one()->where('user_id', auth()->id())->where('voto',1);
    } 
 
+   // relacion uno a muchas polimorficas
+   public function questions(){
+    return $this->morphMany(Question::class,'questionable');
+   }
+
 }
