@@ -16,7 +16,7 @@
                 @if ($post->category->id == 1)
                     <figure class="aspect-[16/9]">
                         @if ($post->image)
-                            <img class="rounded-xl" src="{{ Storage::url($post->image->url) }}" alt="">
+                            <img class="rounded-xl zoom" src="{{ Storage::url($post->image->url) }}" alt="">
                         @else
                             <img class="w-full h-80 object-cover object-center"
                                 src="https://cdn.pixabay.com/photo/2023/10/03/08/24/goose-8290811_1280.jpg"
@@ -105,4 +105,11 @@
             
     </div>
    
+
+    @push('js')
+    <script src="{{ asset('vendor/wheelzoom/wheelzoom.js') }}"></script>    
+    <script>
+		wheelzoom(document.querySelector('img.zoom'));
+	</script>
+     @endpush
 </x-app-layout>

@@ -1,32 +1,34 @@
 <div>
     @auth
-    <div class="flex">
-        <figure class="mr-4">
-            <img class="w-12 h-12 object-cover object-center rounded-full" src="{{ Auth::user()->profile_photo_url }}"
-                alt="">
-        </figure>
+        <div class="flex">
+            <figure class="mr-4">
+                <img class="w-12 h-12 object-cover object-center rounded-full" src="{{ Auth::user()->profile_photo_url }}"
+                    alt="">
+            </figure>
 
-        <div class="flex-1">
-            <form wire:submit.prevent="store">
-                <textarea wire:model.defer="message" rows="3"
-                    class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 focus:ring-opacity-50 rounded-md shadow-sm w-full"
-                    placeholder="Escribe tu mensaje"></textarea>
+            <div class="flex-1">
+                <form wire:submit.prevent="store">
+                    {{-- <textarea wire:model.defer="message" rows="3"
+                        class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 focus:ring-opacity-50 rounded-md shadow-sm w-full"
+                        placeholder="Escribe tu mensaje"></textarea> --}}
+                    
+                    <x-balloon-editor wire:model="message" placeholder="Agrega un comentario"  />                    
 
-                <x-input-error for="message" class="mt-1" />
+                    <x-input-error for="message" class="mt-1" />
 
-                <div class="flex justify-end">
-                    <x-button>
-                        {{ __('Comentar') }}
-                    </x-button>
-                </div>
+                    <div class="flex justify-end mt-4">
+                        <x-button>
+                            {{ __('Comentar') }}
+                        </x-button>
+                    </div>
 
-            </form>
+                </form>
+            </div>
+
         </div>
-
-    </div>
     @endauth
     <p class="text-lg font-semibold mt-6 mb-4">
-        {{$model->questions()->count()}}  Comentarios:
+        {{ $model->questions()->count() }} Comentarios:
     </p>
 
     <ul class="space-y-6">
@@ -48,13 +50,15 @@
                         </p>
                         @if ($question->id == $question_edit['id'])
                             <form wire:submit="update()">
-                                <textarea wire:model="question_edit.body"
-                                    class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 focus:ring-opacity-50 rounded-md shadow-sm w-full"></textarea>
+                                {{-- <textarea wire:model="question_edit.body"
+                                    class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 focus:ring-opacity-50 rounded-md shadow-sm w-full"></textarea> --}}
+
+                                <x-balloon-editor wire:model="question_edit.body" :focus="true" />    
 
                                 <x-input-error for="question_edit.body" class="mt-1" />
 
 
-                                <div class="flex justify-end">
+                                <div class="flex justify-end mt-4">
                                     <x-danger-button class="mr-2" wire:click="cancel">
                                         Cancelar
                                     </x-danger-button>
@@ -66,7 +70,7 @@
                             </form>
                         @else
                             <p>
-                                {{ $question->body }}
+                                {!! $question->body !!}
                             </p>
                         @endif
                     </div>
@@ -97,16 +101,20 @@
         @endforeach
     </ul>
 
-   @if($model->questions()->count() -$cant>0)
-    <div class="flex items-center">
-        <hr class="flex-1">
-        <button class="text-sm font-semibold text-gray-500 hover:text-gray-600 mx-4"
-        wire:click="show_more_question">
-            Ver los {{$model->questions()->count() -$cant}} comentarios restantes
-        </button>
-        <hr class="flex-1">
-    </div>
-
+    @if ($model->questions()->count() - $cant > 0)
+        <div class="flex items-center">
+            <hr class="flex-1">
+            <button class="text-sm font-semibold text-gray-500 hover:text-gray-600 mx-4"
+                wire:click="show_more_question">
+                Ver los {{ $model->questions()->count() - $cant }} comentarios restantes
+            </button>
+            <hr class="flex-1">
+        </div>
     @endif
+
+    @push('js')
+        <script src="{{ asset('vendor/ckeditor5-build-balloon/build/ckeditor.js') }}"></script>
+        
+    @endpush
 
 </div>

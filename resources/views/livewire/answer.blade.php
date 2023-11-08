@@ -12,14 +12,16 @@
             </figure>
 
             <form class="flex-1" wire:submit="store()">
-                <textarea wire:model="answer_created.body"
+                {{-- <textarea wire:model="answer_created.body"
                     class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 focus:ring-opacity-50 rounded-md shadow-sm w-full"
-                    placeholder="Escriba su respuesta"></textarea>
+                    placeholder="Escriba su respuesta"></textarea> --}}
+
+                  <x-balloon-editor wire:model="answer_created.body" placeholder="Escriba su respuesta" /> 
 
                 <x-input-error for="answer_created.body" class="mt-1" />
 
 
-                <div class="flex justify-end">
+                <div class="flex justify-end mt-4">
                     <x-danger-button class="mr-2" wire:click="$set('answer_created.open', false)">
                         Cancelar
                     </x-danger-button>
@@ -65,13 +67,14 @@
 
                         @if ($answer->id == $answer_edit['id'])
                             <form wire:submit="update()">
-                                <textarea wire:model="answer_edit.body"
-                                    class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 focus:ring-opacity-50 rounded-md shadow-sm w-full"></textarea>
+                                {{-- <textarea wire:model="answer_edit.body"
+                                    class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 focus:ring-opacity-50 rounded-md shadow-sm w-full"></textarea> --}}
 
+                                <x-balloon-editor wire:model="answer_edit.body" :focus="true" /> 
                                 <x-input-error for="answer_edit.body" class="mt-1" />
 
 
-                                <div class="flex justify-end">
+                                <div class="flex justify-end mt-4">
                                     <x-danger-button class="mr-2" wire:click="cancel">
                                         Cancelar
                                     </x-danger-button>
@@ -83,7 +86,7 @@
                             </form>
                         @else
                             <p>
-                                {{ $answer->body }}
+                                {!! $answer->body !!}
                             </p>
 
                             <button wire:click="$set('answer_to_answer.id',{{ $answer->id }})">
@@ -125,14 +128,16 @@
 
                         <div class="flex-1">
                             <form wire:submit="answer_to_answer_store">
-                                <textarea wire:model="answer_to_answer.body"
+                                {{-- <textarea wire:model="answer_to_answer.body"
                                     class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 focus:ring-opacity-50 rounded-md shadow-sm w-full"
-                                    placeholder="Ingrese una respuesta"></textarea>
+                                    placeholder="Ingrese una respuesta"></textarea> --}}
+
+                                <x-balloon-editor wire:model="answer_to_answer.body" placeholder="Ingrese una respuesta" /> 
 
                                 <x-input-error for="answer_to_answer.body" class="mt-1" />
 
 
-                                <div class="flex justify-end">
+                                <div class="flex justify-end mt-4">
                                     <x-danger-button class="mr-2" wire:click="$set('answer_to_answer.id',null)">
                                         Cancelar
                                     </x-danger-button>
