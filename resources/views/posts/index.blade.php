@@ -18,8 +18,8 @@
         <!--Multimedia publicada -->
         <div class="container my-4 px-6 mx-auto " >
             <section>
-                <h2 class="text-lg md:text-3xl lg:text-3xl font-bold pb-1 text-center">Ultima información multimedia</h2>              
-               
+                <h2 class="text-lg md:text-3xl lg:text-3xl font-bold pb-1 text-center">Última información multimedia</h2>              
+                <hr >
                     @livewire('multimedia-publicada') 
              
     

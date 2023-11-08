@@ -16,7 +16,8 @@
                 @if ($post->category->id == 1)
                     <figure class="aspect-[16/9]">
                         @if ($post->image)
-                            <img class="rounded-xl zoom" src="{{ Storage::url($post->image->url) }}" alt="">
+                            <img class="rounded-xl zoom hover:scale-105 transition-all duration-100 cursor-pointer"
+                                src="{{ Storage::url($post->image->url) }}" alt="">
                         @else
                             <img class="w-full h-80 object-cover object-center"
                                 src="https://cdn.pixabay.com/photo/2023/10/03/08/24/goose-8290811_1280.jpg"
@@ -77,39 +78,43 @@
 
             {{-- Contenido relacionado --}}
             <aside>
-                <h1 class="text-2xl font-bold text-gray-600 mb-4 py-4">Mas en {{ $post->category->name }}
-                    <ul>
-                        @foreach ($similares as $similar)
-                            <li class="mb-4">
-                                <a class="flex" href="{{ route('posts.show', $similar) }}">
+                {{-- <h1 class="text-2xl font-bold text-gray-600 ">Mas en {{ $post->category->name }}</h1> --}}
+                <h1 class="text-xl">Mas en {{ $post->category->name }}</h1>
+                <hr class="py-1">
+                <ul>
+                    @foreach ($similares as $similar)
+                        <li class="mb-4">
+                            <a class="flex" href="{{ route('posts.show', $similar) }}">
 
-                                    @if ($similar->image)
-                                        <img class="w-36 h-20 object-cover object-center rounded-xl px-2"
-                                            src="{{ Storage::url($similar->image->url) }}" alt="">
-                                    @else
-                                        {{--    <img class="w-36 h-20 object-cover object-center"
+                                @if ($similar->image)
+                                    <img class="w-36 h-20 object-cover object-center rounded-xl px-2 hover:scale-105 transition-all duration-100 "
+                                        src="{{ Storage::url($similar->image->url) }}" alt="">
+                                @else
+                                    {{--    <img class="w-36 h-20 object-cover object-center"
                                             src="https://cdn.pixabay.com/photo/2023/10/03/08/24/goose-8290811_1280.jpg"
                                             alt=""> --}}
-                                    @endif
-                                    <span class="text-gray-700 text-base text-justify">{{ $similar->name }}</span>
-                                </a>
-                            </li>
-                        @endforeach
-                    </ul>
-                </h1>
+                                @endif
+                               {{-- <span class="text-gray-700 text-base text-justify">{{ $similar->name }}</span>  --}}
+                               <p class="flex-1 ml-2 text-justify">{{ $similar->name }}</p>
+                            </a>
+                            
+                        </li>
+                    @endforeach
+                </ul>
+
             </aside>
             <div class="mt-6 lg:col-span-2">
-                @livewire('question', ['model'=>$post])
-            </div> 
-        </div>   
-            
+                @livewire('question', ['model' => $post])
+            </div>
+        </div>
+
     </div>
-   
+
 
     @push('js')
-    <script src="{{ asset('vendor/wheelzoom/wheelzoom.js') }}"></script>    
-    <script>
-		wheelzoom(document.querySelector('img.zoom'));
-	</script>
-     @endpush
+        <script src="{{ asset('vendor/wheelzoom/wheelzoom.js') }}"></script>
+        <script>
+            wheelzoom(document.querySelector('img.zoom'));
+        </script>
+    @endpush
 </x-app-layout>

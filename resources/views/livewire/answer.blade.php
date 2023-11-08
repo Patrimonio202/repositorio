@@ -1,47 +1,62 @@
 <div class="pl-16">
-    <button wire:click="$set('answer_created.open', true)">
-        <i class="fa-solid fa-reply"></i>
-        Responder
-    </button>
+    @auth
+        <button wire:click="$set('answer_created.open', true)">
+            <i class="fa-solid fa-reply"></i>
+            Responder
+        </button>
 
-    @if ($answer_created['open'])
-        <div class="flex">
-            <figure class="mr-4">
-                <img class="w-12 h-12 object-cover object-center rounded-full" src="{{ Auth::user()->profile_photo_url }}"
-                    alt="">
-            </figure>
+        @if ($answer_created['open'])
+            <div class="flex">
+                <figure class="mr-4">
+                    <img class="w-12 h-12 object-cover object-center rounded-full" src="{{ Auth::user()->profile_photo_url }}"
+                        alt="">
+                </figure>
 
-            <form class="flex-1" wire:submit="store()">
-                {{-- <textarea wire:model="answer_created.body"
+                <form class="flex-1" wire:submit="store()">
+                    {{-- <textarea wire:model="answer_created.body"
                     class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 focus:ring-opacity-50 rounded-md shadow-sm w-full"
                     placeholder="Escriba su respuesta"></textarea> --}}
 
-                  <x-balloon-editor wire:model="answer_created.body" placeholder="Escriba su respuesta" /> 
+                    <x-balloon-editor wire:model="answer_created.body" placeholder="Escriba su respuesta" />
 
-                <x-input-error for="answer_created.body" class="mt-1" />
+                    <x-input-error for="answer_created.body" class="mt-1" />
 
 
-                <div class="flex justify-end mt-4">
-                    <x-danger-button class="mr-2" wire:click="$set('answer_created.open', false)">
-                        Cancelar
-                    </x-danger-button>
-
-                    <x-button>
-                        Responder
+                    <div class="flex justify-end mt-4">
+                        <x-danger-button class="mr-2" wire:click="$set('answer_created.open', false)">
+                            Cancelar
                         </x-danger-button>
-                </div>
-            </form>
-        </div>
-    @endif
+
+                        <x-button>
+                            Responder
+                            </x-danger-button>
+                    </div>
+                </form>
+            </div>
+        @endif
+    @endauth
 
     @if ($question->answers()->count())
         <div class="mt-2">
             <button class="font-semibold text-blue-500" wire:click="show_answer">
-                @if ($this->cant < $this->question->answers()->count())
-                    Mostrar las {{ $question->answers()->count() }} respuestas
-                @else
-                    Ocultar {{ $question->answers()->count() }} respuestas
+                @if ($this->cant < $this->question->answers()->count())                   
+                    <span wire:loading.remove="" wire:target="show_answer">
+                        <i class="fas fa-angle-down mr-1"></i> 
+                        Mostrar las {{ $question->answers()->count() }} respuestas
+                    </span>                    
+                @else                    
+                    <span wire:loading.remove="" wire:target="show_answer">
+                        <i class="fas fa-angle-up mr-1"></i> 
+                        Ocultar {{ $question->answers()->count() }} respuestas
+                    </span>
                 @endif
+                <span wire:loading="" wire:target="show_answer">
+                    <div class="flex">
+                        <div class="w-4 h-4 rounded-full animate-pulse bg-gray-500"></div>
+                        <div class="w-4 h-4 rounded-full animate-pulse bg-gray-500 mx-2"></div>
+                        <div class="w-4 h-4 rounded-full animate-pulse bg-gray-500"></div>
+                    </div>
+                </span>
             </button>
         </div>
     @endif
@@ -70,11 +85,12 @@
                                 {{-- <textarea wire:model="answer_edit.body"
                                     class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 focus:ring-opacity-50 rounded-md shadow-sm w-full"></textarea> --}}
 
-                                <x-balloon-editor wire:model="answer_edit.body" :focus="true" /> 
+                                <x-balloon-editor wire:model="answer_edit.body" :focus="true" />
                                 <x-input-error for="answer_edit.body" class="mt-1" />
 
 
                                 <div class="flex justify-end mt-4">
+
                                     <x-danger-button class="mr-2" wire:click="cancel">
                                         Cancelar
                                     </x-danger-button>
@@ -82,6 +98,7 @@
                                     <x-button>
                                         Actualizar
                                         </x-danger-button>
+
                                 </div>
                             </form>
                         @else
@@ -105,14 +122,23 @@
                             </x-slot>
 
                             <x-slot name="content">
-                                <x-dropdown-link class="cursor-pointer" wire:click="edit({{ $answer->id }})">
-                                    Editar
-                                </x-dropdown-link>
+                                @auth
+                                    <x-dropdown-link class="cursor-pointer" wire:click="edit({{ $answer->id }})">
+                                        <i class="fas fa-edit inline-block w-5"></i>
+                                        Editar
+                                    </x-dropdown-link>
 
-                                <x-dropdown-link class="cursor-pointer" wire:click="destroy({{ $answer->id }})">
-                                    Eliminar
+                                    <x-dropdown-link class="cursor-pointer" wire:click="destroy({{ $answer->id }})">
+                                        <i class="fas fa-trash inline-block w-5"></i>
+                                        Eliminar
+                                    </x-dropdown-link>
+                                @endauth
+                                <x-dropdown-link class="cursor-pointer">
+                                    <i class="fas fa-flag inline-block w-5"></i>
+                                    Reportar
                                 </x-dropdown-link>
                             </x-slot>
+
 
                         </x-dropdown>
                     </div>
@@ -132,7 +158,8 @@
                                     class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 focus:ring-opacity-50 rounded-md shadow-sm w-full"
                                     placeholder="Ingrese una respuesta"></textarea> --}}
 
-                                <x-balloon-editor wire:model="answer_to_answer.body" placeholder="Ingrese una respuesta" /> 
+                                <x-balloon-editor wire:model="answer_to_answer.body"
+                                    placeholder="Ingrese una respuesta" />
 
                                 <x-input-error for="answer_to_answer.body" class="mt-1" />
 

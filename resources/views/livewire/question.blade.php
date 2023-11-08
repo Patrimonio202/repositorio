@@ -84,12 +84,20 @@
                             </x-slot>
 
                             <x-slot name="content">
+                                @auth
                                 <x-dropdown-link class="cursor-pointer" wire:click="edit({{ $question->id }})">
+                                   <i  class="fas fa-edit inline-block w-5" ></i>
                                     Editar
                                 </x-dropdown-link>
 
                                 <x-dropdown-link class="cursor-pointer" wire:click="destroy({{ $question->id }})">
+                                    <i class="fas fa-trash inline-block w-5" ></i>
                                     Eliminar
+                                </x-dropdown-link>
+                                @endauth
+                                <x-dropdown-link class="cursor-pointer" >
+                                    <i class="fas fa-flag inline-block w-5"></i>
+                                    Reportar
                                 </x-dropdown-link>
                             </x-slot>
 
