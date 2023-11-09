@@ -72,12 +72,53 @@
                 <div class="text-base text-gray-500 mt-4 text-justify">
                     {!! $post->body !!}
                 </div>
+
+                {{-- etiquetas --}}
+                <div class="pt-4 pb-2 ">
+                    @foreach ($post->tags as $tag)
+                        <a href="{{ route('posts.tag', $tag) }}"
+                            class="inline-block bg-{{ $tag->color }}-200 rounded-full px-3 py-1 text-sm text-gray-700 mr-2">{{ $tag->name }}</a>
+                    @endforeach          
+                </div>
+
             </div>
 
 
 
             {{-- Contenido relacionado --}}
             <aside>
+                <div class="card bg-white rounded-xl shadow-lg hover:scale-105 transition-all duration-100">
+                    <div class="card-body mb-4 ">
+                        <div class="py-2">
+                            <h1 class="text-2xl leading-8 text-center  hover:text-blue-600 py-2 "> 
+                                Ficha técnica                          
+                            </h1>
+                        </div>
+                        <div class="mx-4 flex items-center ">
+                            <i class="fa-solid fa-calendar-days fa-lg"></i>
+                            <p class="ml-4 font-bold"> Año creación:</p>
+                            <p class="mx-4">{{ $post->anocreacion }}</p>
+                        </div>
+                        <div class="mx-4 flex items-center py-4 ">
+                            <i class="fa-solid fa-user-tie fa-lg"></i>
+                            <p class="ml-4 font-bold">Autor:</p>
+                            <p class="mx-4">{{ $post->autor }}</p>
+                        </div>
+
+                        <div class="mx-4 flex items-center pb-4 ">
+                            <i class="fa-solid fa-turn-up fa-lg"></i>
+                            <p class="ml-4 font-bold">Categoría:</p>
+                            <p class="mx-4">{{ $post->category->name }}</p>
+                        </div>
+
+                        <div class="mx-4 flex items-center pb-4">
+                            <i class="fa-solid fa-folder-plus fa-lg"></i>
+                            <p class="ml-4 font-bold">Tema:</p>
+                            <p class="mx-4">{{ $post->tema->name }}</p>
+                        </div>
+                    </div>
+                </div>
+
                 {{-- <h1 class="text-2xl font-bold text-gray-600 ">Mas en {{ $post->category->name }}</h1> --}}
                 <h1 class="text-xl">Mas en {{ $post->category->name }}</h1>
                 <hr class="py-1">

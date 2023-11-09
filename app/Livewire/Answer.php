@@ -93,8 +93,10 @@ class Answer extends Component
     }
 
     public function destroy($questionId){
+        //dd($questionId);
         $answer=ModelsAnswer::find($questionId);
-        $answer->delete;
+        
+        $answer->delete();
         
          $this->getAnswers(); 
     }
