@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <h1 class="text-4xl font-blod text-black-600 py-2">{{ $post->name }}</h1>
 
         {{-- <div class="text-lg text-gray-500 mb-2">
