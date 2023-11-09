@@ -1,60 +1,77 @@
 <div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  my-2  ">
-        @foreach ($posts as $post)       
-            <article class=" relative bg-white  rounded-xl mr-4 my-6 ">
-                @if($post->category_id=='4')
-                   <div class="relative overflow-hidden bg-no-repeat bg-cover relative overflow-hidden bg-no-repeat bg-cover shadow-lg rounded-lg mx-4 -mt-4"
-                            data-mdb-ripple="true" data-mdb-ripple-color="light">
-                    <x-embed
-                        url="{{$post->image->urlyoutube}}"
-                         />
-                    </div>   
-                @else
-                    <figure>
+    @if ($posts->count() == 0)
+        <section class="max-w-lg px-4 py-12 mx-auto">
+            <img class="mx-auto sm:w-1/4" src="{{ Storage::url('Imagenes/empty.png') }}" />
+            <h2 class="mt-2 text-lg font-medium text-center text-gray-800">{{ Auth::user()->name }}, aun no tienes
+                ninguna multimedia favorita</h2>
+            <p class="mt-1 text-center text-gray-600">
+                Para seleccionar multimedia favorita, deberas ir a la pagina principal, buscar los articulos que mas te
+                gusten y darle en el boton de me encanta
+                <i class="fa-regular fa-heart fa-lg"></i>
+            </p>
+            <div class="flex flex-col items-center justify-center mt-4 space-y-1 md:flex-row md:space-y-0 md:space-x-1">
+                <a href="/">
+                    <button type="button"
+                        class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Ir
+                        a la pagina de inicio</button>
+                </a>
+            </div>
+        </section>
+    @else
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  my-2  ">
+            @foreach ($posts as $post)
+                <article class=" relative bg-white  rounded-xl mr-4 my-6 ">
+                    @if ($post->category_id == '4')
                         <div class="relative overflow-hidden bg-no-repeat bg-cover relative overflow-hidden bg-no-repeat bg-cover shadow-lg rounded-lg mx-4 -mt-4"
                             data-mdb-ripple="true" data-mdb-ripple-color="light">
-                            <img src="{{ Storage::url($post->image->url) }}" class="w-full" />
-                            <a href="{{ route('posts.show', $post) }}">
-                                <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed opacity-0 hover:opacity-100 transition duration-300 ease-in-out"
-                                    style="background-color: rgba(251, 251, 251, 0.15)"></div>
-                            </a>
+                            <x-embed url="{{ $post->image->urlyoutube }}" />
                         </div>
-                    </figure>
-                @endif
-                <div class="p-6">
-                    <div class=" text-center">
-                        <h1 class=" text-center text-lg font-semibold">
-                            <a href="">{{ Str::limit($post->name, 40) }}</a>
-                        </h1>
+                    @else
+                        <figure>
+                            <div class="relative overflow-hidden bg-no-repeat bg-cover relative overflow-hidden bg-no-repeat bg-cover shadow-lg rounded-lg mx-4 -mt-4"
+                                data-mdb-ripple="true" data-mdb-ripple-color="light">
+                                <img src="{{ Storage::url($post->image->url) }}" class="w-full" />
+                                <a href="{{ route('posts.show', $post) }}">
+                                    <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed opacity-0 hover:opacity-100 transition duration-300 ease-in-out"
+                                        style="background-color: rgba(251, 251, 251, 0.15)"></div>
+                                </a>
+                            </div>
+                        </figure>
+                    @endif
+                    <div class="p-6">
+                        <div class=" text-center">
+                            <h1 class=" text-center text-lg font-semibold">
+                                <a href="">{{ Str::limit($post->name, 40) }}</a>
+                            </h1>
 
-                        <p class="text-gray-500 mb-4">
-                            <a href=" {{ route('posts.category', $post->category->slug) }}"
-                                class="inline-block bg-green-600 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{{ $post->category->name }}
-                            </a>
-                            <small>Creado en <u>{{ $post->anocreacion }}</u> por
-                                <a href="" class="text-gray-900">{{ $post->autor }}</a></small>
-                        </p>
+                            <p class="text-gray-500 mb-4">
+                                <a href=" {{ route('posts.category', $post->category->slug) }}"
+                                    class="inline-block bg-green-600 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{{ $post->category->name }}
+                                </a>
+                                <small>Creado en <u>{{ $post->anocreacion }}</u> por
+                                    <a href="" class="text-gray-900">{{ $post->autor }}</a></small>
+                            </p>
+                        </div>
+                        <div class="mb-8 pb-2 ">
+                            {!! Str::limit($post->body, 100) !!} <a class="font-bold text-blue-600 no-underline hover:underline"
+                                href="{{ route('posts.show', $post) }}">Leer mas</a>
+                        </div>
                     </div>
-                    <div class="mb-8 pb-2 ">
-                        {!! Str::limit($post->body, 100) !!} <a class="font-bold text-blue-600 no-underline hover:underline"
-                            href="{{ route('posts.show', $post) }}">Leer mas</a>
+
+                    <div class="absolute bottom-5 right-0 px-6 ">
+                        <i onclick="changeState('compartirjtc-{{ $post->id }}')"
+                            class="fa-solid fa-share-nodes fa-lg"></i>
                     </div>
-                </div>
+                </article>
+            @endforeach
+            <div x-intersect="$wire.loadMore()"></div>
+        </div>
 
-                <div class="absolute bottom-5 right-0 px-6 ">
-                    <i onclick="changeState('compartirjtc-{{ $post->id }}')"
-                        class="fa-solid fa-share-nodes fa-lg"></i>
-                </div>
-            </article>
-        @endforeach
-        <div x-intersect="$wire.loadMore()"></div>
-    </div>
-    
-    @if ($posts_per_page >= $totalRecords)
-        <h1 class=" text-center text-lg  font-semibold text-gray-700 "> 
-            No hay mas registros...
-        </h1>
-    @endif 
+        @if ($posts_per_page >= $totalRecords)
+            <h1 class=" text-center text-lg  font-semibold text-gray-700 ">
+                No hay mas registros...
+            </h1>
+        @endif
+    @endif
 
-    
 </div>

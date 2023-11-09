@@ -89,3 +89,7 @@ Route::post('/email/verification-notification', function (Request $request) {
 //ruta para cargar las imagenes
 Route::get('/admin/imagenes', [AdminPostController::class,'imagenes'])->name('admin.imagenes');
 Route::post('/admin/imagenes', [AdminPostController::class,'updateimagenes'] )->name('admin.updateimagenes');//este metodo es para actualizar formulario
+
+//rutas de las politicas
+Route::get('/privacy-policy', function () { return view('policy');});
+Route::get('/terms-of-service', function () { return view('terms');});

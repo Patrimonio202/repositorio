@@ -39,14 +39,14 @@
     @if ($question->answers()->count())
         <div class="mt-2">
             <button class="font-semibold text-blue-500" wire:click="show_answer">
-                @if ($this->cant < $this->question->answers()->count())                   
+                @if ($this->cant < $this->question->answers()->count())
                     <span wire:loading.remove="" wire:target="show_answer">
-                        <i class="fas fa-angle-down mr-1"></i> 
+                        <i class="fas fa-angle-down mr-1"></i>
                         Mostrar las {{ $question->answers()->count() }} respuestas
-                    </span>                    
-                @else                    
+                    </span>
+                @else
                     <span wire:loading.remove="" wire:target="show_answer">
-                        <i class="fas fa-angle-up mr-1"></i> 
+                        <i class="fas fa-angle-up mr-1"></i>
                         Ocultar {{ $question->answers()->count() }} respuestas
                     </span>
                 @endif
@@ -105,11 +105,12 @@
                             <p>
                                 {!! $answer->body !!}
                             </p>
-
-                            <button wire:click="$set('answer_to_answer.id',{{ $answer->id }})">
-                                <i class="fa-solid fa-reply"></i>
-                                Responder
-                            </button>
+                            @auth
+                                <button wire:click="$set('answer_to_answer.id',{{ $answer->id }})">
+                                    <i class="fa-solid fa-reply"></i>
+                                    Responder
+                                </button>
+                            @endauth
                         @endif
                     </div>
 
@@ -123,15 +124,17 @@
 
                             <x-slot name="content">
                                 @auth
-                                    <x-dropdown-link class="cursor-pointer" wire:click="edit({{ $answer->id }})">
-                                        <i class="fas fa-edit inline-block w-5"></i>
-                                        Editar
-                                    </x-dropdown-link>
+                                    @if (Auth::user()->id == $question->user_id)
+                                        <x-dropdown-link class="cursor-pointer" wire:click="edit({{ $answer->id }})">
+                                            <i class="fas fa-edit inline-block w-5"></i>
+                                            Editar
+                                        </x-dropdown-link>
 
-                                    <x-dropdown-link class="cursor-pointer" wire:click="destroy({{ $answer->id }})">
-                                        <i class="fas fa-trash inline-block w-5"></i>
-                                        Eliminar
-                                    </x-dropdown-link>
+                                        <x-dropdown-link class="cursor-pointer" wire:click="destroy({{ $answer->id }})">
+                                            <i class="fas fa-trash inline-block w-5"></i>
+                                            Eliminar
+                                        </x-dropdown-link>
+                                    @endif
                                 @endauth
                                 <x-dropdown-link class="cursor-pointer">
                                     <i class="fas fa-flag inline-block w-5"></i>

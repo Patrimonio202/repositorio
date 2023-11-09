@@ -135,11 +135,11 @@
                                     </x-dropdown-link>
                                 @endcan
 
-                                @can('home')
+                                
                                     <x-dropdown-link href="{{ route('posts.destacado') }}">
                                         {{ __('Mis preferidos') }} <!-- Profile-->
                                     </x-dropdown-link>
-                                @endcan
+                               
                               
 
                                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())

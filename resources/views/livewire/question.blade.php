@@ -85,15 +85,17 @@
 
                             <x-slot name="content">
                                 @auth
-                                <x-dropdown-link class="cursor-pointer" wire:click="edit({{ $question->id }})">
-                                   <i  class="fas fa-edit inline-block w-5" ></i>
-                                    Editar
-                                </x-dropdown-link>
+                                @if(Auth::user()->id== $question->user_id)
+                                    <x-dropdown-link class="cursor-pointer" wire:click="edit({{ $question->id }})">
+                                    <i  class="fas fa-edit inline-block w-5" ></i>
+                                        Editar
+                                    </x-dropdown-link>
 
-                                <x-dropdown-link class="cursor-pointer" wire:click="destroy({{ $question->id }})">
-                                    <i class="fas fa-trash inline-block w-5" ></i>
-                                    Eliminar
-                                </x-dropdown-link>
+                                    <x-dropdown-link class="cursor-pointer" wire:click="destroy({{ $question->id }})">
+                                        <i class="fas fa-trash inline-block w-5" ></i>
+                                        Eliminar
+                                    </x-dropdown-link>
+                                @endif
                                 @endauth
                                 <x-dropdown-link class="cursor-pointer" >
                                     <i class="fas fa-flag inline-block w-5"></i>
