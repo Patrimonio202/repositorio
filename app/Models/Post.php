@@ -58,4 +58,9 @@ class Post extends Model
     return $this->morphMany(Question::class,'questionable');
    }
 
+   public function getRouteKeyName()
+    {
+         return 'slug';  // esto es para optimizarlo a nivel de ceo
+    }
+
 }

@@ -15,9 +15,10 @@ class PostController extends Controller
         return view('posts.index',compact('posts'));
     }
 
-    public function show($post){ 
+    public function show(Post $post){      
       //  $curso =Curso::find($id);
-      $post=Post::find($post);    
+     // $postf=Post::where('slug',$post)->get();    
+     //$postf=Post::find($post);     
       $this->authorize('published',$post );
       $similares= Post::where('category_id',$post->Category->id )
                         ->where('status',2)

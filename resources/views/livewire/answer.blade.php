@@ -161,7 +161,7 @@
                                     class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 focus:ring-opacity-50 rounded-md shadow-sm w-full"
                                     placeholder="Ingrese una respuesta"></textarea> --}}
 
-                                <x-balloon-editor wire:model="answer_to_answer.body"
+                                <x-balloon-editor value="{{$postf->id}}"
                                     placeholder="Ingrese una respuesta" />
 
                                 <x-input-error for="answer_to_answer.body" class="mt-1" />

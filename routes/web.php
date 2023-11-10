@@ -40,7 +40,7 @@ use App\Http\Controllers\WelcomeController;
 Route::get('/', [PostController::class,'index'])->name('posts.index');
 //Route::get('/leo', WelcomeController::class)->name('posts.index');
 
-Route::get('posts/{pos}',[PostController::class,'show'])->name('posts.show');
+Route::get('posts/{post}',[PostController::class,'show'])->name('posts.show');
 Route::get('category/{category}',[PostController::class,'category'])->name('posts.category');
 Route::get('tag/{tag}',[PostController::class,'tag'])->name('posts.tag');
 Route::get('destacados',[PostController::class,'destacado'])->middleware(['auth', 'verified'])->name('posts.destacado');
@@ -93,3 +93,4 @@ Route::post('/admin/imagenes', [AdminPostController::class,'updateimagenes'] )->
 //rutas de las politicas
 Route::get('/privacy-policy', function () { return view('policy');});
 Route::get('/terms-of-service', function () { return view('terms');});
+Route::get('/eliminacion-datos', function () { return view('eliminacion-datos');});

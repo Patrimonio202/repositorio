@@ -152,6 +152,6 @@
         <div class="h-4 w-px bg-slate-500/20"> </div>
         <a href="/terms-of-service">Terminos y condiciones</a>
         <div class="h-4 w-px bg-slate-500/20"> </div>
-        <a href="/changelog">Eliminación de datos</a>
+        <a href="/eliminacion-datos">Eliminación de datos</a>
     </div>
 </footer>

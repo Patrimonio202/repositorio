@@ -18,7 +18,11 @@
             </div>
         </section>
     @else
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  my-2  ">
+        <div class=" text-center font-medium">
+            Hola {{ Auth::user()->name }}, esta es tu multimedia favorita
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  my-2  -mr-4 ">
             @foreach ($posts as $post)
                 <article class=" relative bg-white  rounded-xl mr-4 my-6 ">
                     @if ($post->category_id == '4')
@@ -30,7 +34,7 @@
                         <figure>
                             <div class="relative overflow-hidden bg-no-repeat bg-cover relative overflow-hidden bg-no-repeat bg-cover shadow-lg rounded-lg mx-4 -mt-4"
                                 data-mdb-ripple="true" data-mdb-ripple-color="light">
-                                <img src="{{ Storage::url($post->image->url) }}" class="w-full" />
+                                <img src="{{ Storage::url($post->image->url) }}" class="w-full h-64" />
                                 <a href="{{ route('posts.show', $post) }}">
                                     <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed opacity-0 hover:opacity-100 transition duration-300 ease-in-out"
                                         style="background-color: rgba(251, 251, 251, 0.15)"></div>
@@ -59,8 +63,7 @@
                     </div>
 
                     <div class="absolute bottom-5 right-0 px-6 ">
-                        <i onclick="changeState('compartirjtc-{{ $post->id }}')"
-                            class="fa-solid fa-share-nodes fa-lg"></i>
+                        <i wire:click="edit({{ $post }})" class="fa-solid fa-share-nodes fa-lg"></i>
                     </div>
                 </article>
             @endforeach
@@ -73,5 +76,49 @@
             </h1>
         @endif
     @endif
+
+    {{-- prueba de modal --}}
+    <x-dialog-modal wire:model="open">
+        <x-slot name="title">
+            Compartir
+        </x-slot>
+
+        <x-slot name="content">
+            <div>
+
+            </div>
+            <div class="flex items-center">
+                <x-input id="myInput" disabled class=" w-full  px-2 h-7 mr-4" value="{{$post_slug}}"> </x-input>
+                {{-- <x-button class=" h-7">
+                    Copiar
+                </x-button> --}}
+                <i class="fa-regular fa-copy fa-lg" onclick="myFunction()"></i>
+            </div>
+        </x-slot>
+
+        <x-slot name="footer">
+        </x-slot>
+
+    </x-dialog-modal>
+
+    @push('js')
+        <script>
+            function myFunction() {                
+                // Get the text field
+                var copyText = document.getElementById("myInput");
+                
+                // Select the text field
+                copyText.select();
+                copyText.setSelectionRange(0, 99999); // For mobile devices
+                
+
+                // Copy the text inside the text field
+                navigator.clipboard.writeText(copyText.value);                
+
+                // Alert the copied text
+                //alert("Copied the text: " + copyText.value);
+            }
+        </script>
+    @endpush
 
 </div>

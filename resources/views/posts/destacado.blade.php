@@ -1,3 +1,7 @@
 <x-app-layout>
-    @livewire('destacados-usuarios') 
+    <div class="container my-4 px-6 mx-auto ">
+        <section>
+            @livewire('destacados-usuarios')
+        </section>
+    </div>
 </x-app-layout>

@@ -5,8 +5,10 @@ namespace App\Livewire;
 use App\Models\Post;
 use App\Models\Vote;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Route;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Illuminate\Support\Facades\Request;
 
 class DestacadosUsuarios extends Component
 {
@@ -33,6 +35,10 @@ class DestacadosUsuarios extends Component
     public $posts_per_page=2;
     public $totalRecords;
 
+    public $open=false;  // con este abrimos el modal
+    public $post_slug;
+    
+
     public function mount(){    
                //$this->posts =Post::all();    
                $this->totalRecords=Post::count();
@@ -50,6 +56,14 @@ class DestacadosUsuarios extends Component
         return view('livewire.destacados-usuarios',[
             'posts'=>$posts
         ]);
+    }
+
+    public function edit($post){    
+        //dd($post['slug']);  
+        $this->post_slug=Request::root()."/posts/".$post['slug'];
+       
+       // dd($this->post_slug);
+        $this->open=true;
     }
 
     
