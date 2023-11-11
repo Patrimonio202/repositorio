@@ -9,7 +9,7 @@
          <title>@yield('title')</title>
         <meta property="og:title" content="@yield('ogTitle')"/>
 <meta property="og:site_name" content="Archivos patrimoniales el santuarioff"/>
-{{-- <meta property="og:url" content="@yield('ogUrl', 'https://patrimonioelsantuario.gov.co')"/> --}}
+ <meta property="og:url" content="@yield('ogUrl', 'https://patrimonioelsantuario.gov.co')"/> 
 <meta property="og:description" content="@yield('ogDesc', 'Archivos patrimoniales el santuario2')"/>
 <meta property="og:type" content="@yield('ogType', 'Multimedia')"/>
 <meta property="og:locale" content="es"/>

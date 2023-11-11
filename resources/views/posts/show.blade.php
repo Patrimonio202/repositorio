@@ -4,6 +4,7 @@
         <h1 class="text-4xl font-blod text-black-600 py-2">{{ $post->name }}</h1>
         @section('ogTitle',  $post->name )
         @section('title',  $post->name )
+        @section('ogUrl',  'https://patrimonioelsantuario.gov.co/posts/matrimonio-oscar-gallego-y-rosa-imelda-gomez' )
         {{-- <div class="text-lg text-gray-500 mb-2">
             {!! $post->body !!}
         </div> --}}
