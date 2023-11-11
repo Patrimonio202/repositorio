@@ -2,7 +2,7 @@
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <h1 class="text-4xl font-blod text-black-600 py-2">{{ $post->name }}</h1>
-        @section('ogTitle', {{ $post->name }})
+        @section('ogTitle',  $post->name )
         {{-- <div class="text-lg text-gray-500 mb-2">
             {!! $post->body !!}
         </div> --}}
@@ -18,7 +18,7 @@
                         @if ($post->image)
                             <img class="rounded-xl zoom hover:scale-105 transition-all duration-100 cursor-pointer"
                                 src="{{ Storage::url($post->image->url) }}" alt="">                               
-                                @section('ogImage', {{ Storage::url($post->image->url) }}) 
+                                @section('ogImage',  Storage::url($post->image->url) ) 
                         @else
                             <img class="w-full h-80 object-cover object-center"
                                 src="https://cdn.pixabay.com/photo/2023/10/03/08/24/goose-8290811_1280.jpg"
