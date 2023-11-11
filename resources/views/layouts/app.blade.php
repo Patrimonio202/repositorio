@@ -6,13 +6,13 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
          <!-- meta de facebook -->
-        <meta property="og:title" content="@yield('ogTitle', 'Título general de mi sitio.')"/>
-<meta property="og:site_name" content="Mi sitio web"/>
+        <meta property="og:title" content="@yield('ogTitle', 'Archivos patrimoniales el santuario')"/>
+<meta property="og:site_name" content="Archivos patrimoniales el santuario"/>
 <meta property="og:url" content="@yield('ogUrl', 'https://misitioweb.com')"/>
-<meta property="og:description" content="@yield('ogDesc', 'La descripción de mi sitio web.')"/>
-<meta property="og:type" content="@yield('ogType', 'website')"/>
+<meta property="og:description" content="@yield('ogDesc', 'Archivos patrimoniales el santuario')"/>
+<meta property="og:type" content="@yield('ogType', 'Multimedia')"/>
 <meta property="og:locale" content="es"/>
-<meta property="og:image" content="@yield('ogImage', 'https://misitioweb.com/img/logo.png')"/>
+<meta property="og:image" content="@yield('ogImage', 'https://proyectoeducacion.s3.us-east-2.amazonaws.com/archivos/YC2Ebqcx.jpg')"/>
 <meta property="og:image:width" content="400" />
 <meta property="og:image:height" content="400" />
 <meta property="fb:app_id" content="xxxxxxxxx"/>
