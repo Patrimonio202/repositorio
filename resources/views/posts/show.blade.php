@@ -1,7 +1,8 @@
 <x-app-layout>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-        <h1 class="text-4xl font-blod text-black-600 py-2">{{ $post->name }}</h1>
+        <h1 style="font-family:Raleway-Regular"  class="text-4xl font-blod text-black-600 py-2 "  >{{ $post->name }}</h1>
+        
         @section('ogTitle',  $post->name )
         @section('title',  $post->name )
         @section('ogUrl',  Request::fullUrl() )
@@ -73,8 +74,8 @@
                         <x-embed url="{{ $post->image->urlyoutube }}" aspect-ratio="4:3" />
                     </div>
                 @endif
-                <small class=" text-black">Publicado el {{$post->created_at->format('Y-m-d')}} </small>    
-                <div class="text-base text-gray-500 mt-4 text-justify">
+                <small style="font-family:Raleway-Regular">Publicado el {{$post->created_at->format('Y-m-d')}} </small>    
+                <div style="font-family:Raleway-Regular" class=" mt-4 text-justify">
                     {!! $post->body !!}
                     @section('ogDesc',strip_tags($post->body))                         
                 </div>
