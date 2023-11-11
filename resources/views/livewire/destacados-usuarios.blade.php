@@ -49,8 +49,9 @@
                             </h1>
 
                             <p class="text-gray-500 mb-4">
-                                <a href=" {{ route('posts.category', $post->category->slug) }}"
-                                    class="inline-block bg-green-600 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{{ $post->category->name }}
+                                <a href="{{ route('posts.category', $post->category->slug) }}">
+                                    <img src="{{ Storage::url('Imagenes/' . $post->category->rutaimagen) }}"
+                                        class="inline-block w-5 h-5 rounded-xl" alt="...">
                                 </a>
                                 <small>Creado en <u>{{ $post->anocreacion }}</u> por
                                     <a href="" class="text-gray-900">{{ $post->autor }}</a></small>
@@ -77,22 +78,54 @@
         @endif
     @endif
 
-    {{-- prueba de modal --}}
-    <x-dialog-modal wire:model="open">
+    {{-- prueba de modal  sm md lg  xl 2xl --}}
+    <x-dialog-modal wire:model="open" maxWidth="md">
         <x-slot name="title">
             Compartir
         </x-slot>
 
-        <x-slot name="content">
-            <div>
+        <x-slot name="content" >            
+            <div class=" flex mb-8 justify-center items-center ">
+                <div class="flex mr-6">
+                    <div class="text-center">
+                        <a class=" focus:outline-none" href="https://api.whatsapp.com/send?text={{ $post_slug }}"
+                            target="_blank" rel="noopener noreferrer">
 
+                            <img src="{{ Storage::url('Imagenes/WhatsApp.png') }}" alt="Logo WhatsApp"
+                                class=" object-cover w-16 h-16 hover:scale-110 transition-all duration-100" />
+                            <small>WhatsApp</small>
+                        </a>
+
+                    </div>
+                </div>
+                <div class="flex mr-6">
+                    <div class="text-center">
+                        <a class=" focus:outline-none"
+                            href="https://www.facebook.com/sharer/sharer.php?u={{ $post_slug }}" target="_blank"
+                            rel="noopener noreferrer">
+                            <img src="{{ Storage::url('Imagenes/Facebook.png') }}" alt="Slack Logo"
+                                class=" object-cover h-16  w-16 hover:scale-110 transition-all duration-100" />
+                            <small>Facebook</small>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="flex">
+                    <div class="text-center">
+                        <a class=" focus:outline-none"
+                            href="https://twitter.com/intent/tweet?text=&url={{$post_slug}}&hashtags=repositoriovirtual" target="_blank"
+                            rel="noopener noreferrer">
+                            <img src="{{ Storage::url('Imagenes/X.webp') }}" alt="Slack Logo"
+                                class=" object-cover h-16  w-16 hover:scale-110 transition-all duration-100" />
+                            <small>Twitter</small>
+                        </a>
+                    </div>
+                </div>
             </div>
+
             <div class="flex items-center">
-                <x-input id="myInput" disabled class=" w-full  px-2 h-7 mr-4" value="{{$post_slug}}"> </x-input>
-                {{-- <x-button class=" h-7">
-                    Copiar
-                </x-button> --}}
-                <i class="fa-regular fa-copy fa-lg" onclick="myFunction()"></i>
+                <x-input id="myInput" disabled class=" w-full  px-2 h-7 mr-4" value="{{ $post_slug }}"> </x-input>
+               <i class="fa-regular fa-copy fa-lg" onclick="myFunction()"></i>
             </div>
         </x-slot>
 
@@ -103,17 +136,17 @@
 
     @push('js')
         <script>
-            function myFunction() {                
+            function myFunction() {
                 // Get the text field
                 var copyText = document.getElementById("myInput");
-                
+
                 // Select the text field
                 copyText.select();
                 copyText.setSelectionRange(0, 99999); // For mobile devices
-                
+
 
                 // Copy the text inside the text field
-                navigator.clipboard.writeText(copyText.value);                
+                navigator.clipboard.writeText(copyText.value);
 
                 // Alert the copied text
                 //alert("Copied the text: " + copyText.value);

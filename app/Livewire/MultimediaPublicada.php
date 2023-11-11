@@ -6,12 +6,16 @@ use App\Models\Post;
 use App\Models\Vote;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Illuminate\Support\Facades\Request;
 
 class MultimediaPublicada extends Component
 {
     use WithPagination;
     public $posts_per_page=3;
     public $totalRecords;
+
+    public $open=false;  // con este abrimos el modal
+    public $post_slug;
 
     //este es para darle me interesa
     public function meinteresa($postId)
@@ -61,6 +65,14 @@ class MultimediaPublicada extends Component
     }
     public function loadMore(){
         $this->posts_per_page +=6;
+    }
+
+    public function edit($post){    
+        //dd($post['slug']);  
+        $this->post_slug=Request::root()."/posts/".$post['slug'];
+       
+       // dd($this->post_slug);
+        $this->open=true;
     }
     public function render()
     {

@@ -44,8 +44,7 @@
                 </div>
 
                 <div class="absolute bottom-5 right-0 px-6 ">
-                    <i onclick="changeState('compartirjtc-{{ $post->id }}')"
-                        class="fa-solid fa-share-nodes fa-lg"></i>
+                    <i wire:click="edit({{ $post }})" class="fa-solid fa-share-nodes fa-lg"></i>
                     @auth
                         <i wire:click="meinteresa({{ $post->id }})"
                             class=" @if ($post->userVotes) fa-solid fa-heart fa-lg @else fa-regular fa-heart fa-lg @endif"></i>
@@ -68,4 +67,60 @@
             No hay mas registros...
         </h1>
     @endif
+
+    {{-- prueba de modal  sm md lg  xl 2xl --}}
+    <x-dialog-modal wire:model="open" maxWidth="md">
+        <x-slot name="title">
+            Compartir
+        </x-slot>
+
+        <x-slot name="content" >            
+            <div class=" flex mb-8 justify-center items-center ">
+                <div class="flex mr-6">
+                    <div class="text-center">
+                        <a class=" focus:outline-none" href="https://api.whatsapp.com/send?text={{ $post_slug }}"
+                            target="_blank" rel="noopener noreferrer">
+
+                            <img src="{{ Storage::url('Imagenes/WhatsApp.png') }}" alt="Logo WhatsApp"
+                                class=" object-cover w-16 h-16 hover:scale-110 transition-all duration-100" />
+                            <small>WhatsApp</small>
+                        </a>
+
+                    </div>
+                </div>
+                <div class="flex mr-6">
+                    <div class="text-center">
+                        <a class=" focus:outline-none"
+                            href="https://www.facebook.com/sharer/sharer.php?u={{ $post_slug }}" target="_blank"
+                            rel="noopener noreferrer">
+                            <img src="{{ Storage::url('Imagenes/Facebook.png') }}" alt="Slack Logo"
+                                class=" object-cover h-16  w-16 hover:scale-110 transition-all duration-100" />
+                            <small>Facebook</small>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="flex">
+                    <div class="text-center">
+                        <a class=" focus:outline-none"
+                            href="https://twitter.com/intent/tweet?text=&url={{$post_slug}}&hashtags=repositoriovirtual" target="_blank"
+                            rel="noopener noreferrer">
+                            <img src="{{ Storage::url('Imagenes/X.webp') }}" alt="Slack Logo"
+                                class=" object-cover h-16  w-16 hover:scale-110 transition-all duration-100" />
+                            <small>Twitter</small>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex items-center">
+                <x-input id="myInput" disabled class=" w-full  px-2 h-7 mr-4" value="{{ $post_slug }}"> </x-input>
+               <i class="fa-regular fa-copy fa-lg" onclick="myFunction()"></i>
+            </div>
+        </x-slot>
+
+        <x-slot name="footer">
+        </x-slot>
+
+    </x-dialog-modal>
 </div>
