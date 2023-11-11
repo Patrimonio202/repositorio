@@ -4,9 +4,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        <title>@yield('title')</title>
 
          <!-- meta de facebook -->
-        <meta property="og:title" content="@yield('ogTitle', 'Archivos patrimoniales el santuario')"/>
+        <meta property="og:title" content="@yield('ogTitle')"/>
 <meta property="og:site_name" content="Archivos patrimoniales el santuario"/>
 <meta property="og:url" content="@yield('ogUrl', 'https://misitioweb.com')"/>
 <meta property="og:description" content="@yield('ogDesc', 'Archivos patrimoniales el santuario')"/>
