@@ -39,9 +39,7 @@
                                 @section('ogImage')
                                     {{ Storage::url($post->image->url) }}
                                 @stop
-
-                                @section('title', 'eee')
-                                @section('ogTitle', 'leo el mejor ddd')
+                                
                                    
                                 <a href="{{ route('posts.show', $post) }}">
                                     <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed opacity-0 hover:opacity-100 transition duration-300 ease-in-out"

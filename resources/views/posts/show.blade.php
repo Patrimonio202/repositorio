@@ -18,6 +18,8 @@
                         @if ($post->image)
                             <img class="rounded-xl zoom hover:scale-105 transition-all duration-100 cursor-pointer"
                                 src="{{ Storage::url($post->image->url) }}" alt="">
+                                @section('title', 'eee')
+                                @section('ogTitle', 'leo el mejor ddd')
                         @else
                             <img class="w-full h-80 object-cover object-center"
                                 src="https://cdn.pixabay.com/photo/2023/10/03/08/24/goose-8290811_1280.jpg"
