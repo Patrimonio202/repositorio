@@ -31,6 +31,7 @@
                         class="card flex flex-col items-center bg-gradient-to-tr from-blue-400 to-red-400 text-xl font-mono p-4 rounded-md text-white aspect-[16/9]">
                         <div class="cover flex flex-col items-center min-w-80px w-auto max-w-880px">
                             <img src="{{ Storage::url($post->image->url) }}" alt="Album Cover" class="w-3/6 rounded-xl">
+                            @section('ogImage',  Storage::url($post->image->url) ) 
                             <p class="-translate-y-10 w-3/6 text-center break-words"></p>
                         </div>
                         <audio id="song" class="block w-full max-w-md mx-auto" controls>
@@ -55,6 +56,7 @@
                             data-mdb-ripple="true" data-mdb-ripple-color="light">
                             <iframe width="100%" height="500"
                                 src="{{ Storage::url('archivos/CP-510-47-994000022586-0.PDF') }}#toolbar=0&navpanes=0&scrollbar=0"></iframe>
+                                @section('ogImage',  Storage::url($post->image->url) ) 
                             {{-- <embed src="{{ Storage::url('archivos/CP-510-47-994000022586-0.PDF') }}" type="application/pdf" width="100%" height="500px" /> --}}
                             {{-- <embed
                                 src="{{ Storage::url('archivos/CP-510-47-994000022586-0.PDF') }}#toolbar=0&navpanes=0&scrollbar=0"
@@ -72,6 +74,7 @@
                 <small class=" text-black">Publicado el {{$post->created_at->format('Y-m-d')}} </small>    
                 <div class="text-base text-gray-500 mt-4 text-justify">
                     {!! $post->body !!}
+                    @section('ogDesc',  $post->body )
                 </div>
 
                 {{-- etiquetas --}}

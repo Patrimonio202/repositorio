@@ -17,9 +17,9 @@
 <meta property="og:image:height" content="400" />
 <meta property="fb:app_id" content="xxxxxxxxx"/>
 
- <!-- hasta aqui-->
+ <!-- hasta aqui propiedades para compartir-->
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ config('app.name', 'Archivos patrimoniales el santuario') }}</title>
 
         <!-- Favicon -->
         <!--  <link rel="icon" href="/favicon-navegadores.png" sizes="32x32" type="image/png"> -->
