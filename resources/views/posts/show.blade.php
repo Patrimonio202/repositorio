@@ -74,7 +74,9 @@
                 <small class=" text-black">Publicado el {{$post->created_at->format('Y-m-d')}} </small>    
                 <div class="text-base text-gray-500 mt-4 text-justify">
                     {!! $post->body !!}
-                    @section('ogDesc',  $post->body )
+                    @section('ogDesc' )
+                    {!! $post->body !!}
+                    @stop
                 </div>
 
                 {{-- etiquetas --}}
