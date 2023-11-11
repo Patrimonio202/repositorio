@@ -6,6 +6,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">       
 
          <!-- meta de facebook -->
+         <title>@yield('title')</title>
         <meta property="og:title" content="@yield('ogTitle')"/>
 <meta property="og:site_name" content="Archivos patrimoniales el santuarioff"/>
 <meta property="og:url" content="@yield('ogUrl', 'https://patrimonioelsantuario.gov.co')"/>
@@ -19,7 +20,7 @@
 
  <!-- hasta aqui propiedades para compartir-->
 
-        <title>{{ config('app.name', 'Archivos patrimoniales el santuario') }}</title>
+        {{-- <title>{{ config('app.name', 'Archivos patrimoniales el santuario') }}</title> --}}
 
         <!-- Favicon -->
         <!--  <link rel="icon" href="/favicon-navegadores.png" sizes="32x32" type="image/png"> -->
