@@ -1,11 +1,11 @@
 <x-app-layout>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-        <h1 style="font-family:Raleway-Regular"  class="text-4xl font-blod text-black-600 py-2 "  >{{ $post->name }}</h1>
-        
-        @section('ogTitle',  $post->name )
-        @section('title',  $post->name )
-        @section('ogUrl',  Request::fullUrl() )
+        <h1 style="font-family:Raleway-Regular" class="text-4xl font-blod text-black-600 py-2 ">{{ $post->name }}</h1>
+
+        @section('ogTitle', $post->name)
+        @section('title', $post->name)
+        @section('ogUrl', Request::fullUrl())
         {{-- <div class="text-lg text-gray-500 mb-2">
             {!! $post->body !!}
         </div> --}}
@@ -14,14 +14,20 @@
             {{-- contenido principal --}}
 
 
+            <!-- Image Viewer -->
+            <div id="img-viewer">
+                <span class="close" onclick="close_model()">&times;</span>
+                <img class="modal-content rounded-xl zoom" id="full-image">
+            </div>
+
             <div class="lg:col-span-2">
                 {{-- aqui organizamos la imagen --}}
                 @if ($post->category->id == 1)
-                    <figure class="aspect-[16/9]">
+                    <figure>
                         @if ($post->image)
-                            <img class="rounded-xl zoom hover:scale-105 transition-all duration-100 cursor-pointer"
-                                src="{{ Storage::url($post->image->url) }}" alt="">                               
-                                @section('ogImage',  Storage::url($post->image->url) ) 
+                            <img class="img-source zoom rounded-xl hover:scale-105 transition-all duration-100 cursor-pointer"
+                                src="{{ Storage::url($post->image->url) }}" alt="" onclick="full_view(this);" >
+                            @section('ogImage', Storage::url($post->image->url))
                         @else
                             <img class="w-full h-80 object-cover object-center"
                                 src="https://cdn.pixabay.com/photo/2023/10/03/08/24/goose-8290811_1280.jpg"
@@ -34,7 +40,7 @@
                         class="card flex flex-col items-center bg-gradient-to-tr from-blue-400 to-red-400 text-xl font-mono p-4 rounded-md text-white aspect-[16/9]">
                         <div class="cover flex flex-col items-center min-w-80px w-auto max-w-880px">
                             <img src="{{ Storage::url($post->image->url) }}" alt="Album Cover" class="w-3/6 rounded-xl">
-                            @section('ogImage',  Storage::url($post->image->url) ) 
+                            @section('ogImage', Storage::url($post->image->url))
                             <p class="-translate-y-10 w-3/6 text-center break-words"></p>
                         </div>
                         <audio id="song" class="block w-full max-w-md mx-auto" controls>
@@ -59,7 +65,7 @@
                             data-mdb-ripple="true" data-mdb-ripple-color="light">
                             <iframe width="100%" height="500"
                                 src="{{ Storage::url('archivos/CP-510-47-994000022586-0.PDF') }}#toolbar=0&navpanes=0&scrollbar=0"></iframe>
-                                @section('ogImage',  Storage::url($post->image->url) ) 
+                            @section('ogImage', Storage::url($post->image->url))
                             {{-- <embed src="{{ Storage::url('archivos/CP-510-47-994000022586-0.PDF') }}" type="application/pdf" width="100%" height="500px" /> --}}
                             {{-- <embed
                                 src="{{ Storage::url('archivos/CP-510-47-994000022586-0.PDF') }}#toolbar=0&navpanes=0&scrollbar=0"
@@ -74,10 +80,11 @@
                         <x-embed url="{{ $post->image->urlyoutube }}" aspect-ratio="4:3" />
                     </div>
                 @endif
-                <small style="font-family:Raleway-Regular">Publicado el {{$post->created_at->format('Y-m-d')}} </small>    
+                <small style="font-family:Raleway-Regular">Publicado el {{ $post->created_at->format('Y-m-d') }}
+                </small>
                 <div style="font-family:Raleway-Regular" class=" mt-4 text-justify">
                     {!! $post->body !!}
-                    @section('ogDesc',strip_tags($post->body))                         
+                    @section('ogDesc', strip_tags($post->body))
                 </div>
 
                 {{-- etiquetas --}}
@@ -85,7 +92,7 @@
                     @foreach ($post->tags as $tag)
                         <a href="{{ route('posts.tag', $tag) }}"
                             class="inline-block bg-{{ $tag->color }}-200 rounded-full px-3 py-1 text-sm text-gray-700 mr-2">{{ $tag->name }}</a>
-                    @endforeach          
+                    @endforeach
                 </div>
 
             </div>
@@ -97,9 +104,10 @@
                 <div class="card bg-white rounded-xl shadow-lg hover:scale-105 transition-all duration-100">
                     <div class="card-body mb-4 ">
                         <div class="py-2">
-                            <h1 class="text-2xl leading-8 text-center  hover:text-blue-600 py-2 "> 
-                                Ficha técnica                          
+                            <h1 class="text-2xl leading-8 text-center   py-2 ">
+                                Ficha técnica
                             </h1>
+
                         </div>
                         <div class="mx-4 flex items-center ">
                             <i class="fa-solid fa-calendar-days fa-lg"></i>
@@ -142,10 +150,10 @@
                                             src="https://cdn.pixabay.com/photo/2023/10/03/08/24/goose-8290811_1280.jpg"
                                             alt=""> --}}
                                 @endif
-                               {{-- <span class="text-gray-700 text-base text-justify">{{ $similar->name }}</span>  --}}
-                               <p class="flex-1 ml-2 text-justify">{{ $similar->name }}</p>
+                                {{-- <span class="text-gray-700 text-base text-justify">{{ $similar->name }}</span>  --}}
+                                <p class="flex-1 ml-2 text-justify">{{ $similar->name }}</p>
                             </a>
-                            
+
                         </li>
                     @endforeach
                 </ul>
@@ -163,6 +171,18 @@
         <script src="{{ asset('vendor/wheelzoom/wheelzoom.js') }}"></script>
         <script>
             wheelzoom(document.querySelector('img.zoom'));
+
+             function full_view(ele) {
+            //     // alert('leo el mejor');            
+                 let src = ele.parentElement.querySelector(".img-source").getAttribute("src");
+              
+               document.querySelector("#img-viewer").querySelector("img").setAttribute("src", src);
+                 document.querySelector("#img-viewer").style.display = "block";
+             }
+
+             function close_model() {
+                 document.querySelector("#img-viewer").style.display = "none";
+            }
         </script>
     @endpush
 </x-app-layout>

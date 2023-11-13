@@ -44,6 +44,7 @@ Route::get('posts/{post}',[PostController::class,'show'])->name('posts.show');
 Route::get('category/{category}',[PostController::class,'category'])->name('posts.category');
 Route::get('tag/{tag}',[PostController::class,'tag'])->name('posts.tag');
 Route::get('destacados',[PostController::class,'destacado'])->middleware(['auth', 'verified'])->name('posts.destacado');
+Route::get('buscar',[PostController::class,'buscar'])->name('posts.buscar');
 
 //route de pruebas
 //Route::get('prueba', function () { return view('posts.prueba');})->name('posts.prueba');

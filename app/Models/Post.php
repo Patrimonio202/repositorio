@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use GuzzleHttp\Psr7\Query;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,6 +11,11 @@ class Post extends Model
     use HasFactory;
     
     protected $guarded=['id', 'created_at', 'updated_at'];
+
+    protected $cats=[
+        'created_at'=>'datetime'
+    ];
+
     //relacion de uno a muchos inversa
     public function user(){
         return $this->belongsTo(User::class);
@@ -61,6 +67,19 @@ class Post extends Model
    public function getRouteKeyName()
     {
          return 'slug';  // esto es para optimizarlo a nivel de ceo
+    }
+
+    public function scopeFilter($query, $filters){
+        $query ->when($filters['category'] ?? null, function($query, $category){
+            $query->whereIn('category_id', $category);
+          })->when($filters['order'] ?? 'new', function($query,$order) {
+             $sort= $order === 'new' ? 'desc' : 'asc';
+             $query->orderBy('created_at',$sort);
+          })->when($filters['tag'] ?? null, function($query,$tag){
+            $query->whereHas('tags', function($query) use ($tag) {
+                $query->where('tags.name',$tag);
+            });
+          });
     }
 
 }

@@ -65,5 +65,17 @@ class PostController extends Controller
       return view('posts.destacado');
     }
 
+     //mostramos la vista de buscar
+     public function buscar(){   
+      
+      $categories=Category::all();
+      
+      $posts=Post::where('status',2)
+             ->filter(request()->all())
+             ->orderBy('id','desc')
+             ->paginate(10);
+       return view('posts.buscar', compact('posts','categories'));
+     }
+
    
 }

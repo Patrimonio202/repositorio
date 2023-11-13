@@ -67,6 +67,11 @@
         <x-embed-styles />
         <!-- Styles -->
         @livewireStyles
+
+      <!-- prueba de zoom imagen-->
+      <link href="{{ asset('csspersonalizados/csszoomimage.css')}}"  rel="stylesheet" />    
+
+
     </head>
     <body class="font-sans antialiased">
         <x-banner />

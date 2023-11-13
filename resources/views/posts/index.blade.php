@@ -1,11 +1,11 @@
 <x-app-layout>
-    <div class="container my-4 md:my-4 lg:my-4 px-6 mx-auto " >
+    <div class="container my-4 md:my-4 lg:my-4 px-6 mx-auto ">
         <x-carrousel />
-    </div>   
+    </div>
 
-     <!-- <div class="container my-6 px-6 mx-auto">
+    <!-- <div class="container my-6 px-6 mx-auto">
         <section>
-            <h1 class=" text-center text-lg uppercase font-semibold text-gray-700 ">               
+            <h1 class=" text-center text-lg uppercase font-semibold text-gray-700 ">
                 Multimedia destacada
             </h1>
 
@@ -14,18 +14,93 @@
 
         </section>
     </div> --}}-->
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 bg-white rounded-lg shadow">
+        <section>
+            <div class=" grid grid-cols-1 lg:grid-cols-4">
+                <div
+                    class="hover:scale-110 transition-all duration-100 mt-2 lg:mt-8 mb-2 lg:mb-8 lg:ml-12 col-span-1  items-center justify-center hidden lg:block ">
+                    <img alt="Imagen buscar" class=" h-32 w-32" src="{{ Storage::url('Imagenes/Imagenbuscar.jpg') }}">
+                    {{-- <hr class="mt-8  h-32" style=" border:none;
+                    border-left:    1px solid hsla(200, 10%, 50%,100);  "> --}}
+                </div>
 
-        <!--Multimedia publicada -->
-        <div class="container my-4 px-6 mx-auto " >
-            <section>
-                <h2 class="text-lg md:text-3xl lg:text-3xl font-bold pb-1 text-center">Última información multimedia</h2>              
-                <hr >
-                    @livewire('multimedia-publicada') 
-             
-    
-            </section>
-        </div>    
-         <!--Hasta aqui -->
+
+                <div class="col-span-2 mt-2 mb-2 lg:mt-14 items-center text-center">
+                    <div class="mb-2 lg:mb-4">
+                        <a href="{{ route('posts.buscar') . '?category%5B%5D=1' }}">
+                            <img src="{{ Storage::url('Imagenes/Imagenes.jpg') }}"
+                                class="inline-block w-10 h-10 ml-4 rounded-xl hover:scale-150 transition-all duration-100"
+                                alt="...">
+                        </a>
+
+                        <a href="{{ route('posts.buscar') . '?category%5B%5D=3' }}">
+                            <img src="{{ Storage::url('Imagenes/Libros.jpg') }}"
+                                class="inline-block h-12 w-10 object-cover object-center ml-4 rounded-xl hover:scale-150 transition-all duration-100"
+                                alt="...">
+                        </a>
+                        <a href="{{ route('posts.buscar') . '?category%5B%5D=4' }}">
+                            <img src="{{ Storage::url('Imagenes/Videos.jpg') }}"
+                                class="inline-block h-10 w-10 object-cover object-center ml-4 rounded-xl hover:scale-150 transition-all duration-100"
+                                alt="...">
+                        </a>
+                        <a href="{{ route('posts.buscar') . '?category%5B%5D=2' }}">
+                            <img src="{{ Storage::url('Imagenes/Audios.jpg') }}"
+                                class="inline-block h-12 w-10 object-cover object-center ml-4 rounded-xl hover:scale-150 transition-all duration-100"
+                                alt="...">
+                        </a>
+                    </div>
+
+
+                    <div>
+                        <label for="default-search"
+                            class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Buscar</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                                </svg>
+                            </div>
+                            <input type="search" id="default-search"
+                                class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Buscar imagenes, libros, audios, videos..." required>
+                            <button type="submit"
+                                class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Buscar</button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div
+                    class="mt-2 lg:mt-8 mb-2 lg:mb-8 lg:ml-12 col-span-1  items-center justify-center hidden lg:block ">
+                    <h1 class=" font-semibold">Repositorio virtual</h1>
+                    <p>
+                        Archivos multimedia de la historia de El Santuario
+                    </p>
+
+                    <div class="mt-4 text-end">
+                        <a class="font-bold text-blue-600 no-underline hover:underline  "
+                            href="{{ route('posts.buscar') }}"><small>Más publicaciones</small></a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    <!--Multimedia publicada -->
+    <div class="container my-4 px-6 mx-auto ">
+        <section>
+            <h2 class="text-lg md:text-3xl lg:text-3xl font-bold pb-1 text-center">Última información multimedia</h2>
+            <hr>
+            @livewire('multimedia-publicada')
+
+
+        </section>
+    </div>
+    <!--Hasta aqui -->
 
 
     <!--flowbite -->
@@ -34,90 +109,85 @@
     <!--hasta aqui -->
     <script>
         // const changeState= () =>{
-       function changeState(idpost){
-           const split = idpost.split('-') 
-           const fas=document.getElementById(idpost);
-           //me gusta
-           if(split[0]=='fas' || split[0]=='fastc'){                
-               fas.classList.toggle('fa-regular');
-               fas.classList.toggle('fa-thumbs-up');
-               fas.classList.toggle('fa-lg');
+        function changeState(idpost) {
+            const split = idpost.split('-')
+            const fas = document.getElementById(idpost);
+            //me gusta
+            if (split[0] == 'fas' || split[0] == 'fastc') {
+                fas.classList.toggle('fa-regular');
+                fas.classList.toggle('fa-thumbs-up');
+                fas.classList.toggle('fa-lg');
 
-               fas.classList.toggle('fa-solid');
-               fas.classList.toggle('fa-thumbs-up');
-               fas.classList.toggle('fa-lg');  
-           }
-          // document.getElementById("fas").classList.add("fa-solid", "fa-thumbs-up", "fa-lg");
+                fas.classList.toggle('fa-solid');
+                fas.classList.toggle('fa-thumbs-up');
+                fas.classList.toggle('fa-lg');
+            }
+            // document.getElementById("fas").classList.add("fa-solid", "fa-thumbs-up", "fa-lg");
             //me encanta
-            if(split[0]=='encantaj' || split[0]=='encantajtc'){               
-               fas.classList.toggle('fa-regular');
-               fas.classList.toggle('fa-heart');
-               fas.classList.toggle('fa-lg');
+            if (split[0] == 'encantaj' || split[0] == 'encantajtc') {
+                fas.classList.toggle('fa-regular');
+                fas.classList.toggle('fa-heart');
+                fas.classList.toggle('fa-lg');
 
-               fas.classList.toggle('fa-solid');
-               fas.classList.toggle('fa-heart');
-               fas.classList.toggle('fa-lg');  
-           }
+                fas.classList.toggle('fa-solid');
+                fas.classList.toggle('fa-heart');
+                fas.classList.toggle('fa-lg');
+            }
 
-           //compartir
-           if(split[0]=='compartirj' || split[0]=='compartirjtc'){
+            //compartir
+            if (split[0] == 'compartirj' || split[0] == 'compartirjtc') {
                 alert('Modulo en proceso de construccion');
-           }
-           
-         }
-       
-   </script>
+            }
 
-@push('js')
-   
-<script>
-   
-    // Livewire.on('glider', ()=> { 
-      //  document.addEventListener('DOMContentLoaded', () => {           
+        }
+    </script>
+
+    @push('js')
+        <script>
+            // Livewire.on('glider', ()=> { 
+            //  document.addEventListener('DOMContentLoaded', () => {           
             new Glider(document.querySelector('.glider'), {
-             slidesToShow: 1,
-             slidesToScroll: 1,
-             draggable: true,
-             dots: '.dots',
-             arrows: {
-                 prev: '.glider-prev',
-                 next: '.glider-next'
-             }, 
-             responsive: [
-                 {
-                     breakpoint:640,
-                     settings:{
-                         slidesToShow: 2.5,
-                         slidesToScroll: 2,
-                     }
-                 },
-                 {
-                     breakpoint:768,
-                     settings:{
-                         slidesToShow: 3.5,
-                         slidesToScroll: 3,
-                     }
-                 },
-                 {
-                     breakpoint:1024,
-                     settings:{
-                         slidesToShow: 3.5,
-                         slidesToScroll: 3,
-                     }
-                 },
-                 {
-                     breakpoint:1280,
-                     settings:{
-                         slidesToShow: 3.5,
-                         slidesToScroll: 3,
-                     }
-                 },
-             ]
-         });
-      
-  // });
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                draggable: true,
+                dots: '.dots',
+                arrows: {
+                    prev: '.glider-prev',
+                    next: '.glider-next'
+                },
+                responsive: [{
+                        breakpoint: 640,
+                        settings: {
+                            slidesToShow: 2.5,
+                            slidesToScroll: 2,
+                        }
+                    },
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            slidesToShow: 3.5,
+                            slidesToScroll: 3,
+                        }
+                    },
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 3.5,
+                            slidesToScroll: 3,
+                        }
+                    },
+                    {
+                        breakpoint: 1280,
+                        settings: {
+                            slidesToShow: 3.5,
+                            slidesToScroll: 3,
+                        }
+                    },
+                ]
+            });
 
- </script>
-@endpush
+            // });
+        </script>
+    @endpush
 
 </x-app-layout>

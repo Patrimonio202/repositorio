@@ -27,12 +27,19 @@
 
                 <!-- Cargar datos desde base de datos -->
                 @foreach ($categories as $category)                 
-                        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                            <x-nav-link href="{{ route('posts.category', $category) }}" :active="request()->routeIs('Imagenes')">
+                        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">                           
+                            <x-nav-link href="{{ route('posts.category', $category) }}" :active="request()->is( 'category/'.$category->name)">
                                 {{ $category->name }}
                             </x-nav-link>
                         </div>                   
                 @endforeach
+
+                <!-- Links de navegacion computador - carrusel -->
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link href="{{ route('posts.buscar') }}" :active="request()->routeIs('posts.buscar')">
+                        {{ __('Buscar') }}
+                    </x-nav-link>
+                </div> 
 
             </div>
 
