@@ -76,7 +76,7 @@
     <body class="font-sans antialiased">
         <x-banner />
 
-        <div class="min-h-screen flex flex-col sm:justify-center bg-gray-100">      
+        <div class="min-h-screen bg-gray-100">      
          
              @livewire('navigation')           <!-- este es el menu que acabamos de crear -->    
         
@@ -84,7 +84,7 @@
             <main>
                 {{ $slot }}
             </main>
-            {{-- <x-suscribirse2 /> --}}
+             <x-suscribirse2 /> 
         </div>
 
         {{-- @stack('modals') --}}
