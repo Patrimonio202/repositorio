@@ -2,15 +2,15 @@
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
          <div class="flex justify-between h-16">
-          {{-- <div class="flex">
+           <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="/">
                         <x-application-mark class="h-8" />
                     </a>
                 </div>            
-
-               
+            </div>  <!-- este div hay que borrarlo -->
+                {{--
 
                 <!-- Cargar datos desde base de datos -->
                 @foreach ($categories as $category)                 
@@ -207,7 +207,8 @@
                     </svg>
                 </button>
             </div>
-        </div>  --}}
+            --}}
+        </div>  
     </div>
 
     <!-- Responsive Navigation Menu -->
