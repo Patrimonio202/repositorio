@@ -1,33 +1,20 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
+        {{-- <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="/">
                         <x-application-mark class="h-8" />
                     </a>
-                </div>
-              
+                </div>            
 
-                <!-- Links de navegacion computador - carrusel -->
-                {{-- <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link href="{{ route('posts.carrusel') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Carrusel') }}
-                    </x-nav-link>
-                </div> --}}
-
-                <!-- Links de navegacion computador - Imagenes -->
-                {{-- <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link href="{{  route('posts.category', 'imagenes') }}" :active="request()->routeIs('index')">
-                        <img src="{{ Storage::url('Imagenes/Imagenes.jpg') }}" class="w-50 h-10 rounded-lg" alt="...">
-                    </x-nav-link>
-                </div> --}}
+               
 
                 <!-- Cargar datos desde base de datos -->
                 @foreach ($categories as $category)                 
-                        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">                           
+                        <div class="hidden space-x-8 sm:-my-px sm:ml-10 lg:flex menu">                           
                             <x-nav-link href="{{ route('posts.category', $category) }}" :active="request()->is( 'category/'.$category->name)">
                                 {{ $category->name }}
                             </x-nav-link>
@@ -35,7 +22,7 @@
                 @endforeach
 
                 <!-- Links de navegacion computador - carrusel -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 lg:flex menu">
                     <x-nav-link href="{{ route('posts.buscar') }}" :active="request()->routeIs('posts.buscar')">
                         {{ __('Buscar') }}
                     </x-nav-link>
@@ -45,7 +32,7 @@
 
             <!-- Este es el menu administrar cuenta -->
             @auth
-                <div class="hidden sm:flex sm:items-center sm:ml-6">
+                <div class="hidden lg:flex sm:items-center sm:ml-6">
                     <!-- Teams Dropdown -->
                     @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
                         <div class="ml-3 relative">
@@ -220,16 +207,13 @@
                     </svg>
                 </button>
             </div>
-        </div>
+        </div> --}}
     </div>
 
     <!-- Responsive Navigation Menu -->
+     {{--
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
-        <div class="pt-2 pb-3 space-y-1">
-            {{-- <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-              {{ __('Inicio') }}
-          </x-responsive-nav-link> --}}
-
+        <div class="pt-2 pb-3 space-y-1"> 
             @foreach ($categories as $category)
                 <x-responsive-nav-link href="{{ route('posts.category', $category) }}" :active="request()->routeIs('dashboard')">
                     {{ $category->name }}
@@ -337,5 +321,7 @@
 
 
         @endauth
+
     </div>
+    --}}
 </nav>
