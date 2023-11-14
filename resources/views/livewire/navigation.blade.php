@@ -5,9 +5,9 @@
            <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="/">
+                    {{-- <a href="/">
                         <x-application-mark class="h-4 w-4 lg:h-8 lg:w-8" />
-                    </a>
+                    </a> --}}
                 </div>            
             </div>  <!-- este div hay que borrarlo -->
                 {{--
