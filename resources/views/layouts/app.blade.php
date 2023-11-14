@@ -77,9 +77,9 @@
         <x-banner />
 
         <div class="min-h-screen flex flex-col sm:justify-center bg-gray-100">      
-          <div class="container my-4 md:my-4 lg:my-4 px-6 mx-auto ">    
+         
              @livewire('navigation')           <!-- este es el menu que acabamos de crear -->    
-          </div>
+        
             <!-- Page Content -->
             <main>
                 {{ $slot }}
