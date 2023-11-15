@@ -12,46 +12,43 @@
                 {{-- @livewire('destacada-posts', ['posts' => $posts])    --}}
                 {{-- <livewire:destacada-posts :lazy=false />             --}}
 
-        </section>
+        </section> max-w-8xl
     </div> --}}-->
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 bg-white rounded-lg shadow">
-        <section>
-            <div class=" grid grid-cols-1 lg:grid-cols-4">
-                <div
-                    class="hover:scale-110 transition-all duration-100 mt-2 lg:mt-8 mb-2 lg:mb-8 lg:ml-12 col-span-1  items-center justify-center hidden lg:block ">
-                    <img alt="Imagen buscar" class=" h-32 w-32" src="{{ Storage::url('Imagenes/Imagenbuscar.jpg') }}">
-                    {{-- <hr class="mt-8  h-32" style=" border:none;
-                    border-left:    1px solid hsla(200, 10%, 50%,100);  "> --}}
-                </div>
+    <div class=" flex max-w-7xl mx-auto   bg-white rounded-lg  shadow-lg   text-center py-8 px-6 gap-4 mt-8 ">
+       
+           
+                
+
+                    <div >
+                        <div class="mb-2 lg:mb-4">
+                            <a href="{{ route('posts.buscar') . '?category%5B%5D=1' }}">
+                                <img src="{{ Storage::url('Imagenes/Imagenes.jpg') }}"
+                                    class="inline-block w-10 h-10 ml-4 rounded-xl hover:scale-150 transition-all duration-100"
+                                    alt="...">
+                            </a>
+
+                            <a href="{{ route('posts.buscar') . '?category%5B%5D=3' }}">
+                                <img src="{{ Storage::url('Imagenes/Libros.jpg') }}"
+                                    class="inline-block h-12 w-10 object-cover object-center ml-4 rounded-xl hover:scale-150 transition-all duration-100"
+                                    alt="...">
+                            </a>
+                            <a href="{{ route('posts.buscar') . '?category%5B%5D=4' }}">
+                                <img src="{{ Storage::url('Imagenes/Videos.jpg') }}"
+                                    class="inline-block h-10 w-10 object-cover object-center ml-4 rounded-xl hover:scale-150 transition-all duration-100"
+                                    alt="...">
+                            </a>
+                            <a href="{{ route('posts.buscar') . '?category%5B%5D=2' }}">
+                                <img src="{{ Storage::url('Imagenes/Audios.jpg') }}"
+                                    class="inline-block h-12 w-10 object-cover object-center ml-4 rounded-xl hover:scale-150 transition-all duration-100"
+                                    alt="...">
+                            </a>
+                        </div>
 
 
-                <div class="col-span-2 mt-2 mb-2 lg:mt-14 items-center text-center">
-                    <div class="mb-2 lg:mb-4">
-                        <a href="{{ route('posts.buscar') . '?category%5B%5D=1' }}">
-                            <img src="{{ Storage::url('Imagenes/Imagenes.jpg') }}"
-                                class="inline-block w-10 h-10 ml-4 rounded-xl hover:scale-150 transition-all duration-100"
-                                alt="...">
-                        </a>
-
-                        <a href="{{ route('posts.buscar') . '?category%5B%5D=3' }}">
-                            <img src="{{ Storage::url('Imagenes/Libros.jpg') }}"
-                                class="inline-block h-12 w-10 object-cover object-center ml-4 rounded-xl hover:scale-150 transition-all duration-100"
-                                alt="...">
-                        </a>
-                        <a href="{{ route('posts.buscar') . '?category%5B%5D=4' }}">
-                            <img src="{{ Storage::url('Imagenes/Videos.jpg') }}"
-                                class="inline-block h-10 w-10 object-cover object-center ml-4 rounded-xl hover:scale-150 transition-all duration-100"
-                                alt="...">
-                        </a>
-                        <a href="{{ route('posts.buscar') . '?category%5B%5D=2' }}">
-                            <img src="{{ Storage::url('Imagenes/Audios.jpg') }}"
-                                class="inline-block h-12 w-10 object-cover object-center ml-4 rounded-xl hover:scale-150 transition-all duration-100"
-                                alt="...">
-                        </a>
+                        
                     </div>
 
-
-                    <div>
+                     <div class=" flex-1 pl-0  ml-0">
                         <label for="default-search"
                             class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Buscar</label>
                         <div class="relative">
@@ -68,25 +65,13 @@
                             <button type="submit"
                                 class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Buscar</button>
                         </div>
-                    </div>
-                </div>
+                    </div> 
 
 
-                <div
-                    class="mt-2 lg:mt-8 mb-2 lg:mb-8 lg:ml-12 col-span-1  items-center justify-center hidden lg:block ">
-                    <h1 class=" font-semibold">Repositorio virtual</h1>
-                    <p>
-                        Archivos multimedia de la historia de El Santuario
-                    </p>
-
-                    <div class="mt-4 text-end">
-                        <a class="font-bold text-blue-600 no-underline hover:underline  "
-                            href="{{ route('posts.buscar') }}"><small>Más publicaciones</small></a>
-                    </div>
-
-                </div>
-            </div>
-        </section>
+                
+             
+    
+     
     </div>
 
 
