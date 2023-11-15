@@ -14,7 +14,7 @@
 
         </section> max-w-8xl
     </div> --}}-->
-    <div class=" flex max-w-7xl mx-auto   bg-white rounded-lg  shadow-lg   text-center py-8 px-6 gap-4 mt-8 ">
+    <div class="grid grid-cols-1    lg:flex max-w-7xl lg:mx-auto mx-4   bg-white rounded-lg  shadow-lg   text-center py-8 px-6 gap-4 mt-8 ">
        
            
                 
@@ -48,7 +48,7 @@
                         
                     </div>
 
-                     <div class=" flex-1 pl-0  ml-0">
+                     <div class=" md:flex-1 lg:flex-1 pl-0  ml-0">
                         <label for="default-search"
                             class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Buscar</label>
                         <div class="relative">
