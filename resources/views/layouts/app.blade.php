@@ -8,9 +8,9 @@
          <!-- meta de facebook -->
          <title>@yield('title')</title>
         <meta property="og:title" content="@yield('ogTitle')"/>
-<meta property="og:site_name" content="Archivos patrimoniales el santuarioff"/>
+<meta property="og:site_name" content="Archivos patrimoniales El Santuario"/>
  <meta property="og:url" content="@yield('ogUrl', 'https://patrimonioelsantuario.gov.co')"/> 
-<meta property="og:description" content="@yield('ogDesc', 'Archivos patrimoniales el santuario2')"/>
+<meta property="og:description" content="@yield('ogDesc', 'Archivos patrimoniales El Santuario')"/>
 <meta property="og:type" content="@yield('ogType', 'Multimedia')"/>
 <meta property="og:locale" content="es"/>
 <meta property="og:image" content="@yield('ogImage', 'https://proyectoeducacion.s3.us-east-2.amazonaws.com/archivos/YC2Ebqcx.jpg')"/>
