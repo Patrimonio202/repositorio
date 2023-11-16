@@ -105,55 +105,64 @@
 
         <!-- Patrocinado por-->
         <hr>
-        
 
-       
 
-        <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-8 gap-4 text-center  mb-8">
-            <div class="col-span-1 md:col-span-1 lg:col-span-4  text-left mt-2 ">
+
+        {{-- footer solo para lg --}}
+        <div class="grid grid-cols-2 lg:grid-cols-8 lg:gap-2 text-center  mb-8">
+            <div class="col-span-2  lg:col-span-4  text-left lg:mt-2 ">
                 <p>
                     Un proyecto de:
                 </p>
             </div>
-            <div class="col-span-1 md:col-span-1 lg:col-span-4 text-left mt-2  ">
+
+            <div class="hidden lg:block  lg:col-span-4 text-left mt-2  ">
                 <p>
                     Con el respaldo de:
                 </p>
             </div>
-                <div >
-                    <img src="{{ Storage::url('Imagenes/1.Logo_Con la gente por El Santuario.png') }}"
-                        alt="Con la gente por El Santuario" class=" object-cover w-full" />
-                </div>
-                <div >
-                    <img src="{{ Storage::url('Imagenes/2.Logo_Soy Cultura.png') }}" alt="Soy Cultura"
-                        class="object-cover h-32  w-full" />
-                </div>
-                <div >
-                    <img src="{{ Storage::url('Imagenes/3.Logo_Vigías del Patrimonio El Santuario.png') }}"
-                        alt="Vigias del patrimonio El Santuario" class=" object-cover h-32  w-full" />
-                </div>
-                <div>
-                    <img src="{{ Storage::url('Imagenes/4.Logo_Biblioteca Municipal.png') }}" alt="Biblioteca pública municipal"
-                        class=" object-cover h-32  w-full" />
-                </div>
-            
-            <div class="flex items-center justify-center">
-                <img src="{{ Storage::url('Imagenes/5.Logo_Archivo General de la Nación.png') }}" alt="Archivo general de la nación"
+
+            <div>
+                <img src="{{ Storage::url('Imagenes/1.Logo_Con la gente por El Santuario.png') }}"
+                    alt="Con la gente por El Santuario" class=" object-cover w-full" />
+            </div>
+            <div>
+                <img src="{{ Storage::url('Imagenes/2.Logo_Soy Cultura.png') }}" alt="Soy Cultura"
                     class="object-cover h-32  w-full" />
             </div>
-            <div class="flex items-center justify-center">
-                <img src="{{ Storage::url('Imagenes/6.Logo_Biblioteca Nacional.png') }}" alt="Biblioteca nacional de Colombia"
-                    class="object-cover h-32  w-full" />
+            <div>
+                <img src="{{ Storage::url('Imagenes/3.Logo_Vigías del Patrimonio El Santuario.png') }}"
+                    alt="Vigias del patrimonio El Santuario" class=" object-cover h-32  w-full" />
             </div>
-            <div class="flex items-center justify-center">
+            <div>
+                <img src="{{ Storage::url('Imagenes/4.Logo_Biblioteca Municipal.png') }}"
+                    alt="Biblioteca pública municipal" class=" object-cover h-32  w-full" />
+            </div>
+
+            <div class="block  lg:hidden  col-span-2  text-left   ">
+                <p>
+                    Con el respaldo de:
+                </p>
+            </div>
+
+            <div class="flex-1 items-center justify-center">
+                <img src="{{ Storage::url('Imagenes/5.Logo_Archivo General de la Nación.png') }}"
+                    alt="Archivo general de la nación" class="object-cover h-32  w-full" />
+            </div>
+            <div class="flex-1 items-center justify-center">
+                <img src="{{ Storage::url('Imagenes/6.Logo_Biblioteca Nacional.png') }}"
+                    alt="Biblioteca nacional de Colombia" class="object-cover h-32  w-full" />
+            </div>
+            <div class="flex-1 items-center justify-center">
                 <img src="{{ Storage::url('Imagenes/7.Logo_Premio Nacional de Biliotecas Públicas.png') }}"
                     alt="Bibioteca públicas" class="object-cover h-32  w-full" />
             </div>
-            <div class="flex items-center justify-center">
-                <img src="{{ Storage::url('Imagenes/8.Logo_Biblioteca Pública Piloto.png') }}" alt="Biblioteca pública piloto"
-                    class="object-cover h-32  w-full" />
+            <div class="flex-1 items-center justify-center">
+                <img src="{{ Storage::url('Imagenes/8.Logo_Biblioteca Pública Piloto.png') }}"
+                    alt="Biblioteca pública piloto" class="object-cover h-32  w-full" />
             </div>
         </div>
+
 
     </div>
 
