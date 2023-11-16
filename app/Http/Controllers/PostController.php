@@ -30,11 +30,11 @@ class PostController extends Controller
     }
 
     public function category(Category $category){
-        $posts=Post::where('category_id', $category->id)
-                    ->where('status',2)
-                    ->latest('id')
-                    ->paginate(6);
-      return view('posts.category', compact('posts', 'category'));
+        // $posts=Post::where('category_id', $category->id)
+        //             ->where('status',2)
+        //             ->latest('id')
+        //             ->paginate(6); compact('posts', 'category')
+      return view('posts.category',compact( 'category') );
     }
 
     public function tag(Tag $tag){

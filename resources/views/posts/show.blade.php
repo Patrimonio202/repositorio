@@ -23,9 +23,9 @@
             <div class="lg:col-span-2">
                 {{-- aqui organizamos la imagen --}}
                 @if ($post->category->id == 1)
-                    <figure>
+                    <figure class=" lg:mt-8 lg:mr-12 lg:ml-12  ">
                         @if ($post->image)
-                            <img class="img-source zoom rounded-xl hover:scale-105 transition-all duration-100 cursor-pointer"
+                            <img class="img-source zoom rounded-xl hover:scale-105 transition-all duration-100 cursor-pointer h-96 object-cover object-top hover:mb-2 "
                                 src="{{ Storage::url($post->image->url) }}" alt="" onclick="full_view(this);" >
                             @section('ogImage', Storage::url($post->image->url))
                         @else
@@ -80,7 +80,7 @@
                         <x-embed url="{{ $post->image->urlyoutube }}" aspect-ratio="4:3" />
                     </div>
                 @endif
-                <small style="font-family:Raleway-Regular">Publicado el {{ $post->created_at->format('Y-m-d') }}
+                <small class="lg:ml-12" style="font-family:Raleway-Regular">Publicado el {{ $post->created_at->format('Y-m-d') }}
                 </small>
                 <div style="font-family:Raleway-Regular" class=" mt-4 text-justify">
                     {!! $post->body !!}
@@ -143,7 +143,7 @@
                             <a class="flex" href="{{ route('posts.show', $similar) }}">
 
                                 @if ($similar->image)
-                                    <img class="w-36 h-20 object-cover object-center rounded-xl px-2 hover:scale-105 transition-all duration-100 "
+                                    <img class="w-36 h-20 object-cover object-top rounded-xl px-2 hover:scale-105 transition-all duration-100 "
                                         src="{{ Storage::url($similar->image->url) }}" alt="">
                                 @else
                                     {{--    <img class="w-36 h-20 object-cover object-center"
@@ -151,7 +151,10 @@
                                             alt=""> --}}
                                 @endif
                                 {{-- <span class="text-gray-700 text-base text-justify">{{ $similar->name }}</span>  --}}
-                                <p class="flex-1 ml-2 text-justify">{{ $similar->name }}</p>
+                               <div class="flex-1">
+                                <p class=" ml-2 text-justify text-sm font-semibold">{{ $similar->name }}</p>
+                                <p class="text-xs ml-2 ">{{ $similar->autor }}</p>
+                              </div>
                             </a>
 
                         </li>
