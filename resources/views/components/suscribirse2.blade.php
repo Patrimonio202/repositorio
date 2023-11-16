@@ -105,36 +105,53 @@
 
         <!-- Patrocinado por-->
         <hr>
-        <div class="mb-6">
-            <p>
-                Patrocinado por
-            </p>
-        </div>
+        
 
-        <div class="grid grid-cols-2 gap-16 mb-16 text-center lg:grid-cols-6">
-            <div class="flex items-center justify-center rounded-full ">
-                <img src="{{ Storage::url('Imagenes/Logo1.jpg') }}" alt="Todoist Logo"
-                    class="rounded-full object-cover h-32  w-32" />
+       
+
+        <div class="grid grid-cols-2 gap-4 text-center lg:grid-cols-8 mb-8">
+            <div class="col-span-1 md:col-span-3 lg:col-span-4  text-left mt-2 ">
+                <p>
+                    Un proyecto de:
+                </p>
+            </div>
+            <div class="col-span-1 md:col-span-3 lg:col-span-4 text-left mt-2  ">
+                <p>
+                    Con el respaldo de:
+                </p>
+            </div>
+                <div >
+                    <img src="{{ Storage::url('Imagenes/1.Logo_Con la gente por El Santuario.png') }}"
+                        alt="Todoist Logo" class=" object-cover w-full" />
+                </div>
+                <div >
+                    <img src="{{ Storage::url('Imagenes/2.Logo_Soy Cultura.png') }}" alt="Slack Logo"
+                        class="object-cover h-32  w-full" />
+                </div>
+                <div >
+                    <img src="{{ Storage::url('Imagenes/3.Logo_Vigías del Patrimonio El Santuario.png') }}"
+                        alt="Typeform Logo" class=" object-cover h-32  w-full" />
+                </div>
+                <div>
+                    <img src="{{ Storage::url('Imagenes/4.Logo_Biblioteca Municipal.png') }}" alt="Algolia Logo"
+                        class=" object-cover h-32  w-full" />
+                </div>
+            
+            <div class="flex items-center justify-center">
+                <img src="{{ Storage::url('Imagenes/5.Logo_Archivo General de la Nación.png') }}" alt="Postcss Logo"
+                    class="object-cover h-32  w-full" />
             </div>
             <div class="flex items-center justify-center">
-                <img src="{{ Storage::url('Imagenes/Logo1.jpg') }}" alt="Slack Logo"
-                    class="rounded-full object-cover h-32  w-32" />
+                <img src="{{ Storage::url('Imagenes/6.Logo_Biblioteca Nacional.png') }}" alt="Yahoo Logo"
+                    class="object-cover h-32  w-full" />
             </div>
             <div class="flex items-center justify-center">
-                <img src="{{ Storage::url('Imagenes/Logo1.jpg') }}" alt="Typeform Logo"
-                    class="rounded-full object-cover h-32  w-32" />
+                <img src="{{ Storage::url('Imagenes/7.Logo_Premio Nacional de Biliotecas Públicas.png') }}"
+                    alt="Yahoo Logo" class="object-cover h-32  w-full" />
             </div>
             <div class="flex items-center justify-center">
-                <img src="{{ Storage::url('Imagenes/Logo1.jpg') }}" alt="Algolia Logo"
-                    class="rounded-full object-cover h-32  w-32" />
-            </div>
-            <div class="flex items-center justify-center">
-                <img src="{{ Storage::url('Imagenes/Logo1.jpg') }}" alt="Postcss Logo"
-                    class="rounded-full object-cover h-32  w-32" />
-            </div>
-            <div class="flex items-center justify-center">
-                <img src="{{ Storage::url('Imagenes/Logo1.jpg') }}" alt="Yahoo Logo"
-                    class="rounded-full object-cover h-32  w-32" />
+                <img src="{{ Storage::url('Imagenes/8.Logo_Biblioteca Pública Piloto.png') }}" alt="Yahoo Logo"
+                    class="object-cover h-32  w-full" />
             </div>
         </div>
 
@@ -143,7 +160,8 @@
     <!-- Copyright section -->
     <div class="w-full p-4 text-center" style="background-color: rgba(0, 0, 0, 0.2)">
         © 2023 Copyright:
-        <a class="text-white" href="https://wa.me/573127877450?text=Desarrollo%20pagina%20web">Desarrollado por el Ingeniero Leonardo Gallego</a>
+        <a class="text-white" href="https://wa.me/573127877450?text=Desarrollo%20pagina%20web">Desarrollado por el
+            Ingeniero Leonardo Gallego</a>
     </div>
 
     <!-- Politicas -->
