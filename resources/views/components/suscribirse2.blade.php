@@ -174,11 +174,13 @@
     </div>
 
     <!-- Politicas -->
-    <div class="mt-2 flex items-center justify-center space-x-4 text-sm font-semibold leading-6 text-slate-700">
-        <a href="/privacy-policy">Politicas y Privacidad</a>
-        <div class="h-4 w-px bg-slate-500/20"> </div>
-        <a href="/terms-of-service">Terminos y condiciones</a>
-        <div class="h-4 w-px bg-slate-500/20"> </div>
-        <a href="/eliminacion-datos">Eliminación de datos</a>
+    <div class="w-full  bg-white" >
+        <div class="mt-2 flex items-center justify-center space-x-4 text-sm font-semibold leading-6  text-black">
+            <a href="/privacy-policy">Politicas y Privacidad</a>
+            <div class="h-4 w-px bg-slate-500/20"> </div>
+            <a href="/terms-of-service">Terminos y condiciones</a>
+            <div class="h-4 w-px bg-slate-500/20"> </div>
+            <a href="/eliminacion-datos">Eliminación de datos</a>
+        </div>
     </div>
 </footer>
