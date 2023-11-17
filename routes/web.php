@@ -36,7 +36,7 @@ use App\Http\Controllers\WelcomeController;
 //     return 'leo el mejor' ;
 // });
 
-
+//Route::get('/', [PostController::class,'temporizador'])->name('posts.temporizador');
 Route::get('/', [PostController::class,'index'])->name('posts.index');
 //Route::get('/leo', WelcomeController::class)->name('posts.index');
 

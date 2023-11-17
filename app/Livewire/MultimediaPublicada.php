@@ -61,10 +61,13 @@ class MultimediaPublicada extends Component
 
     public function mount()
     {
-        $this->totalRecords=Post::count();
+        //$this->totalRecords=Post::count();
+        $this->totalRecords=9;
     }
     public function loadMore(){
+        if ($this->posts_per_page<9){
         $this->posts_per_page +=6;
+        }
     }
 
     public function edit($post){    

@@ -128,15 +128,15 @@
             </div>
             <div>
                 <img src="{{ Storage::url('Imagenes/2.Logo_Soy Cultura.png') }}" alt="Soy Cultura"
-                    class="object-cover h-32  w-full" />
+                    class="object-cover  w-full" />
             </div>
             <div>
                 <img src="{{ Storage::url('Imagenes/3.Logo_Vigías del Patrimonio El Santuario.png') }}"
-                    alt="Vigias del patrimonio El Santuario" class=" object-cover h-32  w-full" />
+                    alt="Vigias del patrimonio El Santuario" class=" object-cover  w-full" />
             </div>
             <div>
                 <img src="{{ Storage::url('Imagenes/4.Logo_Biblioteca Municipal.png') }}"
-                    alt="Biblioteca pública municipal" class=" object-cover h-32  w-full" />
+                    alt="Biblioteca pública municipal" class=" object-cover   w-full" />
             </div>
 
             <div class="block  lg:hidden  col-span-2  text-left   ">
@@ -147,19 +147,19 @@
 
             <div class="flex-1 items-center justify-center">
                 <img src="{{ Storage::url('Imagenes/5.Logo_Archivo General de la Nación.png') }}"
-                    alt="Archivo general de la nación" class="object-cover h-32  w-full" />
+                    alt="Archivo general de la nación" class="object-cover   w-full" />
             </div>
             <div class="flex-1 items-center justify-center">
                 <img src="{{ Storage::url('Imagenes/6.Logo_Biblioteca Nacional.png') }}"
-                    alt="Biblioteca nacional de Colombia" class="object-cover h-32  w-full" />
+                    alt="Biblioteca nacional de Colombia" class="object-cover   w-full" />
             </div>
             <div class="flex-1 items-center justify-center">
                 <img src="{{ Storage::url('Imagenes/7.Logo_Premio Nacional de Biliotecas Públicas.png') }}"
-                    alt="Bibioteca públicas" class="object-cover h-32  w-full" />
+                    alt="Bibioteca públicas" class="object-cover  w-full" />
             </div>
             <div class="flex-1 items-center justify-center">
                 <img src="{{ Storage::url('Imagenes/8.Logo_Biblioteca Pública Piloto.png') }}"
-                    alt="Biblioteca pública piloto" class="object-cover h-32  w-full" />
+                    alt="Biblioteca pública piloto" class="object-cover   w-full" />
             </div>
         </div>
 
