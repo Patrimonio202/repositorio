@@ -22,12 +22,12 @@ class PostController extends Controller
     public function show(Post $post){      
       //  $curso =Curso::find($id);
      // $postf=Post::where('slug',$post)->get();    
-     //$postf=Post::find($post);     
+     //$postf=Post::find($post);         ->latest('id')
       $this->authorize('published',$post );
       $similares= Post::where('category_id',$post->Category->id )
                         ->where('status',2)
-                        ->where('id','!=', $post->id)
-                        ->latest('id')
+                        ->where('id','!=', $post->id)                     
+                        ->inRandomOrder()
                         ->take(4)
                         ->get();
      return view('posts.show', compact('post','similares'));

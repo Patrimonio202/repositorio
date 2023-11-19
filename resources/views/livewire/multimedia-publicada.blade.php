@@ -14,7 +14,8 @@
                     <figure>
                         <div class="relative overflow-hidden bg-no-repeat bg-cover relative overflow-hidden bg-no-repeat bg-cover shadow-lg rounded-lg mx-4 -mt-4"
                             data-mdb-ripple="true" data-mdb-ripple-color="light">
-                            <img src="{{ Storage::url($post->image->url) }}" class="w-full h-full md:h-60 lg:h-60 object-cover object-center lg:object-top md:object-top "/>
+                            <img src="{{ Storage::url($post->image->url) }}"
+                                class="w-full h-full md:h-60 lg:h-60 object-cover object-center lg:object-top md:object-top " />
                             <a href="{{ route('posts.show', $post) }}">
                                 <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed opacity-0 hover:opacity-100 transition duration-300 ease-in-out"
                                     style="background-color: rgba(251, 251, 251, 0.15)"></div>
@@ -44,19 +45,34 @@
                 </div>
 
                 <div class="absolute bottom-5 right-0 px-6 ">
-                    <i wire:click="edit({{ $post }})" class="fa-solid fa-share-nodes fa-lg"></i>
+                    <i wire:click="edit({{ $post }})" class="fa-solid fa-share fa-lg"></i>
                     @auth
                         <i wire:click="meinteresa({{ $post->id }})"
-                            class=" @if ($post->userVotes) fa-solid fa-heart fa-lg @else fa-regular fa-heart fa-lg @endif"></i>
+                            class=" @if ($post->userVotes) fa-solid fa-bookmark fa-lg @else fa-regular fa-bookmark fa-lg @endif"></i>
 
                         <i wire:click="megusta({{ $post->id }})"
-                            class="@if ($post->userVoteslike) fa-solid fa-thumbs-up fa-lg @else fa-regular fa-thumbs-up fa-lg @endif "
+                            class="@if ($post->userVoteslike) fa-solid fa-heart fa-lg @else fa-regular fa-heart fa-lg @endif "
                             id="fastc-{{ $post->id }}"></i>
-                    @else
-                    <a href="{{ route('login') }}">
-                         <i class="fa-solid fa-right-to-bracket fa-lg"></i>
-                     </a>
+
+                            <a data-tooltip-target="tdescargar" data-tooltip-style="light" href="{{ route('login') }}">
+                                <i class="fa-solid fa-download fa-lg"></i>
+                            </a>  
+                    @else                        
+                        <a  data-tooltip-target="tmeinteresa" data-tooltip-style="light" href="{{ route('login') }}">
+                            <i class="fa-regular fa-bookmark fa-lg"></i>
+                        </a>
+
+                        <a data-tooltip-target="tmegusta" data-tooltip-style="light" href="{{ route('login') }}">
+                            <i class="fa-regular fa-heart  fa-lg"></i>
+                        </a>
+
+                        <a data-tooltip-target="tdescargar" data-tooltip-style="light" href="{{ route('login') }}">
+                            <i class="fa-solid fa-download fa-lg"></i>
+                        </a>                       
+
                     @endauth
+
+                    
                 </div>
             </article>
         @endforeach
@@ -74,7 +90,7 @@
             Compartir
         </x-slot>
 
-        <x-slot name="content" >            
+        <x-slot name="content">
             <div class=" flex mb-8 justify-center items-center ">
                 <div class="flex mr-6">
                     <div class="text-center">
@@ -103,8 +119,8 @@
                 <div class="flex">
                     <div class="text-center">
                         <a class=" focus:outline-none"
-                            href="https://twitter.com/intent/tweet?text=&url={{$post_slug}}&hashtags=repositoriovirtual" target="_blank"
-                            rel="noopener noreferrer">
+                            href="https://twitter.com/intent/tweet?text=&url={{ $post_slug }}&hashtags=repositoriovirtual"
+                            target="_blank" rel="noopener noreferrer">
                             <img src="{{ Storage::url('Imagenes/X.webp') }}" alt="Slack Logo"
                                 class=" object-cover h-16  w-16 hover:scale-110 transition-all duration-100" />
                             <small>Twitter</small>
@@ -115,7 +131,7 @@
 
             <div class="flex items-center">
                 <x-input id="myInput" disabled class=" w-full  px-2 h-7 mr-4" value="{{ $post_slug }}"> </x-input>
-               <i class="fa-regular fa-copy fa-lg" onclick="myFunction()"></i>
+                <i class="fa-regular fa-copy fa-lg" onclick="myFunction()"></i>
             </div>
         </x-slot>
 
@@ -123,4 +139,24 @@
         </x-slot>
 
     </x-dialog-modal>
+    <!-- Tooltip -->
+    <div id="tcompartir" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 tooltip">
+        Compartir
+        <div class="tooltip-arrow" data-popper-arrow></div>
+    </div>
+
+    <div id="tmeinteresa" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 tooltip">
+        Me interesa
+        <div class="tooltip-arrow" data-popper-arrow></div>
+    </div>
+
+    <div id="tmegusta" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 tooltip">
+        Me gusta
+        <div class="tooltip-arrow" data-popper-arrow></div>
+    </div>
+
+    <div id="tdescargar" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 tooltip">
+        Descargar
+        <div class="tooltip-arrow" data-popper-arrow></div>
+    </div>
 </div>

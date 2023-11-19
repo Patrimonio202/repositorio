@@ -26,7 +26,7 @@
                     <figure class=" lg:mt-8 lg:mr-12 lg:ml-12  ">
                         @if ($post->image)
                             <img class="img-source zoom rounded-xl hover:scale-105 transition-all duration-100 cursor-pointer h-96 object-cover object-top hover:mb-2 "
-                                src="{{ Storage::url($post->image->url) }}" alt="" onclick="full_view(this);" >
+                                src="{{ Storage::url($post->image->url) }}" alt="" onclick="full_view(this);">
                             @section('ogImage', Storage::url($post->image->url))
                         @else
                             <img class="w-full h-80 object-cover object-center"
@@ -75,12 +75,13 @@
                 @endif
 
                 @if ($post->category->id == 4)
-                    <div class="relative overflow-hidden bg-no-repeat bg-cover relative overflow-hidden bg-no-repeat bg-cover shadow-lg rounded-lg  "
+                    <div class="lg:mt-8 lg:mr-12 lg:ml-12 relative overflow-hidden bg-no-repeat bg-cover relative overflow-hidden bg-no-repeat bg-cover shadow-lg rounded-lg  "
                         data-mdb-ripple="true" data-mdb-ripple-color="light">
                         <x-embed url="{{ $post->image->urlyoutube }}" aspect-ratio="4:3" />
                     </div>
                 @endif
-                <small class="lg:ml-12" style="font-family:Raleway-Regular">Publicado el {{ $post->created_at->format('Y-m-d') }}
+                <small class="lg:ml-12" style="font-family:Raleway-Regular">Publicado el
+                    {{ $post->created_at->format('Y-m-d') }}
                 </small>
                 <div style="font-family:Raleway-Regular" class=" mt-4 text-justify">
                     {!! $post->body !!}
@@ -140,22 +141,33 @@
                 <ul>
                     @foreach ($similares as $similar)
                         <li class="mb-4">
-                            <a class="flex" href="{{ route('posts.show', $similar) }}">
+                            @if ($similar->category->id == '4')
+                                <div class="grid grid-cols-2">
+                                    <div class="relative overflow-hidden bg-no-repeat bg-cover relative overflow-hidden bg-no-repeat bg-cover shadow-lg rounded-lg  "   >
+                                        <x-embed  url="{{ $similar->image->urlyoutube }}"  />
+                                    </div>
+                                    <a href="{{ route('posts.show', $similar) }}">
+                                        <div>
+                                            <p class=" ml-2 text-justify text-sm font-semibold">{{ $similar->name }}
+                                            </p>
+                                            <p class="text-xs ml-2 ">{{ $similar->autor }}</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            @else
+                                <a class="flex" href="{{ route('posts.show', $similar) }}">
+                                    @if ($similar->image)
+                                        <img class="w-36 h-20 object-cover object-top rounded-xl px-2 hover:scale-105 transition-all duration-100 "
+                                            src="{{ Storage::url($similar->image->url) }}" alt="">
+                                    @endif
 
-                                @if ($similar->image)
-                                    <img class="w-36 h-20 object-cover object-top rounded-xl px-2 hover:scale-105 transition-all duration-100 "
-                                        src="{{ Storage::url($similar->image->url) }}" alt="">
-                                @else
-                                    {{--    <img class="w-36 h-20 object-cover object-center"
-                                            src="https://cdn.pixabay.com/photo/2023/10/03/08/24/goose-8290811_1280.jpg"
-                                            alt=""> --}}
-                                @endif
-                                {{-- <span class="text-gray-700 text-base text-justify">{{ $similar->name }}</span>  --}}
-                               <div class="flex-1">
-                                <p class=" ml-2 text-justify text-sm font-semibold">{{ $similar->name }}</p>
-                                <p class="text-xs ml-2 ">{{ $similar->autor }}</p>
-                              </div>
-                            </a>
+
+                                    <div class="flex-1">
+                                        <p class=" ml-2 text-justify text-sm font-semibold">{{ $similar->name }}</p>
+                                        <p class="text-xs ml-2 ">{{ $similar->autor }}</p>
+                                    </div>
+                                </a>
+                            @endif
 
                         </li>
                     @endforeach
@@ -175,16 +187,16 @@
         <script>
             wheelzoom(document.querySelector('img.zoom'));
 
-             function full_view(ele) {
-            //     // alert('leo el mejor');            
-                 let src = ele.parentElement.querySelector(".img-source").getAttribute("src");
-              
-               document.querySelector("#img-viewer").querySelector("img").setAttribute("src", src);
-                 document.querySelector("#img-viewer").style.display = "block";
-             }
+            function full_view(ele) {
+                //     // alert('leo el mejor');            
+                let src = ele.parentElement.querySelector(".img-source").getAttribute("src");
 
-             function close_model() {
-                 document.querySelector("#img-viewer").style.display = "none";
+                document.querySelector("#img-viewer").querySelector("img").setAttribute("src", src);
+                document.querySelector("#img-viewer").style.display = "block";
+            }
+
+            function close_model() {
+                document.querySelector("#img-viewer").style.display = "none";
             }
         </script>
     @endpush

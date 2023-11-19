@@ -8,7 +8,7 @@
             <p class="mt-1 text-center text-gray-600">
                 Para seleccionar multimedia favorita, deberas ir a la pagina principal, buscar los articulos que mas te
                 gusten y darle en el boton de me encanta
-                <i class="fa-regular fa-heart fa-lg"></i>
+                <i class="fa-regular fa-bookmark fa-lg"></i>
             </p>
             <div class="flex flex-col items-center justify-center mt-4 space-y-1 md:flex-row md:space-y-0 md:space-x-1">
                 <a href="/">
@@ -65,7 +65,7 @@
                     </div>
 
                     <div class="absolute bottom-5 right-0 px-6 ">
-                        <i wire:click="edit({{ $post }})" class="fa-solid fa-share-nodes fa-lg"></i>
+                        <i wire:click="edit({{ $post }})" class="fa-solid fa-share fa-lg"></i>
                     </div>
                 </article>
             @endforeach
