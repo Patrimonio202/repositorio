@@ -17,7 +17,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    //public const HOME = '/dashboard';  aqui cambiamos la ruta de logueo
+    //public const HOME = '/dashboard' '/';  aqui cambiamos la ruta de logueo
     public const HOME = '/';
 
     /**

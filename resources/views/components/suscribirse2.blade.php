@@ -76,12 +76,17 @@
                     <!-- Newsletter sign-up input field -->
                     <div class="relative md:mb-6" data-te-input-wrapper-init>
                         <input type="text"
+                        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6]  text-neutral-200 outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100  motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 "
+                         placeholder="Dirección de correo electronico" />
+
+
+                        {{-- <input type="text"
                             class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] text-neutral-200 outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                            id="exampleFormControlInput1" placeholder="Email address" />
-                        <label for="exampleFormControlInput1"
+                            id="exampleFormControlInput1" placeholder="Email address" /> --}}
+                        {{-- <label for="exampleFormControlInput1"
                             class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-200 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-neutral-200 peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-neutral-200">Direccion
                             de correo electronico
-                        </label>
+                        </label> --}}
                     </div>
 
                     <!-- Newsletter sign-up submit button -->
@@ -99,7 +104,7 @@
         <!-- Copyright information -->
         <div class="mb-6">
             <p>
-                Proyecto dirigido a la comunidad y que busca que las personas conozcan un poco mas de nuestro pueblo
+                Proyecto ganador de la convocatoria de estímulos 2023 del Ministerio de las Culturas, las Artes y los Saberes, bajo la supervisión del Archivo General de la Nación.
             </p>
         </div>
 

@@ -79,6 +79,8 @@ class Post extends Model
             $query->whereHas('tags', function($query) use ($tag) {
                 $query->where('tags.name',$tag);
             });
+          })->when($filters['textobuscar'] ?? null, function($query,$textobuscar){
+            $query->where('name','like','%'. $textobuscar.'%');
           });
     }
 

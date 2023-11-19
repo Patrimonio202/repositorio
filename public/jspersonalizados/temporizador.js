@@ -1,14 +1,16 @@
-const $days = document.getElementById('days'),
-$hours = document.getElementById('hours'),
-$minutes = document.getElementById('minutes'),
-$seconds = document.getElementById('seconds'),
-$finalMessage = document.querySelector('.final-sms');
 
-//Fecha a futuro
-const countdownDate = new Date('11 17, 2023 19:26:00').getTime();
 
 
 let interval = setInterval(function(){
+    const $days = document.getElementById('days'),
+    $hours = document.getElementById('hours'),
+    $minutes = document.getElementById('minutes'),
+    $seconds = document.getElementById('seconds'),
+    $finalMessage = document.querySelector('.final-sms');
+    
+    //Fecha a futuro
+    const countdownDate = new Date('11 29, 2023 17:00:00').getTime();
+
     //console.log(countdownDate);
     //Obtener fecha actual y milisegundos
     const now = new Date().getTime();
@@ -27,13 +29,13 @@ let interval = setInterval(function(){
         clearInterval(interval);
         //$finalMessage.style.transform = 'translateY(0)';
         window.location.href = "https://patrimonioelsantuario.gov.co/index";
-    }else{
-   //Escribimos resultados
-   $days.innerHTML = days;
-   $hours.innerHTML = hours;
-   $minutes.innerHTML = minutes;
-   $seconds.innerHTML = ('0' + seconds).slice(-2);
-}
+    }   
+   
 
+    //Escribimos resultados
+    $days.innerHTML = days;
+    $hours.innerHTML = hours;
+    $minutes.innerHTML = minutes;
+    $seconds.innerHTML = ('0' + seconds).slice(-2);
     
 }, 1000);

@@ -19,6 +19,13 @@
             <div class="grid grid-cols-1 lg:grid-cols-4">
                 <div class="col-span-1  md:col-span-1  lg:col-span-1 mr-4">
                     <form action="{{ route('posts.buscar') }}">
+                        <div class="ui-widget mb-4">
+                            <p class="text-lg font-semibold">Criterio de búsqueda:</p>
+                            <input class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm w-full ui-autocomplete-input" 
+                            id="search" value="{{request('textobuscar')}}" name="textobuscar" type="text" placeholder="Buscar multimedia" autocomplete="off">
+        
+                        </div>
+
                         <div class="mb-4">
                             <p class="text-lg font-semibold">Ordenar:</p>
                             <select name="order"
@@ -49,17 +56,13 @@
                     </form>
                 </div>
                 <div class="col-span-1 lg:col-span-3 ">
-                    <div class="ui-widget mb-4">
-                        <input class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm w-full ui-autocomplete-input" 
-                        id="search" type="text" placeholder="Buscar multimedia" autocomplete="off">
-    
-                    </div>
+                    
 
                     <div class="space-y-4">
                         @foreach ($posts as $post)
                             <article class="grid grid-cols-1  lg:grid-cols-2 gap-6">
                                 <figure >
-                                    <img  class=" img-source h-72 w-full rounded-xl hover:blur-sm cursor-pointer" src="{{ Storage::url($post->image->url) }}" alt="{{ $post->name }}" onclick="full_view(this);">
+                                    <img  class=" object-cover object-top img-source h-72 w-full rounded-xl hover:blur-sm cursor-pointer" src="{{ Storage::url($post->image->url) }}" alt="{{ $post->name }}" onclick="full_view(this);">
                                 </figure>
 
                                 <div>
