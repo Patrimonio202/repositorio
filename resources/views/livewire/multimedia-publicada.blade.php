@@ -44,35 +44,45 @@
                     </div>
                 </div>
 
-                <div class="absolute bottom-5 right-0 px-6 ">
-                    <i wire:click="edit({{ $post }})" class="fa-solid fa-share fa-lg"></i>
+                <div class="flex absolute bottom-5 right-0 px-6 gap-6 ">
+                    <div class="flex-1" data-tooltip-target="tcompartir" data-tooltip-style="light">
+                        <i wire:click="edit({{ $post }})" class="fa-solid fa-share fa-lg"></i>
+                    </div>
                     @auth
-                        <i wire:click="meinteresa({{ $post->id }})"
-                            class=" @if ($post->userVotes) fa-solid fa-bookmark fa-lg @else fa-regular fa-bookmark fa-lg @endif"></i>
-
-                        <i wire:click="megusta({{ $post->id }})"
-                            class="@if ($post->userVoteslike) fa-solid fa-heart fa-lg @else fa-regular fa-heart fa-lg @endif "
-                            id="fastc-{{ $post->id }}"></i>
-
+                        <div class="flex-1" data-tooltip-target="tmeinteresa" data-tooltip-style="light" >
+                            <i  wire:click="meinteresa({{ $post->id }})"
+                                class=" @if ($post->userVotes) fa-solid fa-bookmark fa-lg @else fa-regular fa-bookmark fa-lg @endif"></i>
+                        </div>
+                        <div lass="flex-1" data-tooltip-target="tmegusta" data-tooltip-style="light">
+                            <i wire:click="megusta({{ $post->id }})"
+                                class="@if ($post->userVoteslike) fa-solid fa-heart fa-lg @else fa-regular fa-heart fa-lg @endif "
+                                id="fastc-{{ $post->id }}"></i>
+                        </div>
+                        <div lass="flex-1">
                             <a data-tooltip-target="tdescargar" data-tooltip-style="light" href="{{ route('login') }}">
                                 <i class="fa-solid fa-download fa-lg"></i>
-                            </a>  
-                    @else                        
-                        <a  data-tooltip-target="tmeinteresa" data-tooltip-style="light" href="{{ route('login') }}">
-                            <i class="fa-regular fa-bookmark fa-lg"></i>
-                        </a>
-
-                        <a data-tooltip-target="tmegusta" data-tooltip-style="light" href="{{ route('login') }}">
-                            <i class="fa-regular fa-heart  fa-lg"></i>
-                        </a>
-
-                        <a data-tooltip-target="tdescargar" data-tooltip-style="light" href="{{ route('login') }}">
-                            <i class="fa-solid fa-download fa-lg"></i>
-                        </a>                       
+                            </a>
+                        </div>
+                    @else
+                        <div class="flex-1">
+                            <a data-tooltip-target="tmeinteresa" data-tooltip-style="light" href="{{ route('login') }}">
+                                <i class="fa-regular fa-bookmark fa-lg"></i>
+                            </a>
+                        </div>
+                        <div class="flex-1">
+                            <a data-tooltip-target="tmegusta" data-tooltip-style="light" href="{{ route('login') }}">
+                                <i class="fa-regular fa-heart  fa-lg"></i>
+                            </a>
+                        </div>
+                        <div class="flex-1">
+                            <a data-tooltip-target="tdescargar" data-tooltip-style="light" href="{{ route('login') }}">
+                                <i class="fa-solid fa-download fa-lg"></i>
+                            </a>
+                        </div>
 
                     @endauth
 
-                    
+
                 </div>
             </article>
         @endforeach
@@ -140,22 +150,26 @@
 
     </x-dialog-modal>
     <!-- Tooltip -->
-    <div id="tcompartir" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 tooltip">
+    <div id="tcompartir" role="tooltip"
+        class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 tooltip">
         Compartir
         <div class="tooltip-arrow" data-popper-arrow></div>
     </div>
 
-    <div id="tmeinteresa" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 tooltip">
-        Me interesa
+    <div id="tmeinteresa" role="tooltip"
+        class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 tooltip">
+        Guardar
         <div class="tooltip-arrow" data-popper-arrow></div>
     </div>
 
-    <div id="tmegusta" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 tooltip">
+    <div id="tmegusta" role="tooltip"
+        class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 tooltip">
         Me gusta
         <div class="tooltip-arrow" data-popper-arrow></div>
     </div>
 
-    <div id="tdescargar" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 tooltip">
+    <div id="tdescargar" role="tooltip"
+        class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 tooltip">
         Descargar
         <div class="tooltip-arrow" data-popper-arrow></div>
     </div>
