@@ -1,6 +1,6 @@
 <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
-    <h1 class="uppercase text-center mb-4 text-3xl font-bold">Categoria: {{ $category->name }}</h1>
+    <h1 style="font-family:Raleway-ExtraBold" class="uppercase text-center mb-4 text-3xl ">Categoria: {{ $category->name }}</h1>
 
     <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4  ">
         @foreach ($posts as $post)
@@ -27,11 +27,11 @@
                 @endif
                 <div class="p-6">
                     <div class=" text-center">
-                        <h1 class=" text-center text-lg font-semibold">
+                        <h1 style="font-family:Raleway-ExtraBold" class=" text-center text-lg ">
                             <a href="{{ route('posts.show', $post) }}">{{ Str::limit($post->name, 40) }}</a>
                         </h1>
 
-                        <p class="text-gray-500 mb-4">
+                        <p style="font-family:Raleway-Regular" class="text-gray-500 mb-4">
                             <a href="{{ route('posts.category', $post->category->slug) }}">
                                 <img src="{{ Storage::url('Imagenes/' . $post->category->rutaimagen) }}"
                                     class="inline-block w-5 h-5 rounded-xl" alt="...">
@@ -66,14 +66,14 @@
         <div x-intersect="$wire.loadMore()"></div>
     </div>
     @if ($posts_per_page >= $totalRecords)
-        <h1 class=" text-center text-lg  font-semibold text-gray-700 ">
+        <h1 style="font-family:Raleway-ExtraBold" class=" text-center text-lg  font-semibold text-gray-700 ">
             No hay mas registros...
         </h1>
     @endif
 
     {{-- prueba de modal  sm md lg  xl 2xl --}}
     <x-dialog-modal wire:model="open" maxWidth="md">
-        <x-slot name="title">
+        <x-slot  name="title">
             Compartir
         </x-slot>
 
@@ -86,7 +86,7 @@
 
                             <img src="{{ Storage::url('Imagenes/WhatsApp.png') }}" alt="Logo WhatsApp"
                                 class=" object-cover w-16 h-16 hover:scale-110 transition-all duration-100" />
-                            <small>WhatsApp</small>
+                            <small style="font-family:Raleway-Regular">WhatsApp</small>
                         </a>
 
                     </div>
@@ -98,7 +98,7 @@
                             rel="noopener noreferrer">
                             <img src="{{ Storage::url('Imagenes/Facebook.png') }}" alt="Slack Logo"
                                 class=" object-cover h-16  w-16 hover:scale-110 transition-all duration-100" />
-                            <small>Facebook</small>
+                            <small style="font-family:Raleway-Regular">Facebook</small>
                         </a>
                     </div>
                 </div>
@@ -110,7 +110,7 @@
                             rel="noopener noreferrer">
                             <img src="{{ Storage::url('Imagenes/X.webp') }}" alt="Slack Logo"
                                 class=" object-cover h-16  w-16 hover:scale-110 transition-all duration-100" />
-                            <small>Twitter</small>
+                            <small style="font-family:Raleway-Regular">Twitter</small>
                         </a>
                     </div>
                 </div>

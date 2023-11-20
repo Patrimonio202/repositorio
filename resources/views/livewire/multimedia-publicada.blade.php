@@ -25,11 +25,11 @@
                 @endif
                 <div class="p-6">
                     <div class=" text-center">
-                        <h1 class=" text-center text-lg font-semibold">
+                        <h1 style="font-family:Raleway-ExtraBold" class=" text-center text-lg ">
                             <a href="">{{ Str::limit($post->name, 40) }}</a>
                         </h1>
 
-                        <p class="text-gray-500 mb-4">
+                        <p style="font-family:Raleway-Regular" class="text-gray-500 mb-4">
                             <a href="{{ route('posts.category', $post->category->slug) }}">
                                 <img src="{{ Storage::url('Imagenes/' . $post->category->rutaimagen) }}"
                                     class="inline-block w-5 h-5 rounded-xl" alt="...">
@@ -38,7 +38,7 @@
                                 <a href="" class="text-gray-900">{{ $post->autor }}</a></small>
                         </p>
                     </div>
-                    <div class="mb-8 pb-2 ">
+                    <div  style="font-family:Raleway-Regular" class="mb-8 pb-2 ">
                         {!! Str::limit($post->body, 100) !!} <a class="font-bold text-blue-600 no-underline hover:underline"
                             href="{{ route('posts.show', $post) }}">Leer mas</a>
                     </div>
