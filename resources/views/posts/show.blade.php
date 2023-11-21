@@ -25,7 +25,7 @@
                 @if ($post->category->id == 1)
                     <figure class=" lg:mt-8 lg:mr-12 lg:ml-12  ">
                         @if ($post->image)
-                            <img class="img-source zoom rounded-xl hover:scale-105 transition-all duration-100 cursor-pointer h-96 object-cover object-top hover:mb-2 "
+                            <img class="img-source zoom rounded-xl hover:scale-105 transition-all duration-100 cursor-pointer  object-cover object-top hover:mb-2 "
                                 src="{{ Storage::url($post->image->url) }}" alt="" onclick="full_view(this);">
                             @section('ogImage', Storage::url($post->image->url))
                         @else

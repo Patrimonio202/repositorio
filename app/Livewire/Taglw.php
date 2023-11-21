@@ -7,7 +7,7 @@ use App\Models\Post;
 use App\Models\Vote;
 use Illuminate\Support\Facades\Request;
 
-class Categorylw extends Component
+class Taglw extends Component
 {
     public $posts_per_page=5;
     public $totalRecords;
@@ -15,7 +15,7 @@ class Categorylw extends Component
     public $open=false;  // con este abrimos el modal
     public $post_slug;
 
-    public $category;
+    public $tag;
 
      //este es para darle me interesa
      public function meinteresa($postId)
@@ -61,8 +61,9 @@ class Categorylw extends Component
 
     public function mount()
     {
-        $this->totalRecords=Post::where('category_id',$this->category->id)
-        ->where('status', 2)->latest('id')->count(); 
+       $this->totalRecords=$this->tag->posts()->where('status',2)->count();
+        //->where('status', 2)->latest('id'); 
+      //  $this->totalRecords=10;
     }
 
     public function edit($post){    
@@ -78,10 +79,10 @@ class Categorylw extends Component
     }
 
     public function render()
-    {        
-        $posts=Post::where('category_id',$this->category->id)
-                    ->where('status', 2)->latest('id')->paginate($this->posts_per_page);   
-        //dd($posts);          
-        return view('livewire.categorylw',compact('posts'));
+    {
+       // $posts=Post::where('category_id',$this->category->id)
+                    //->where('status', 2)->latest('id')->paginate($this->posts_per_page);   
+        $posts= $this->tag->posts()->where('status',2)->latest('id')->paginate($this->posts_per_page);        
+        return view('livewire.taglw', compact('posts'));
     }
 }

@@ -1,6 +1,6 @@
   @props(['post'])
 
-<div class="@if($loop->first) @endif">
+<div>
   <article class="mb-8 bg-white shadow-lg rounded-lg overflow-hidden">
       @if ($post->image)
           <img class="w-full h-80 object-cover object-center" src="{{ Storage::url($post->image->url) }}" alt="">

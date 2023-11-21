@@ -1,6 +1,5 @@
-<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-
-    <h1 style="font-family:Raleway-ExtraBold" class="uppercase text-center mb-4 text-3xl ">Categoria: {{ $category->name }}</h1>
+<div>
+    <h1 style="font-family:Raleway-ExtraBold" class="uppercase text-center mb-4 text-3xl ">Etiqueta: {{ $tag->name }}</h1>
 
     <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4  ">
         @foreach ($posts as $post)
@@ -26,7 +25,7 @@
                     </figure>
                 @endif
                
-                    <div class="p-6 mb-4 text-center">
+                    <div class=" p-6 mb-4 text-center ">
                         <h1 style="font-family:Raleway-ExtraBold" class=" text-center text-lg ">
                             <a href="{{ route('posts.show', $post) }}">{{ Str::limit($post->name, 40) }}</a>
                         </h1>
@@ -41,7 +40,7 @@
                         </p>
                     </div>
                     
-                
+              
 
                 <div class="flex gap-6 absolute bottom-5 right-0 px-6 ">
                     <div class="flex-1" data-tooltip-target="tcompartir" data-tooltip-style="light">
@@ -63,21 +62,21 @@
                             </a>
                         </div>
                     @else
-                        <div class="flex-1">
-                            <a data-tooltip-target="tmeinteresa" data-tooltip-style="light" href="{{ route('login') }}">
-                                <i class="fa-regular fa-bookmark fa-lg"></i>
-                            </a>
-                        </div>
-                        <div class="flex-1">
-                            <a data-tooltip-target="tmegusta" data-tooltip-style="light" href="{{ route('login') }}">
-                                <i class="fa-regular fa-heart  fa-lg"></i>
-                            </a>
-                        </div>
-                        <div class="flex-1">
-                            <a data-tooltip-target="tdescargar" data-tooltip-style="light" href="{{ route('login') }}">
-                                <i class="fa-solid fa-download fa-lg"></i>
-                            </a>
-                        </div>
+                    <div class="flex-1">
+                        <a data-tooltip-target="tmeinteresa" data-tooltip-style="light" href="{{ route('login') }}">
+                            <i class="fa-regular fa-bookmark fa-lg"></i>
+                        </a>
+                    </div>
+                    <div class="flex-1">
+                        <a data-tooltip-target="tmegusta" data-tooltip-style="light" href="{{ route('login') }}">
+                            <i class="fa-regular fa-heart  fa-lg"></i>
+                        </a>
+                    </div>
+                    <div class="flex-1">
+                        <a data-tooltip-target="tdescargar" data-tooltip-style="light" href="{{ route('login') }}">
+                            <i class="fa-solid fa-download fa-lg"></i>
+                        </a>
+                    </div>
                     @endauth
                 </div>
             </article>
