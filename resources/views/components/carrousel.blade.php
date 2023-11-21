@@ -8,31 +8,31 @@
         </div>
         <!-- Item 2 -->
         <div class="hidden duration-700 ease-in-out cursor-pointer" data-carousel-item>
-            <a href="">
+            <a href="{{ route('posts.colecciones', '2') }}">
                 <img src="{{ Storage::url('Imagenes/Imagen-barner-2.jpg') }}"
                     class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
             </a>
         </div>
         <!-- Item 3 -->
         <div class="hidden duration-700 ease-in-out cursor-pointer" data-carousel-item>
-            <a href="https://www.google.com">
+            <a href="{{ route('posts.colecciones', '3') }}">
                 <img src="{{ Storage::url('Imagenes/Imagen-barner-3.jpg') }}"
                     class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
             </a>
         </div>
         <!-- Item 4 -->
         <div class="hidden duration-700 ease-in-out cursor-pointer" data-carousel-item>
-            <a href="">
+            <a href="{{ route('posts.colecciones', '3') }}">
                 <img src="{{ Storage::url('Imagenes/Imagen-barner-4.jpg') }}"
                     class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
             </a>
         </div>
         <!-- Item 5 -->
         <div class="hidden duration-700 ease-in-out cursor-pointer" data-carousel-item>
-            <a href="">
-            <img src="{{ Storage::url('Imagenes/Imagen-barner-5.jpg') }}"
-                class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                
+            <a href="{{ route('posts.colecciones', '3') }}">
+                <img src="{{ Storage::url('Imagenes/Imagen-barner-5.jpg') }}"
+                    class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            </a>
         </div>
     </div>
     <!-- Slider indicador -->

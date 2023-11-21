@@ -38,6 +38,7 @@ use App\Http\Controllers\WelcomeController;
 
 Route::get('/', [PostController::class,'temporizador'])->name('posts.temporizador');
 Route::get('/index', [PostController::class,'index'])->name('posts.index');
+Route::get('colecciones/{tag}',[PostController::class,'colecciones'])->name('posts.colecciones');
 //Route::get('/leo', WelcomeController::class)->name('posts.index');
 
 Route::get('posts/{post}',[PostController::class,'show'])->name('posts.show');

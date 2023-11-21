@@ -63,9 +63,7 @@ class PostController extends Controller
 
     //mostramos todos los post destacados que tiene un usuario
     public function destacado(){     
-     // $votes=Vote::where('user_id', auth()->user()->id)->get();
-      //dd($votes);      
-      //return $votes[1] ;
+    
       return view('posts.destacado');
     }
 
@@ -79,6 +77,10 @@ class PostController extends Controller
              ->orderBy('id','desc')
              ->paginate(10);
        return view('posts.buscar', compact('posts','categories'));
+     }
+
+     public function colecciones(Request $tag){ 
+       return view('posts.colecciones');
      }
 
    

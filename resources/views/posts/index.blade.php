@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="container my-4 md:my-4 lg:my-4 px-6 mx-auto ">
+    <div class="container my-4 md:my-4 lg:my-4 px-6 mx-auto  ">
         <x-carrousel />
     </div>
 
@@ -18,7 +18,7 @@
         class="grid grid-cols-1    lg:flex max-w-7xl lg:mx-auto mx-4   bg-white rounded-lg  shadow-lg  items-center  text-center py-8 px-6 gap-4 mt-8 lg:pr-16 ">
 
        
-            <div class="mb-2 lg:mb-4 md:mt-6 lg:mt-6">
+            <div class="mb-2 lg:mb-4 md:mt-6 lg:mt-6 lg:mr-4">
                 <a href="{{ route('posts.buscar') . '?category%5B%5D=1' }}">
                     <img src="{{ Storage::url('Imagenes/Imagenes.jpg') }}"
                         class="inline-block w-10 h-10 ml-4 rounded-xl hover:scale-150 transition-all duration-100"
