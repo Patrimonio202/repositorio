@@ -83,7 +83,7 @@
                 <small class="lg:ml-12" style="font-family:Raleway-Regular">Publicado el
                     {{ $post->created_at->format('Y-m-d') }}
                 </small>
-                <div style="font-family:Raleway-Regular" class=" mt-4 text-justify">
+                <div style="font-family:Raleway-Regular" class=" mt-4 text-justify text-xs">
                     {!! $post->body !!}
                     @section('ogDesc', strip_tags($post->body))
                 </div>
@@ -92,7 +92,7 @@
                 <div style="font-family:Raleway-Regular" class="pt-4 pb-2 ">
                     @foreach ($post->tags as $tag)
                         <a href="{{ route('posts.tag', $tag) }}"
-                            class="inline-block bg-{{ $tag->color }}-200 rounded-full px-3 py-1 text-sm text-gray-700 mr-2">{{ $tag->name }}</a>
+                            class="inline-block bg-{{ $tag->color }}-200 rounded-full px-3 py-1 text-xs text-gray-700 mr-2">{{ $tag->name }}</a>
                     @endforeach
                 </div>
 
@@ -112,31 +112,31 @@
                         </div>
                         <div style="font-family:Raleway-Regular" class="mx-4 flex items-center ">
                             <i class="fa-solid fa-calendar-days fa-lg"></i>
-                            <p style="font-family:Raleway-ExtraBold" class="ml-4 font-bold"> Año creación:</p>
-                            <p  style="font-family:Raleway-Regular" class="mx-4">{{ $post->anocreacion }}</p>
+                            <p style="font-family:Raleway-ExtraBold" class="ml-4 text-xs "> Año creación:</p>
+                            <p  style="font-family:Raleway-Regular" class="mx-4 text-xs">{{ $post->anocreacion }}</p>
                         </div>
                         <div style="font-family:Raleway-Regular" class="mx-4 flex items-center py-4 ">
                             <i class="fa-solid fa-user-tie fa-lg"></i>
-                            <p style="font-family:Raleway-ExtraBold" class="ml-4 font-bold">Autor:</p>
-                            <p style="font-family:Raleway-Regular" class="mx-4">{{ $post->autor }}</p>
+                            <p style="font-family:Raleway-ExtraBold" class="ml-4 text-xs ">Autor:</p>
+                            <p style="font-family:Raleway-Regular" class="mx-4 text-xs">{{ $post->autor }}</p>
                         </div>
 
                         <div style="font-family:Raleway-Regular" class="mx-4 flex items-center pb-4 ">
                             <i class="fa-solid fa-turn-up fa-lg"></i>
-                            <p style="font-family:Raleway-ExtraBold" class="ml-4 font-bold">Categoría:</p>
-                            <p style="font-family:Raleway-Regular" class="mx-4">{{ $post->category->name }}</p>
+                            <p style="font-family:Raleway-ExtraBold" class="ml-4 text-xs ">Categoría:</p>
+                            <p style="font-family:Raleway-Regular" class="mx-4 text-xs">{{ $post->category->name }}</p>
                         </div>
 
                         <div  class="mx-4 flex items-center pb-4">
                             <i class="fa-solid fa-folder-plus fa-lg"></i>
-                            <p style="font-family:Raleway-ExtraBold" class="ml-4 font-bold">Tema:</p>
-                            <p style="font-family:Raleway-Regular" class="mx-4">{{ $post->tema->name }}</p>
+                            <p style="font-family:Raleway-ExtraBold" class="ml-4  text-xs">Tema:</p>
+                            <p style="font-family:Raleway-Regular" class="mx-4 text-xs">{{ $post->tema->name }}</p>
                         </div>
                     </div>
                 </div>
 
                 {{-- <h1 class="text-2xl font-bold text-gray-600 ">Mas en {{ $post->category->name }}</h1> --}}
-                <h1 style="font-family:Raleway-ExtraBold" class="text-xl">Mas en {{ $post->category->name }}</h1>
+                <h1 style="font-family:Raleway-ExtraBold" class="text-xs">Mas en {{ $post->category->name }}</h1>
                 <hr class="py-1">
                 <ul>
                     @foreach ($similares as $similar)
@@ -148,7 +148,7 @@
                                     </div>
                                     <a href="{{ route('posts.show', $similar) }}">
                                         <div>
-                                            <p style="font-family:Raleway-ExtraBold" class=" ml-2 text-justify text-sm font-semibold">{{ $similar->name }}
+                                            <p style="font-family:Raleway-ExtraBold" class=" ml-2 text-justify text-xs font-semibold">{{ $similar->name }}
                                             </p>
                                             <p style="font-family:Raleway-Regular" class="text-xs ml-2 ">{{ $similar->autor }}</p>
                                         </div>
@@ -163,7 +163,7 @@
 
 
                                     <div class="flex-1">
-                                        <p style="font-family:Raleway-ExtraBold" class=" ml-2 text-justify text-sm font-semibold">{{ $similar->name }}</p>
+                                        <p style="font-family:Raleway-ExtraBold" class=" ml-2 text-justify text-xs font-semibold">{{ $similar->name }}</p>
                                         <p style="font-family:Raleway-Regular" class="text-xs ml-2 ">{{ $similar->autor }}</p>
                                     </div>
                                 </a>
