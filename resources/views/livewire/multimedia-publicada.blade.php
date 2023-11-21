@@ -32,7 +32,7 @@
                         <p style="font-family:Raleway-Regular" class="text-gray-500 mb-4 text-xs">
                             <a href="{{ route('posts.category', $post->category->slug) }}">
                                 <img src="{{ Storage::url('Imagenes/' . $post->category->rutaimagen) }}"
-                                    class="inline-block w-5 h-5 rounded-xl" alt="...">
+                                    class="inline-block w-5 h-5 " alt="...">
                             </a>
                             <small>Creado en <u>{{ $post->anocreacion }}</u> por
                                 <a href="" class="text-gray-900">{{ $post->autor }}</a></small>
@@ -89,9 +89,9 @@
         <div x-intersect="$wire.loadMore()"></div>
     </div>
     @if ($posts_per_page >= $totalRecords)
-        <h1 class=" text-center text-lg  font-semibold text-gray-700 ">
+        {{-- <h1 class=" text-center text-lg  font-semibold text-gray-700 ">
             No hay mas registros...
-        </h1>
+        </h1> --}}
     @endif
 
     {{-- prueba de modal  sm md lg  xl 2xl --}}

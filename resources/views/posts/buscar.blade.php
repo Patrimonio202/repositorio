@@ -72,7 +72,7 @@
                                     <hr class="mt-1 mb-2">
                                     <div class="mb-2">
                                         <img src="{{ Storage::url('Imagenes/' . $post->category->rutaimagen) }}"
-                                         class="inline-block w-5 h-5 rounded-xl" alt="...">
+                                         class="inline-block w-5 h-5 " alt="...">
 
                                         @foreach ($post->tags as $tag)
                                         <a href="{{route('posts.buscar').'?tag='.$tag->name}}">

@@ -76,7 +76,7 @@
                     <!-- Newsletter sign-up input field -->
                     <div class="relative md:mb-6" data-te-input-wrapper-init>
                         <input type="text"
-                        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6]  text-neutral-200 outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100  motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 "
+                        class=" bg-transparent border border-white-500 text-white-900 dark:text-white-400 placeholder-white-700 dark:placeholder-white-500 text-sm rounded-lg focus:ring-white focus:border-white block w-full p-2.5 dark:border-white  "
                          placeholder="Dirección de correo electronico" />
 
 
@@ -104,7 +104,7 @@
         <!-- Copyright information -->
         <div class="mb-6">
             <p>
-                Proyecto ganador de la convocatoria de estímulos 2023 del Ministerio de las Culturas, las Artes y los Saberes, bajo la supervisión del Archivo General de la Nación.
+                Este centro documental es una venta abierta a la historia y a la memoria de El Santuario.
             </p>
         </div>
 

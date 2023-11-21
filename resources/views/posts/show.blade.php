@@ -23,7 +23,7 @@
             <div class="lg:col-span-2">
                 {{-- aqui organizamos la imagen --}}
                 @if ($post->category->id == 1)
-                    <figure >
+                    <figure class="mr-12 mb-4" >
                         @if ($post->image)
                             <img class="img-source zoom rounded-xl hover:scale-105 transition-all duration-100 cursor-pointer  object-cover object-top hover:mb-2 "
                                 src="{{ Storage::url($post->image->url) }}" alt="" onclick="full_view(this);">
@@ -89,12 +89,14 @@
                 </div>
 
                 {{-- etiquetas --}}
-                <div style="font-family:Raleway-Regular" class="pt-4 pb-2 ">
+                <div style="font-family:Raleway-Regular" class="pt-4 pb-8 ">
                     @foreach ($post->tags as $tag)
                         <a href="{{ route('posts.tag', $tag) }}"
                             class="inline-block bg-{{ $tag->color }}-200 rounded-full px-3 py-1 text-xs text-gray-700 mr-2">{{ $tag->name }}</a>
                     @endforeach
                 </div>
+
+                <hr>
 
             </div>
 
@@ -110,24 +112,24 @@
                             </h1>
 
                         </div>
-                        <div style="font-family:Raleway-Regular" class="mx-4 flex items-center ">
+                        <div style="font-family:Raleway-Regular" class="mx-4 flex items-center h-14  rounded-lg  bg-gray-200 pl-4  ">
                             <i class="fa-solid fa-calendar-days fa-lg"></i>
                             <p style="font-family:Raleway-ExtraBold" class="ml-4 text-xs "> Año creación:</p>
                             <p  style="font-family:Raleway-Regular" class="mx-4 text-xs">{{ $post->anocreacion }}</p>
                         </div>
-                        <div style="font-family:Raleway-Regular" class="mx-4 flex items-center py-4 ">
+                        <div style="font-family:Raleway-Regular" class="mx-4 flex items-center py-4 pl-4 h-14">
                             <i class="fa-solid fa-user-tie fa-lg"></i>
                             <p style="font-family:Raleway-ExtraBold" class="ml-4 text-xs ">Autor:</p>
                             <p style="font-family:Raleway-Regular" class="mx-4 text-xs">{{ $post->autor }}</p>
                         </div>
 
-                        <div style="font-family:Raleway-Regular" class="mx-4 flex items-center pb-4 ">
+                        <div style="font-family:Raleway-Regular" class="mx-4 flex items-center pb-4 rounded-lg bg-gray-200 h-14 pl-4 pt-4">
                             <i class="fa-solid fa-turn-up fa-lg"></i>
                             <p style="font-family:Raleway-ExtraBold" class="ml-4 text-xs ">Categoría:</p>
                             <p style="font-family:Raleway-Regular" class="mx-4 text-xs">{{ $post->category->name }}</p>
                         </div>
 
-                        <div  class="mx-4 flex items-center pb-4">
+                        <div  class="mx-4 flex items-center pb-4 pl-4 h-14">
                             <i class="fa-solid fa-folder-plus fa-lg"></i>
                             <p style="font-family:Raleway-ExtraBold" class="ml-4  text-xs">Tema:</p>
                             <p style="font-family:Raleway-Regular" class="mx-4 text-xs">{{ $post->tema->name }}</p>
@@ -136,11 +138,11 @@
                 </div>
 
               
-                <h1 style="font-family:Raleway-ExtraBold" class="text-xs">Mas en {{ $post->category->name }}</h1>
-                <hr class="py-1">
+                <h1 style="font-family:Raleway-ExtraBold" class="text-xs ">Mas en {{ $post->category->name }}</h1>
+                <hr class="py-1 mb-4">
                 <ul>
                     @foreach ($similares as $similar)
-                        <li class="mb-4">
+                        <li class="mb-8">
                             @if ($similar->category->id == '4')
                                 <div class="grid grid-cols-2">
                                     <div class="relative overflow-hidden bg-no-repeat bg-cover relative overflow-hidden bg-no-repeat bg-cover shadow-lg rounded-lg  "   >
@@ -163,8 +165,8 @@
 
 
                                     <div class="flex-1">
-                                        <p style="font-family:Raleway-ExtraBold" class=" ml-2 text-justify text-xs font-semibold">{{ $similar->name }}</p>
-                                        <p style="font-family:Raleway-Regular" class="text-xs ml-2 ">{{ $similar->autor }}</p>
+                                        <p style="font-family:Raleway-ExtraBold" class=" ml-4 text-justify text-xs font-semibold">{{ $similar->name }}</p>
+                                        <p style="font-family:Raleway-Regular" class="text-xs ml-4 ">{{ $similar->autor }}</p>
                                     </div>
                                 </a>
                             @endif

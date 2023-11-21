@@ -1,9 +1,15 @@
 <div>
-    @auth
+   
         <div class="flex">
             <figure class="mr-4">
-                <img class="w-12 h-12 object-cover object-center rounded-full" src="{{ Auth::user()->profile_photo_url }}"
-                    alt="">
+                @auth 
+                       <img class="w-12 h-12 object-cover object-center rounded-full" src="{{ Auth::user()->profile_photo_url }}"
+                        alt="">
+                @else
+                       <svg class="w-12 h-12 object-cover object-center rounded-full"  xmlns="http://www.w3.org/2000/svg" height="1em" 
+                                    viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg> 
+                            
+                  @endauth
             </figure>
 
             <div class="flex-1">
@@ -15,18 +21,19 @@
                     <x-balloon-editor wire:model="message" placeholder="Agrega un comentario"  />                    
 
                     <x-input-error for="message" class="mt-1" />
-
-                    <div class="flex justify-end mt-4">
-                        <x-button>
-                            {{ __('Comentar') }}
-                        </x-button>
-                    </div>
+                    @auth   
+                        <div class="flex justify-end mt-4">
+                            <x-button>
+                                {{ __('Comentar') }}
+                            </x-button>
+                        </div>
+                    @endauth
 
                 </form>
             </div>
 
         </div>
-    @endauth
+   
     <p class="text-lg font-semibold mt-6 mb-4">
         {{ $model->questions()->count() }} Comentarios:
     </p>

@@ -15,10 +15,10 @@
         </section> max-w-8xl
     </div> --}}-->
     <div
-        class="grid grid-cols-1    lg:flex max-w-7xl lg:mx-auto mx-4   bg-white rounded-lg  shadow-lg   text-center py-8 px-6 gap-4 mt-8 ">
+        class="grid grid-cols-1    lg:flex max-w-7xl lg:mx-auto mx-4   bg-white rounded-lg  shadow-lg  items-center  text-center py-8 px-6 gap-4 mt-8 lg:pr-16 ">
 
-        <div>
-            <div class="mb-2 lg:mb-4">
+       
+            <div class="mb-2 lg:mb-4 md:mt-6 lg:mt-6">
                 <a href="{{ route('posts.buscar') . '?category%5B%5D=1' }}">
                     <img src="{{ Storage::url('Imagenes/Imagenes.jpg') }}"
                         class="inline-block w-10 h-10 ml-4 rounded-xl hover:scale-150 transition-all duration-100"
@@ -27,7 +27,7 @@
 
                 <a href="{{ route('posts.buscar') . '?category%5B%5D=3' }}">
                     <img src="{{ Storage::url('Imagenes/Libros.jpg') }}"
-                        class="inline-block h-12 w-10 object-cover object-center ml-4 rounded-xl hover:scale-150 transition-all duration-100"
+                        class="inline-block h-10 w-10 object-cover object-center ml-4 rounded-xl hover:scale-150 transition-all duration-100"
                         alt="...">
                 </a>
                 <a href="{{ route('posts.buscar') . '?category%5B%5D=4' }}">
@@ -37,14 +37,14 @@
                 </a>
                 <a href="{{ route('posts.buscar') . '?category%5B%5D=2' }}">
                     <img src="{{ Storage::url('Imagenes/Audios.jpg') }}"
-                        class="inline-block h-12 w-10 object-cover object-center ml-4 rounded-xl hover:scale-150 transition-all duration-100"
+                        class="inline-block h-10 w-10 object-cover object-center ml-4 rounded-xl hover:scale-150 transition-all duration-100"
                         alt="...">
                 </a>
             </div>
 
 
 
-        </div>
+     
 
 
         <div class=" md:flex-1 lg:flex-1 pl-0  ml-0">
