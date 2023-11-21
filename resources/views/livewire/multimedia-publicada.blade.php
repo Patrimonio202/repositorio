@@ -26,7 +26,7 @@
                 <div class="p-6">
                     <div class=" text-center">
                         <h1 style="font-family:Raleway-ExtraBold" class=" text-center text-xs ">
-                            <a href="">{{ Str::limit($post->name, 40) }}</a>
+                            <a href="{{ route('posts.show', $post) }}">{{ Str::limit($post->name, 40) }}</a>
                         </h1>
 
                         <p style="font-family:Raleway-Regular" class="text-gray-500 mb-4 text-xs">

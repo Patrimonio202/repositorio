@@ -23,7 +23,7 @@
             <div class="lg:col-span-2">
                 {{-- aqui organizamos la imagen --}}
                 @if ($post->category->id == 1)
-                    <figure class=" lg:mt-8 lg:mr-12 lg:ml-12  ">
+                    <figure >
                         @if ($post->image)
                             <img class="img-source zoom rounded-xl hover:scale-105 transition-all duration-100 cursor-pointer  object-cover object-top hover:mb-2 "
                                 src="{{ Storage::url($post->image->url) }}" alt="" onclick="full_view(this);">
@@ -80,7 +80,7 @@
                         <x-embed url="{{ $post->image->urlyoutube }}" aspect-ratio="4:3" />
                     </div>
                 @endif
-                <small class="lg:ml-12" style="font-family:Raleway-Regular">Publicado el
+                <small  style="font-family:Raleway-Regular">Publicado el
                     {{ $post->created_at->format('Y-m-d') }}
                 </small>
                 <div style="font-family:Raleway-Regular" class=" mt-4 text-justify text-xs">
@@ -135,7 +135,7 @@
                     </div>
                 </div>
 
-                {{-- <h1 class="text-2xl font-bold text-gray-600 ">Mas en {{ $post->category->name }}</h1> --}}
+              
                 <h1 style="font-family:Raleway-ExtraBold" class="text-xs">Mas en {{ $post->category->name }}</h1>
                 <hr class="py-1">
                 <ul>
