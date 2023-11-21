@@ -34,7 +34,7 @@
                         <p style="font-family:Raleway-Regular" class="text-gray-500 mb-4">
                             <a href="{{ route('posts.category', $post->category->slug) }}">
                                 <img src="{{ Storage::url('Imagenes/' . $post->category->rutaimagen) }}"
-                                    class="inline-block w-5 h-5 rounded-xl" alt="...">
+                                    class="inline-block w-5 h-5 " alt="...">
                             </a>
                             <small>Creado en <u>{{ $post->anocreacion }}</u> por
                                 <a href="" class="text-gray-900">{{ $post->autor }}</a></small>
