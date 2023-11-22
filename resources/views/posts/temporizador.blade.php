@@ -79,9 +79,6 @@
     <x-banner />
 
     <div class="min-h-screen">
-
-
-
         <!-- Page Content -->
         <div class="flex flex-col h-screen ">
             <div class="   lg:h-screen  w-full bg-cover justify-center items-center text-center "
@@ -112,8 +109,8 @@
                     </div>
                 </div>
 
-                <div class="absolute hidden lg:block   lg:bottom-44  ">
-                    <img class=" h-96   object-cover" src="{{ Storage::url('Imagenes/segundaimagencontador.png') }}" >
+                <div class="hidden lg:block -mt-52  bottom-0 ">
+                    <img class="  max-w-screen-lg object-cover " src="{{ Storage::url('Imagenes/segundaimagencontador.png') }}" >
                 </div>
 
 
