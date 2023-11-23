@@ -37,16 +37,17 @@
                 @endif
                 @if ($post->category->id == 2)
                     <div
-                        class="card flex flex-col items-center bg-gradient-to-tr from-blue-400 to-red-400 text-xl font-mono p-4 rounded-md text-white aspect-[16/9]">
+                        class="card flex flex-col items-center text-xl font-mono p-4 rounded-md text-white aspect-[16/9] md:mr-12 lg:mr-12 mb-4"
+                        style=" background-image: url({{ Storage::url('Imagenes/FondoReproductor.png') }})" >
                         <div class="cover flex flex-col items-center min-w-80px w-auto max-w-880px">
                             <img src="{{ Storage::url($post->image->url) }}" alt="Album Cover" class="w-3/6 rounded-xl">
                             @section('ogImage', Storage::url($post->image->url))
                             <p class="-translate-y-10 w-3/6 text-center break-words"></p>
                         </div>
-                        <audio id="song" class="block w-full max-w-md mx-auto" controls>
+                        <audio id="song" class="block w-full max-w-md mx-auto mt-4" controls>
                             <source src="{{ Storage::url($post->image->urlarchivo) }}" type="audio/mpeg">
                         </audio>
-                        <div class="mt-4">
+                        <div class="hidden lg:block mt-4">
                             <button onclick="document.getElementById('song').play()"
                                 class="bg-slate-600 px-2 rounded-lg hover:bg-slate-800">Reproducir</button>
                             <button onclick="document.getElementById('song').pause()"

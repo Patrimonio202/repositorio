@@ -1,11 +1,17 @@
 <x-app-layout>
     <div class="max-w-7xl lg:mx-auto mx-4">
-        @if ($tag->slug == 'archivo-antonio-botero')
-            <x-colecciones-antoniobotero />
-        @else
-          <p>pagina en desarrollo</p>
-        @endif
+        @Switch($tag->slug)
+            @case('archivo-antonio-botero')
+                <x-colecciones-antoniobotero />
+            @break
 
+            @case('archivo-el-santuariano')
+                <x-colecciones-elsantuariano />
+            @break
+
+            @default
+                <span>en desarrollo {{$tag->name}}</span>
+        @endswitch
 
     </div>
 </x-app-layout>

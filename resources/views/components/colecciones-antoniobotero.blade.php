@@ -2,7 +2,8 @@
     <img src="{{ Storage::url('Imagenes/Antonio_botero_titulo.png') }}" class=" object-cover object-center"
         alt="Titulo Antonio botero">
 </div>
-<div class="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-2 mt-4  md:mt-16 lg:mt-16 items-center justify-center bg-center text-center">
+
+<div class="   grid grid-cols-1  md:grid-cols-2 lg:grid-cols-2 mt-4  md:mt-16 lg:mt-16 items-center justify-center bg-center text-center">
     <div class=" mt-4  md:mt-14 lg:mt-14  md:mr-20 lg:mr-20">
         <h1 class=" text-center  text-[#08416b]" style="font-family:Raleway-ExtraBold">CELBRANDO EL PATRIMONIO
             FOTOGRÁFICO DE DON
@@ -31,10 +32,11 @@
             </p>
         </div>
     </div>
-    <div class="  order-first md:order-last lg:order-last items-center justify-center bg-center text-center">
+    <div class=" lg:flex  md:flex order-first md:order-last lg:order-last items-center justify-center bg-center text-center">
         <img src="{{ Storage::url('Imagenes/Antonioboterofoto.png') }}" class=" w-96  object-center object-cover"
             alt="Foto Antonio botero">
     </div>
+
 </div>
 
 <div class=" mt-4 md:mt-0 lg:mt-0">
