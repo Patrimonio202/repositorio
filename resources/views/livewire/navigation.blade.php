@@ -267,6 +267,10 @@
                     {{ $category->name }}
                 </x-responsive-nav-link>
             @endforeach
+
+            <x-responsive-nav-link href="{{ route('inicio.acercade') }}" :active="request()->routeIs('inicio.acercade')">
+                {{ __('Acerca de') }}
+            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options para el celular -->
