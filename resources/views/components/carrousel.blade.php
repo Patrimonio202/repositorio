@@ -8,28 +8,28 @@
         </div>
         <!-- Item 2 -->
         <div class="hidden duration-700 ease-in-out cursor-pointer" data-carousel-item>
-            <a href="{{ route('posts.colecciones', '2') }}">
+            <a href="{{ route('posts.colecciones', 'archivo-antonio-botero') }}">
                 <img src="{{ Storage::url('Imagenes/Imagen-barner-2.jpg') }}"
                     class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
             </a>
         </div>
         <!-- Item 3 -->
         <div class="hidden duration-700 ease-in-out cursor-pointer" data-carousel-item>
-            <a href="{{ route('posts.colecciones', '3') }}">
+            <a href="{{ route('posts.colecciones', 'archivo-el-santuariano') }}">
                 <img src="{{ Storage::url('Imagenes/Imagen-barner-3.jpg') }}"
                     class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
             </a>
         </div>
         <!-- Item 4 -->
         <div class="hidden duration-700 ease-in-out cursor-pointer" data-carousel-item>
-            <a href="{{ route('posts.colecciones', '3') }}">
+            <a href="{{ route('posts.colecciones', 'biblioteca-publica-municipal') }}">
                 <img src="{{ Storage::url('Imagenes/Imagen-barner-4.jpg') }}"
                     class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
             </a>
         </div>
         <!-- Item 5 -->
         <div class="hidden duration-700 ease-in-out cursor-pointer" data-carousel-item>
-            <a href="{{ route('posts.colecciones', '3') }}">
+            <a href="{{ route('posts.colecciones', 'archivo-patrimonial-de-el-santuario') }}">
                 <img src="{{ Storage::url('Imagenes/Imagen-barner-5.jpg') }}"
                     class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
             </a>

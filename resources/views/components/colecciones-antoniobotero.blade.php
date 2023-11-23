@@ -1,10 +1,9 @@
 <div class="flex mt-4 items-center justify-center text-center  bg-center  ">
     <img src="{{ Storage::url('Imagenes/Antonio_botero_titulo.png') }}" class=" object-cover object-center"
         alt="Titulo Antonio botero">
-
 </div>
-<div class="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-2  mt-16 items-center justify-center bg-center text-center">
-    <div class=" mt-14  mr-20">
+<div class="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-2 mt-4  md:mt-16 lg:mt-16 items-center justify-center bg-center text-center">
+    <div class=" mt-4  md:mt-14 lg:mt-14  md:mr-20 lg:mr-20">
         <h1 class=" text-center  text-[#08416b]" style="font-family:Raleway-ExtraBold">CELBRANDO EL PATRIMONIO
             FOTOGRÁFICO DE DON
             ANTONIO BOTERO GÓMEZ (1919-2000)</h1>
@@ -32,18 +31,18 @@
             </p>
         </div>
     </div>
-    <div class=" items-center justify-center bg-center text-center">
+    <div class=" order-first md:order-last lg:order-last items-center justify-center bg-center text-center">
         <img src="{{ Storage::url('Imagenes/Antonioboterofoto.png') }}" class=" w-96  object-center object-cover"
             alt="Foto Antonio botero">
     </div>
 </div>
 
-<div class=" mt-0">
+<div class=" mt-4 md:mt-0 lg:mt-0">
     <img src="{{ Storage::url('Imagenes/Antonio_botero_coleccion.png') }}" class=" object-cover object-center"
         alt="Foto Antonio botero">
 </div>
 
-<div>
+<div class=" mt-4 md:mt-0  lg:mt-0">
     <h1 class=" text-center text-[#08416b]" style="font-family:Raleway-ExtraBold">MÁS ALLÁ DE LA FOTOGRAFÍA,
         CONSERVANDO UN LEGADO VISUAL</h1>
     <div class=" text-justify text-sm mt-4 text-[#08416b]" style="font-family:Raleway-Regular">
@@ -65,9 +64,9 @@
     </div>
 </div>
 
-<div class="flex mt-8">
-    <div class=" w-52 mt-10 mr-8">
-        <img src="{{ Storage::url('Imagenes/CamaraAntonioBotero_L.png') }}" class=" object-cover object-center"
+<div class=" items-center justify-center md:flex lg:flex mt-8 ">
+    <div class="flex items-center justify-center bg-center  mt-10 md:mr-8 lg:mr-8">
+        <img src="{{ Storage::url('Imagenes/CamaraAntonioBotero_L.png') }}" class=" w-52 object-cover object-center"
             alt="Foto Antonio botero">
     </div>
     <div class=" mt-4 flex-1 ">

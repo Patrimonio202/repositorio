@@ -79,8 +79,8 @@ class PostController extends Controller
        return view('posts.buscar', compact('posts','categories'));
      }
 
-     public function colecciones(Request $tag){ 
-       return view('posts.colecciones');
+     public function colecciones(Tag $tag){
+       return view('posts.colecciones', compact('tag'));
      }
 
    
