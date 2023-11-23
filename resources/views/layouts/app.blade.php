@@ -78,7 +78,7 @@
 
         <div class="min-h-screen bg-gray-100">      
          
-             @livewire('navigation')           <!-- este es el menu que acabamos de crear -->    
+          @livewire('navigation',['colorbanner' => 'white'])           <!-- este es el menu que acabamos de crear -->    
         
             <!-- Page Content -->
             <main>

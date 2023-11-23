@@ -1,5 +1,6 @@
 <x-app-layout>
-    <div class="container my-4 md:my-4 lg:my-4 px-6 mx-auto  ">
+    
+    <div class="container my-4 md:my-4 lg:my-4 px-6 mx-auto   ">
         <x-carrousel />
     </div>
 

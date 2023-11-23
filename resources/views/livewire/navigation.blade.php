@@ -1,5 +1,5 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100  sticky top-0 start-0 z-50 ">
-    <!-- Primary Navigation Menu  sticky top-0 start-0 z-50-->
+<nav x-data="{ open: false }" class="bg-{{$colorbanner}} border-b border-gray-100  sticky top-0 start-0 z-50 ">
+    <!-- Primary Navigation Menu  sticky top-0 start-0 z-50 -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
         <div class="flex justify-between h-16 ">
             <div class="flex">
@@ -26,18 +26,42 @@
                 </div> --}}
 
                 <!-- Cargar datos desde base de datos -->
-                @foreach ($categories as $category)                 
+                  {{-- @foreach ($categories as $category)                 
                         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">                           
-                            <x-nav-link href="{{ route('posts.category', $category) }}" :active="request()->is( 'category/'.$category->name)">
+                            <x-nav-link href="{{ route('posts.category', $category) }}" :active="request()->routeIs('posts.category', $category)">
                                 {{ $category->name }}
                             </x-nav-link>
                         </div>                   
-                @endforeach
+                @endforeach  --}}
 
-                <!-- Links de navegacion computador - carrusel -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link href="{{ route('posts.buscar') }}" :active="request()->routeIs('posts.buscar')">
-                        {{ __('Buscar') }}
+                    <x-nav-link href="{{ route('posts.category', 'imagenes') }}" :active="request()->Is('category/imagenes')">
+                        {{ __('Imágenes') }}
+                    </x-nav-link>
+                </div>   
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link href="{{ route('posts.category', 'audios') }}" :active="request()->Is('category/audios')">
+                        {{ __('Audios') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link href="{{ route('posts.category', 'publicaciones') }}" :active="request()->Is('category/publicaciones')">
+                        {{ __('Publicaciones') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link href="{{ route('posts.category', 'videos') }}" :active="request()->Is('category/videos')">
+                        {{ __('Videos') }}
+                    </x-nav-link>
+                </div>                 
+
+                <!-- acerca de -->
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link href="{{ route('inicio.acercade') }}" :active="request()->routeIs('inicio.acercade')">
+                        {{ __('Acerca de') }}
                     </x-nav-link>
                 </div> 
 
@@ -171,16 +195,17 @@
                 </div>
             @else
             <div class="hidden sm:flex sm:items-center sm:ml-6">
-                <div class="ml-3 relative">
+                <div class="flex ml-3 relative">
+
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             <span class="inline-flex rounded-md">
                                 <button type="button"
-                                    class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
-                                    {{-- <svg xmlns="http://www.w3.org/2000/svg" height="1em" 
-                                    viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg> --}}
+                                    class="inline-flex items-center px-1 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
+                                    <!-- Menu opciones usuarios-->
                                     <i class="fa-solid fa-circle-user fa-xl"></i>
-                                    </button>
+                                    </button>                                    
+                                
                             </span>
                         </x-slot>
 
@@ -201,6 +226,12 @@
                             @endif
                         </x-slot>
                     </x-dropdown>
+
+                    <a href="{{ route('posts.buscar') }}" class="inline-flex items-center px-1 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
+                      <!-- Boton lupa-->
+                                    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+                                   
+                     </a>
                 </div>
             </div>   
               

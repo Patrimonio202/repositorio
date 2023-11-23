@@ -99,7 +99,7 @@
     </div>
 </div>
 
-<div class=" mb-8 mt-8">
-    <img src="{{ Storage::url('Imagenes/Antonio_botero_frasefinal.png') }}" class=" object-cover object-center"
+<div class=" flex items-center justify-center mb-8 mt-8  md:mt-16  lg:mt-16">
+    <img src="{{ Storage::url('Imagenes/Antonio_botero_frasefinal.png') }}" class=" md:lg:w-[700px] lg:w-[700px] object-cover object-center"
         alt="Frase final Antonio botero">
 </div>

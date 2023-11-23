@@ -7,6 +7,13 @@ use Livewire\Component;
 
 class Navigation extends Component
 {
+    public $colorbanner;
+
+    public function mount()
+    {  
+      //dd($this->colorbanner); 
+    }
+
     public function render()
     {
          $categories= Category::all();
