@@ -1,16 +1,16 @@
 <x-app-layout>
     <div class="max-w-7xl lg:mx-auto mx-4">
-        <div class="flex mt-4 mb-0 items-center justify-center text-center  bg-center ">
+        <div class="flex mt-4 items-center justify-center text-center  bg-center h-52 ">
             <img src="{{ Storage::url('Imagenes/Antonio_botero_titulo.png') }}"
                 class=" max-w-7xl object-cover object-center" alt="Titulo Antonio botero">
 
         </div>
-        <div class="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-2 mt-4">
-            <div class="mt-32">
-                <h1 class=" text-center text-blue-600" style="font-family:Raleway-ExtraBold">CELBRANDO EL PATRIMONIO
+        <div class="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-2  mt-16 items-center justify-center bg-center text-center">
+            <div class=" mt-14  mr-20">
+                <h1 class=" text-center  text-azuloscuro" style="font-family:Raleway-ExtraBold">CELBRANDO EL PATRIMONIO
                     FOTOGRÁFICO DE DON
                     ANTONIO BOTERO GÓMEZ (1919-2000)</h1>
-                <div class=" text-justify text-sm mt-4 text-blue-600" style="font-family:Raleway-Regular">
+                <div class=" text-left text-sm mt-4 text-azuloscuro" style="font-family:Raleway-Regular">
                     <p>La fotografía es un poderoso medio para capturar la esencia de una época, y el legado de Don
                         Antonio
                         Botero Gómez es un testimonio invaluable de la vida y la cultura en El Santuario, a lo largo de
@@ -34,21 +34,21 @@
                     </p>
                 </div>
             </div>
-            <div class=" -mt-32">
-                <img src="{{ Storage::url('Imagenes/Antonioboterofoto.png') }}" class=" object-cover object-center"
+            <div class=" items-center justify-center bg-center text-center" >
+                <img src="{{ Storage::url('Imagenes/Antonioboterofoto.png') }}" class=" w-96  object-center object-cover"
                     alt="Foto Antonio botero">
             </div>
         </div>
 
-        <div>
+        <div class=" mt-0">
             <img src="{{ Storage::url('Imagenes/Antonio_botero_coleccion.png') }}" class=" object-cover object-center"
                 alt="Foto Antonio botero">
         </div>
 
         <div>
-            <h1 class=" text-center text-blue-600" style="font-family:Raleway-ExtraBold">MÁS ALLÁ DE LA FOTOGRAFÍA,
+            <h1 class=" text-center text-azuloscuro" style="font-family:Raleway-ExtraBold">MÁS ALLÁ DE LA FOTOGRAFÍA,
                 CONSERVANDO UN LEGADO VISUAL</h1>
-            <p class=" text-justify text-sm mt-4 text-blue-600" style="font-family:Raleway-Regular">
+            <p class=" text-justify text-sm mt-4 text-azuloscuro" style="font-family:Raleway-Regular">
                 Lo que distingue a Don Antonio Botero Gómez no es solo su habilidad técnica detrás de la cámara, sino
                 también su maestría artística. Sus fotografías no son simples instantáneas, sino verdaderas obras de
                 arte. Utilizaba su conocimiento químico para revelar y, en algunos casos, iluminar o pintar sus
@@ -63,15 +63,15 @@
         </div>
 
         <div class="flex mt-8">
-            <div class=" w-52 mt-10">
+            <div class=" w-52 mt-10 mr-8">
                 <img src="{{ Storage::url('Imagenes/CamaraAntonioBotero_L.png') }}" class=" object-cover object-center"
                     alt="Foto Antonio botero">
             </div>
             <div class=" mt-4 flex-1 ">
-                <h1 class=" text-center text-blue-600" style="font-family:Raleway-ExtraBold">
+                <h1 class=" text-center text-azuloscuro" style="font-family:Raleway-ExtraBold">
                     EXPLORANDO EL PATRIMONIO VISUAL DE EL SANTUARIO
                 </h1>
-                <div class=" text-justify text-sm mt-4 text-blue-600" style="font-family:Raleway-Regular">
+                <div class=" text-justify text-sm mt-4 text-azuloscuro" style="font-family:Raleway-Regular">
                     <p>
                         Esta colección ofrece a los visitantes la oportunidad de sumergirse en la historia de El
                         Santuario a través de los ojos y el corazón de Don Antonio Botero Gómez. Las imágenes capturan
