@@ -12,9 +12,7 @@ export default {
     ],
 
     theme: {
-        colors: {            
-            'azuloscuro': '#08416b',
-          },
+        
 
         extend: {
             fontFamily: {
