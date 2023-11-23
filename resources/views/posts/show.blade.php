@@ -23,7 +23,7 @@
             <div class="lg:col-span-2">
                 {{-- aqui organizamos la imagen --}}
                 @if ($post->category->id == 1)
-                    <figure class="mr-12 mb-4" >
+                    <figure class="md:mr-12 lg:mr-12 mb-4" >
                         @if ($post->image)
                             <img class="img-source zoom rounded-xl hover:scale-105 transition-all duration-100 cursor-pointer  object-cover object-top hover:mb-2 "
                                 src="{{ Storage::url($post->image->url) }}" alt="" onclick="full_view(this);">
@@ -63,8 +63,8 @@
                     <figure>
                         <div class="relative overflow-hidden bg-no-repeat bg-cover relative overflow-hidden bg-no-repeat bg-cover shadow-lg rounded-lg  "
                             data-mdb-ripple="true" data-mdb-ripple-color="light">
-                            <iframe width="100%" height="500"
-                                src="{{ Storage::url('archivos/CP-510-47-994000022586-0.PDF') }}#toolbar=0&navpanes=0&scrollbar=0"></iframe>
+                            <iframe width="100%" height="1000"
+                                src="{{ Storage::url($post->image->urlarchivo) }}#toolbar=0&navpanes=0&scrollbar=0"></iframe>
                             @section('ogImage', Storage::url($post->image->url))
                             {{-- <embed src="{{ Storage::url('archivos/CP-510-47-994000022586-0.PDF') }}" type="application/pdf" width="100%" height="500px" /> --}}
                             {{-- <embed
