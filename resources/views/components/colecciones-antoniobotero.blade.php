@@ -1,4 +1,4 @@
-<div class="flex mt-4 items-center justify-center text-center  bg-center  ">
+<div class="flex mt-4 md:mt-16 lg:mt-16 items-center justify-center text-center  bg-center  ">
     <img src="{{ Storage::url('Imagenes/Antonio_botero_titulo.png') }}" class=" object-cover object-center"
         alt="Titulo Antonio botero">
 </div>
@@ -31,7 +31,7 @@
             </p>
         </div>
     </div>
-    <div class=" order-first md:order-last lg:order-last items-center justify-center bg-center text-center">
+    <div class="  order-first md:order-last lg:order-last items-center justify-center bg-center text-center">
         <img src="{{ Storage::url('Imagenes/Antonioboterofoto.png') }}" class=" w-96  object-center object-cover"
             alt="Foto Antonio botero">
     </div>
