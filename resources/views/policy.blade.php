@@ -96,25 +96,25 @@
                             <h2>Eliminación de datos de facebook</h2>
                             En concordancia con las regulaciones de Facebook para Apps y sitios web, debemos brindarle a
                             los usuarios las instrucciones para eliminar sus datos. Si quieres eliminar tu actividad
-                            relacionada a Coders Free, lo puedes hacer de la siguiente manera.
+                            relacionada a Repositorio Digital, lo puedes hacer de la siguiente manera.
                             <ol>
                                 <li>Ingresa a tu cuenta de Facebook y haz clic en “Configuración y privacidad”. Después
                                     haz clic en “Configuración”. </li>
                                 <li>
                                     Ve a la sección de “Apps y sitios web”, aquí podrás ver toda tu actividad
                                     relacionada a aplicaciones y páginas web registradas en tu cuenta de Facebook.
-                                    <img src="/img/2022-07-16.png" alt="">
+                                    <img src="../storage/imgfacebook/facebookimagen1.png" alt="">
                                 </li>
                                 <li>
-                                    Selecciona la casilla correspondiente a Codersfree y haz clic en “Eliminar”.
-                                    <img src="/img/2022-07-16 (1).png" alt="">
+                                    Selecciona la casilla correspondiente a Repositorio Digital y haz clic en “Eliminar”.
+                                    <img src="../storage/imgfacebook/facebookimagen2.png" alt="">
                                 </li>
                                 <li>
                                     Selecciona las casillas de acuerdo a tu preferencia y haz clic en “Eliminar”.
-                                    <img src="/img/2022-07-16 (2).png" alt="">
+                                    <img src="../storage/imgfacebook/facebookimagen2.png" alt="">
                                 </li>
                                 <li>
-                                    ¡Listo! Eliminaste a la secretaria de cultura de tus actividades de manera exitosa.
+                                    ¡Listo! Eliminaste a la Repositorio Digital de tus actividades de manera exitosa.
                                 </li>
                             </ol>
 

@@ -13,18 +13,18 @@
                         <li>Ingresa a tu cuenta de Facebook y haz clic en “Configuración y privacidad”. Después haz clic en “Configuración”. </li>
                         <li>
                             Ve a la sección de “Apps y sitios web”, aquí podrás ver toda tu actividad relacionada a aplicaciones y páginas web registradas en tu cuenta de Facebook. 
-                            <img src="https://codersfree.com/img/2022-07-16.png" alt="">
+                            <img src="../storage/imgfacebook/facebookimagen1.png" alt="">
                         </li>
                         <li>
-                            Selecciona la casilla correspondiente a Codersfree y haz clic en “Eliminar”. 
-                            <img src="https://codersfree.com/img/2022-07-16 (1).png" alt="">
+                            Selecciona la casilla correspondiente a Repositorio Digital y haz clic en “Eliminar”. 
+                            <img src="../storage/imgfacebook/facebookimagen1.png" alt="">
                         </li>
                         <li>
                             Selecciona las casillas de acuerdo a tu preferencia y haz clic en “Eliminar”. 
-                            <img src="https://codersfree.com/img/2022-07-16 (2).png" alt="">
+                            <img src="../storage/imgfacebook/facebookimagen2.png" alt="">
                         </li>
                         <li>
-                            ¡Listo! Eliminaste a La secretaria de cultura de tus actividades de manera exitosa. 
+                            ¡Listo! Eliminaste a Repositorio Digital de tus actividades de manera exitosa. 
                         </li>
                     </ol>
     

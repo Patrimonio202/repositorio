@@ -33,7 +33,6 @@ class AuthController extends Controller
 
         return redirect()->to('/');
 
-        //dd($user);
     }
 
     public function redirectg(){

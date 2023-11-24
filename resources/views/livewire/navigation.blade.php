@@ -203,7 +203,7 @@
                                 <button type="button"
                                     class="inline-flex items-center px-1 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
                                     <!-- Menu opciones usuarios-->
-                                    <i class="fa-solid fa-circle-user fa-xl"></i>
+                                    <i class="fa-solid fa-circle-user fa-xl" style="color: #ca9e67;"></i>
                                     </button>                                    
                                 
                             </span>
@@ -229,7 +229,7 @@
 
                     <a href="{{ route('posts.buscar') }}" class="inline-flex items-center px-1 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
                       <!-- Boton lupa-->
-                                    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+                                    <i class="fa-solid fa-magnifying-glass fa-lg" style="color: #ca9e67;"></i>
                                    
                      </a>
                 </div>
