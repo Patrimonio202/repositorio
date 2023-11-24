@@ -103,15 +103,15 @@
                                 <li>
                                     Ve a la sección de “Apps y sitios web”, aquí podrás ver toda tu actividad
                                     relacionada a aplicaciones y páginas web registradas en tu cuenta de Facebook.
-                                    <img src="../storage/imgfacebook/facebookimagen1.png" alt="">
+                                    <img src="../imgfacebook/facebookimagen1.png" alt="">
                                 </li>
                                 <li>
                                     Selecciona la casilla correspondiente a Repositorio Digital y haz clic en “Eliminar”.
-                                    <img src="../storage/imgfacebook/facebookimagen2.png" alt="">
+                                    <img src="../imgfacebook/facebookimagen2.png" alt="">
                                 </li>
                                 <li>
                                     Selecciona las casillas de acuerdo a tu preferencia y haz clic en “Eliminar”.
-                                    <img src="../storage/imgfacebook/facebookimagen2.png" alt="">
+                                    <img src="../imgfacebook/facebookimagen2.png" alt="">
                                 </li>
                                 <li>
                                     ¡Listo! Eliminaste a la Repositorio Digital de tus actividades de manera exitosa.
