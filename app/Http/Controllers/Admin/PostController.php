@@ -115,11 +115,13 @@ class PostController extends Controller
      */
     public function update(PostRequest $request, Post $post)
     {
-       // $this->authorize('author', $post);
+        // $this->authorize('author', $post);
         $post->update($request->all());
         //validamos si tiene una imagen el posts
         if ($request->file('file')) {
-            Storage::delete($post->image->url);  // con este eliminamos la foto cargada
+            if ($post->image) {
+                Storage::delete($post->image->url);  // con este eliminamos la foto cargada
+            }
             $nameimagen = $request->file('file')->getClientOriginalName();
             $url =  Storage::putFileAs('archivos', $request->file('file'), $nameimagen, 'public');   //me almacena la informacion de la carpeta temporal a la public
             //si tiene la imagen
@@ -135,15 +137,15 @@ class PostController extends Controller
         }
 
         //validamos si tiene un archivo como audio o pdf
-        if ($request->file('archivo')) {            
+        if ($request->file('archivo')) {
             // con este eliminamos la foto cargada
             Storage::delete($post->image->urlarchivo);
             // con este cargamos una imagen
             $nameimagena = $request->file('archivo')->getClientOriginalName();
-            $urlarchivo=Storage::putFileAs('archivos', $request->file('archivo'), $nameimagena, 'public');   //me almacena la informacion de la carpeta temporal a la public
-                    
+            $urlarchivo = Storage::putFileAs('archivos', $request->file('archivo'), $nameimagena, 'public');   //me almacena la informacion de la carpeta temporal a la public
+
             //si tiene la imagen actualizamos el dato y si no, la creamos
-            if ($post->image) {                           
+            if ($post->image) {
                 $post->image->update([
                     'urlarchivo' => $urlarchivo
                 ]);
@@ -156,7 +158,7 @@ class PostController extends Controller
         //validamos si es un video
         if ($request->category_id == '4') {
             if ($post->image) {
-                $post->image()->update([                   
+                $post->image()->update([
                     'urlyoutube' => $request->urlyoutube
                 ]);
             }
