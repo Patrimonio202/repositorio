@@ -139,7 +139,9 @@ class PostController extends Controller
         //validamos si tiene un archivo como audio o pdf
         if ($request->file('archivo')) {
             // con este eliminamos la foto cargada
-            Storage::delete($post->image->urlarchivo);
+            if ($post->image->urlarchivo) {
+                Storage::delete($post->image->urlarchivo);
+            }
             // con este cargamos una imagen
             $nameimagena = $request->file('archivo')->getClientOriginalName();
             $urlarchivo = Storage::putFileAs('archivos', $request->file('archivo'), $nameimagena, 'public');   //me almacena la informacion de la carpeta temporal a la public
