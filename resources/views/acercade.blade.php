@@ -48,9 +48,13 @@
                 </p>
 
             </div>
-            <div class=" text-center items-center mt-16">
+            {{-- <div class=" text-center items-center mt-16">
                 <p class=" text-xl text-[#08416b]" style="font-family:Caveat-Bold" >Juntos, protegemos y celebramos nuestra herencia, asegurando que la historia </p>
                  <p class=" text-xl text-[#08416b]" style="font-family:Caveat-Bold">y la identidad de El Santuario sigan vivas para las futuras generaciones.</p>
+            </div> --}}
+            <div class="flex justify-center mt-16">
+                <img src="{{ Storage::url('Imagenes/FraseFinal_Acercade.png') }}" class=" lg:w-[700px] object-cover object-center"
+                alt="Frase final de acerca de">
             </div>
 
             <div class=" mt-8 text-center text-[#08416b] mb-8" style="font-family:Raleway-Regular">

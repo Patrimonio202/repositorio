@@ -16,7 +16,8 @@
 
     <div class="card">
         <div class="card-body">
-            {!! Form::model($tag, ['route' => ['admin.tags.update', $tag], 'method' => 'put']) !!}
+            {!! Form::model($tag, ['route' => ['admin.tags.update', $tag],'autocomplete' => 'off',
+            'files' => true, 'method' => 'put']) !!}
             @include('admin.tags.partials.form')
             {!! Form::submit('Actualizar etiqueta', ['class' => 'btn btn-primary']) !!}
             {!! Form::close() !!}
@@ -34,5 +35,19 @@
                 space: '-'
             });
         });
+
+        //cambiar imagen 
+        document.getElementById('file').addEventListener('change', cambiarImagen);
+
+        function cambiarImagen(event) {
+            //alert('hasta aqui bien');
+            var file = event.target.files[0];
+
+            var reader = new FileReader();
+            reader.onload = (event) => {
+                document.getElementById('picture').setAttribute('src', event.target.result);
+            };
+            reader.readAsDataURL(file);
+        }
     </script>
 @endsection

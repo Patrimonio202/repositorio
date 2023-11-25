@@ -1,4 +1,4 @@
-<div>
+<div class=" mt-8">
     <img src="{{ Storage::url('Imagenes/Elsantuarianotitulo.png') }}" class=" object-cover object-center"
         alt="Titulo El Santuariano">
 </div>
@@ -43,11 +43,16 @@
     </p>
 </div>
 
-<div class=" text-center text-xl font-bold mt-4 mb-24 text-[#08416b] mr-24 ml-24" style="font-family:Raleway-Regular">
+{{-- <div class=" text-center text-xl font-bold mt-4 mb-24 text-[#08416b] mr-24 ml-24" style="font-family:Raleway-Regular">
     <p>
         ¡Revista El Santuariano: contando historias 
     </p>
     <p>
         y conectando generaciones por más de 100 años!
     </p>
+</div> --}}
+
+<div class=" flex justify-center mt-8 mb-16">
+    <img src="{{ Storage::url('Imagenes/FraseFinal_RevistaElSantuariano.png') }}" class=" lg:w-[700px] object-cover object-center"
+        alt="Titulo El Santuariano">
 </div>

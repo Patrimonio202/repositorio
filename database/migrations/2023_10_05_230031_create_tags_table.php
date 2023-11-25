@@ -16,6 +16,17 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug');
             $table->string('color');
+           //obtiene 2 valores cero o 1 el uno es no destacada
+           $table->enum('coleccion', [1,2])->default(1);
+        
+            //Con este guardamos la url del archivo
+           $table->string('url');
+
+           //Con este guardamos el nombre de la coleccion
+           $table->string('titulocoleccion');
+
+
+
             $table->timestamps();
         });
     }

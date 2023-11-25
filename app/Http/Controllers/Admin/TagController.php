@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Tag;
+use Illuminate\Support\Facades\Storage;
 
 class TagController extends Controller
 {
@@ -42,18 +43,34 @@ class TagController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created resource in storage. Request
      */
     public function store(Request $request)
-    {
+    {    
         $request->validate([
             'name'=>'required',
             'slug'=>'required|unique:tags',
             'color'=>'required'
         ]);
 
-      $tag=  Tag::create($request->all());
-        return redirect()->route('admin.tags.edit',compact('tag'))->with('info', 'La etiqueta se creó con exito');
+        $tag= new Tag();
+        $tag->name= $request->name;
+        $tag->slug=$request->slug;
+        $tag->color=$request->color;
+        $tag->coleccion=$request->coleccion;
+        $tag->titulocoleccion=$request->titulocoleccion;       
+      //$tag=  Tag::create($request->all());
+
+      if ($request->file('file')) {
+        $nameimagen = $request->file('file')->getClientOriginalName();
+        $url =  Storage::putFileAs('archivos', $request->file('file'), $nameimagen, 'public');   //me almacena la informacion de la carpeta temporal a la public
+        $tag->url=$url;
+      }
+
+      //dd($tag);
+      $tag-> save();
+      
+      return redirect()->route('admin.tags.edit',compact('tag'))->with('info', 'La etiqueta se creó con exito');
     }
 
     /**
@@ -85,14 +102,32 @@ class TagController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, Tag $tag)
-    {
+    {       
         $request->validate([
             'name'=>'required',
             'slug'=>"required|unique:tags,slug,$tag->id" ,
             'color'=>'required'
         ]);
 
-        $tag->update($request->all());
+       // $tagf= new Tag();
+        $tag->name= $request->name;
+        $tag->slug=$request->slug;
+        $tag->color=$request->color;
+        $tag->coleccion=$request->coleccion;
+        $tag->titulocoleccion=$request->titulocoleccion;  
+
+        //verificamos si tiene         
+        if ($request->file('file')) {           
+            if ($tag->url) {
+                Storage::delete($tag->url);  // con este eliminamos la foto cargada               
+            }
+            $nameimagen = $request->file('file')->getClientOriginalName();
+            $url =  Storage::putFileAs('archivos', $request->file('file'), $nameimagen, 'public');   //me almacena la informacion de la carpeta temporal a la public
+            $tag->url=$url;
+        }
+               
+        //$tag->update($tagf->all());
+        $tag-> save();
         return redirect()->route('admin.tags.edit',$tag)->with('info', 'La etiqueta se actualizó con exito');
     }
 
@@ -101,6 +136,9 @@ class TagController extends Controller
      */
     public function destroy( Tag $tag)
     {
+        if ($tag->url) {
+            Storage::delete($tag->url);  // con este eliminamos la foto cargada               
+        }
         $tag->delete();
         return redirect()->route('admin.tags.index')->with('info', 'La etiqueta se eliminó con exito');
     }

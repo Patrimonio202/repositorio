@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Tag extends Model
 {
     use HasFactory;
-    protected $fillable=['name', 'slug','color']; 
+    protected $fillable=['name', 'slug','color','coleccion', 'url', 'titulocoleccion']; 
 
     public function getRouteKeyName()
     {
