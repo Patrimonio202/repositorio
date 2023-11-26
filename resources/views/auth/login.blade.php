@@ -9,7 +9,7 @@
             </div>
      
             <div class="w-full p-8 lg:w-1/2">
-                <h2 class="text-2xl font-semibold text-gray-700 text-center">Secretaria de cultura</h2>
+                <h2 class="text-2xl font-semibold text-gray-700 text-center">Secretaría de Cultura de El Santuario</h2>
                 <p class="text-xl text-gray-600 text-center">¡Bienvenido de nuevo!</p>
                 <a href="{{route('auth.redirectg')}}"
                     class="flex items-center justify-center mt-4 text-white rounded-lg shadow-md hover:bg-gray-100">
