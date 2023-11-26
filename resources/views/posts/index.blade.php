@@ -81,7 +81,11 @@
     <!--Multimedia publicada -->
     <div class="container my-4 px-6 mx-auto ">
         <section>
-            <h2 style="font-family:Raleway-ExtraBold" class="text-lg md:text-3xl lg:text-3xl font-bold pb-1 text-center">Última información multimedia</h2>
+            {{-- <h2 style="font-family:Raleway-ExtraBold" class="text-lg md:text-3xl lg:text-3xl font-bold pb-1 text-center">Última información multimedia</h2> --}}
+            <div class="flex justify-center">
+                <img src="{{ Storage::url('Imagenes/Titulo_ArchivosRecientes.png') }}" class=" md:w-64  lg:w-64 object-cover object-center"
+                alt="Titulo archivos recientes">
+            </div>
             <hr>
             @livewire('multimedia-publicada')
 
