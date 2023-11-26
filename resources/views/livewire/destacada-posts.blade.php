@@ -1,64 +1,30 @@
-<div>{{-- wire:init="loadPosts" --}}
-    @if (count($posts))
-        <div class="glider-contain">
-            <ul class="glider">
-                @foreach ($posts as $post)
-                    <li class="bg-white rounded-lg shadow {{ $loop->last ? '' : 'sm:mr-4 py-6' }} relative">
-                        <article>
-                            @if($post->category_id=='4')
-                               <figure>
-                                <div class="relative overflow-hidden bg-no-repeat bg-cover relative overflow-hidden bg-no-repeat bg-cover shadow-lg rounded-lg mx-4 mt-4"
-                                data-mdb-ripple="true" data-mdb-ripple-color="light">
-                                    <x-embed
-                                        url="{{$post->image->urlyoutube}}"
-                                          />
-                                    </div>  
-                                </figure>   
-                            @else
-                                <figure>
-                                    <div class="relative overflow-hidden bg-no-repeat bg-cover relative overflow-hidden bg-no-repeat bg-cover shadow-lg rounded-lg mx-4 -mt-2"
-                                        data-mdb-ripple="true" data-mdb-ripple-color="light">
-                                        <img src="{{ Storage::url($post->image->url) }}" class="w-full h-70 " />
-                                        <a href="{{ route('posts.show', $post) }}">
-                                            <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed opacity-0 hover:opacity-100 transition duration-300 ease-in-out"
-                                                style="background-color: rgba(251, 251, 251, 0.15)"></div>
-                                        </a>
-                                    </div>
-                                </figure>
-                            @endif
-                            <div class="p-6">
-                                <h1 class=" text-center text-lg font-semibold">
-                                    <a href="">{{ Str::limit($post->name, 40) }}</a>
-                                </h1>
-
-                                <p class="text-gray-500 mb-4">
-                                    <a href=" {{ route('posts.category', $post->category->slug) }}"
-                                        class="inline-block bg-green-600 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{{ $post->category->name }}
-                                    </a>
-                                    <small>Creado en <u>{{ $post->anocreacion }}</u> por
-                                        <a href="" class="text-gray-900">{{ $post->autor }}</a></small>
-                                </p>
-                                <p class="mb-2 pb-2">
-                                    {!! Str::limit($post->body, 100) !!} <a
-                                        class="font-bold text-blue-600 no-underline hover:underline"
-                                        href="{{ route('posts.show', $post) }}">Leer mas</a>
-                                </p>
-                            </div>   
-
-                        </article>
-
-                    </li>
-                @endforeach
-               
-            </ul>
-
-            <button aria-label="Previous" class="glider-prev">«</button>
-            <button aria-label="Next" class="glider-next">»</button>
-            <div role="tablist" class="dots"></div>
-        </div>
-      
+<div  wire:init="loadPosts">    
+    @if (!is_null($tags))
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2  my-2 -mr-4">
+            @foreach ($tags as $tag)
+                <article class="relative bg-white  rounded-xl mr-4 md:mx-8 lg:mx-8  my-10 ">
+                    <figure class="relative overflow-hidden bg-no-repeat bg-cover relative overflow-hidden bg-no-repeat bg-cover shadow-lg rounded-lg mx-4 my-4 ">
+                        <div >
+                            <img src="{{ Storage::url($tag->url) }}"
+                                class="w-full h-full md:h-60 lg:h-60 object-cover object-center lg:object-top md:object-top " />
+                        
+                                <a href="{{ route('posts.colecciones', $tag) }}">
+                                    <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed opacity-0 hover:opacity-100 transition duration-300 ease-in-out"
+                                        style="background-color: rgba(251, 251, 251, 0.15)"></div>
+                                </a>
+                            </div>
+                    </figure>
+                    <div class=" mb-8">
+                        <h1 style="font-family:Raleway-ExtraBold" class=" text-center text-xs ">
+                            <a href="{{ route('posts.colecciones', $tag) }}">{{ Str::limit($tag->titulocoleccion, 40) }}</a>
+                        </h1>    
+                    </div> 
+                </article>  
+                             
+            @endforeach
+        </div> 
     @else
-        <div class="mb-4 h-48 flex justify-center items-center bg-white shadow-xl border border-gray-100 rounded-lg">
+        <div wire.target="loadPosts" class="mb-4 h-48 flex justify-center items-center bg-white shadow-xl border border-gray-100 rounded-lg">
             <div class="rounded animate-spin ease duration-300 w-10 h-10 border-2 border-indigo-500"></div>
         </div>
     @endif

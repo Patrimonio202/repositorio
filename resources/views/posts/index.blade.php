@@ -4,17 +4,7 @@
         <x-carrousel />
     </div>
 
-    <!-- <div class="container my-6 px-6 mx-auto">
-        <section>
-            <h1 class=" text-center text-lg uppercase font-semibold text-gray-700 ">
-                Multimedia destacada
-            </h1>
-
-                {{-- @livewire('destacada-posts', ['posts' => $posts])    --}}
-                {{-- <livewire:destacada-posts :lazy=false />             --}}
-
-        </section> max-w-8xl
-    </div> --}}-->
+    
     <div
         class="grid grid-cols-1    lg:flex max-w-7xl lg:mx-auto mx-4   bg-white rounded-lg  shadow-lg  items-center  text-center py-8 px-6 gap-4 mt-8 lg:pr-16 ">
 
@@ -77,13 +67,26 @@
 
     </div>
 
+    <div class="container my-4 px-6 mx-auto">
+        <section>
+            <div class="flex justify-center">
+                <img src="{{ Storage::url('Imagenes/Titulo_ColeccionesDestacadas.png') }}" class=" h-14 w-52 object-cover"
+                alt="Titulo archivos recientes">
+            </div>
+            <hr>
+            
+                 {{-- @livewire('destacada-posts')   --}}
+                 <livewire:destacada-posts lazy />           
+
+        </section> 
+    </div> 
+
 
     <!--Multimedia publicada -->
     <div class="container my-4 px-6 mx-auto ">
-        <section>
-            {{-- <h2 style="font-family:Raleway-ExtraBold" class="text-lg md:text-3xl lg:text-3xl font-bold pb-1 text-center">Última información multimedia</h2> --}}
+        <section>          
             <div class="flex justify-center">
-                <img src="{{ Storage::url('Imagenes/Titulo_ArchivosRecientes.png') }}" class=" md:w-64  lg:w-64 object-cover object-center"
+                <img src="{{ Storage::url('Imagenes/Titulo_ArchivosRecientes.png') }}" class="h-14 w-52 object-cover object-center"
                 alt="Titulo archivos recientes">
             </div>
             <hr>
