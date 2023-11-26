@@ -35,6 +35,7 @@
                     <option value="Audios">Categoria audios</option>
                     <option value="Libros">Categoria libros</option>
                     <option value="Videos">Categoria videos</option>
+                    <option value="Fondologin">Fondo login</option>
                 </select>
             </div>
 
@@ -57,6 +58,7 @@
                         Las imagenes para el banner deben de estar en formato .jpg </br>
                         Las imagenes para el Favicon deben de estar en .png </br>
                         Las imagenes para el Logo deben de estar en .png </br>
+                        El fondo login debe estar en formato .png  dimensiones 667 * 500 </br>
                     </p>
                 </div>
             </div>
@@ -87,7 +89,7 @@
         function cambiarimagenselect(){  
             var extension="";
             var nimagen= $("#idimagen").val();
-            if(nimagen=='Logo' || nimagen=='Favicon' ){
+            if(nimagen=='Logo' || nimagen=='Favicon' || nimagen=='Fondologin'){
                 var extension=".png";
             }else{
             var extension=".jpg";
