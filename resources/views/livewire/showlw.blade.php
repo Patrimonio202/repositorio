@@ -75,7 +75,7 @@
                 @endif
 
                 @if ($post->category->id == 4)
-                    <div class="lg:mt-8 lg:mr-12 lg:ml-12 relative overflow-hidden bg-no-repeat bg-cover relative overflow-hidden bg-no-repeat bg-cover shadow-lg rounded-lg  "
+                    <div class="lg:mt-8 lg:mr-12 lg:ml-12 relative overflow-hidden bg-no-repeat bg-cover relative overflow-hidden bg-no-repeat bg-cover shadow-lg rounded-lg mb-4  "
                         data-mdb-ripple="true" data-mdb-ripple-color="light">
                         <x-embed url="{{ $post->image->urlyoutube }}" aspect-ratio="4:3" />
                     </div>
