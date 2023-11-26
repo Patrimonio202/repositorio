@@ -10,8 +10,10 @@
             @break
 
             @default
-                <span>en desarrollo {{$tag->name}}</span>
-        @endswitch
+              <span>en desarrollo {{ $tag->name }}</span>
 
+        @endswitch
+        
+        @livewire('taglw', ['tag' => $tag])
     </div>
 </x-app-layout>

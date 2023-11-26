@@ -25,7 +25,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  my-2  -mr-4 ">
             @foreach ($posts as $post)
-                <article class=" relative bg-white  rounded-xl mr-4 my-6 ">
+                <article class=" relative bg-white  rounded-xl mr-4 md:mx-8 lg:mx-8  my-10 ">
                     @if ($post->category_id == '4')
                         <div class="relative overflow-hidden bg-no-repeat bg-cover relative overflow-hidden bg-no-repeat bg-cover shadow-lg rounded-lg mx-4 -mt-4"
                             data-mdb-ripple="true" data-mdb-ripple-color="light">
@@ -43,6 +43,7 @@
                             </div>
                         </figure>
                     @endif
+
                     <div class="p-6">
                         <div class=" text-center">
                             <h1 class=" text-center text-lg font-semibold">
@@ -64,8 +65,43 @@
                         </div>
                     </div>
 
-                    <div class="absolute bottom-5 right-0 px-6 ">
-                        <i wire:click="edit({{ $post }})" class="fa-solid fa-share fa-lg"></i>
+                    <div class="flex absolute bottom-5 right-0 px-6 gap-6 ">
+                        <div class="flex-1" data-tooltip-target="tcompartir" data-tooltip-style="light">
+                            <i wire:click="edit({{ $post }})" class="fa-solid fa-share fa-lg"></i>
+                        </div>
+                        @auth
+                            <div class="flex-1" data-tooltip-target="tmeinteresa" data-tooltip-style="light" >
+                                <i  wire:click="meinteresa({{ $post->id }})"
+                                    class=" @if ($post->userVotes) fa-solid fa-bookmark fa-lg @else fa-regular fa-bookmark fa-lg @endif"></i>
+                            </div>
+                            <div lass="flex-1" data-tooltip-target="tmegusta" data-tooltip-style="light">
+                                <i wire:click="megusta({{ $post->id }})"
+                                    class="@if ($post->userVoteslike) fa-solid fa-heart fa-lg @else fa-regular fa-heart fa-lg @endif "
+                                    id="fastc-{{ $post->id }}"></i>
+                            </div>
+                            <div lass="flex-1">                              
+                                    <i wire:click="download({{ $post }})" class="fa-solid fa-download fa-lg"></i>                                
+                            </div>
+                        @else
+                            <div class="flex-1">
+                                <a data-tooltip-target="tmeinteresa" data-tooltip-style="light" href="{{ route('login') }}">
+                                    <i class="fa-regular fa-bookmark fa-lg"></i>
+                                </a>
+                            </div>
+                            <div class="flex-1">
+                                <a data-tooltip-target="tmegusta" data-tooltip-style="light" href="{{ route('login') }}">
+                                    <i class="fa-regular fa-heart  fa-lg"></i>
+                                </a>
+                            </div>
+                            <div class="flex-1">
+                                <a data-tooltip-target="tdescargar" data-tooltip-style="light" href="{{ route('login') }}">
+                                    <i class="fa-solid fa-download fa-lg"></i>
+                                </a>
+                            </div>
+    
+                        @endauth
+    
+    
                     </div>
                 </article>
             @endforeach

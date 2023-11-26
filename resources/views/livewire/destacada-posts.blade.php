@@ -16,7 +16,7 @@
                     </figure>
                     <div class=" mb-8">
                         <h1 style="font-family:Raleway-ExtraBold" class=" text-center text-xs ">
-                            <a href="{{ route('posts.colecciones', $tag) }}">{{ Str::limit($tag->titulocoleccion, 40) }}</a>
+                            <a href="{{ route('posts.colecciones', $tag) }}">{{ Str::limit($tag->titulocoleccion, 50) }}</a>
                         </h1>    
                     </div> 
                 </article>  

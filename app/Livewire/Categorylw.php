@@ -6,6 +6,7 @@ use Livewire\Component;
 use App\Models\Post;
 use App\Models\Vote;
 use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Storage;
 
 class Categorylw extends Component
 {
@@ -75,6 +76,17 @@ class Categorylw extends Component
 
     public function loadMore(){
         $this->posts_per_page +=4;
+    }
+
+    public function download($post){    
+        $vpost=$post['image'];     
+        if($post['category_id']=='1') {
+            return Storage::download($vpost['url']);
+        }  
+        
+        if($post['category_id']=='2' || $post['category_id']=='3' ) {
+            return Storage::download($vpost['urlarchivo']);
+        } 
     }
 
     public function render()

@@ -7,6 +7,7 @@ use App\Models\Vote;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Storage;
 
 class MultimediaPublicada extends Component
 {
@@ -77,6 +78,19 @@ class MultimediaPublicada extends Component
        // dd($this->post_slug);
         $this->open=true;
     }
+
+    public function download($post){    
+        $vpost=$post['image'];     
+        if($post['category_id']=='1') {
+            return Storage::download($vpost['url']);
+        }  
+        
+        if($post['category_id']=='2' || $post['category_id']=='3' ) {
+            return Storage::download($vpost['urlarchivo']);
+        }  
+       
+    }
+
     public function render()
     {
        // $posts = Post::where('status', 2)->latest('id')->paginate(6);

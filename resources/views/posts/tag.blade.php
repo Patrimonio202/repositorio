@@ -5,6 +5,8 @@
              <x-card-post :post="$post"> </x-card-post> 
         @endforeach --}}
 
+<h1 style="font-family:Raleway-ExtraBold" class="uppercase text-center mb-4 text-3xl ">Etiqueta: {{ $tag->name }}</h1>
+
         @livewire('taglw', ['tag' => $tag])
 
       

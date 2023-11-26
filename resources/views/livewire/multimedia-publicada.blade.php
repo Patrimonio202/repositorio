@@ -58,10 +58,8 @@
                                 class="@if ($post->userVoteslike) fa-solid fa-heart fa-lg @else fa-regular fa-heart fa-lg @endif "
                                 id="fastc-{{ $post->id }}"></i>
                         </div>
-                        <div lass="flex-1">
-                            <a data-tooltip-target="tdescargar" data-tooltip-style="light" href="{{ route('login') }}">
-                                <i class="fa-solid fa-download fa-lg"></i>
-                            </a>
+                        <div lass="flex-1">                              
+                            <i wire:click="download({{ $post }})" class="fa-solid fa-download fa-lg"></i>                                
                         </div>
                     @else
                         <div class="flex-1">

@@ -6,10 +6,11 @@ use Livewire\Component;
 use App\Models\Post;
 use App\Models\Vote;
 use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Storage;
 
 class Taglw extends Component
 {
-    public $posts_per_page=5;
+    public $posts_per_page=4;
     public $totalRecords;
 
     public $open=false;  // con este abrimos el modal
@@ -61,21 +62,30 @@ class Taglw extends Component
 
     public function mount()
     {
-       $this->totalRecords=$this->tag->posts()->where('status',2)->count();
-        //->where('status', 2)->latest('id'); 
-      //  $this->totalRecords=10;
+       $this->totalRecords=$this->tag->posts()->where('status',2)->count();        
     }
 
     public function edit($post){    
         //dd($post['slug']);  
         $this->post_slug=Request::root()."/posts/".$post['slug'];
-       
-       // dd($this->post_slug);
+        
         $this->open=true;
     }
 
     public function loadMore(){
         $this->posts_per_page +=4;
+    }
+
+    public function download($post){    
+        $vpost=$post['image'];     
+        if($post['category_id']=='1') {
+            return Storage::download($vpost['url']);
+        }  
+        
+        if($post['category_id']=='2' || $post['category_id']=='3' ) {
+            return Storage::download($vpost['urlarchivo']);
+        }  
+       
     }
 
     public function render()

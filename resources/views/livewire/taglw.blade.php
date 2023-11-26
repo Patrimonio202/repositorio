@@ -1,9 +1,8 @@
-<div>
-    <h1 style="font-family:Raleway-ExtraBold" class="uppercase text-center mb-4 text-3xl ">Etiqueta: {{ $tag->name }}</h1>
+<div>  
 
     <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4  ">
         @foreach ($posts as $post)
-            <article class="@if ($loop->first) col-span-1 md:col-span-3 lg:col-span-4  @endif relative bg-white  rounded-xl mr-4 md:mx-2 lg:mx-2  my-10  ">
+            <article class=" relative bg-white  rounded-xl mr-4 md:mx-2 lg:mx-2  my-10  ">
                 @if ($post->category_id == '4')
                     <figure>
                         <div class="relative overflow-hidden bg-no-repeat bg-cover relative overflow-hidden bg-no-repeat bg-cover shadow-lg rounded-lg mx-4 -mt-4 "
@@ -16,7 +15,7 @@
                     <figure>
                         <div class="relative overflow-hidden bg-no-repeat bg-cover relative overflow-hidden bg-no-repeat bg-cover shadow-lg rounded-lg mx-4 -mt-4"
                             data-mdb-ripple="true" data-mdb-ripple-color="light">
-                            <img src="{{ Storage::url($post->image->url) }}" class="w-full object-cover @if ($loop->first) h-96 object-center @else  h-full md:h-60 lg:h-60  lg:object-top md:object-top  @endif   "/>
+                            <img src="{{ Storage::url($post->image->url) }}" class="w-full object-cover  h-full md:h-60 lg:h-60  lg:object-top md:object-top   "/>
                             <a href="{{ route('posts.show', $post) }}">
                                 <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed opacity-0 hover:opacity-100 transition duration-300 ease-in-out"
                                     style="background-color: rgba(251, 251, 251, 0.15)"></div>
@@ -55,11 +54,9 @@
                             <i wire:click="megusta({{ $post->id }})"
                                 class="@if ($post->userVoteslike) fa-solid fa-heart fa-lg @else fa-regular fa-heart fa-lg @endif "
                                 id="fastc-{{ $post->id }}"></i>
-                        </div>
-                        <div lass="flex-1">
-                            <a data-tooltip-target="tdescargar" data-tooltip-style="light" href="{{ route('login') }}">
-                                <i class="fa-solid fa-download fa-lg"></i>
-                            </a>
+                        </div>                        
+                        <div lass="flex-1" data-tooltip-target="tdescargar" data-tooltip-style="light">                              
+                            <i wire:click="download({{ $post }})" class="fa-solid fa-download fa-lg"></i>                                
                         </div>
                     @else
                     <div class="flex-1">
