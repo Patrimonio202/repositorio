@@ -70,7 +70,7 @@
     <div class="container my-4 px-6 mx-auto">
         <section>
             <div class="flex justify-center mt-14">
-                <img src="{{ Storage::url('Imagenes/Titulo_ColeccionesDestacadas.png') }}" class=" h-20 w-80 object-cover"
+                <img src="{{ Storage::url('Imagenes/Titulo_ColeccionesDestacadas.png') }}" class=" w-96 object-cover"
                 alt="Titulo archivos recientes">
             </div>
             <hr>

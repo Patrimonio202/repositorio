@@ -25,11 +25,11 @@
                 @endif
                
                     <div class=" p-6 mb-4 text-center ">
-                        <h1 style="font-family:Raleway-ExtraBold" class=" text-center text-lg ">
+                        <h1 style="font-family:Raleway-ExtraBold" class=" text-center text-xs ">
                             <a href="{{ route('posts.show', $post) }}">{{ Str::limit($post->name, 40) }}</a>
                         </h1>
 
-                        <p style="font-family:Raleway-Regular" class="text-gray-500 mb-4">
+                        <p style="font-family:Raleway-Regular" class="text-gray-500 mb-4 text-xs">
                             <a href="{{ route('posts.category', $post->category->slug) }}">
                                 <img src="{{ Storage::url('Imagenes/' . $post->category->rutaimagen) }}"
                                     class="inline-block w-5 h-5 " alt="...">

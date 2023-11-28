@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Storage;
 
 class Categorylw extends Component
 {
-    public $posts_per_page=5;
+    public $posts_per_page=4;
     public $totalRecords;
 
     public $open=false;  // con este abrimos el modal

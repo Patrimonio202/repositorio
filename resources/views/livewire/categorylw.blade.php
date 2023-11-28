@@ -4,7 +4,7 @@
 
     <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4  ">
         @foreach ($posts as $post)
-            <article class="@if ($loop->first) col-span-1 md:col-span-3 lg:col-span-4  @endif relative bg-white  rounded-xl mr-4 md:mx-2 lg:mx-2  my-10  ">
+            <article class=" relative bg-white  rounded-xl mr-4 md:mx-2 lg:mx-2  my-10  ">
                 @if ($post->category_id == '4')
                     <figure>
                         <div class="relative overflow-hidden bg-no-repeat bg-cover relative overflow-hidden bg-no-repeat bg-cover shadow-lg rounded-lg mx-4 -mt-4 "
@@ -17,7 +17,7 @@
                     <figure>
                         <div class="relative overflow-hidden bg-no-repeat bg-cover relative overflow-hidden bg-no-repeat bg-cover shadow-lg rounded-lg mx-4 -mt-4"
                             data-mdb-ripple="true" data-mdb-ripple-color="light">
-                            <img src="{{ Storage::url($post->image->url) }}" class="w-full object-cover @if ($loop->first) h-96 object-center @else  h-full md:h-60 lg:h-60  lg:object-top md:object-top  @endif   "/>
+                            <img src="{{ Storage::url($post->image->url) }}" class="w-full object-cover  h-full md:h-60 lg:h-60  lg:object-top md:object-top     "/>
                             <a href="{{ route('posts.show', $post) }}">
                                 <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed opacity-0 hover:opacity-100 transition duration-300 ease-in-out"
                                     style="background-color: rgba(251, 251, 251, 0.15)"></div>
@@ -27,11 +27,11 @@
                 @endif
                
                     <div class="p-6 mb-4 text-center">
-                        <h1 style="font-family:Raleway-ExtraBold" class=" text-center text-lg ">
+                        <h1 style="font-family:Raleway-ExtraBold" class=" text-center text-xs ">
                             <a href="{{ route('posts.show', $post) }}">{{ Str::limit($post->name, 40) }}</a>
                         </h1>
 
-                        <p style="font-family:Raleway-Regular" class="text-gray-500 mb-4">
+                        <p style="font-family:Raleway-Regular" class="text-gray-500 mb-4 text-xs">
                             <a href="{{ route('posts.category', $post->category->slug) }}">
                                 <img src="{{ Storage::url('Imagenes/' . $post->category->rutaimagen) }}"
                                     class="inline-block w-5 h-5 " alt="...">
