@@ -70,7 +70,7 @@
     <div class="container my-4 px-6 mx-auto">
         <section>
             <div class="flex justify-center mt-14">
-                <img src="{{ Storage::url('Imagenes/Titulo_ColeccionesDestacadas.png') }}" class=" h-14 w-52 object-cover"
+                <img src="{{ Storage::url('Imagenes/Titulo_ColeccionesDestacadas.png') }}" class=" h-20 w-80 object-cover"
                 alt="Titulo archivos recientes">
             </div>
             <hr>
@@ -86,7 +86,7 @@
     <div class="container my-4 px-6 mx-auto ">
         <section>          
             <div class="flex justify-center">
-                <img src="{{ Storage::url('Imagenes/Titulo_ArchivosRecientes.png') }}" class="h-14 w-52 object-cover object-center"
+                <img src="{{ Storage::url('Imagenes/Titulo_ArchivosRecientes.png') }}" class="h-20 w-80 object-cover object-center"
                 alt="Titulo archivos recientes">
             </div>
             <hr>

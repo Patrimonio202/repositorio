@@ -155,9 +155,9 @@
                 <img src="{{ Storage::url('Imagenes/7.Logo_Premio Nacional de Biliotecas Públicas.png') }}"
                     alt="Bibioteca públicas" class="object-cover  w-full" />
             </div>
-            <div class="flex-1 items-center justify-center">
+            <div class="flex-1 items-center justify-center ">
                 <img src="{{ Storage::url('Imagenes/8.Logo_Biblioteca Pública Piloto.png') }}"
-                    alt="Biblioteca pública piloto" class="object-cover   w-full" />
+                    alt="Biblioteca pública piloto" class="object-cover  w-full" />
             </div>
         </div>
 
