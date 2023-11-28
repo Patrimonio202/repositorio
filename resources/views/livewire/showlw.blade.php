@@ -1,7 +1,7 @@
 <div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-        <h1 style="font-family:Raleway-ExtraBold" class="text-4xl font-blod text-black-600  mb-6 ">{{ $post->name }}
-        </h1>
+        {{-- <h1 style="font-family:Raleway-ExtraBold" class="text-4xl font-blod text-black-600  mb-6 ">{{ $post->name }}
+        </h1> --}}
 
         @section('ogTitle', $post->name)
         @section('title', $post->name)
@@ -60,7 +60,7 @@
                 @endif
 
                 @if ($post->category->id == 3)
-                    <figure>
+                    <figure class="md:mr-12 lg:mr-12 mb-4">
                         <div class="relative overflow-hidden bg-no-repeat bg-cover relative overflow-hidden bg-no-repeat bg-cover shadow-lg rounded-lg  "
                             data-mdb-ripple="true" data-mdb-ripple-color="light">
                             <iframe width="100%" height="1000"
@@ -75,7 +75,7 @@
                 @endif
 
                 @if ($post->category->id == 4)
-                    <div class="lg:mt-8 lg:mr-12 lg:ml-12 relative overflow-hidden bg-no-repeat bg-cover relative overflow-hidden bg-no-repeat bg-cover shadow-lg rounded-lg mb-4  "
+                    <div class="md:mr-12 lg:mr-12 mb-4 relative overflow-hidden bg-no-repeat bg-cover relative overflow-hidden bg-no-repeat bg-cover shadow-lg rounded-lg   "
                         data-mdb-ripple="true" data-mdb-ripple-color="light">
                         <x-embed url="{{ $post->image->urlyoutube }}" aspect-ratio="4:3" />
                     </div>
@@ -91,11 +91,11 @@
 
                     <div class="flex right-0 md:mr-14  lg:mr-14 gap-6 ">
                         <div class="flex-1" data-tooltip-target="tcompartir" data-tooltip-style="light">
-                            <i wire:click="edit({{ $post }})" class="fa-solid fa-share fa-lg"></i>
+                            <i wire:click="edit({{ $post }})" class="fa-solid fa-share fa-lg" ></i>
                         </div>
                         @auth
-                            <div class="flex-1" data-tooltip-target="tmeinteresa" data-tooltip-style="light" >
-                                <i  wire:click="meinteresa({{ $post->id }})"
+                            <div class="flex-1" data-tooltip-target="tmeinteresa" data-tooltip-style="light">
+                                <i wire:click="meinteresa({{ $post->id }})"
                                     class=" @if ($post->userVotes) fa-solid fa-bookmark fa-lg @else fa-regular fa-bookmark fa-lg @endif"></i>
                             </div>
                             <div lass="flex-1" data-tooltip-target="tmegusta" data-tooltip-style="light">
@@ -103,12 +103,13 @@
                                     class="@if ($post->userVoteslike) fa-solid fa-heart fa-lg @else fa-regular fa-heart fa-lg @endif "
                                     id="fastc-{{ $post->id }}"></i>
                             </div>
-                            <div lass="flex-1">                              
-                                <i wire:click="download({{ $post }})" class="fa-solid fa-download fa-lg"></i>                                
+                            <div lass="flex-1">
+                                <i wire:click="download({{ $post }})" class="fa-solid fa-download fa-lg"></i>
                             </div>
                         @else
                             <div class="flex-1">
-                                <a data-tooltip-target="tmeinteresa" data-tooltip-style="light" href="{{ route('login') }}">
+                                <a data-tooltip-target="tmeinteresa" data-tooltip-style="light"
+                                    href="{{ route('login') }}">
                                     <i class="fa-regular fa-bookmark fa-lg"></i>
                                 </a>
                             </div>
@@ -122,28 +123,31 @@
                                     <i class="fa-solid fa-download fa-lg"></i>
                                 </a>
                             </div>
-    
+
                         @endauth
 
                     </div>
 
                 </div>
-                <hr class=" mt-4">
+                
 
-                <div style="font-family:Raleway-Regular" class=" mt-4 text-justify text-xs">
-                    {!! $post->body !!}
-                    @section('ogDesc', strip_tags($post->body))
+                <div class=" bg-white pl-14 pt-8 rounded-xl shadow-lg md:mr-12 lg:mr-12 mt-4">
+                    <h1 style="font-family:Raleway-ExtraBold" class=" text-xs font-blod text-black-600   ">{{ $post->name }}
+                    </h1>
+                    <div style="font-family:Raleway-Regular" class="  text-justify text-xs">
+                        {!! $post->body !!}
+                        @section('ogDesc', strip_tags($post->body))
+                    </div>
+
+                    {{-- etiquetas --}}
+                    <div style="font-family:Raleway-Regular" class="pt-4 pb-8 ">
+                        @foreach ($post->tags as $tag)
+                            <a href="{{ route('posts.tag', $tag) }}"
+                                class="inline-block bg-{{ $tag->color }}-200 rounded-full px-3 py-1 text-xs text-gray-700 mr-2">{{ $tag->name }}</a>
+                        @endforeach
+                    </div>
                 </div>
 
-                {{-- etiquetas --}}
-                <div style="font-family:Raleway-Regular" class="pt-4 pb-8 ">
-                    @foreach ($post->tags as $tag)
-                        <a href="{{ route('posts.tag', $tag) }}"
-                            class="inline-block bg-{{ $tag->color }}-200 rounded-full px-3 py-1 text-xs text-gray-700 mr-2">{{ $tag->name }}</a>
-                    @endforeach
-                </div>
-
-                <hr>
 
             </div>
 
@@ -175,7 +179,8 @@
                             class="mx-4 flex items-center pb-4 rounded-lg bg-gray-200 h-14 pl-4 pt-4">
                             <i class="fa-solid fa-turn-up fa-lg"></i>
                             <p style="font-family:Raleway-ExtraBold" class="ml-4 text-xs ">Categoría:</p>
-                            <p style="font-family:Raleway-Regular" class="mx-4 text-xs">{{ $post->category->name }}</p>
+                            <p style="font-family:Raleway-Regular" class="mx-4 text-xs">{{ $post->category->name }}
+                            </p>
                         </div>
 
                         <div class="mx-4 flex items-center pb-4 pl-4 h-14">
@@ -284,7 +289,8 @@
             </div>
 
             <div class="flex items-center">
-                <x-input id="myInput" disabled class=" w-full  px-2 h-7 mr-4" value="{{ $post_slug }}"> </x-input>
+                <x-input id="myInput" disabled class=" w-full  px-2 h-7 mr-4" value="{{ $post_slug }}">
+                </x-input>
                 <i class="fa-regular fa-copy fa-lg" onclick="myFunction()"></i>
             </div>
         </x-slot>

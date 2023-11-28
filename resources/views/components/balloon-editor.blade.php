@@ -1,6 +1,6 @@
 @props(['focus'=>false,'placeholder'=>'Agrega un texto' ])
 
-<div class="border-b" wire:ignore x-data="{
+<div class="border  border-blue-600" wire:ignore x-data="{
     message:@entangle( $attributes->wire('model'))  ,
     isFocus: false,          
 }" x-init="
@@ -13,7 +13,7 @@
 
     BalloonEditor
     .create($refs.myEditor,{
-        placeholder: '{{$placeholder}}',
+        placeholder: '{{$placeholder}}',        
 
     }).then(editor=>{
 

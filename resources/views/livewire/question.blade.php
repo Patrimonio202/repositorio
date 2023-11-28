@@ -1,39 +1,46 @@
 <div>
-   
-        <div class="flex">
-            <figure class="mr-4">
-                @auth 
-                       <img class="w-12 h-12 object-cover object-center rounded-full" src="{{ Auth::user()->profile_photo_url }}"
-                        alt="">
-                @else
-                       <svg class="w-12 h-12 object-cover object-center rounded-full"  xmlns="http://www.w3.org/2000/svg" height="1em" 
-                                    viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg> 
-                            
-                  @endauth
-            </figure>
 
-            <div class="flex-1">
-                <form wire:submit.prevent="store">
-                    {{-- <textarea wire:model.defer="message" rows="3"
-                        class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 focus:ring-opacity-50 rounded-md shadow-sm w-full"
-                        placeholder="Escribe tu mensaje"></textarea> --}}
-                    
-                    <x-balloon-editor wire:model="message" placeholder="Agrega un comentario"  />                    
+    <div class="flex">
+        <figure class="mr-4">
+            @auth
+                <img class="w-12 h-12 object-cover object-center rounded-full" src="{{ Auth::user()->profile_photo_url }}"
+                    alt="">
+            @else
+                {{-- <svg class="w-12 h-12 object-cover object-center rounded-full" xmlns="http://www.w3.org/2000/svg"
+                    height="1em"
+                    viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                    <path
+                        d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
+                </svg> --}}
 
+                <img src="{{ Storage::url('Imagenes/IconoDefaultComentarios.png') }}" class=" w-12 h-12 object-cover object-center rounded-full"
+                    alt="Titulo archivos recientes">
+
+            @endauth
+        </figure>
+
+        <div class="flex-1 md:mr-12 lg:mr-12">
+            <form wire:submit.prevent="store">
+                @auth
+                    <x-balloon-editor wire:model="message" placeholder="Agrega un comentario" />
                     <x-input-error for="message" class="mt-1" />
-                    @auth   
-                        <div class="flex justify-end mt-4">
-                            <x-button>
-                                {{ __('Comentar') }}
-                            </x-button>
-                        </div>
-                    @endauth
+                    <div class="flex justify-end mt-4">
+                        <x-button>
+                            {{ __('Comentar') }}
+                        </x-button>
+                    </div>
+                @else
+                    <textarea wire:model.defer="message" rows="2"
+                        class=" pl-4 pt-2  border-blue-600 focus:border-indigo-500 focus:ring-indigo-500 focus:ring-opacity-50 rounded-md shadow-sm w-full "
+                        placeholder="Para escribir un comentario, inicia sesión." disabled></textarea>
 
-                </form>
-            </div>
+                @endauth
 
+            </form>
         </div>
-   
+
+    </div>
+
     <p class="text-lg font-semibold mt-6 mb-4">
         {{ $model->questions()->count() }} Comentarios:
     </p>
@@ -60,7 +67,7 @@
                                 {{-- <textarea wire:model="question_edit.body"
                                     class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 focus:ring-opacity-50 rounded-md shadow-sm w-full"></textarea> --}}
 
-                                <x-balloon-editor wire:model="question_edit.body" :focus="true" />    
+                                <x-balloon-editor wire:model="question_edit.body" :focus="true" />
 
                                 <x-input-error for="question_edit.body" class="mt-1" />
 
@@ -92,19 +99,19 @@
 
                             <x-slot name="content">
                                 @auth
-                                @if(Auth::user()->id== $question->user_id)
-                                    <x-dropdown-link class="cursor-pointer" wire:click="edit({{ $question->id }})">
-                                    <i  class="fas fa-edit inline-block w-5" ></i>
-                                        Editar
-                                    </x-dropdown-link>
+                                    @if (Auth::user()->id == $question->user_id)
+                                        <x-dropdown-link class="cursor-pointer" wire:click="edit({{ $question->id }})">
+                                            <i class="fas fa-edit inline-block w-5"></i>
+                                            Editar
+                                        </x-dropdown-link>
 
-                                    <x-dropdown-link class="cursor-pointer" wire:click="destroy({{ $question->id }})">
-                                        <i class="fas fa-trash inline-block w-5" ></i>
-                                        Eliminar
-                                    </x-dropdown-link>
-                                @endif
+                                        <x-dropdown-link class="cursor-pointer" wire:click="destroy({{ $question->id }})">
+                                            <i class="fas fa-trash inline-block w-5"></i>
+                                            Eliminar
+                                        </x-dropdown-link>
+                                    @endif
                                 @endauth
-                                <x-dropdown-link class="cursor-pointer" >
+                                <x-dropdown-link class="cursor-pointer">
                                     <i class="fas fa-flag inline-block w-5"></i>
                                     Reportar
                                 </x-dropdown-link>
@@ -131,7 +138,6 @@
 
     @push('js')
         <script src="{{ asset('vendor/ckeditor5-build-balloon/build/ckeditor.js') }}"></script>
-        
     @endpush
 
 </div>
