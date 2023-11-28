@@ -97,7 +97,7 @@
         <!-- Copyright information -->
         <div class="mb-6">
             <p>
-                Este centro documental es una venta abierta a la historia y a la memoria de El Santuario.
+                Este centro documental es una ventana abierta a la historia y a la memoria de El Santuario.
             </p>
         </div>
 

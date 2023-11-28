@@ -11,18 +11,15 @@
                 class="w-full h-40 object-cover object-center" >
         </figure>
 
-        <section>
-            <h1 class="text-3xl text-center font-semibold mb-4">
-                Lista de articúlos
-            </h1>
+        <section>          
 
-            <div class="grid grid-cols-1 lg:grid-cols-4">
+            <div class="grid grid-cols-1 lg:grid-cols-4 mt-16">
                 <div class="col-span-1  md:col-span-1  lg:col-span-1 mr-4">
                     <form action="{{ route('posts.buscar') }}">
                         <div class="ui-widget mb-4">
                             <p class="text-lg font-semibold">Criterio de búsqueda:</p>
                             <input class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm w-full ui-autocomplete-input" 
-                            id="search" value="{{request('textobuscar')}}" name="textobuscar" type="text" placeholder="Buscar multimedia" autocomplete="off">
+                            id="search" value="{{request('textobuscar')}}" name="textobuscar" type="text" placeholder="Palabra clave" autocomplete="off">
         
                         </div>
 
