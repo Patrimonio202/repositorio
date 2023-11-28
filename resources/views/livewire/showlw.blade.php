@@ -61,16 +61,26 @@
 
                 @if ($post->category->id == 3)
                     <figure class="md:mr-12 lg:mr-12 mb-4">
-                        <div class="relative overflow-hidden bg-no-repeat bg-cover relative overflow-hidden bg-no-repeat bg-cover shadow-lg rounded-lg  "
-                            data-mdb-ripple="true" data-mdb-ripple-color="light">
-                            <iframe width="100%" height="1000"
-                                src="{{ Storage::url($post->image->urlarchivo) }}#toolbar=0&navpanes=0&scrollbar=0"></iframe>
-                            @section('ogImage', Storage::url($post->image->url))
-                            {{-- <embed src="{{ Storage::url('archivos/CP-510-47-994000022586-0.PDF') }}" type="application/pdf" width="100%" height="500px" /> --}}
-                            {{-- <embed
-                                src="{{ Storage::url('archivos/CP-510-47-994000022586-0.PDF') }}#toolbar=0&navpanes=0&scrollbar=0"
-                                type="application/pdf" width="100%" height="500px" /> --}}
-                            <div>
+
+                        <div class="card flex flex-col items-center text-xl font-mono p-4 rounded-md text-white aspect-[16/9]  mb-4"
+                            style=" background-image: url({{ Storage::url('Imagenes/Fondo_Publicaciones.png') }})">
+                            <div class="cover flex flex-col items-center min-w-80px w-auto max-w-880px mt-10">
+
+                                <img data-modal-target="extralarge-modal" data-modal-toggle="extralarge-modal"
+                                    src="{{ Storage::url($post->image->url) }}" alt="Album Cover"
+                                    class="w-3/6 rounded-xl hover:scale-105 transition-all duration-100">
+
+                                @section('ogImage', Storage::url($post->image->url))
+                                <p class="-translate-y-10 w-3/6 text-center break-words"></p>
+                            </div>
+                            {{-- <div class="block w-full max-w-md mx-auto mt-4">
+                                <a data-modal-target="extralarge-modal" data-modal-toggle="extralarge-modal">
+                                    <img src="{{ Storage::url($post->image->urlarchivo) }}">
+                                </a>
+                            </div> --}}
+
+                        </div>
+
                     </figure>
                 @endif
 
@@ -91,7 +101,7 @@
 
                     <div class="flex right-0 md:mr-14  lg:mr-14 gap-6 ">
                         <div class="flex-1" data-tooltip-target="tcompartir" data-tooltip-style="light">
-                            <i wire:click="edit({{ $post }})" class="fa-solid fa-share fa-lg" ></i>
+                            <i wire:click="edit({{ $post }})" class="fa-solid fa-share fa-lg"></i>
                         </div>
                         @auth
                             <div class="flex-1" data-tooltip-target="tmeinteresa" data-tooltip-style="light">
@@ -126,13 +136,15 @@
 
                         @endauth
 
+
                     </div>
 
                 </div>
-                
+
 
                 <div class="  bg-white pl-4 lg:pl-14 pt-8 rounded-xl shadow-lg md:mr-12 lg:mr-12 mt-4 ">
-                    <h1 style="font-family:Raleway-ExtraBold" class=" text-xs font-blod text-black-600   ">{{ $post->name }}
+                    <h1 style="font-family:Raleway-ExtraBold" class=" text-xs font-blod text-black-600   ">
+                        {{ $post->name }}
                     </h1>
                     <div style="font-family:Raleway-Regular" class="  text-justify text-xs">
                         {!! $post->body !!}
@@ -323,4 +335,46 @@
         Descargar
         <div class="tooltip-arrow" data-popper-arrow></div>
     </div>
+
+    <!-- modal visor de informacion-->
+
+
+    {{-- <button data-modal-target="extralarge-modal" data-modal-toggle="extralarge-modal" class="block w-full md:w-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+    Extra large modal
+    </button> --}}
+
+    <!-- Extra Large Modal -->
+    <div id="extralarge-modal" tabindex="-1"
+        class="fixed top-0 left-0 right-0 z-50 hidden w-full  p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative w-full max-w-7xl max-h-full">
+            <!-- Modal content -->
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <!-- Modal header -->
+                <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                    <h3 class="text-xl font-medium text-gray-900 dark:text-white">
+                        {{ $post->name }}
+                    </h3>
+                    <button type="button"
+                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                        data-modal-hide="extralarge-modal">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                </div>
+                <!-- Modal body -->
+                <div class="p-4 md:p-5 space-y-4  ">
+                    <iframe width="100%" height="700"
+                        src="{{ Storage::url($post->image->urlarchivo) }}#toolbar=0&navpanes=0&scrollbar=0"></iframe>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
 </div>
