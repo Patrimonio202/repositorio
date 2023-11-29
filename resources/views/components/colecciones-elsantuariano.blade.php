@@ -1,8 +1,8 @@
-<div class=" mt-8">
+<div class="mr-4 ml-4 mt-8 lg:-ml-8  lg:-mr-8">
     <img src="{{ Storage::url('Imagenes/Elsantuarianotitulo.png') }}" class=" object-cover object-center"
         alt="Titulo El Santuariano">
 </div>
-<div class=" text-left text-sm mt-4 text-[#08416b] mr-24 ml-24" style="font-family:Raleway-Regular">
+<div class=" text-left text-sm mt-4 text-[#08416b]  mr-4 ml-4 lg:mr-24 lg:ml-24" style="font-family:Raleway-Regular">
     <p>
         La revista El Santuariano y su colección “El Santuariano Histórico” es una publicación de gran valor cultural y
         periodístico en El Santuario. Fundado el 7 de julio de 1920 por Eusebio María Gómez Ramírez y Filemón de J Gómez
@@ -18,11 +18,11 @@
         su importancia en el fortalecimiento del amor y sentido de pertenencia a la identidad municipal.
     </p>
 </div>
-<div class=" -ml-8  -mr-8 mt-8">
+<div class="mr-4 ml-4 mt-8 lg:-ml-8  lg:-mr-8 ">
     <img src="{{ Storage::url('Imagenes/Elsantuarianocoleccion.png') }}" class=" object-cover object-center"
         alt="El Santuariano colección">
 </div>
-<div class=" text-left text-sm mt-4 text-[#08416b] mr-24 ml-24" style="font-family:Raleway-Regular">
+<div class=" text-left text-sm mt-4 text-[#08416b]  mr-4 ml-4 lg:mr-24 lg:ml-24" style="font-family:Raleway-Regular">
     <p>
         Hasta la fecha, se han publicado más de 527 ediciones de El Santuariano, documentando el desarrollo y progreso
         de El Santuario. Además, la revista ha recibido otros reconocimientos como la Orden de la Democracia Simón
@@ -43,14 +43,7 @@
     </p>
 </div>
 
-{{-- <div class=" text-center text-xl font-bold mt-4 mb-24 text-[#08416b] mr-24 ml-24" style="font-family:Raleway-Regular">
-    <p>
-        ¡Revista El Santuariano: contando historias 
-    </p>
-    <p>
-        y conectando generaciones por más de 100 años!
-    </p>
-</div> --}}
+
 
 <div class=" flex justify-center mt-8 mb-16">
     <img src="{{ Storage::url('Imagenes/FraseFinal_RevistaElSantuariano.png') }}" class=" lg:w-[700px] object-cover object-center"

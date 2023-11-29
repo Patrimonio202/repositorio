@@ -72,12 +72,7 @@
 
                                 @section('ogImage', Storage::url($post->image->url))
                                 <p class="-translate-y-10 w-3/6 text-center break-words"></p>
-                            </div>
-                            {{-- <div class="block w-full max-w-md mx-auto mt-4">
-                                <a data-modal-target="extralarge-modal" data-modal-toggle="extralarge-modal">
-                                    <img src="{{ Storage::url($post->image->urlarchivo) }}">
-                                </a>
-                            </div> --}}
+                            </div>                           
 
                         </div>
 
