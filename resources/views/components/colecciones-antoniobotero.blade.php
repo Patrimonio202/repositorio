@@ -3,7 +3,7 @@
         alt="Titulo Antonio botero">
 </div>
 
-<div class=" mt-12 lg:flex  items-center justify-center bg-center text-center">
+<div class=" mt-12  flex  items-center justify-center bg-center text-center">
     <img src="{{ Storage::url('Imagenes/Antonioboterofoto.png') }}" class=" w-96  object-center object-cover"
         alt="Foto Antonio botero">
 </div>
@@ -74,7 +74,7 @@
             </p>
         </div>
     </div>
-    <div class="flex items-center  bg-center ml-36    ">
+    <div class="flex items-center  bg-center mt-8 lg:mt-0 justify-center lg:justify-normal lg:ml-36    ">
         <img src="{{ Storage::url('Imagenes/CamaraAntonioBotero_L.png') }}" class=" w-60 object-cover object-center"
             alt="Foto Antonio botero">
     </div>
