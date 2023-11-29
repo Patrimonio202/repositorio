@@ -6,10 +6,10 @@
     </div>
 
     <div class="container my-4 px-6 mx-auto ">
-        <figure class="mb-12">
+        {{-- <figure class="mb-12">
             <img src="{{ Storage::url('Imagenes/Imagen-barner-2.jpg') }}" alt="Portada del home"
                 class="w-full h-40 object-cover object-center" >
-        </figure>
+        </figure> --}}
 
         <section>          
 
