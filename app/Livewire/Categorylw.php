@@ -18,6 +18,8 @@ class Categorylw extends Component
 
     public $category;
 
+   // public $posts;
+
      //este es para darle me interesa
      public function meinteresa($postId)
      {
@@ -60,11 +62,13 @@ class Categorylw extends Component
         }       
     }
 
-    public function mount()
-    {
-        $this->totalRecords=Post::where('category_id',$this->category->id)
-        ->where('status', 2)->latest('id')->count(); 
-    }
+     public function mount()
+      {
+         $this->totalRecords=Post::where('category_id',$this->category->id)
+         ->where('status', 2)->latest('id')->count(); 
+    //   $this->posts=Post::where('category_id',$this->category->id)
+    //                 ->where('status', 2)->latest('id')->paginate($this->posts_per_page);   
+      }
 
     public function edit($post){    
         //dd($post['slug']);  
@@ -74,9 +78,9 @@ class Categorylw extends Component
         $this->open=true;
     }
 
-    public function loadMore(){
+     public function loadMore(){
         $this->posts_per_page +=4;
-    }
+     }
 
     public function download($post){    
         $vpost=$post['image'];     
@@ -89,11 +93,9 @@ class Categorylw extends Component
         } 
     }
 
-    public function render()
-    {        
-        $posts=Post::where('category_id',$this->category->id)
-                    ->where('status', 2)->latest('id')->paginate($this->posts_per_page);   
-        //dd($posts);          
-        return view('livewire.categorylw',compact('posts'));
+    public function render(){  
+          $posts=Post::where('category_id',$this->category->id)
+        ->where('status', 2)->latest('id')->paginate($this->posts_per_page);      
+        return view('livewire.categorylw',['posts'  => $posts]);
     }
 }

@@ -117,11 +117,11 @@
         @endforeach
         <div x-intersect="$wire.loadMore()"></div>
     </div>
-    @if ($posts_per_page >= $totalRecords)
+    {{-- @if ($posts_per_page >= $totalRecords)
         <h1 style="font-family:Raleway-ExtraBold" class=" text-center text-lg  font-semibold text-gray-700 ">
             No hay mas registros...
         </h1>
-    @endif
+    @endif --}}
 
     {{-- prueba de modal  sm md lg  xl 2xl --}}
     <x-dialog-modal wire:model="open" maxWidth="md">
