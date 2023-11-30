@@ -280,6 +280,10 @@
             <x-responsive-nav-link href="{{ route('inicio.acercade') }}" :active="request()->routeIs('inicio.acercade')">
                 {{ __('Acerca de') }}
             </x-responsive-nav-link>
+
+            <x-responsive-nav-link href="{{ route('posts.buscar') }}" :active="request()->routeIs('posts.buscar')">
+                {{ __('Buscar') }}
+            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options para el celular -->
