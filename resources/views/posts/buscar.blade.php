@@ -1,11 +1,11 @@
 <x-app-layout>
-    <!-- Image Viewer -->
+    <!-- Image Viewer x-on:resize.window="isMobile = (window.innerWidth < 1024) ? false : true" -->
     <div id="img-viewer">
         <span class="close" onclick="close_model()">&times;</span>
         <img class="modal-content rounded-xl zoom" id="full-image">
     </div>
 
-    <div  x-on:resize.window="isMobile = (window.innerWidth < 1024) ? false : true"  x-data="{isMobile: (window.innerWidth < 1024) ? false : true}" class="container my-4 px-6 mx-auto ">
+    <div    x-data="{isMobile: (window.innerWidth < 1024) ? false : true}" class="container my-4 px-6 mx-auto ">
         {{-- <figure class="mb-12">
             <img src="{{ Storage::url('Imagenes/Imagen-barner-2.jpg') }}" alt="Portada del home"
                 class="w-full h-40 object-cover object-center" >

@@ -137,7 +137,7 @@
                 </div>
 
 
-                <div class="  bg-white pl-4 lg:pl-14 pt-8 rounded-xl shadow-lg md:mr-12 lg:mr-12 mt-4 ">
+                <div class="  bg-white pl-4 pr-4 lg:pl-14 pt-8 rounded-xl shadow-lg md:mr-12 lg:mr-12 mt-4 ">
                     <h1 style="font-family:Raleway-ExtraBold" class=" text-xs font-blod text-black-600   ">
                         {{ $post->name }}
                     </h1>
