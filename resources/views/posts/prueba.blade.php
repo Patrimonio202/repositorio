@@ -1,157 +1,75 @@
 <x-app-layout>
-
-    <!-- Image Viewer -->
-    <div id="img-viewer">
-        <span class="close" onclick="close_model()">&times;</span>
-        <img class="modal-content rounded-xl zoom" id="full-image">
-    </div>
-
-    <div  x-on:resize.window="isMobile = (window.innerWidth < 1024) ? false : true"  x-data="{isMobile: (window.innerWidth < 1024) ? false : true}" class="container my-4 px-6 mx-auto ">
-        {{-- <figure class="mb-12">
-        <img src="{{ Storage::url('Imagenes/Imagen-barner-2.jpg') }}" alt="Portada del home"
-            class="w-full h-40 object-cover object-center" >
-    </figure> --}}
-        <div class="mx-4 ">
-            {{-- <button x-on:click="open = ! open">Ocultar / mostrar</button> --}}
-            <button class=" lg:hidden md:hidden  text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"  x-on:click="isMobile = ! isMobile">Mostrar opciones de busqueda</button>
-        </div>
+    <style type="text/css">
+        #pdf_container { background: #ccc; text-align: center; display: none; padding: 5px; overflow: auto }
+    </style>
 
 
-        <section>
+    <input type="button" id="btnPreview" value="Preview PDF Document" onclick="LoadPdfFromUrl('Sample.pdf')" />
+    <hr />
+    <div id="pdf_container"></div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-4 mt-4 md:mt-16 lg:mt-16">
-
-
-                <!-- panel de busqueda -->
-                <div x-show="isMobile" class="col-span-1  md:col-span-1  lg:col-span-1 mr-4">
-
-                    <form action="{{ route('posts.leo') }}">
-                        <div class="ui-widget mb-4">
-                            <p class="text-lg font-semibold">Criterio de búsqueda:</p>
-                            <input
-                                class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm w-full ui-autocomplete-input"
-                                id="search" value="{{ request('textobuscar') }}" name="textobuscar" type="text"
-                                placeholder="Palabra clave" autocomplete="off">
-
-                        </div>
-
-                        <div class="mb-4">
-                            <p class="text-lg font-semibold">Ordenar:</p>
-                            <select name="order"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ">
-                                <option value="new">Más nuevos</option>
-                                <option value="old" @selected(request('order') == 'old')>Más antiguos</option>
-                            </select>
-                        </div>
-                        <div class="mb-4">
-                            <p class="text-lg font-semibold">Categorias:</p>
-                            <ul>
-                                @foreach ($categories as $category)
-                                    <li>
-                                        <label>
-                                            <x-checkbox type="checkbox" name="category[]" value="{{ $category->id }}"
-                                                :checked="is_array(request('category')) &&
-                                                    in_array($category->id, request('category'))" />
-                                            <span class="ml-2 text-gray-700">{{ $category->name }}</span>
-                                        </label>
-                                    </li>
-                                @endforeach
-                            </ul>
-
-                        </div>
-                      
-                            <x-button class="mb-4" >
-                                Aplicar filtros
-                            </x-button>
-                       
-
-                    </form>
-                </div>
-
-                <!-- mostrar resultados -->
-                <div class="col-span-1 lg:col-span-3 ">
-
-
-                    <div class="space-y-4">
-                        @foreach ($posts as $post)
-                            <article class="grid grid-cols-1  lg:grid-cols-2 gap-6">
-                                @if ($post->category_id == '4')
-                                    <div class="relative overflow-hidden bg-no-repeat bg-cover relative overflow-hidden bg-no-repeat bg-cover shadow-lg rounded-lg mx-4  "
-                                        data-mdb-ripple="true" data-mdb-ripple-color="light">
-                                        <x-embed url="{{ $post->image->urlyoutube }}" />
-                                    </div>
-                                @else
-                                    <figure>
-                                        <img class=" object-cover object-top img-source h-72 w-full rounded-xl hover:blur-sm cursor-pointer"
-                                            src="{{ Storage::url($post->image->url) }}" alt="{{ $post->name }}"
-                                            onclick="full_view(this);">
-                                    </figure>
-                                @endif
-
-                                <div>
-                                    <h1 class="text-xl font-semibold">
-                                        {{ $post->name }}
-                                    </h1>
-                                    <hr class="mt-1 mb-2">
-                                    <div class="mb-2">
-                                        <img src="{{ Storage::url('Imagenes/' . $post->category->rutaimagen) }}"
-                                            class="inline-block w-5 h-5 " alt="...">
-
-                                        @foreach ($post->tags as $tag)
-                                            <a href="{{ route('posts.buscar') . '?tag=' . $tag->name }}">
-                                                <span
-                                                    class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">
-                                                    {{ $tag->name }}
-                                                </span>
-                                            </a>
-                                        @endforeach
-                                    </div>
-
-                                    <p class="text-sm mb-2">
-                                        {{ $post->created_at->format('d M Y') }}
-                                    </p>
-
-                                    <div class="mb-4">
-                                        {!! Str::limit($post->body, 200, '...') !!}
-                                    </div>
-                                    <div>
-                                        <a href="{{ route('posts.show', $post) }}"
-                                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-                                            Leer más
-                                        </a>
-                                    </div>
-                                </div>
-
-                            </article>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-
-
-        </section>
-
-
-    </div>
 
     @push('js')
-        <script src="{{ asset('vendor/wheelzoom/wheelzoom.js') }}"></script>
-        <script>
-            wheelzoom(document.querySelector('img.zoom'));
-
-            function full_view(ele) {
-                let src = ele.parentElement.querySelector(".img-source").getAttribute("src");
-
-                document.querySelector("#img-viewer").querySelector("img").setAttribute("src", src);
-                document.querySelector("#img-viewer").style.display = "block";
-            }
-
-            function close_model() {
-                document.querySelector("#img-viewer").style.display = "none";
-            }
-        </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf_viewer.min.css" rel="stylesheet" type="text/css" />
         
-        
+
+    <script type="text/javascript">
+        var pdfjsLib = window['pdfjs-dist/build/pdf'];
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.worker.min.js';
+        var pdfDoc = null;
+        var scale = 1; //Set Scale for Zoom.
+        var resolution = IsMobile() ? 1.5 : 1; //Set Resolution as per Desktop and Mobile.
+        function LoadPdfFromUrl(url) {
+            //Read PDF from URL.
+            pdfjsLib.getDocument(url).promise.then(function (pdfDoc_) {
+                pdfDoc = pdfDoc_;
+     
+                //Reference the Container DIV.
+                var pdf_container = document.getElementById("pdf_container");
+                pdf_container.style.display = "block";
+                pdf_container.style.height = IsMobile() ? "1200px" : "820px";
+     
+                //Loop and render all pages.
+                for (var i = 1; i <= pdfDoc.numPages; i++) {
+                    RenderPage(pdf_container, i);
+                }
+            });
+        };
+        function RenderPage(pdf_container, num) {
+            pdfDoc.getPage(num).then(function (page) {
+                //Create Canvas element and append to the Container DIV.
+                var canvas = document.createElement('canvas');
+                canvas.id = 'pdf-' + num;
+                ctx = canvas.getContext('2d');
+                pdf_container.appendChild(canvas);
+     
+                //Create and add empty DIV to add SPACE between pages.
+                var spacer = document.createElement("div");
+                spacer.style.height = "20px";
+                pdf_container.appendChild(spacer);
+     
+                //Set the Canvas dimensions using ViewPort and Scale.
+                var viewport = page.getViewport({ scale: scale });
+                canvas.height = resolution * viewport.height;
+                canvas.width = resolution * viewport.width;
+                   
+                //Render the PDF page.
+                var renderContext = {
+                    canvasContext: ctx,
+                    viewport: viewport,
+                    transform: [resolution, 0, 0, resolution, 0, 0]
+                };
+     
+                page.render(renderContext);
+            });
+        };
+     
+        function IsMobile() {
+            var r = new RegExp("Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini");
+            return r.test(navigator.userAgent);
+        }
+    </script>
     @endpush
 
 
