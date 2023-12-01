@@ -50,7 +50,7 @@ Route::get('buscar',[PostController::class,'buscar'])->name('posts.buscar');
 
 //route de pruebas
 //Route::get('prueba', function () { return view('posts.prueba');})->name('posts.prueba');
-Route::get('/leo', WelcomeController::class);
+Route::get('/leo', WelcomeController::class)->name('posts.leo');
 Route::get('carrusel', function () { return view('posts.carrusel');})->name('posts.carrusel');
 Route::post('/leo', [PostController::class,'meencanta'] )->name('posts.meencanta');
 //hasta aqui las rutas de pruebas

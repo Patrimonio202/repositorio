@@ -5,16 +5,24 @@
         <img class="modal-content rounded-xl zoom" id="full-image">
     </div>
 
-    <div class="container my-4 px-6 mx-auto ">
+    <div  x-on:resize.window="isMobile = (window.innerWidth < 1024) ? false : true"  x-data="{isMobile: (window.innerWidth < 1024) ? false : true}" class="container my-4 px-6 mx-auto ">
         {{-- <figure class="mb-12">
             <img src="{{ Storage::url('Imagenes/Imagen-barner-2.jpg') }}" alt="Portada del home"
                 class="w-full h-40 object-cover object-center" >
         </figure> --}}
 
+        <div class="mx-4 ">
+            <button
+                class=" lg:hidden md:hidden  text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                x-on:click="isMobile = ! isMobile">Mostrar opciones de busqueda</button>
+        </div>
+
         <section>
 
-            <div class="grid grid-cols-1 lg:grid-cols-4 mt-16">
-                <div class="col-span-1  md:col-span-1  lg:col-span-1 mr-4">
+            <div class="grid grid-cols-1 lg:grid-cols-4 mt-4 md:mt-16 lg:mt-16">
+                
+                 <!-- panel de busqueda -->
+                <div x-show="isMobile" class="col-span-1  md:col-span-1  lg:col-span-1 mr-4">
                     <form action="{{ route('posts.buscar') }}">
                         <div class="ui-widget mb-4">
                             <p class="text-lg font-semibold">Criterio de búsqueda:</p>
@@ -56,6 +64,7 @@
 
                     </form>
                 </div>
+
                 <div class="col-span-1 lg:col-span-3 ">
 
 

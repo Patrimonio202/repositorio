@@ -70,8 +70,8 @@
     <div class="container my-4 px-6 mx-auto">
         <section>
             <div class="flex justify-center mt-14">
-                <img src="{{ Storage::url('Imagenes/Titulo_ColeccionesDestacadas.png') }}" class=" h-16 w-96 object-cover"
-                    alt="Titulo colecciones destacadas">
+                <img src="{{ Storage::url('Imagenes/Titulo_ColeccionesDestacadas.png') }}"
+                    class=" h-16 w-96 object-cover" alt="Titulo colecciones destacadas">
             </div>
             <hr>
 
@@ -158,7 +158,11 @@
             //     }
             // });
 
-            
+            function myFunction() {  
+                const $content = document.getElementById('myInput');                
+                $content .select();
+                document.execCommand('copy');                
+            }
         </script>
     @endpush
 

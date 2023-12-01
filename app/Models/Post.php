@@ -80,7 +80,9 @@ class Post extends Model
                 $query->where('tags.name',$tag);
             });
           })->when($filters['textobuscar'] ?? null, function($query,$textobuscar){
-            $query->where('name','like','%'. $textobuscar.'%');
+            $query->where('name','like','%'. $textobuscar.'%')
+                  ->orWhere('body','like','%'. $textobuscar.'%')
+                  ->orWhere('autor','like','%'. $textobuscar.'%');
           });
     }
 
