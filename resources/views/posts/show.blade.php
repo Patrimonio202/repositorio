@@ -20,5 +20,8 @@
                 document.querySelector("#img-viewer").style.display = "none";
             }
         </script>
+
+       
+
     @endpush
 </x-app-layout>

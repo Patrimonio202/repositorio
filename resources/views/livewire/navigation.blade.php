@@ -1,15 +1,16 @@
-<nav x-data="{ open: false }" class="bg-{{$colorbanner}} border-b border-gray-100  sticky top-0 start-0 z-50 ">
+<nav id="menu" x-data="{ open: false }"
+    class="bg-{{ $colorbanner }} border-b border-gray-100  sticky top-0 start-0 z-50 ">
     <!-- Primary Navigation Menu  sticky top-0 start-0 z-50 -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
         <div class="flex justify-between h-16 ">
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{  route('posts.index') }}">
+                    <a href="{{ route('posts.index') }}">
                         <x-application-mark class="block h-9 w-auto" />
                     </a>
                 </div>
-              
+
 
                 <!-- Links de navegacion computador - carrusel -->
                 {{-- <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
@@ -26,7 +27,7 @@
                 </div> --}}
 
                 <!-- Cargar datos desde base de datos -->
-                  {{-- @foreach ($categories as $category)                 
+                {{-- @foreach ($categories as $category)                 
                         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">                           
                             <x-nav-link href="{{ route('posts.category', $category) }}" :active="request()->routeIs('posts.category', $category)">
                                 {{ $category->name }}
@@ -38,32 +39,32 @@
                     <x-nav-link href="{{ route('posts.category', 'imagenes') }}" :active="request()->Is('category/imagenes')">
                         {{ __('Imágenes') }}
                     </x-nav-link>
-                </div>   
+                </div>
 
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div class="hidden space-x-8 sm:-my-px md:ml-1 lg:ml-10  sm:ml-10 sm:flex">
                     <x-nav-link href="{{ route('posts.category', 'audios') }}" :active="request()->Is('category/audios')">
                         {{ __('Audios') }}
                     </x-nav-link>
                 </div>
 
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div class="hidden space-x-8 sm:-my-px  md:ml-1 lg:ml-10 sm:ml-10  sm:flex">
                     <x-nav-link href="{{ route('posts.category', 'publicaciones') }}" :active="request()->Is('category/publicaciones')">
                         {{ __('Publicaciones') }}
                     </x-nav-link>
                 </div>
 
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div class="hidden space-x-8 sm:-my-px md:ml-1  lg:ml-10 sm:ml-10 sm:flex">
                     <x-nav-link href="{{ route('posts.category', 'videos') }}" :active="request()->Is('category/videos')">
                         {{ __('Videos') }}
                     </x-nav-link>
-                </div>                 
+                </div>
 
                 <!-- acerca de -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div class="hidden  space-x-8 sm:-my-px  md:ml-1 lg:ml-10 sm:ml-10 sm:flex">
                     <x-nav-link href="{{ route('inicio.acercade') }}" :active="request()->routeIs('inicio.acercade')">
                         {{ __('Acerca de') }}
                     </x-nav-link>
-                </div> 
+                </div>
 
             </div>
 
@@ -166,12 +167,12 @@
                                     </x-dropdown-link>
                                 @endcan
 
-                                
-                                    <x-dropdown-link href="{{ route('posts.destacado') }}">
-                                        {{ __('Mis preferidos') }} <!-- Profile-->
-                                    </x-dropdown-link>
-                               
-                              
+
+                                <x-dropdown-link href="{{ route('posts.destacado') }}">
+                                    {{ __('Mis preferidos') }} <!-- Profile-->
+                                </x-dropdown-link>
+
+
 
                                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                                     <x-dropdown-link href="{{ route('api-tokens.index') }}">
@@ -193,54 +194,56 @@
                         </x-dropdown>
                     </div>
 
-                    <a href="{{ route('posts.buscar') }}" class="inline-flex items-center px-1 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
+                    <a href="{{ route('posts.buscar') }}"
+                        class="inline-flex items-center px-1 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
                         <!-- Boton lupa despues de logueo-->
-                                      <i class="fa-solid fa-magnifying-glass fa-lg" style="color: #ca9e67;"></i>
-                                     
-                       </a>
+                        <i class="fa-solid fa-magnifying-glass fa-lg" style="color: #ca9e67;"></i>
+
+                    </a>
                 </div>
             @else
-            <div class="hidden sm:flex sm:items-center sm:ml-6">
-                <div class="flex ml-3 relative">
+                <div class="hidden sm:flex sm:items-center sm:ml-6">
+                    <div class="flex ml-3 relative">
 
-                    <x-dropdown align="right" width="48">
-                        <x-slot name="trigger">
-                            <span class="inline-flex rounded-md">
-                                <button type="button"
-                                    class="inline-flex items-center px-1 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
-                                    <!-- Menu opciones usuarios-->
-                                    <i class="fa-solid fa-circle-user fa-xl" style="color: #ca9e67;"></i>
-                                    </button>                                    
-                                
-                            </span>
-                        </x-slot>
+                        <x-dropdown align="right" width="48">
+                            <x-slot name="trigger">
+                                <span class="inline-flex rounded-md">
+                                    <button type="button"
+                                        class="inline-flex items-center px-1 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
+                                        <!-- Menu opciones usuarios-->
+                                        <i class="fa-solid fa-circle-user fa-xl" style="color: #ca9e67;"></i>
+                                    </button>
 
-                        <x-slot name="content">
-                             <!-- Account Management -->
-                             <div class="block px-4 py-2 text-xs text-gray-400">
-                                {{ __('Opciones de ingreso') }} <!-- Manage Account-->
-                            </div>
+                                </span>
+                            </x-slot>
 
-                            <x-dropdown-link href="{{ route('login') }}">
-                                {{ __('Ingresar') }} <!-- Profile-->
-                            </x-dropdown-link>
+                            <x-slot name="content">
+                                <!-- Account Management -->
+                                <div class="block px-4 py-2 text-xs text-gray-400">
+                                    {{ __('Opciones de ingreso') }} <!-- Manage Account-->
+                                </div>
 
-                            @if (Route::has('register'))
-                                <x-dropdown-link href="{{ route('register') }}">
-                                    {{ __('Registrarse') }} <!-- Profile-->
+                                <x-dropdown-link href="{{ route('login') }}">
+                                    {{ __('Ingresar') }} <!-- Profile-->
                                 </x-dropdown-link>
-                            @endif
-                        </x-slot>
-                    </x-dropdown>
 
-                    <a href="{{ route('posts.buscar') }}" class="inline-flex items-center px-1 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
-                      <!-- Boton lupa-->
-                                    <i class="fa-solid fa-magnifying-glass fa-lg" style="color: #ca9e67;"></i>
-                                   
-                     </a>
+                                @if (Route::has('register'))
+                                    <x-dropdown-link href="{{ route('register') }}">
+                                        {{ __('Registrarse') }} <!-- Profile-->
+                                    </x-dropdown-link>
+                                @endif
+                            </x-slot>
+                        </x-dropdown>
+
+                        <a href="{{ route('posts.buscar') }}"
+                            class="inline-flex items-center px-1 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
+                            <!-- Boton lupa-->
+                            <i class="fa-solid fa-magnifying-glass fa-lg" style="color: #ca9e67;"></i>
+
+                        </a>
+                    </div>
                 </div>
-            </div>   
-              
+
 
             @endauth
             <!-- hasta aqui -->
@@ -276,6 +279,10 @@
 
             <x-responsive-nav-link href="{{ route('inicio.acercade') }}" :active="request()->routeIs('inicio.acercade')">
                 {{ __('Acerca de') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link href="{{ route('posts.buscar') }}" :active="request()->routeIs('posts.buscar')">
+                {{ __('Buscar') }}
             </x-responsive-nav-link>
         </div>
 
@@ -380,4 +387,23 @@
 
         @endauth
     </div>
+
+    @push('js')
+        <script>
+        //    window.onscroll = function() {
+        //         myFunction()
+        //     };
+
+        //     function myFunction() {
+        //         //const fas = document.getElementById("menu");
+        //         if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+        //             document.getElementById("menu").className = "bg-blue-400 border-b border-gray-100  sticky top-0 start-0 z-50";
+        //         } else {
+        //             //posicion normal
+        //            document.getElementById("menu").className = "bg-white border-b border-gray-100  sticky top-0 start-0 z-50";
+        //         }
+        //     }
+           
+        </script>
+    @endpush
 </nav>

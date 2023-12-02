@@ -1,5 +1,4 @@
 <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-
     @switch($category->id)
         @case(1)
             <div class=" mb-8">
@@ -31,10 +30,6 @@
 
         @default
     @endswitch
-
-
-
-
     <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4  ">
         @foreach ($posts as $post)
             <article class=" relative bg-white  rounded-xl mr-4 md:mx-2 lg:mx-2  my-10  ">
@@ -117,11 +112,11 @@
         @endforeach
         <div x-intersect="$wire.loadMore()"></div>
     </div>
-    @if ($posts_per_page >= $totalRecords)
+    {{-- @if ($posts_per_page >= $totalRecords)
         <h1 style="font-family:Raleway-ExtraBold" class=" text-center text-lg  font-semibold text-gray-700 ">
             No hay mas registros...
         </h1>
-    @endif
+    @endif --}}
 
     {{-- prueba de modal  sm md lg  xl 2xl --}}
     <x-dialog-modal wire:model="open" maxWidth="md">

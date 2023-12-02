@@ -1,41 +1,41 @@
 <x-app-layout>
-    
+
     <div class="container my-4 md:my-4 lg:my-4 px-6 mx-auto   ">
         <x-carrousel />
     </div>
 
-    
+
     <div
         class="grid grid-cols-1    lg:flex max-w-7xl lg:mx-auto mx-4   bg-white rounded-lg  shadow-lg  items-center  text-center py-8 px-6 gap-4 mt-8 lg:pr-16 ">
 
-       
-            <div class="mb-2 lg:mb-4 md:mt-6 lg:mt-6 lg:mr-4">
-                <a href="{{ route('posts.buscar') . '?category%5B%5D=1' }}">
-                    <img src="{{ Storage::url('Imagenes/Imagenes.jpg') }}"
-                        class="inline-block w-10 h-10 ml-4 rounded-xl hover:scale-150 transition-all duration-100"
-                        alt="...">
-                </a>
 
-                <a href="{{ route('posts.buscar') . '?category%5B%5D=3' }}">
-                    <img src="{{ Storage::url('Imagenes/Libros.jpg') }}"
-                        class="inline-block h-10 w-10 object-cover object-center ml-4 rounded-xl hover:scale-150 transition-all duration-100"
-                        alt="...">
-                </a>
-                <a href="{{ route('posts.buscar') . '?category%5B%5D=4' }}">
-                    <img src="{{ Storage::url('Imagenes/Videos.jpg') }}"
-                        class="inline-block h-10 w-10 object-cover object-center ml-4 rounded-xl hover:scale-150 transition-all duration-100"
-                        alt="...">
-                </a>
-                <a href="{{ route('posts.buscar') . '?category%5B%5D=2' }}">
-                    <img src="{{ Storage::url('Imagenes/Audios.jpg') }}"
-                        class="inline-block h-10 w-10 object-cover object-center ml-4 rounded-xl hover:scale-150 transition-all duration-100"
-                        alt="...">
-                </a>
-            </div>
+        <div class="mb-2 lg:mb-4 md:mt-6 lg:mt-6 lg:mr-4">
+            <a href="{{ route('posts.buscar') . '?category%5B%5D=1' }}">
+                <img src="{{ Storage::url('Imagenes/Imagenes.jpg') }}"
+                    class="inline-block w-10 h-10 ml-4 rounded-xl hover:scale-150 transition-all duration-100"
+                    alt="...">
+            </a>
+
+            <a href="{{ route('posts.buscar') . '?category%5B%5D=3' }}">
+                <img src="{{ Storage::url('Imagenes/Libros.jpg') }}"
+                    class="inline-block h-10 w-10 object-cover object-center ml-4 rounded-xl hover:scale-150 transition-all duration-100"
+                    alt="...">
+            </a>
+            <a href="{{ route('posts.buscar') . '?category%5B%5D=4' }}">
+                <img src="{{ Storage::url('Imagenes/Videos.jpg') }}"
+                    class="inline-block h-10 w-10 object-cover object-center ml-4 rounded-xl hover:scale-150 transition-all duration-100"
+                    alt="...">
+            </a>
+            <a href="{{ route('posts.buscar') . '?category%5B%5D=2' }}">
+                <img src="{{ Storage::url('Imagenes/Audios.jpg') }}"
+                    class="inline-block h-10 w-10 object-cover object-center ml-4 rounded-xl hover:scale-150 transition-all duration-100"
+                    alt="...">
+            </a>
+        </div>
 
 
 
-     
+
 
 
         <div class=" md:flex-1 lg:flex-1 pl-0  ml-0">
@@ -70,24 +70,24 @@
     <div class="container my-4 px-6 mx-auto">
         <section>
             <div class="flex justify-center mt-14">
-                <img src="{{ Storage::url('Imagenes/Titulo_ColeccionesDestacadas.png') }}" class=" w-96 object-cover"
-                alt="Titulo archivos recientes">
+                <img src="{{ Storage::url('Imagenes/Titulo_ColeccionesDestacadas.png') }}"
+                    class=" h-16 w-96 object-cover" alt="Titulo colecciones destacadas">
             </div>
             <hr>
-            
-                 {{-- @livewire('destacada-posts')   --}}
-                 <livewire:destacada-posts lazy />           
 
-        </section> 
-    </div> 
+            {{-- @livewire('destacada-posts')   --}}
+            <livewire:destacada-posts lazy />
+
+        </section>
+    </div>
 
 
     <!--Multimedia publicada -->
     <div class="container my-4 px-6 mx-auto ">
-        <section>          
+        <section>
             <div class="flex justify-center">
-                <img src="{{ Storage::url('Imagenes/Titulo_ArchivosRecientes.png') }}" class="h-20 w-80 object-cover object-center"
-                alt="Titulo archivos recientes">
+                <img src="{{ Storage::url('Imagenes/Titulo_ArchivosRecientes.png') }}"
+                    class="h-16 w-80 object-cover object-center" alt="Titulo archivos recientes">
             </div>
             <hr>
             @livewire('multimedia-publicada')
@@ -139,49 +139,30 @@
 
     @push('js')
         <script>
-            // Livewire.on('glider', ()=> { 
-            //  document.addEventListener('DOMContentLoaded', () => {           
-            new Glider(document.querySelector('.glider'), {
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                draggable: true,
-                dots: '.dots',
-                arrows: {
-                    prev: '.glider-prev',
-                    next: '.glider-next'
-                },
-                responsive: [{
-                        breakpoint: 640,
-                        settings: {
-                            slidesToShow: 2.5,
-                            slidesToScroll: 2,
-                        }
-                    },
-                    {
-                        breakpoint: 768,
-                        settings: {
-                            slidesToShow: 3.5,
-                            slidesToScroll: 3,
-                        }
-                    },
-                    {
-                        breakpoint: 1024,
-                        settings: {
-                            slidesToShow: 3.5,
-                            slidesToScroll: 3,
-                        }
-                    },
-                    {
-                        breakpoint: 1280,
-                        settings: {
-                            slidesToShow: 3.5,
-                            slidesToScroll: 3,
-                        }
-                    },
-                ]
-            });
+            // $(document).ready(() => {
+            //     alert('prueba');
+            //     const breakpoint = 500;
+            //     $(window).scroll(() => toggleActionByBreakpoint(breakpoint));
 
+            //     function toggleActionByBreakpoint(breakpoint) {
+            //         const currentScrollPos = $(this).scrollTop();
+            //         console.log(currentScrollPos);
+
+            //         const isScrollOverPos = currentScrollPos > breakpoint;
+            //         const isScrollUnderPos = currentScrollPos < breakpoint;
+
+            //         // if (isScrollOverPos) $("body").css('background-color', 'green');
+            //         // if (isScrollUnderPos) $("body").css('background-color', 'red');
+            //         if (isScrollOverPos) alert('leo el mejor');
+            //         if (isScrollUnderPos) alert('leo el mejor');
+            //     }
             // });
+
+            function myFunction() {  
+                const $content = document.getElementById('myInput');                
+                $content .select();
+                document.execCommand('copy');                
+            }
         </script>
     @endpush
 

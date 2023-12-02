@@ -36,6 +36,10 @@
                     <option value="Libros">Categoria libros</option>
                     <option value="Videos">Categoria videos</option>
                     <option value="Fondologin">Fondo login</option>
+                    <option value="TituloImagenes">Titulo imagenes</option>
+                    <option value="TituloAudios">Titulo audios</option>
+                    <option value="TituloPublicaciones">Titulo publicaciones</option>
+                    <option value="TituloVideos">Titulo videos</option>
                 </select>
             </div>
 
@@ -59,6 +63,7 @@
                         Las imagenes para el Favicon deben de estar en .png </br>
                         Las imagenes para el Logo deben de estar en .png </br>
                         El fondo login debe estar en formato .png  dimensiones 667 * 500 </br>
+                        las imagenes de los tittulos de las categorias deben de estar en formato .png   </br>
                     </p>
                 </div>
             </div>
@@ -89,7 +94,8 @@
         function cambiarimagenselect(){  
             var extension="";
             var nimagen= $("#idimagen").val();
-            if(nimagen=='Logo' || nimagen=='Favicon' || nimagen=='Fondologin'){
+            if(nimagen=='Logo' || nimagen=='Favicon' || nimagen=='Fondologin'
+            || nimagen=='TituloImagenes' || nimagen=='TituloAudios' || nimagen=='TituloPublicaciones' || nimagen=='TituloVideos'){
                 var extension=".png";
             }else{
             var extension=".jpg";
