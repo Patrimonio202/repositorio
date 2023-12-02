@@ -360,7 +360,7 @@
                         </button>
                     </div>
                     <!-- Modal body -->
-                    <div class="p-4 md:p-5 space-y-4  ">
+                    <div class="lg:p-4 md:p-5 lg:space-y-4  ">
                         {{-- <iframe width="100%" height="700"
                         src="{{ Storage::url($post->image->urlarchivo) }}#toolbar=0&navpanes=0&scrollbar=0">
                         </iframe> --}}
@@ -368,6 +368,7 @@
                             frameborder="0" width="100%" height="600px" style="padding: 20px;">                          
                                 <iframe class=" w-full" height="600px" src="pdfjs/web/viewer.html?file={{ Storage::url($post->image->urlarchivo) }}" frameborder="0"></iframe>
                         </object> --}}
+
                          <iframe class=" w-full" height="600px" src="{{ asset('pdfjs/web/viewer.html')}}?file={{ Storage::url($post->image->urlarchivo) }}" frameborder="0"></iframe>
 
                     </div>
