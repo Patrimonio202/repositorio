@@ -367,6 +367,7 @@
                         <object data="{{ Storage::url($post->image->urlarchivo) }}" type="application/pdf"
                             frameborder="0" width="100%" height="600px" style="padding: 20px;">
                             {{-- <embed src="{{ Storage::url($post->image->urlarchivo) }}" width="100%" height="600px"/>  --}}
+                                <iframe class=" w-full" height="600px" src="pdfjs/web/viewer.html?file={{ Storage::url($post->image->urlarchivo) }}" frameborder="0"></iframe>
                         </object>
 
                     </div>
