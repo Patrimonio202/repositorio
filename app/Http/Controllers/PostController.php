@@ -79,12 +79,14 @@ class PostController extends Controller
   {
 
     $categories = Category::all();
+    $tags= Tag::where('coleccion', 2)
+                ->get();
 
     $posts = Post::where('status', 2)
       ->filter(request()->all())
       ->orderBy('id', 'desc')
       ->paginate(10);
-    return view('posts.buscar', compact('posts', 'categories'));
+    return view('posts.buscar', compact('posts', 'categories', 'tags'));
   }
 
   public function colecciones(Tag $tag)

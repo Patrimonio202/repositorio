@@ -58,6 +58,23 @@
 
                         </div>
 
+                        <div class="mb-4">
+                            <p class="text-lg font-semibold">Colecciones:</p>
+                            <ul>
+                                @foreach ($tags as $tag)
+                                    <li>
+                                        <label>
+                                            <x-checkbox type="checkbox" name="tag[]" value="{{ $tag->id }}"
+                                                :checked="is_array(request('tag')) &&
+                                                    in_array($tag->id, request('tag'))" />
+                                            <span class="ml-2 text-gray-700">{{ $tag->name }}</span>
+                                        </label>
+                                    </li>
+                                @endforeach
+                            </ul>
+
+                        </div>
+
                         <x-button class="mb-4">
                             Aplicar filtros
                         </x-button>

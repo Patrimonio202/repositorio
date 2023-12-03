@@ -17,10 +17,7 @@
             @break
 
             @case('biblioteca-publica-municipal')
-                <div class=" mb-8 mt-8">
-                    <img src="{{ Storage::url('Imagenes/TituloColeccionBiblioteca.png') }}"
-                        class="inline-block  rounded-lg shadow-lg  " alt="Titulo Colecciones bilbioteca">
-                </div>
+                <x-colecciones-biblioteca />
             @break
 
             @default

@@ -77,7 +77,7 @@ class Post extends Model
              $query->orderBy('created_at',$sort);
           })->when($filters['tag'] ?? null, function($query,$tag){
             $query->whereHas('tags', function($query) use ($tag) {
-                $query->where('tags.name',$tag);
+                $query->where('tags.id',$tag);
             });
           })->when($filters['textobuscar'] ?? null, function($query,$textobuscar){
             $query->where('name','like','%'. $textobuscar.'%')
