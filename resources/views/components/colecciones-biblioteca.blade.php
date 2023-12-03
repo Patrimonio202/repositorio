@@ -12,7 +12,7 @@
             materiales que representan la memoria y la identidad del municipio de El Santuario. Este tipo de colección
             en las bibliotecas públicas es vital para comprender y preservar el patrimonio cultural y la historia de una
             comunidad local. La colección local es mucho más que una simple agrupación de documentos; es un reflejo de
-            la sociedad, sus costumbres, creencias, hechos y tradiciones, todos vinculados a un área a esta área
+            la sociedad, sus costumbres, creencias, hechos y tradiciones, todos vinculados a un área 
             geográfica y territorial específica.
         </p>
         <br>

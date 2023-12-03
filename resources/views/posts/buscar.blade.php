@@ -176,9 +176,10 @@
 
                     toggle() {
                         if(this.isMobile)
-                        this.mensaje='Ocultar opciones de busqueda'
+                        this.mensaje='Mostrar opciones de busqueda'
                         else
-                         this.mensaje='Mostrar opciones de busqueda' ;
+                        this.mensaje='Ocultar opciones de busqueda';
+                        
                         this.isMobile = !this.isMobile
                     }
                 }))
