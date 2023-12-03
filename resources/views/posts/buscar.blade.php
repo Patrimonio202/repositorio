@@ -171,7 +171,7 @@
                 Alpine.data('dropdown', () => ({
                     //isMobile: false,
                     isMobile: (window.innerWidth < 1024) ? false : true,
-                    mensaje:'Mostrar opciones de busqueda',
+                    mensaje:'Mostrar opciones de búsqueda',
 
 
                     toggle() {
