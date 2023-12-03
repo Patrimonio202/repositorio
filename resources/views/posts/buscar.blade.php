@@ -5,7 +5,7 @@
         <img class="modal-content rounded-xl zoom" id="full-image">
     </div>
 
-    <div    x-data="{isMobile: (window.innerWidth < 1024) ? false : true}" class="container my-4 px-6 mx-auto ">
+    <div x-data="dropdown" class="container my-4 px-6 mx-auto ">
         {{-- <figure class="mb-12">
             <img src="{{ Storage::url('Imagenes/Imagen-barner-2.jpg') }}" alt="Portada del home"
                 class="w-full h-40 object-cover object-center" >
@@ -14,14 +14,16 @@
         <div class="mx-4 ">
             <button
                 class=" lg:hidden   text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                x-on:click="isMobile = ! isMobile">Mostrar opciones de busqueda</button>
+                x-on:click="toggle" >
+                <label x-text="mensaje"></label>
+            </button>
         </div>
 
         <section>
 
             <div class="grid grid-cols-1 lg:grid-cols-4 mt-4  lg:mt-16">
-                
-                 <!-- panel de busqueda -->
+
+                <!-- panel de busqueda -->
                 <div x-show="isMobile" class="col-span-1  md:col-span-1  lg:col-span-1 mr-4">
                     <form action="{{ route('posts.buscar') }}">
                         <div class="ui-widget mb-4">
@@ -162,6 +164,25 @@
             function close_model() {
                 document.querySelector("#img-viewer").style.display = "none";
             }
+        </script>
+
+        <script>
+            document.addEventListener('alpine:init', () => {
+                Alpine.data('dropdown', () => ({
+                    //isMobile: false,
+                    isMobile: (window.innerWidth < 1024) ? false : true,
+                    mensaje:'Mostrar opciones de busqueda',
+
+
+                    toggle() {
+                        if(this.isMobile)
+                        this.mensaje='Ocultar opciones de busqueda'
+                        else
+                         this.mensaje='Mostrar opciones de busqueda' ;
+                        this.isMobile = !this.isMobile
+                    }
+                }))
+            })
         </script>
     @endpush
 
