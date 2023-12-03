@@ -64,9 +64,9 @@
                                 @foreach ($tags as $tag)
                                     <li>
                                         <label>
-                                            <x-checkbox type="checkbox" name="tag[]" value="{{ $tag->id }}"
-                                                :checked="is_array(request('tag')) &&
-                                                    in_array($tag->id, request('tag'))" />
+                                            <x-checkbox type="checkbox" name="colecciones[]" value="{{ $tag->id }}"
+                                                :checked="is_array(request('colecciones')) &&
+                                                    in_array($tag->id, request('colecciones'))" />
                                             <span class="ml-2 text-gray-700">{{ $tag->name }}</span>
                                         </label>
                                     </li>

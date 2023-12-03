@@ -66,8 +66,8 @@ class MultimediaPublicada extends Component
         $this->totalRecords=9;
     }
     public function loadMore(){
-        if ($this->posts_per_page<9){
-        $this->posts_per_page +=6;
+        if ($this->posts_per_page<12){
+        $this->posts_per_page +=3;
         }
     }
 
@@ -91,10 +91,32 @@ class MultimediaPublicada extends Component
        
     }
 
+  
     public function render()
-    {
-       // $posts = Post::where('status', 2)->latest('id')->paginate(6);
-        $posts=Post::where('status', 2)->latest('id')->paginate($this->posts_per_page);
+    {       
+        //$posts=Post::where('status', 2)->latest('id')->paginate($this->posts_per_page);
+        $posts=null;
+        
+        if($this->posts_per_page==3){            
+            $posts=Post::where('status', 2)->where('category_id','1')->latest('id')->take(3)->get();
+        }
+        if($this->posts_per_page==6){            
+            $posts=Post::where('status', 2)->where('category_id','1')->latest('id')->take(3)
+            ->union(Post::where('status', 2)->where('category_id','2')->latest('id')->take(3))->get();
+        }
+        if($this->posts_per_page==9){            
+            $posts=Post::where('status', 2)->where('category_id','1')->latest('id')->take(3)
+            ->union(Post::where('status', 2)->where('category_id','2')->latest('id')->take(3))
+            ->union(Post::where('status', 2)->where('category_id','3')->latest('id')->take(3))->get();
+        }
+
+        if($this->posts_per_page==12){            
+            $posts=Post::where('status', 2)->where('category_id','1')->latest('id')->take(3)
+            ->union(Post::where('status', 2)->where('category_id','2')->latest('id')->take(3))
+            ->union(Post::where('status', 2)->where('category_id','3')->latest('id')->take(3))
+            ->union(Post::where('status', 2)->where('category_id','4')->latest('id')->take(3))->get();
+        }      
+       
         return view('livewire.multimedia-publicada', compact('posts'));
     }
 }

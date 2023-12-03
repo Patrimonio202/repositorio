@@ -77,12 +77,19 @@ class Post extends Model
              $query->orderBy('created_at',$sort);
           })->when($filters['tag'] ?? null, function($query,$tag){
             $query->whereHas('tags', function($query) use ($tag) {
-                $query->where('tags.id',$tag);
+                $query->where('tags.name',$tag);
             });
-          })->when($filters['textobuscar'] ?? null, function($query,$textobuscar){
-            $query->where('name','like','%'. $textobuscar.'%')
+          })->when($filters['textobuscar'] ?? null, function($query,$textobuscar){   
+            $query->where( function($query)  use ($textobuscar){
+                $query->where('name','like','%'. $textobuscar.'%')
                   ->orWhere('body','like','%'. $textobuscar.'%')
                   ->orWhere('autor','like','%'. $textobuscar.'%');
+            });
+
+          })->when($filters['colecciones'] ?? null, function($query,$tag){
+            $query->whereHas('tags', function($query) use ($tag) {
+                $query->where('tags.id',$tag);
+            });
           });
     }
 
