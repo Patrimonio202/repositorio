@@ -15,7 +15,7 @@
             <button
                 class=" lg:hidden   text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
                 x-on:click="toggle" >
-                <label x-text="mensaje">Mostrar opciones de busqueda</label>
+                <label x-text="mensaje">Mostrar opciones de búsqueda</label>
             </button>
         </div>
 
@@ -176,9 +176,9 @@
 
                     toggle() {
                         if(this.isMobile)
-                        this.mensaje='Mostrar opciones de busqueda'
+                        this.mensaje='Mostrar opciones de búsqueda'
                         else
-                        this.mensaje='Ocultar opciones de busqueda';
+                        this.mensaje='Ocultar opciones de búsqueda';
                         
                         this.isMobile = !this.isMobile
                     }
