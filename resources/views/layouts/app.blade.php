@@ -88,6 +88,9 @@
             <main>
                 {{ $slot }}
             </main>
+            <!--menu visible -->
+               <x-speed-dial /> 
+                  <!--Hasta aqui -->
              <x-suscribirse2 /> 
         </div>
 
