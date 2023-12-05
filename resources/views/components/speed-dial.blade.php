@@ -87,7 +87,7 @@
     <button x-on:click="toggle" type="button" data-dial-toggle="speed-dial-menu-bottom-right" aria-controls="speed-dial-menu-bottom-right"
         aria-expanded="false"
         class="flex items-center justify-center text-white bg-blue-700 rounded-full w-14 h-14 hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:focus:ring-blue-800">
-        <svg class="w-5 h-5 transition-transform group-hover:rotate-45" aria-hidden="true"
+        <svg x-ref="targetDiv" class="w-5 h-5 transition-transform " aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M9 1v16M1 9h16" />
@@ -102,14 +102,15 @@
     document.addEventListener('alpine:init', () => {
         Alpine.data('dropdown', () => ({
             isMobile: false,            
-            mensaje:'Mostrar opciones de búsqueda',
+           
 
 
             toggle() {
-                if(this.isMobile)
-                this.mensaje='Mostrar opciones de búsqueda'
-                else
-                this.mensaje='Ocultar opciones de búsqueda';
+                if(this.isMobile){
+                    this.$refs.targetDiv.classList.remove('rotate-45')
+               } else {
+                this.$refs.targetDiv.classList.add('rotate-45')               
+              }
                 
                 this.isMobile = !this.isMobile
             }
