@@ -1,4 +1,4 @@
-<div  x-data="dropdown" data-dial-init class="fixed end-6 bottom-6 group">
+<div  x-data="menuld" data-dial-init class="fixed end-6 bottom-6 group">
     <div x-show="isMobile" id="speed-dial-menu-bottom-right" class="flex flex-col hidden items-center mb-4 space-y-2">     
             <a href="#">
                 <button type="button" data-tooltip-target="tooltip-aleatorio" data-tooltip-placement="left"
@@ -97,7 +97,7 @@
     @push('js')
     <script>
         document.addEventListener('alpine:init', () => {
-            Alpine.data('dropdown', () => ({
+            Alpine.data('menuld', () => ({
                 isMobile: false,            
                
     
