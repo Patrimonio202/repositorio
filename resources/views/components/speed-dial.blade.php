@@ -1,5 +1,5 @@
 <div  x-data="menuld" data-dial-init class="fixed end-6 bottom-6 group">
-    <div x-show="isMobile" id="speed-dial-menu-bottom-right" class="flex flex-col hidden items-center mb-4 space-y-2">     
+    <div x-show="isMobile" id="speed-dial-menu-bottom-right" class="flex flex-col hidden items-center mb-4 space-y-2 mt-8">     
             <a href="#">
                 <button type="button" data-tooltip-target="tooltip-aleatorio" data-tooltip-placement="left"
                     class="flex justify-center items-center w-[52px] h-[52px] text-gray-500 hover:text-gray-900 bg-white rounded-full border border-gray-200 dark:border-gray-600 shadow-sm dark:hover:text-white dark:text-gray-400 hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-600 focus:ring-4 focus:ring-gray-300 focus:outline-none dark:focus:ring-gray-400">
