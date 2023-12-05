@@ -89,7 +89,8 @@
                 {{ $slot }}
             </main>
             <!--menu visible -->
-               <x-speed-dial /> 
+               {{-- <x-speed-dial />  --}}
+               @livewire('menulw')
                   <!--Hasta aqui -->
              <x-suscribirse2 /> 
         </div>
