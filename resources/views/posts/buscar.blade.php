@@ -97,9 +97,13 @@
                                     </div>
                                 @else
                                     <figure>
-                                        <img class=" object-cover object-top img-source h-72 w-full rounded-xl hover:blur-sm cursor-pointer"
+                                        <img class=" object-cover object-top  h-72 w-full rounded-xl hover:blur-sm cursor-pointer"
                                             src="{{ Storage::url($post->image->url) }}" alt="{{ $post->name }}"
-                                            onclick="full_view(this);">
+                                            >
+                                            <a href="{{ route('posts.show', $post) }}">
+                                                <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed opacity-0 hover:opacity-100 transition duration-300 ease-in-out"
+                                                    style="background-color: rgba(251, 251, 251, 0.15)"></div>
+                                            </a>
                                     </figure>
                                 @endif
 
