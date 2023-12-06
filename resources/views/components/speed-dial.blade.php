@@ -1,6 +1,6 @@
-<div x-data="menuld" data-dial-init class="fixed end-6 bottom-6 group backdrop-blur-md">
+<div x-data="menuld" data-dial-init class="fixed end-6 bottom-6 group ">
     <div x-show="isMobile" id="speed-dial-menu-bottom-right" class="flex flex-col hidden items-center mb-4 space-y-2 mt-8">
-        <div class=" w-96 flex justify-center items-center">
+        <div class=" w-96 flex justify-center items-center backdrop-blur-md  bg-white/30 rounded-full">
             <div class="flex-1 justify-end  mr-4">
                 <p class=" text-right  text-sm  text-[#08416b]" style="font-family:Raleway-Regular">Contenido aleatorio
                 </p>
@@ -18,7 +18,7 @@
             </div>
         </div>
 
-        <div class="w-96 flex justify-center items-center">
+        <div class="w-96 flex justify-center items-center backdrop-blur-md  bg-white/30 rounded-full">
             <div class="flex-1 justify-end  mr-4">
                 <p class=" text-right text-sm  text-[#08416b]" style="font-family:Raleway-Regular">Colección Biblioteca
                     Pública Municipal</p>
@@ -38,7 +38,7 @@
             </div>
         </div>
 
-        <div class=" w-96 flex justify-center items-center">
+        <div class=" w-96 flex justify-center items-center backdrop-blur-md  bg-white/30 rounded-full">
             <div class="flex-1 justify-end  mr-4">
                 <p class=" text-right text-sm  text-[#08416b]" style="font-family:Raleway-Regular">Colección Patrimonio
                     artístico y cultural</p>
@@ -59,7 +59,7 @@
         </div>
 
 
-        <div class=" w-96 flex justify-center items-center">
+        <div class=" w-96 flex justify-center items-center backdrop-blur-md  bg-white/30 rounded-full">
             <div class="flex-1 justify-end  mr-4">
                 <p class=" text-right text-sm  text-[#08416b]" style="font-family:Raleway-Regular">Colección Revista El
                     Santuariano
@@ -80,7 +80,7 @@
             </div>
         </div>
 
-        <div class=" w-96 flex justify-center items-center">
+        <div class=" w-96 flex justify-center items-center backdrop-blur-md  bg-white/30 rounded-full">
             <div class="flex-1 justify-end  mr-4">
                 <p class=" text-right text-sm  text-[#08416b]" style="font-family:Raleway-Regular">Colección Antonio
                     Botero Gómez</p>

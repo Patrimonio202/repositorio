@@ -9,7 +9,7 @@
 </div>
 
 <div class=" mt-12 text-center  text-[#08416b]" style="font-family:Raleway-ExtraBold">
-    <h1>CELBRANDO EL PATRIMONIO
+    <h1>CELEBRANDO EL PATRIMONIO
         FOTOGRÁFICO DE DON
         ANTONIO BOTERO GÓMEZ </h1>
     <h1>(1919-2000)</h1>
