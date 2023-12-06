@@ -44,13 +44,13 @@
     </div>
 </div>
 
-<div class=" mt-4 md:mt-0 lg:mt-0">
+<div class=" mt-4 md:mt-0 lg:mt-0 md:ml-8 lg:mr-24 lg:ml-24 mr-4 ml-4">
     <img src="{{ Storage::url('Imagenes/Antonio_botero_coleccion.png') }}" class=" object-cover object-center"
         alt="Foto Antonio botero">
 </div>
 
 
-<div class=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 ">
+<div class=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 md:ml-8 lg:mr-24 lg:ml-24 mr-4 ml-4 ">
     <div class="mr-4 ml-4 mt-4 md:mt-0  lg:mt-0">
         <h1 class=" text-center text-[#08416b]" style="font-family:Raleway-ExtraBold">MÁS ALLÁ DE LA FOTOGRAFÍA,
             CONSERVANDO UN LEGADO VISUAL</h1>
@@ -80,13 +80,13 @@
     </div>
 </div>
 
-<div class="mr-4 ml-4 mt-16">
+<div class="mr-4 ml-4 mt-16 md:ml-8 lg:mr-24 lg:ml-24 ">
     <h1 class=" text-center text-[#08416b]" style="font-family:Raleway-ExtraBold">
         EXPLORANDO EL PATRIMONIO VISUAL DE EL SANTUARIO
     </h1>
 </div>
 
-<div class="mr-4 ml-4 mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+<div class="mr-4 ml-4 mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 md:ml-8 lg:mr-24 lg:ml-24 ">
     <div class=" text-justify text-sm  text-[#08416b]" style="font-family:Raleway-Regular">
         <p>
             Esta colección ofrece a los visitantes la oportunidad de sumergirse en la historia de El
@@ -116,7 +116,7 @@
 </div>
        
 
-<div class=" flex items-center justify-center mb-8 mt-8  md:mt-16  lg:mt-16 mr-4 ml-4">
+<div class=" flex items-center justify-center mb-8 mt-8  md:mt-16  lg:mt-16 mr-4 ml-4 md:ml-8 lg:mr-24 lg:ml-24 ">
     <img src="{{ Storage::url('Imagenes/Antonio_botero_frasefinal.png') }}"
         class=" md:lg:w-[700px] lg:w-[700px] object-cover object-center" alt="Frase final Antonio botero">
 </div>
