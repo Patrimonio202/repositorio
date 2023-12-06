@@ -110,7 +110,7 @@
                             </div>
                             <div lass="flex-1">
                                 <i wire:click="download({{ $post }})" class="fa-solid fa-download fa-lg"></i>
-                            </div>
+                            </div>                           
                         @else
                             <div class="flex-1">
                                 <a data-tooltip-target="tmeinteresa" data-tooltip-style="light"

@@ -81,15 +81,15 @@
         <x-banner />
 
         <div class="min-h-screen bg-gray-100">      
-         
+          
           @livewire('navigation',['colorbanner' => 'white'])           <!-- este es el menu que acabamos de crear -->    
         
             <!-- Page Content -->
-            <main>
+            <main>             
                 {{ $slot }}
             </main>
             <!--menu visible -->
-                <x-speed-dial /> 
+               <x-speed-dial /> 
                {{-- @livewire('menulw') --}}
                   <!--Hasta aqui -->
              <x-suscribirse2 /> 
