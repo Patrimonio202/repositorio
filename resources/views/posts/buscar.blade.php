@@ -14,7 +14,7 @@
         <div class="mx-4 ">
             <button
                 class=" lg:hidden   text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                x-on:click="toggle" >
+                x-on:click="toggle">
                 <label x-text="mensaje">Mostrar opciones de búsqueda</label>
             </button>
         </div>
@@ -97,19 +97,17 @@
                                     </div>
                                 @else
                                     <figure>
-                                        <img class=" object-cover object-top  h-72 w-full rounded-xl hover:blur-sm cursor-pointer"
-                                            src="{{ Storage::url($post->image->url) }}" alt="{{ $post->name }}"
-                                            >
-                                            <a href="{{ route('posts.show', $post) }}">
-                                                <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed opacity-0 hover:opacity-100 transition duration-300 ease-in-out"
-                                                    style="background-color: rgba(251, 251, 251, 0.15)"></div>
-                                            </a>
+                                        <a href="{{ route('posts.show', $post) }}">
+                                            <img class=" object-cover object-top  h-72 w-full rounded-xl hover:blur-sm cursor-pointer"
+                                                src="{{ Storage::url($post->image->url) }}" alt="{{ $post->name }}" />
+                                        </a>
+
                                     </figure>
                                 @endif
 
                                 <div>
                                     <h1 class="text-xl font-semibold">
-                                        {{ $post->name }}
+                                       <a href="{{ route('posts.show', $post) }}"> {{ $post->name }}</a>
                                     </h1>
                                     <hr class="mt-1 mb-2">
                                     <div class="mb-2">
@@ -175,15 +173,15 @@
                 Alpine.data('dropdown', () => ({
                     //isMobile: false,
                     isMobile: (window.innerWidth < 1024) ? false : true,
-                    mensaje:'Mostrar opciones de búsqueda',
+                    mensaje: 'Mostrar opciones de búsqueda',
 
 
                     toggle() {
-                        if(this.isMobile)
-                        this.mensaje='Mostrar opciones de búsqueda'
+                        if (this.isMobile)
+                            this.mensaje = 'Mostrar opciones de búsqueda'
                         else
-                        this.mensaje='Ocultar opciones de búsqueda';
-                        
+                            this.mensaje = 'Ocultar opciones de búsqueda';
+
                         this.isMobile = !this.isMobile
                     }
                 }))
