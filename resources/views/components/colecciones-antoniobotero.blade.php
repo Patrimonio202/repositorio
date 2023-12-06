@@ -15,7 +15,7 @@
     <h1>(1919-2000)</h1>
 </div>
 
-<div class="   grid grid-cols-1  md:grid-cols-2 lg:grid-cols-2 mt-4  gap-8 mb-16 mr-4 ml-4 ">
+<div class="   grid grid-cols-1  md:grid-cols-2 lg:grid-cols-2 mt-4  gap-8 mb-16 md:mr-8 md:ml-8 mr-4 ml-4 ">
 
     <div class=" text-left text-sm  text-[#08416b]" style="font-family:Raleway-Regular">
         <p>La fotografía es un poderoso medio para capturar la esencia de una época, y el legado de Don

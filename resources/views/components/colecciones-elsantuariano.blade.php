@@ -2,6 +2,7 @@
     <img src="{{ Storage::url('Imagenes/Elsantuarianotitulo.png') }}" class=" object-cover object-center"
         alt="Titulo El Santuariano">
 </div>
+
 <div class=" text-left text-sm mt-4 text-[#08416b]  mr-4 ml-4 lg:mr-24 lg:ml-24" style="font-family:Raleway-Regular">
     <p>
         La revista El Santuariano y su colección “El Santuariano Histórico” es una publicación de gran valor cultural y
