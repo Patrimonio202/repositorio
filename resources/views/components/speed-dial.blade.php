@@ -1,4 +1,4 @@
-<div x-data="menuld" data-dial-init class="fixed end-6 bottom-6 group ">
+<div x-data="menuld" data-dial-init class="fixed  z-50 end-6 bottom-6 group ">
     <div x-show="isMobile" id="speed-dial-menu-bottom-right" class="flex flex-col hidden items-center mb-4 space-y-2 mt-8">
         <div class=" w-96 flex justify-center items-center backdrop-blur-md  bg-white/30 rounded-full">
             <div class="flex-1 justify-end  mr-4">
@@ -41,18 +41,20 @@
         <div class=" w-96 flex justify-center items-center backdrop-blur-md  bg-white/30 rounded-full">
             <div class="flex-1 justify-end  mr-4">
                 <p class=" text-right text-sm  text-[#08416b]" style="font-family:Raleway-Regular">Colección Patrimonio
-                    artístico y cultural</p>
+                    Artístico y Cultural</p>
             </div>
             <div>
                 <a href="{{ route('posts.colecciones', 'archivo-patrimonial-de-el-santuario') }}">
                     <button type="button" data-tooltip-target="tooltip-print" data-tooltip-placement="left"
                         class="flex justify-center items-center w-[52px] h-[52px] text-gray-500 hover:text-gray-900 bg-white rounded-full border border-gray-200 dark:border-gray-600 shadow-sm dark:hover:text-white dark:text-gray-400 hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-600 focus:ring-4 focus:ring-gray-300 focus:outline-none dark:focus:ring-gray-400">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
+                        {{-- <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
                             viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
                             <path fill="#00a2b0"
                                 d="M272 96c-78.6 0-145.1 51.5-167.7 122.5c33.6-17 71.5-26.5 111.7-26.5h88c8.8 0 16 7.2 16 16s-7.2 16-16 16H288 216s0 0 0 0c-16.6 0-32.7 1.9-48.3 5.4c-25.9 5.9-49.9 16.4-71.4 30.7c0 0 0 0 0 0C38.3 298.8 0 364.9 0 440v16c0 13.3 10.7 24 24 24s24-10.7 24-24V440c0-48.7 20.7-92.5 53.8-123.2C121.6 392.3 190.3 448 272 448l1 0c132.1-.7 239-130.9 239-291.4c0-42.6-7.5-83.1-21.1-119.6c-2.6-6.9-12.7-6.6-16.2-.1C455.9 72.1 418.7 96 376 96L272 96z" />
-                        </svg>
-                        <span class="sr-only">Colección Patrimonio artístico y cultural</span>
+                        </svg> --}}
+                        <img src="{{ Storage::url('Imagenes/Patrón-El-Santuario_1.jpg') }}"
+                        class=" h-6 w-6 object-cover" alt="icono patrimonio">
+                        <span class="sr-only">Colección Patrimonio Artístico y Cultural</span>
                     </button>
                 </a>
             </div>

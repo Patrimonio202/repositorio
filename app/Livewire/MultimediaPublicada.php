@@ -80,14 +80,24 @@ class MultimediaPublicada extends Component
     }
 
     public function download($post){    
-        $vpost=$post['image'];     
-        if($post['category_id']=='1') {
-            return Storage::download($vpost['url']);
-        }  
-        
-        if($post['category_id']=='2' || $post['category_id']=='3' ) {
-            return Storage::download($vpost['urlarchivo']);
-        }  
+        $vpost = $post['image'];
+        if ($post['category_id'] == '1') {
+            //return Storage::download($vpost['url']);
+            return redirect(Storage::temporaryUrl(
+                $vpost['url'],
+                now()->addHour(),
+                ['ResponseContentDisposition' => 'attachment']
+            ));
+        }
+
+        if ($post['category_id'] == '2' || $post['category_id'] == '3') {
+            // return Storage::download($vpost['urlarchivo']);           
+                    return redirect(Storage::temporaryUrl(
+                        $vpost['urlarchivo'],
+                        now()->addHour(),
+                        ['ResponseContentDisposition' => 'attachment']
+                    ));
+        }
        
     }
 

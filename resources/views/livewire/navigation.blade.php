@@ -35,6 +35,13 @@
                         </div>                   
                 @endforeach  --}}
 
+                <!-- acerca de -->
+                <div class="hidden  space-x-8 sm:-my-px  md:ml-1 lg:ml-10 sm:ml-10 sm:flex">
+                    <x-nav-link href="{{ route('inicio.acercade') }}" :active="request()->routeIs('inicio.acercade')">
+                        {{ __('Acerca de') }}
+                    </x-nav-link>
+                </div>
+
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link href="{{ route('posts.category', 'imagenes') }}" :active="request()->Is('category/imagenes')">
                         {{ __('Imágenes') }}
@@ -59,12 +66,7 @@
                     </x-nav-link>
                 </div>
 
-                <!-- acerca de -->
-                <div class="hidden  space-x-8 sm:-my-px  md:ml-1 lg:ml-10 sm:ml-10 sm:flex">
-                    <x-nav-link href="{{ route('inicio.acercade') }}" :active="request()->routeIs('inicio.acercade')">
-                        {{ __('Acerca de') }}
-                    </x-nav-link>
-                </div>
+
 
             </div>
 
@@ -127,7 +129,13 @@
                     @endif
 
                     <!-- Settings Dropdown -->
-                    <div class="ml-3 relative">
+                    <a href="{{ route('posts.buscar') }}"
+                        class="inline-flex items-center px-1 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
+                        <!-- Boton lupa despues de logueo-->
+                        <i class="fa-solid fa-magnifying-glass fa-lg" style="color: #ca9e67;"></i>
+
+                    </a>
+                    <div class="ml-1 relative">
                         <x-dropdown align="right" width="48">
                             <x-slot name="trigger">
                                 @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
@@ -194,16 +202,18 @@
                         </x-dropdown>
                     </div>
 
-                    <a href="{{ route('posts.buscar') }}"
-                        class="inline-flex items-center px-1 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
-                        <!-- Boton lupa despues de logueo-->
-                        <i class="fa-solid fa-magnifying-glass fa-lg" style="color: #ca9e67;"></i>
 
-                    </a>
                 </div>
             @else
                 <div class="hidden sm:flex sm:items-center sm:ml-6">
                     <div class="flex ml-3 relative">
+
+                        <a href="{{ route('posts.buscar') }}"
+                            class="inline-flex items-center px-1 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
+                            <!-- Boton lupa-->
+                            <i class="fa-solid fa-magnifying-glass fa-lg" style="color: #ca9e67;"></i>
+
+                        </a>
 
                         <x-dropdown align="right" width="48">
                             <x-slot name="trigger">
@@ -235,12 +245,7 @@
                             </x-slot>
                         </x-dropdown>
 
-                        <a href="{{ route('posts.buscar') }}"
-                            class="inline-flex items-center px-1 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
-                            <!-- Boton lupa-->
-                            <i class="fa-solid fa-magnifying-glass fa-lg" style="color: #ca9e67;"></i>
 
-                        </a>
                     </div>
                 </div>
 
@@ -316,6 +321,13 @@
                         {{ __('Mis preferidos') }}
                     </x-responsive-nav-link>
 
+                    <!-- Administracion -->
+                    @can('admin.home')
+                        <x-responsive-nav-link href="{{ route('admin.home') }}" >
+                            {{ __('Administración') }}
+                        </x-responsive-nav-link>
+                    @endcan
+
                     @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                         <x-responsive-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.index')">
                             {{ __('API Tokens') }}
@@ -390,20 +402,19 @@
 
     @push('js')
         <script>
-        //    window.onscroll = function() {
-        //         myFunction()
-        //     };
+            //    window.onscroll = function() {
+            //         myFunction()
+            //     };
 
-        //     function myFunction() {
-        //         //const fas = document.getElementById("menu");
-        //         if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-        //             document.getElementById("menu").className = "bg-blue-400 border-b border-gray-100  sticky top-0 start-0 z-50";
-        //         } else {
-        //             //posicion normal
-        //            document.getElementById("menu").className = "bg-white border-b border-gray-100  sticky top-0 start-0 z-50";
-        //         }
-        //     }
-           
+            //     function myFunction() {
+            //         //const fas = document.getElementById("menu");
+            //         if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+            //             document.getElementById("menu").className = "bg-blue-400 border-b border-gray-100  sticky top-0 start-0 z-50";
+            //         } else {
+            //             //posicion normal
+            //            document.getElementById("menu").className = "bg-white border-b border-gray-100  sticky top-0 start-0 z-50";
+            //         }
+            //     }
         </script>
     @endpush
 </nav>

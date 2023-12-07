@@ -296,8 +296,7 @@
             </div>
 
             <div class="flex items-center">
-                <x-input id="myInput" disabled class=" w-full  px-2 h-7 mr-4" value="{{ $post_slug }}">
-                </x-input>
+                <x-input id="myInput"   class=" w-full  px-2 h-7 mr-4" value="{{ $post_slug }}"> </x-input>              
                 <i class="fa-regular fa-copy fa-lg" onclick="myFunction()"></i>
             </div>
         </x-slot>

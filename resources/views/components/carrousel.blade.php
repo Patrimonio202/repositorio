@@ -1,4 +1,4 @@
-<div id="default-carousel" class="relative w-full " data-carousel="slide" data-carousel-interval="7000">
+<div id="default-carousel" class="relative w-full  z-index:-1 " data-carousel="slide" data-carousel-interval="7000">
     <!-- Carousel wrapper -->
     <div class="relative h-20 overflow-hidden rounded-lg md:h-96 lg:h-96 ">
         <!-- Item 1 -->
@@ -9,32 +9,30 @@
             </a>
         </div>
         <!-- Item 2 -->
-        <div class="hidden duration-700 ease-in-out cursor-pointer" data-carousel-item>
-            <a href="{{ route('posts.colecciones', 'archivo-antonio-botero') }}">
+        <div class="hidden duration-700 ease-in-out cursor-pointer" data-carousel-item>          
                 <img src="{{ Storage::url('Imagenes/Imagen-barner-2.jpg') }}"
                     class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-            </a>
+            
         </div>
         <!-- Item 3 -->
         <div class="hidden duration-700 ease-in-out cursor-pointer" data-carousel-item>
-            <a href="{{ route('posts.colecciones', 'archivo-el-santuariano') }}">
+           
                 <img src="{{ Storage::url('Imagenes/Imagen-barner-3.jpg') }}"
                     class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-            </a>
+          
         </div>
         <!-- Item 4 -->
         <div class="hidden duration-700 ease-in-out cursor-pointer" data-carousel-item>
-            <a href="{{ route('posts.colecciones', 'biblioteca-publica-municipal') }}">
+           
                 <img src="{{ Storage::url('Imagenes/Imagen-barner-4.jpg') }}"
                     class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-            </a>
+          
         </div>
         <!-- Item 5 -->
-        <div class="hidden duration-700 ease-in-out cursor-pointer" data-carousel-item>
-            <a href="{{ route('posts.colecciones', 'archivo-patrimonial-de-el-santuario') }}">
+        <div class="hidden duration-700 ease-in-out cursor-pointer" data-carousel-item>          
                 <img src="{{ Storage::url('Imagenes/Imagen-barner-5.jpg') }}"
                     class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-            </a>
+           
         </div>
     </div>
     <!-- Slider indicador -->

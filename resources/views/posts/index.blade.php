@@ -1,5 +1,6 @@
 <x-app-layout>
-
+    
+     
     <div class="container my-4 md:my-4 lg:my-4 px-6 mx-auto   ">
         <x-carrousel />
     </div>
@@ -158,12 +159,7 @@
             //         if (isScrollUnderPos) alert('leo el mejor');
             //     }
             // });
-
-            function myFunction() {
-                const $content = document.getElementById('myInput');
-                $content.select();
-                document.execCommand('copy');
-            }
+            
         </script>
     @endpush
 
