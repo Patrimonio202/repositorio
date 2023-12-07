@@ -26,8 +26,11 @@ class PostIndex extends Component
         //             ->latest('id')
         //             ->paginate(5);
         $posts=Post::where('name','LIKE','%'.$this->search.'%')
+                    ->orWhere('body', 'like', '%'.$this->search.'%')
+                    ->orWhere('anocreacion', 'like', '%'.$this->search.'%')
+                    ->orWhere('autor', 'like', '%'.$this->search.'%')
                    ->latest('id')
-                   ->paginate(5);
+                   ->paginate(50);
         return view('livewire.admin.post-index',compact('posts'));
     }
 }

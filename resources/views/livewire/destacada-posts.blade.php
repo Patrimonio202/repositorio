@@ -6,7 +6,7 @@
                     <figure class="relative overflow-hidden bg-no-repeat bg-cover relative overflow-hidden bg-no-repeat bg-cover shadow-lg rounded-lg mx-4 my-4 ">
                         <div >
                             <img src="{{ Storage::url($tag->url) }}"
-                                class="w-full h-full md:h-80 lg:h-96 object-cover " />
+                                class="w-full h-full md:h-80 lg:h-96  " />
                         
                                 <a href="{{ route('posts.colecciones', $tag) }}">
                                     <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed opacity-0 hover:opacity-100 transition duration-300 ease-in-out"
