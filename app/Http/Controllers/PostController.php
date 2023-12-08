@@ -86,7 +86,7 @@ class PostController extends Controller
     $posts = Post::where('status', 2)
       ->filter(request()->all())
       ->orderBy('id', 'desc')
-      ->paginate(10);
+      ->paginate(24);
     return view('posts.buscar', compact('posts', 'categories', 'tags'));
   }
 

@@ -21,7 +21,7 @@
 
         <section>
 
-            <div class="grid grid-cols-1 lg:grid-cols-4 mt-4  lg:mt-16">
+            <div class="grid grid-cols-1 lg:grid-cols-4 mt-4  lg:mt-16 mb-8">
 
                 <!-- panel de busqueda -->
                 <div x-show="isMobile" class="col-span-1  md:col-span-1  lg:col-span-1 mr-4">
@@ -142,8 +142,14 @@
                             </article>
                         @endforeach
                     </div>
-                </div>
+                     <!-- Estos son los links de navegación -->
+                    <div class="card-footer mt-8">
+                        {{$posts->links()}}
+                    </div>
+                </div>                
             </div>
+
+           
 
 
         </section>
