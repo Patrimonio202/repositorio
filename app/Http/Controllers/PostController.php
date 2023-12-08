@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
+use App\Models\Tema;
 use App\Models\Vote;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
@@ -40,11 +41,18 @@ class PostController extends Controller
 
   public function category(Category $category)
   {
-    // $posts=Post::where('category_id', $category->id)
-    //             ->where('status',2)
-    //             ->latest('id')
-    //             ->paginate(6); compact('posts', 'category')
-    return view('posts.category', compact('category'));
+    
+    $temas=Tema::get();   
+
+    $tags= Tag::where('coleccion', 2)
+        ->get();
+
+    $autores=Post::select('autor')
+                ->where('category_id','2')
+                 ->distinct()
+                 ->get();
+   // dd($autores);
+    return view('posts.category', compact('category', 'tags','temas','autores'));
   }
 
   public function tag(Tag $tag)

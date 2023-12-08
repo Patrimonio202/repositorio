@@ -31,7 +31,7 @@
                             <input
                                 class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm w-full ui-autocomplete-input"
                                 id="search" value="{{ request('textobuscar') }}" name="textobuscar" type="text"
-                                placeholder="Palabra clave" autocomplete="off">
+                                placeholder="Palabra clave" autocomplete="off" />
 
                         </div>
 

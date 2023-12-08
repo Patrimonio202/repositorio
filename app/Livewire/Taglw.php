@@ -3,7 +3,7 @@
 namespace App\Livewire;
 
 use Livewire\Component;
-use App\Models\Post;
+
 use App\Models\Vote;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Storage;
@@ -90,8 +90,8 @@ class Taglw extends Component
 
     public function render()
     {
-       // $posts=Post::where('category_id',$this->category->id)
-                    //->where('status', 2)->latest('id')->paginate($this->posts_per_page);   
+        
+
         $posts= $this->tag->posts()->where('status',2)->latest('id')->paginate($this->posts_per_page);        
         return view('livewire.taglw', compact('posts'));
     }
