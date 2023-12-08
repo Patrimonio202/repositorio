@@ -1,4 +1,4 @@
-<div>
+<div class="z-index:-1">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         {{-- <h1 style="font-family:Raleway-ExtraBold" class="text-4xl font-blod text-black-600  mb-6 ">{{ $post->name }}
         </h1> --}}
@@ -96,36 +96,36 @@
 
                     <div class="flex right-0 md:mr-14  lg:mr-14 gap-6 ">
                         <div class="flex-1" data-tooltip-target="tcompartir" data-tooltip-style="light">
-                            <i wire:click="edit({{ $post }})" class="fa-solid fa-share fa-lg"></i>
+                            <i wire:click="edit({{ $post }})" class="fa-solid fa-share fa-lg hover:text-[#08416b]"></i>
                         </div>
                         @auth
                             <div class="flex-1" data-tooltip-target="tmeinteresa" data-tooltip-style="light">
                                 <i wire:click="meinteresa({{ $post->id }})"
-                                    class=" @if ($post->userVotes) fa-solid fa-bookmark fa-lg @else fa-regular fa-bookmark fa-lg @endif"></i>
+                                    class=" @if ($post->userVotes) fa-solid fa-bookmark fa-lg  @else fa-regular fa-bookmark fa-lg  @endif hover:text-[#08416b]"></i>
                             </div>
                             <div lass="flex-1" data-tooltip-target="tmegusta" data-tooltip-style="light">
                                 <i wire:click="megusta({{ $post->id }})"
-                                    class="@if ($post->userVoteslike) fa-solid fa-heart fa-lg @else fa-regular fa-heart fa-lg @endif "
+                                    class="@if ($post->userVoteslike) fa-solid fa-heart fa-lg   @else fa-regular fa-heart fa-lg @endif fa-beat hover:text-rose-600 "
                                     id="fastc-{{ $post->id }}"></i>
                             </div>
-                            <div lass="flex-1">
-                                <i wire:click="download({{ $post }})" class="fa-solid fa-download fa-lg"></i>
+                            <div class="flex-1" data-tooltip-target="tdescargar" data-tooltip-style="light">
+                                <i wire:click="download({{ $post }})" class="  fa-solid fa-download fa-lg hover:text-[#08416b]" ></i>
                             </div>                           
                         @else
                             <div class="flex-1">
                                 <a data-tooltip-target="tmeinteresa" data-tooltip-style="light"
                                     href="{{ route('login') }}">
-                                    <i class="fa-regular fa-bookmark fa-lg"></i>
+                                    <i class="fa-regular fa-bookmark fa-lg hover:text-[#08416b]"></i>
                                 </a>
                             </div>
                             <div class="flex-1">
                                 <a data-tooltip-target="tmegusta" data-tooltip-style="light" href="{{ route('login') }}">
-                                    <i class="fa-regular fa-heart  fa-lg"></i>
+                                    <i class="fa-regular fa-heart  fa-lg fa-beat hover:text-rose-600"></i>
                                 </a>
                             </div>
                             <div class="flex-1">
                                 <a data-tooltip-target="tdescargar" data-tooltip-style="light" href="{{ route('login') }}">
-                                    <i class="fa-solid fa-download fa-lg"></i>
+                                    <i class="fa-solid fa-download fa-lg hover:text-[#08416b]"></i>
                                 </a>
                             </div>
 
