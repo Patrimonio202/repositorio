@@ -83,7 +83,7 @@
                         </div>
                         <div lass="flex-1" data-tooltip-target="tmegusta" data-tooltip-style="light">
                             <i wire:click="megusta({{ $post->id }})"
-                                class="@if ($post->userVoteslike) fa-solid fa-heart fa-lg @else fa-regular fa-heart fa-lg @endif fa-beat hover:text-rose-600 "
+                                class="@if ($post->userVoteslike) fa-solid fa-heart fa-lg @else fa-regular fa-heart fa-lg @endif  hover:text-rose-600 "
                                 id="fastc-{{ $post->id }}"></i>
                         </div>
 
@@ -98,7 +98,7 @@
                         </div>
                         <div class="flex-1">
                             <a data-tooltip-target="tmegusta" data-tooltip-style="light" href="{{ route('login') }}">
-                                <i class="fa-regular fa-heart  fa-lg fa-beat hover:text-rose-600"></i>
+                                <i class="fa-regular fa-heart  fa-lg  hover:text-rose-600"></i>
                             </a>
                         </div>
                         <div class="flex-1">

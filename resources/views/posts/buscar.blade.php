@@ -171,8 +171,8 @@
         <script>
             document.addEventListener('alpine:init', () => {
                 Alpine.data('dropdown', () => ({
-                    //isMobile: false,
-                    isMobile: (window.innerWidth < 1024) ? false : true,
+                    isMobile: true,
+                    //isMobile: (window.innerWidth < 1024) ? false : true,
                     mensaje: 'Mostrar opciones de búsqueda',
 
 
