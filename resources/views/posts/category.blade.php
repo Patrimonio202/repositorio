@@ -37,7 +37,7 @@
             <div class="mt-4">
                 <form action="{{  route('posts.category', $category->slug) }}">
                     <div class="ui-widget mb-4">
-                        <p class="text-lg font-semibold">Panel de búsqueda:</p>
+                        <p class="text-lg font-semibold">Panel de búsqueda:</p>                     
                     </div>
 
                     <div class="mb-4">
@@ -72,9 +72,9 @@
                         </ul>
 
                     </div>
-                    @if ($category->id=='2')   
+                    @if ($category->id=='2' || $category->id=='3')   
                         <div class="mb-4">
-                            <p class="text-lg font-semibold">Autor:</p>
+                            <p class="text-lg font-semibold"> @if ($category->id=='2') Artistas:  @else Autores: @endif</p>
                             <ul>
                                 @foreach ($autores as $autor)
                                     <li>

@@ -93,4 +93,21 @@ class Post extends Model
           });
     }
 
+    //filter categorias
+    public function scopeFilterc($query, $filters){
+        $query ->when($filters['tag'] ?? null, function($query,$tag){
+            $query->whereHas('tags', function($query) use ($tag) {
+                $query->where('tags.name',$tag);
+            });
+          })->when($filters['colecciones'] ?? null, function($query,$tag){
+            $query->whereHas('tags', function($query) use ($tag) {
+                $query->where('tags.id',$tag);
+            });
+          })->when($filters['autores'] ?? null, function($query, $autor){
+            $query->whereIn('autor', $autor);
+          })->when($filters['temas'] ?? null, function($query, $tema){
+            $query->whereIn('tema_id', $tema);
+          });
+    }
+
 }

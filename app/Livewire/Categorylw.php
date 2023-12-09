@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Storage;
 
 class Categorylw extends Component
 {
-    public $posts_per_page=3;
+    public $posts_per_page;
     public $totalRecords;
 
     public $open=false;  // con este abrimos el modal
@@ -69,8 +69,13 @@ class Categorylw extends Component
       {
          $this->totalRecords=Post::where('category_id',$this->category->id)
          ->where('status', 2)->latest('id')->count(); 
-    //   $this->posts=Post::where('category_id',$this->category->id)
-    //                 ->where('status', 2)->latest('id')->paginate($this->posts_per_page);   
+
+         if($this->category->id=='2' || $this->category->id=='3'){
+            $this->posts_per_page='24';
+        } else{
+            $this->posts_per_page='3';
+        }
+     
       }
 
     public function edit($post){    
@@ -110,8 +115,14 @@ class Categorylw extends Component
     public function render(){  
         //['posts'  => $posts]        
        // dd($this->datos);
-          $posts=Post::where('category_id',$this->category->id)
-        ->where('status', 2)->latest('id')->paginate($this->posts_per_page);      
+        //  $posts=Post::where('category_id',$this->category->id)
+       // ->where('status', 2)->latest('id')->paginate($this->posts_per_page);  
+       
+       $posts = Post::where('status', 2)
+       ->where('category_id',$this->category->id)
+      ->filterc($this->datos)
+      ->orderBy('id', 'desc')
+      ->paginate($this->posts_per_page);   
         return view('livewire.categorylw',  compact('posts') );
     }
 }

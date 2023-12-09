@@ -48,7 +48,7 @@ class PostController extends Controller
         ->get();
 
     $autores=Post::select('autor')
-                ->where('category_id','2')
+                ->where('category_id',$category->id)
                  ->distinct()
                  ->get();
    // dd($autores);

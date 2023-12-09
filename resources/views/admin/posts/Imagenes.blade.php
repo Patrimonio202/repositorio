@@ -40,6 +40,7 @@
                     <option value="TituloAudios">Titulo audios</option>
                     <option value="TituloPublicaciones">Titulo publicaciones</option>
                     <option value="TituloVideos">Titulo videos</option>
+                    <option value="ImagenCompartirRepositorio">Imagen repositorio</option>
                 </select>
             </div>
 
@@ -64,6 +65,7 @@
                         Las imagenes para el Logo deben de estar en .png </br>
                         El fondo login debe estar en formato .png  dimensiones 667 * 500 </br>
                         las imagenes de los tittulos de las categorias deben de estar en formato .png   </br>
+                        La imagen del repositorio debe de estar en formato .jpg </br>
                     </p>
                 </div>
             </div>
