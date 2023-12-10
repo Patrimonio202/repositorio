@@ -96,36 +96,36 @@
 
                     <div class="flex right-0 md:mr-14  lg:mr-14 gap-6 ">
                         <div class="flex-1" data-tooltip-target="tcompartir" data-tooltip-style="light">
-                            <i wire:click="edit({{ $post }})" class="fa-solid fa-share fa-lg hover:text-[#08416b]"></i>
+                            <i wire:click="edit({{ $post }})" class="fa-solid fa-share fa-lg hover:text-[#08416b] hover:scale-125 transition-all duration-100"></i>
                         </div>
                         @auth
                             <div class="flex-1" data-tooltip-target="tmeinteresa" data-tooltip-style="light">
                                 <i wire:click="meinteresa({{ $post->id }})"
-                                    class=" @if ($post->userVotes) fa-solid fa-bookmark fa-lg  @else fa-regular fa-bookmark fa-lg  @endif hover:text-[#08416b]"></i>
+                                    class=" @if ($post->userVotes) fa-solid fa-bookmark fa-lg  @else fa-regular fa-bookmark fa-lg  @endif hover:text-[#08416b] hover:scale-125 transition-all duration-100"></i>
                             </div>
                             <div lass="flex-1" data-tooltip-target="tmegusta" data-tooltip-style="light">
                                 <i wire:click="megusta({{ $post->id }})"
-                                    class="@if ($post->userVoteslike) fa-solid fa-heart fa-lg   @else fa-regular fa-heart fa-lg @endif  hover:text-rose-600 "
+                                    class="@if ($post->userVoteslike) fa-solid fa-heart fa-lg   @else fa-regular fa-heart fa-lg @endif    hover:text-rose-600  hover:scale-125 transition-all duration-100 "
                                     id="fastc-{{ $post->id }}"></i>
                             </div>
                             <div class="flex-1" data-tooltip-target="tdescargar" data-tooltip-style="light">
-                                <i wire:click="download({{ $post }})" class="  fa-solid fa-download fa-lg hover:text-[#08416b]" ></i>
+                                <i wire:click="download({{ $post }})" class="  fa-solid fa-download fa-lg hover:text-[#08416b] hover:scale-125 transition-all duration-100" ></i>
                             </div>                           
                         @else
                             <div class="flex-1">
                                 <a data-tooltip-target="tmeinteresa" data-tooltip-style="light"
                                     href="{{ route('login') }}">
-                                    <i class="fa-regular fa-bookmark fa-lg hover:text-[#08416b]"></i>
+                                    <i class="fa-regular fa-bookmark fa-lg hover:text-[#08416b] hover:scale-125 transition-all duration-100"></i>
                                 </a>
                             </div>
-                            <div class="flex-1">
+                            <div class="flex-1 ">
                                 <a data-tooltip-target="tmegusta" data-tooltip-style="light" href="{{ route('login') }}">
-                                    <i class="fa-regular fa-heart  fa-lg  hover:text-rose-600"></i>
+                                    <i class="fa-regular fa-heart  fa-lg   hover:text-rose-600 hover:scale-125 transition-all duration-100"></i>
                                 </a>
                             </div>
                             <div class="flex-1">
                                 <a data-tooltip-target="tdescargar" data-tooltip-style="light" href="{{ route('login') }}">
-                                    <i class="fa-solid fa-download fa-lg hover:text-[#08416b]"></i>
+                                    <i class="fa-solid fa-download fa-lg hover:text-[#08416b] hover:scale-125 transition-all duration-100"></i>
                                 </a>
                             </div>
 
@@ -282,7 +282,7 @@
                     </div>
                 </div>
 
-                <div class="flex">
+                <div class="flex ">
                     <div class="text-center">
                         <a class=" focus:outline-none"
                             href="https://twitter.com/intent/tweet?text=&url={{ $post_slug }}&hashtags=repositoriovirtual"
@@ -293,6 +293,8 @@
                         </a>
                     </div>
                 </div>
+
+                
             </div>
 
             <div class="flex items-center">
