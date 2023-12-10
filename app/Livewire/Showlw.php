@@ -2,8 +2,10 @@
 
 namespace App\Livewire;
 
+use App\Mail\CantactanosMailable;
 use Livewire\Component;
 use App\Models\Vote;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -14,6 +16,7 @@ class Showlw extends Component
     public $similares;
 
     public $open = false;  // con este abrimos el modal
+    public $opene = false;  //con este abrimos el modal de enviar errores
     public $post_slug;
 
     public function meinteresa($postId)
@@ -80,12 +83,27 @@ class Showlw extends Component
 
         if ($post['category_id'] == '2' || $post['category_id'] == '3') {
             // return Storage::download($vpost['urlarchivo']);           
-                    return redirect(Storage::temporaryUrl(
-                        $vpost['urlarchivo'],
-                        now()->addHour(),
-                        ['ResponseContentDisposition' => 'attachment']
-                    ));
+            return redirect(Storage::temporaryUrl(
+                $vpost['urlarchivo'],
+                now()->addHour(),
+                ['ResponseContentDisposition' => 'attachment']
+            ));
         }
+    }
+
+    // enviamos mensaje de contacto
+    public function enviarmensaje()
+    {
+        $datos   = ['asunto'=>'Reporte de daño',
+            'name' => 'Leonardo Gallego', 
+           'message'=>'Para reportar que el boton de guardar no esta funcionando',
+         'email'=>'Leonatec@hotmail.com',
+         'vista'=>'emails.contactanos'];
+     
+        //dd($datos);
+        Mail::to('leonatec@hotmail.com')
+            ->send(new CantactanosMailable($datos));
+        $this->opene = false;
     }
 
 

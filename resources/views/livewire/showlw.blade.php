@@ -86,13 +86,23 @@
                     </div>
                 @endif
 
-                <div class="flex  ">
+                <div class="flex ">
+                    <div class=" lg:hidden mr-4">
+                        <i class="fa-solid fa-bug" wire:click="$set('opene', true)"></i>
+                    </div>
+
                     <div class="flex-1">
                         <small style="font-family:Raleway-Regular">Publicado el
                             {{ $post->created_at->format('Y-m-d') }}
                         </small>
                     </div>
 
+                    <div class=" flex-1 items-center bg-center justify-center hidden lg:block">
+                        <button wire:click="$set('opene', true)"
+                         class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                            Reportar un error
+                          </button>
+                    </div>
 
                     <div class="flex right-0 md:mr-14  lg:mr-14 gap-6 ">
                         <div class="flex-1" data-tooltip-target="tcompartir" data-tooltip-style="light">
@@ -380,6 +390,32 @@
     @endif
 
 
+    <!-- Modal para enviar errores    sm md lg  xl 2xl-->
+    <x-dialog-modal wire:model="opene" maxWidth="md">
+        <x-slot name="title">
+            Reportar error
+            <hr>
+        </x-slot>
 
+        <x-slot name="content">
+            <div >
+                <x-label>Descripción del error </x-label>
+                <textarea  rows="6"
+                        class=" pl-4 pt-2  border-blue-600 focus:border-indigo-500 focus:ring-indigo-500 focus:ring-opacity-50 rounded-md shadow-sm w-full "
+                        placeholder="Descripción del error" ></textarea>                
+            </div>    
+        </x-slot>
+
+        <x-slot name="footer">
+            <x-secondary-button class=" mr-4" wire:click="$set('opene',false)">
+                Cancelar
+            </x-secondary-button>
+            <x-danger-button wire:click.prevent="enviarmensaje()">
+                Enviar
+            </x-danger-button>
+        </x-slot>
+
+    </x-dialog-modal>
+    <!-- Tooltip -->
 
 </div>
