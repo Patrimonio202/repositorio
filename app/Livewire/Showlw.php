@@ -104,7 +104,7 @@ class Showlw extends Component
          'pagina'=> Request::root() . "/posts/" . $post['slug'],
          'vista'=>'emails.contactanos'];
 
-        if(auth()){
+        if(auth()->user()){
             $datos['name']=auth()->user()->name;
             $datos['email']=auth()->user()->email;
         }
