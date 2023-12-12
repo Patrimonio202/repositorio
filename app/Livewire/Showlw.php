@@ -110,7 +110,7 @@ class Showlw extends Component
         }
      
         //dd($datos 'cultura@elsantuario-antioquia.gov.co',);
-        Mail::to(new Address('leonatec@hotmail.com') )
+        Mail::to(new Address('cultura@elsantuario-antioquia.gov.co') )
             ->cc( new Address('sistemas@hospitalelsantuario.gov.co'))            
             ->send(new CantactanosMailable($datos));
         $this->opene = false;
