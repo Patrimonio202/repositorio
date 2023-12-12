@@ -29,7 +29,7 @@ class CantactanosMailable extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: new Address('leonatec@hotmail.com', 'Leonardo Gallego'),
+            from: new Address('leonatec@hotmail.com', 'Soporte repositorio'),
             subject: $this->data['asunto'],
         );
     }

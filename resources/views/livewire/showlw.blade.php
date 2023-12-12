@@ -39,7 +39,7 @@
                     <div class="card flex flex-col items-center text-xl font-mono p-4 rounded-md text-white aspect-[16/9] md:mr-12 lg:mr-12 mb-4"
                         style=" background-image: url({{ Storage::url('Imagenes/FondoReproductor.png') }})">
                         <div class="cover flex flex-col items-center min-w-80px w-auto max-w-880px">
-                            <img src="{{ Storage::url($post->image->url) }}" alt="Album Cover" class="w-3/6 rounded-xl">
+                            <img src="{{ Storage::url($post->image->url) }}" alt="Album Cover" class="img-source w-3/6 rounded-xl" onclick="full_view(this);">
                             @section('ogImage', Storage::url($post->image->url))
                             <p class="-translate-y-10 w-3/6 text-center break-words"></p>
                         </div>
@@ -99,19 +99,19 @@
 
                     <div class=" flex-1 items-center bg-center justify-center hidden lg:block">
                         <button wire:click="$set('opene', true)"
-                         class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                            Reportar un error
+                         class=" text-xs bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                         <i class="fa-solid fa-bug" wire:click="$set('opene', true)"></i> Reportar un error
                           </button>
                     </div>
 
                     <div class="flex right-0 md:mr-14  lg:mr-14 gap-6 ">
                         <div class="flex-1" data-tooltip-target="tcompartir" data-tooltip-style="light">
-                            <i wire:click="edit({{ $post }})" class="fa-solid fa-share fa-lg hover:text-[#08416b] hover:scale-125 transition-all duration-100"></i>
+                            <i wire:click="edit({{ $post }})" class="fa-solid fa-share fa-lg hover:text-[#00a2b0] hover:scale-125 transition-all duration-100"></i>
                         </div>
                         @auth
                             <div class="flex-1" data-tooltip-target="tmeinteresa" data-tooltip-style="light">
                                 <i wire:click="meinteresa({{ $post->id }})"
-                                    class=" @if ($post->userVotes) fa-solid fa-bookmark fa-lg  @else fa-regular fa-bookmark fa-lg  @endif hover:text-[#08416b] hover:scale-125 transition-all duration-100"></i>
+                                    class=" @if ($post->userVotes) fa-solid fa-bookmark fa-lg  @else fa-regular fa-bookmark fa-lg  @endif hover:text-[#00a2b0] hover:scale-125 transition-all duration-100"></i>
                             </div>
                             <div lass="flex-1" data-tooltip-target="tmegusta" data-tooltip-style="light">
                                 <i wire:click="megusta({{ $post->id }})"
@@ -119,13 +119,13 @@
                                     id="fastc-{{ $post->id }}"></i>
                             </div>
                             <div class="flex-1" data-tooltip-target="tdescargar" data-tooltip-style="light">
-                                <i wire:click="download({{ $post }})" class="  fa-solid fa-download fa-lg hover:text-[#08416b] hover:scale-125 transition-all duration-100" ></i>
+                                <i wire:click="download({{ $post }})" class="  fa-solid fa-download fa-lg hover:text-[#00a2b0] hover:scale-125 transition-all duration-100" ></i>
                             </div>                           
                         @else
                             <div class="flex-1">
                                 <a data-tooltip-target="tmeinteresa" data-tooltip-style="light"
                                     href="{{ route('login') }}">
-                                    <i class="fa-regular fa-bookmark fa-lg hover:text-[#08416b] hover:scale-125 transition-all duration-100"></i>
+                                    <i class="fa-regular fa-bookmark fa-lg hover:text-[#00a2b0] hover:scale-125 transition-all duration-100"></i>
                                 </a>
                             </div>
                             <div class="flex-1 ">
@@ -135,7 +135,7 @@
                             </div>
                             <div class="flex-1">
                                 <a data-tooltip-target="tdescargar" data-tooltip-style="light" href="{{ route('login') }}">
-                                    <i class="fa-solid fa-download fa-lg hover:text-[#08416b] hover:scale-125 transition-all duration-100"></i>
+                                    <i class="fa-solid fa-download fa-lg hover:text-[#00a2b0] hover:scale-125 transition-all duration-100"></i>
                                 </a>
                             </div>
 
@@ -400,9 +400,9 @@
         <x-slot name="content">
             <div >
                 <x-label>Descripción del error </x-label>
-                <textarea  rows="6"
+                <textarea wire:model="mensaje"  rows="6"
                         class=" pl-4 pt-2  border-blue-600 focus:border-indigo-500 focus:ring-indigo-500 focus:ring-opacity-50 rounded-md shadow-sm w-full "
-                        placeholder="Descripción del error" ></textarea>                
+                        placeholder="Detalle el error que quiere reportar o notifique posibles violaciones a los derechos de autor." ></textarea>                
             </div>    
         </x-slot>
 
@@ -410,7 +410,7 @@
             <x-secondary-button class=" mr-4" wire:click="$set('opene',false)">
                 Cancelar
             </x-secondary-button>
-            <x-danger-button wire:click.prevent="enviarmensaje()">
+            <x-danger-button wire:click.prevent="enviarmensaje({{ $post }})">
                 Enviar
             </x-danger-button>
         </x-slot>

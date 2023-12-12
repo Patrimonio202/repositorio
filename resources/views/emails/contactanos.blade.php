@@ -5,4 +5,6 @@
 {{$data['message']}} 
 @endcomponent
 Correo de contacto:  {{$data['email']}} 
+<br>
+<a href="{{$data['pagina']}} ">link de página</a>  
 @endcomponent

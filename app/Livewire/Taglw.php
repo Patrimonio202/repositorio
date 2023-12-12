@@ -89,10 +89,17 @@ class Taglw extends Component
     }
 
     public function render()
-    {
-        
+    {     
+        $ordenar='desc';
+        if($this->tag->id=='2'){
+           $ordenar='asc';
+        }
 
-        $posts= $this->tag->posts()->where('status',2)->latest('id')->paginate($this->posts_per_page);        
+
+        $posts= $this->tag->posts()  
+                ->where('status',2)
+                ->orderBy('id', $ordenar)
+                ->paginate($this->posts_per_page);     ;      
         return view('livewire.taglw', compact('posts'));
     }
 }

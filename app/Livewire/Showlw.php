@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Mail\CantactanosMailable;
 use Livewire\Component;
 use App\Models\Vote;
+use Illuminate\Mail\Mailables\Address;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Storage;
@@ -19,6 +20,8 @@ class Showlw extends Component
     public $opene = false;  //con este abrimos el modal de enviar errores
     public $post_slug;
 
+
+    public $mensaje;//variables para enviar informacion
     public function meinteresa($postId)
     {
         //$post = Post::find($postId);
@@ -92,16 +95,23 @@ class Showlw extends Component
     }
 
     // enviamos mensaje de contacto
-    public function enviarmensaje()
+    public function enviarmensaje($post)
     {
         $datos   = ['asunto'=>'Reporte de daño',
-            'name' => 'Leonardo Gallego', 
-           'message'=>'Para reportar que el boton de guardar no esta funcionando',
-         'email'=>'Leonatec@hotmail.com',
+            'name' => 'Usuario', 
+           'message'=> $this->mensaje,
+         'email'=>'noregistrado@hotmail.com',
+         'pagina'=> Request::root() . "/posts/" . $post['slug'],
          'vista'=>'emails.contactanos'];
+
+        if(auth()){
+            $datos['name']=auth()->user()->name;
+            $datos['email']=auth()->user()->email;
+        }
      
-        //dd($datos);
-        Mail::to('leonatec@hotmail.com')
+        //dd($datos 'cultura@elsantuario-antioquia.gov.co',);
+        Mail::to(new Address('leonatec@hotmail.com') )
+            ->cc( new Address('sistemas@hospitalelsantuario.gov.co'))            
             ->send(new CantactanosMailable($datos));
         $this->opene = false;
     }
