@@ -95,7 +95,7 @@ class MultimediaPublicada extends Component
                     return redirect(Storage::temporaryUrl(
                         $vpost['urlarchivo'],
                         now()->addHour(),
-                        ['ResponseContentDisposition' => 'attachment']
+                       // ['ResponseContentDisposition' => 'attachment']
                     ));
         }
        

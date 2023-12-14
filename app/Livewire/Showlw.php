@@ -80,7 +80,7 @@ class Showlw extends Component
             return redirect(Storage::temporaryUrl(
                 $vpost['url'],
                 now()->addHour(),
-                ['ResponseContentDisposition' => 'attachment']
+              //  ['ResponseContentDisposition' => 'attachment']
             ));
         }
 
@@ -88,8 +88,8 @@ class Showlw extends Component
             // return Storage::download($vpost['urlarchivo']);           
             return redirect(Storage::temporaryUrl(
                 $vpost['urlarchivo'],
-                now()->addHour(),
-                ['ResponseContentDisposition' => 'attachment']
+                now()->addHour(2),
+                //['ResponseContentDisposition' => 'attachment']
             ));
         }
     }
