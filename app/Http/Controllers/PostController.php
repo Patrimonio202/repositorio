@@ -9,6 +9,7 @@ use App\Models\Tema;
 use App\Models\Vote;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -107,4 +108,10 @@ class PostController extends Controller
   {
     return view('acercade');
   }
+
+  public function download(Request $request){
+    abort_if(!$request->hasValidSignature(),404);
+    return Storage::download($request->query('path'));
+  }
+
 }

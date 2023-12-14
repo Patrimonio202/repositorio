@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 
@@ -24,5 +25,14 @@ class AppServiceProvider extends ServiceProvider
         //     $this->app['request']->server->set('HTTPS', 'on');
         //     URL::forceScheme('https');
         // }
+
+
+        Storage::disk('public')->buildTemporaryUrlsUsing(function ($path, $expiration, $options) {
+            return URL::temporarySignedRoute(
+                'download',
+                $expiration,
+                array_merge($options, ['path' => $path])
+            );
+        });
     }
 }

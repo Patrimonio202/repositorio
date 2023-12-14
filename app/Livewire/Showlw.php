@@ -76,22 +76,24 @@ class Showlw extends Component
     {
         $vpost = $post['image'];
         if ($post['category_id'] == '1') {
-            return Storage::download($vpost['url']);
+           // return Storage::download($vpost['url']);
             //  return redirect(Storage::temporaryUrl(
             //      $vpost['url'],
             //     now()->addHour(5)
            
             //  ));
+            return redirect(Storage::temporaryUrl($vpost['url'],now()->addHour()));
            
         }
 
         if ($post['category_id'] == '2' || $post['category_id'] == '3') {
-             return Storage::download($vpost['urlarchivo']);           
+            // return Storage::download($vpost['urlarchivo']);           
             // return redirect(Storage::temporaryUrl(
             //     $vpost['urlarchivo'],
             //     now()->addHour(2),
             //     //['ResponseContentDisposition' => 'attachment']
             // ));
+            return redirect(Storage::temporaryUrl($vpost['urlarchivo'],now()->addHour()));
         }
     }
 

@@ -98,3 +98,6 @@ Route::post('/admin/imagenes', [AdminPostController::class,'updateimagenes'] )->
 Route::get('/privacy-policy', function () { return view('policy');});
 Route::get('/terms-of-service', function () { return view('terms');});
 Route::get('/eliminacion-datos', function () { return view('eliminacion-datos');});
+
+//ruta para generar temportales
+Route::get('download',[PostController::class,'download'] )->name('download');
