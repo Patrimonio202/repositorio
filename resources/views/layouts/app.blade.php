@@ -15,8 +15,8 @@
     <meta property="og:locale" content="es" />
     <meta property="og:image" content="@yield('ogImage', 'https://patrimonioelsantuario.gov.co/storage/Imagenes/ImagenCompartirRepositorio.jpg')" />
     <meta property="og:type" content="@yield('ogType', 'image/png')" />
-    <meta property="og:image:width" content="400" />
-    <meta property="og:image:height" content="400" />
+    <meta property="og:image:width" content="526" />
+    <meta property="og:image:height" content="275" />
     <meta property="fb:app_id" content="xxxxxxxxx" />
 
     <!-- hasta aqui propiedades para compartir-->
