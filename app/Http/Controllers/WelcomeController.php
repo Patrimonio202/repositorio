@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Throwable;
 
 class WelcomeController extends Controller
 {
@@ -30,12 +31,15 @@ class WelcomeController extends Controller
 
         foreach ($posts as $post) {
             if ($post->category_id == '1' ||  $post->category_id == '2' || $post->category_id == '3') {
-                if ($post->image->url) {
+                try {
                     $fileName = $post->image->url;
                     //dd($fileName);
                     $public = Storage::disk('public');
                     $s3 = Storage::disk('s3');
                     $public->writeStream($fileName, $s3->readStream($fileName));
+                } catch (Throwable $e) {
+                   // report($e);             
+                   // return false;
                 }
             }
 
