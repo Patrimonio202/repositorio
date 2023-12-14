@@ -180,6 +180,12 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $this->authorize('author', $post);
+        if ($post->image->url) {
+            Storage::delete($post->image->url);  // con este eliminamos la foto cargada
+        }
+        if ($post->image->urlarchivo) {
+            Storage::delete($post->image->urlarchivo);
+        }
         $post->delete();
         return redirect()->route('admin.posts.index')->with('info', 'El post se eliminó con exito');
     }
