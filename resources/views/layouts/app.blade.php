@@ -14,9 +14,9 @@
     <meta property="og:description" content="@yield('ogDesc', 'Archivos patrimoniales El Santuario')" />
     <meta property="og:type" content="@yield('ogType', 'Multimedia')" />
     <meta property="og:locale" content="es" />
-    <meta property="og:image" content="@yield('ogImage', 'https://proyectoeducacion.s3.us-east-2.amazonaws.com/Imagenes/ImagenCompartirRepositorio.jpg')" />
-    <meta property="og:image:width" content="400" />
-    <meta property="og:image:height" content="400" />
+    <meta property="og:image" content="@yield('ogImage', 'https://patrimonioelsantuario.gov.co/storage/Imagenes/ImagenCompartirRepositorio.jpg')" />
+    <meta property="og:image:width" content="640" />
+    <meta property="og:image:height" content="300" />
     <meta property="fb:app_id" content="xxxxxxxxx" />
 
     <!-- hasta aqui propiedades para compartir-->
