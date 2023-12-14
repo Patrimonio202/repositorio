@@ -380,8 +380,8 @@
                                 <iframe class=" w-full" height="600px" src="pdfjs/web/viewer.html?file={{ Storage::url($post->image->urlarchivo) }}" frameborder="0"></iframe>
                         </object> --}}
 
-                         <iframe class=" w-full" height="600px" src="{{ asset('pdfjs/web/viewer.html')}}?file=http://patrimonioelsantuario.gov.co/storage/{{$post->image->urlarchivo}}" frameborder="0"></iframe>
-
+                         <!--<iframe class=" w-full" height="600px" src="{{ asset('pdfjs/web/viewer.html')}}?file=http://patrimonioelsantuario.gov.co/storage/{{$post->image->urlarchivo}}" frameborder="0"></iframe> -->
+                         <iframe class=" w-full" height="600px" src="http://patrimonioelsantuario.gov.co/pdfjs/web/viewer.html?file=http://patrimonioelsantuario.gov.co/storage/{{$post->image->urlarchivo}}" frameborder="0"></iframe>
                     </div>
 
                 </div>
