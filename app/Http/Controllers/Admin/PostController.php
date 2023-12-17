@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Tag;
 use App\Models\Post;
+use App\Models\Subcategory;
 use App\Models\Tema;
 use Illuminate\Support\Facades\Storage;
 
@@ -35,9 +36,10 @@ class PostController extends Controller
     public function create()
     {
         $temas = Tema::pluck('name', 'id'); // esto es para pasarle a laravel collection   
-        $categories = Category::pluck('name', 'id'); // esto es para pasarle a laravel collection   
+        $categories = Category::pluck('name', 'id'); // esto es para pasarle a laravel collection  
+        $subcategories= Subcategory:: pluck('name', 'id');
         $tags = Tag::all();
-        return view('admin.posts.create', compact('categories', 'tags', 'temas'));
+        return view('admin.posts.create', compact('categories', 'tags', 'temas', 'subcategories'));
     }
 
 
@@ -106,8 +108,9 @@ class PostController extends Controller
         //$this->authorize('author', $post);
         $temas = Tema::pluck('name', 'id'); // esto es para pasarle a laravel collection   
         $categories = Category::pluck('name', 'id'); // esto es para pasarle a laravel collection   
+        $subcategories= Subcategory:: pluck('name', 'id');
         $tags = Tag::all();
-        return view('admin.posts.edit', compact('post', 'categories', 'tags', 'temas'))->with('info', 'El post se creó con exito');
+        return view('admin.posts.edit', compact('post', 'categories', 'tags', 'temas', 'subcategories'))->with('info', 'El post se creó con exito');
     }
 
     /**

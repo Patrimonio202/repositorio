@@ -343,6 +343,12 @@ return [
             'can'  => 'admin.categories.index'
         ],
         [
+            'text' => 'Subcategorias',
+            'route'  => 'admin.subcategories.index',
+            'icon' => 'fab fa-fw fa-algolia',
+            'active'=>['subcategories*']          
+        ],
+        [
             'text' => 'Etiquetas',
             'route'  => 'admin.tags.index',
             'icon' => 'far fa-fw fa-bookmark',

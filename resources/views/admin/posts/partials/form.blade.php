@@ -52,6 +52,14 @@
 </div>
 
 <div class="form-group">
+    {!! Form::label('subcategory_id', 'Subcategoria') !!}
+    {!! Form::select('subcategory_id', $subcategories, null, ['class' => 'form-control']) !!}
+    @error('category_id')
+        <small class="text-danger">{{ $message }}</small>
+    @enderror
+</div>
+
+<div class="form-group">
     {!! Form::label('tema_id', 'Tema') !!}
     {!! Form::select('tema_id', $temas, null, ['class' => 'form-control']) !!}
     @error('tema_id')
