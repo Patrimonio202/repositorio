@@ -19,7 +19,7 @@ return new class extends Migration
             $table->enum('voto', [1,2]);
 
             $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('tags')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
            // $table->smallInteger('vote');
             $table->timestamps();
         });

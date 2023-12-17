@@ -59,6 +59,7 @@ class Showlw extends Component
                 ->where('user_id', '=', auth()->user()->id)->where('voto', '=', 1)
                 ->delete();
         } else {
+           // dd($vote);
             $vote->save();
         }
     }

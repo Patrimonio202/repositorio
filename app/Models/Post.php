@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use GuzzleHttp\Psr7\Query;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -94,7 +93,7 @@ class Post extends Model
     }
 
     //filter categorias
-    public function scopeFilterc($query, $filters){
+    public function scopeFilterc($query, $filters){ 
         $query ->when($filters['tag'] ?? null, function($query,$tag){
             $query->whereHas('tags', function($query) use ($tag) {
                 $query->where('tags.name',$tag);
@@ -107,6 +106,8 @@ class Post extends Model
             $query->whereIn('autor', $autor);
           })->when($filters['temas'] ?? null, function($query, $tema){
             $query->whereIn('tema_id', $tema);
+          })->when($filters['fdesde'] && $filters['fhasta'] ?? null, function($query ) use($filters) { 
+             $query->whereBetween('created_at', [$filters['fdesde'], $filters['fhasta']]);
           });
     }
 

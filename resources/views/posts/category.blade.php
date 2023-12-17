@@ -35,9 +35,9 @@
 
         <div class=" grid grid-cols-1  md:grid-cols-4 lg:grid-cols-4">
             <div class="mt-4">
-                <form action="{{  route('posts.category', $category->slug) }}">
+                <form action="{{ route('posts.category', $category->slug) }}">
                     <div class="ui-widget mb-4">
-                        <p class="text-lg font-semibold">Panel de búsqueda:</p>                     
+                        <p class="text-lg font-semibold">Panel de búsqueda:</p>
                     </div>
 
                     <div class="mb-4">
@@ -72,9 +72,15 @@
                         </ul>
 
                     </div>
-                    @if ($category->id=='2' || $category->id=='3')   
+                    @if ($category->id == '2' || $category->id == '3')
                         <div class="mb-4">
-                            <p class="text-lg font-semibold"> @if ($category->id=='2') Artistas:  @else Autores: @endif</p>
+                            <p class="text-lg font-semibold">
+                                @if ($category->id == '2')
+                                    Artistas:
+                                @else
+                                    Autores:
+                                @endif
+                            </p>
                             <ul>
                                 @foreach ($autores as $autor)
                                     <li>
@@ -91,6 +97,30 @@
                         </div>
                     @endif
 
+                    <div class="ui-widget mb-4">
+                        <p class="text-lg font-semibold">Desde:</p>
+
+                        <div  class="relative max-w-sm">
+                            <div  class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none" >
+                                <i class="fa-solid fa-calendar-days"></i>
+                             </div>
+                            <input name="fdesde" value="{{ request('fdesde') }}T00:00:00"  type="datetime-local" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  placeholder="Seleccionar la fecha">
+                        </div>
+                    </div>
+
+                    <div class="ui-widget mb-4">
+                        <p class="text-lg font-semibold">Hasta:</p>
+
+                        <div  class="relative max-w-sm">
+                            <div  class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none" >
+                                <i class="fa-solid fa-calendar-days"></i>
+                             </div>
+                            <input name="fhasta" value="{{ request('fhasta') }}T00:00:00"  type="datetime-local" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  placeholder="Seleccionar la fecha">
+                        </div>
+                    </div>
+
+
+
                     <x-button class="mb-4">
                         Aplicar filtros
                     </x-button>
@@ -98,7 +128,7 @@
                 </form>
             </div>
             <div class=" col-span-3">
-                @livewire('categorylw', ['category' => $category,'datos'=> request()->all() ])
+                @livewire('categorylw', ['category' => $category, 'datos' => request()->all()])
             </div>
         </div>
 
@@ -106,7 +136,44 @@
     </div>
 
 
+    @push('js')
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/datepicker.min.js"></script>
+        <script>
+            const datepickerEl = document.getElementById('datepickerId');
+            Object.assign(Datepicker.locales, es);
+            new Datepicker(datepickerEl, {
+                // options
+                language: 'es',
+            });
+        </script>
 
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+
+        <script>
+            //flatpickr("input[type=datetime-local]");
+            config = {
+                enableTime: false,
+                dateFormat: 'Y-m-d',
+                locale: {
+                    firstDayOfWeek: 1,
+                    weekdays: {
+                        shorthand: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'],
+                        longhand: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                    },
+                    months: {
+                        shorthand: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Оct', 'Nov', 'Dic'],
+                        longhand: ['Enero', 'Febreo', 'Мarzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre',
+                            'Octubre', 'Noviembre', 'Diciembre'
+                        ],
+                    },
+                },
+                
+            }
+            flatpickr("input[type=datetime-local]", config);
+        </script>
+    @endpush
 
 
 </x-app-layout>
