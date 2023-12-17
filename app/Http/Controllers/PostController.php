@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Subcategory;
 use App\Models\Tag;
 use App\Models\Tema;
 use App\Models\Vote;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\Builder;
 
 class PostController extends Controller
 {
@@ -58,6 +60,7 @@ class PostController extends Controller
 
   public function tag(Tag $tag)
   {
+   
     $posts = $tag->posts()->where('status', 2)->latest('id')->paginate(4);
     return view('posts.tag', compact('posts', 'tag'));
   }
@@ -101,7 +104,20 @@ class PostController extends Controller
 
   public function colecciones(Tag $tag)
   {
-    return view('posts.colecciones', compact('tag'));
+    $subcategories=Subcategory::get();
+
+    $categories = Category::all();
+
+    $autores=Post::select('autor')
+                 ->whereHas('tags',function (Builder $query)  use($tag){
+                  $query->where('tags.id', $tag->id);
+                  })
+                 ->distinct()
+                 ->get();
+
+   $temas=Tema::get(); 
+
+    return view('posts.colecciones', compact('tag', 'subcategories','categories', 'autores', 'temas' ));
   }
 
   public function acercade()

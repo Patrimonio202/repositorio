@@ -137,15 +137,7 @@
 
 
     @push('js')
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/datepicker.min.js"></script>
-        <script>
-            const datepickerEl = document.getElementById('datepickerId');
-            Object.assign(Datepicker.locales, es);
-            new Datepicker(datepickerEl, {
-                // options
-                language: 'es',
-            });
-        </script>
+       
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
         <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>

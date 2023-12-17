@@ -1,6 +1,6 @@
 <div>  
 
-    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4  ">
+    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3  ">
         @foreach ($posts as $post)
             <article class=" relative bg-white  rounded-xl mr-4 md:mx-2 lg:mx-2  my-10  ">
                 @if ($post->category_id == '4')

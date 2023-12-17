@@ -24,6 +24,11 @@ class Post extends Model
     public function category(){
         return $this->belongsTo(Category::class);
     }
+
+    //relacion subcategory de uno a muchos 
+    public function subcategory(){
+        return $this->belongsTo(Subcategory::class);
+    }
     
     //relacion tema de uno a muchos
     public function tema(){
@@ -108,6 +113,21 @@ class Post extends Model
             $query->whereIn('tema_id', $tema);
           })->when($filters['fdesde'] ?? null && $filters['fhasta'] ?? null, function($query ) use($filters) { 
              $query->whereBetween('anocreacion', [$filters['fdesde'], $filters['fhasta']]);
+          });
+    }
+
+    //filter etiquetas t
+    public function scopeFiltert($query, $filters){ 
+        $query ->when($filters['subcategorias'] ?? null, function($query, $subcategorias){
+            $query->whereIn('subcategory_id', $subcategorias);
+          })->when($filters['fdesde'] ?? null && $filters['fhasta'] ?? null, function($query ) use($filters) { 
+            $query->whereBetween('anocreacion', [$filters['fdesde'], $filters['fhasta']]);
+         })->when($filters['categorias'] ?? null, function($query, $categorias){
+            $query->whereIn('category_id', $categorias);
+          })->when($filters['autores'] ?? null, function($query, $autor){
+            $query->whereIn('autor', $autor);
+          })->when($filters['temas'] ?? null, function($query, $tema){
+            $query->whereIn('tema_id', $tema);
           });
     }
 

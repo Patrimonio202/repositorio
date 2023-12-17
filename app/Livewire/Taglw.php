@@ -18,6 +18,9 @@ class Taglw extends Component
 
     public $tag;
 
+    //datos de busqueda
+    public $datos;
+
      //este es para darle me interesa
      public function meinteresa($postId)
      {
@@ -90,6 +93,12 @@ class Taglw extends Component
 
     public function render()
     {     
+    //     $posts = Post::where('status', 2)
+    //    ->where('category_id',$this->category->id)
+    //   ->filterc($this->datos)
+    //   ->orderBy('id', 'desc')
+    //   ->paginate($this->posts_per_page);   
+
         $ordenar='desc';
         if($this->tag->id=='2'){
            $ordenar='asc';
@@ -98,6 +107,7 @@ class Taglw extends Component
 
         $posts= $this->tag->posts()  
                 ->where('status',2)
+                ->filtert($this->datos)
                 ->orderBy('id', $ordenar)
                 ->paginate($this->posts_per_page);     ;      
         return view('livewire.taglw', compact('posts'));
