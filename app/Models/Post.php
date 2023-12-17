@@ -106,7 +106,7 @@ class Post extends Model
             $query->whereIn('autor', $autor);
           })->when($filters['temas'] ?? null, function($query, $tema){
             $query->whereIn('tema_id', $tema);
-          })->when($filters['fdesde'] && $filters['fhasta'] ?? null, function($query ) use($filters) { 
+          })->when($filters['fdesde'] ?? null && $filters['fhasta'] ?? null, function($query ) use($filters) { 
              $query->whereBetween('created_at', [$filters['fdesde'], $filters['fhasta']]);
           });
     }
