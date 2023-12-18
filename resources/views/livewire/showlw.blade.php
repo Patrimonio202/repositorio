@@ -39,9 +39,16 @@
                     <div class="card flex flex-col items-center text-xl font-mono p-4 rounded-md text-white aspect-[16/9] md:mr-12 lg:mr-12 mb-4"
                         style=" background-image: url({{ Storage::url('Imagenes/FondoReproductor.png') }})">
                         <div class="cover flex flex-col items-center min-w-80px w-auto max-w-880px">
-                            <img src="{{ Storage::url($post->image->url) }}" alt="Album Cover" class="img-source w-3/6 rounded-xl" onclick="full_view(this);">
-                            @section('ogImage', Storage::url($post->image->url))
-                            <p class="-translate-y-10 w-3/6 text-center break-words"></p>
+                            @if (Storage::exists($post->image->url))
+                                <img src="{{ Storage::url($post->image->url) }}" alt="Album Cover"
+                                    class="img-source w-3/6 rounded-xl" onclick="full_view(this);">
+                                @section('ogImage', Storage::url($post->image->url))
+                                <p class="-translate-y-10 w-3/6 text-center break-words"></p>
+                            @else
+                                  <img src="{{ Storage::url('Imagenes/PreviewAudios.jpg') }}" alt="Album Cover"
+                                    class="img-source w-3/6 rounded-xl" onclick="full_view(this);">
+                                
+                            @endif
                         </div>
                         <audio id="song" class="block w-full max-w-md mx-auto mt-4" controls>
                             <source src="{{ Storage::url($post->image->urlarchivo) }}" type="audio/mpeg">
@@ -99,19 +106,20 @@
 
                     <div class=" flex-1 items-center bg-center justify-center hidden lg:block">
                         <button wire:click="$set('opene', true)"
-                         class=" text-xs bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                         <i class="fa-solid fa-bug" wire:click="$set('opene', true)"></i> Reportar un error
-                          </button>
+                            class=" text-xs bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                            <i class="fa-solid fa-bug" wire:click="$set('opene', true)"></i> Reportar un error
+                        </button>
                     </div>
 
                     <div class="flex right-0 md:mr-14  lg:mr-14 gap-6 ">
                         <div class="flex-1" data-tooltip-target="tcompartir" data-tooltip-style="light">
-                            <i wire:click="edit({{ $post }})" class="fa-solid fa-share fa-lg hover:text-[#00a2b0] hover:scale-125 transition-all duration-100"></i>
+                            <i wire:click="edit({{ $post }})"
+                                class="fa-solid fa-share fa-lg hover:text-[#00a2b0] hover:scale-125 transition-all duration-100"></i>
                         </div>
                         @auth
                             <div class="flex-1" data-tooltip-target="tmeinteresa" data-tooltip-style="light">
                                 <i wire:click="meinteresa({{ $post->id }})"
-                                    class=" @if ($post->userVotes) fa-solid fa-bookmark fa-lg  @else fa-regular fa-bookmark fa-lg  @endif hover:text-[#00a2b0] hover:scale-125 transition-all duration-100"></i>
+                                    class=" @if ($post->userVotes) fa-solid fa-bookmark fa-lg  @else fa-regular fa-bookmark fa-lg @endif hover:text-[#00a2b0] hover:scale-125 transition-all duration-100"></i>
                             </div>
                             <div lass="flex-1" data-tooltip-target="tmegusta" data-tooltip-style="light">
                                 <i wire:click="megusta({{ $post->id }})"
@@ -119,23 +127,27 @@
                                     id="fastc-{{ $post->id }}"></i>
                             </div>
                             <div class="flex-1" data-tooltip-target="tdescargar" data-tooltip-style="light">
-                                <i wire:click="download({{ $post }})" class="  fa-solid fa-download fa-lg hover:text-[#00a2b0] hover:scale-125 transition-all duration-100" ></i>
-                            </div>                           
+                                <i wire:click="download({{ $post }})"
+                                    class="  fa-solid fa-download fa-lg hover:text-[#00a2b0] hover:scale-125 transition-all duration-100"></i>
+                            </div>
                         @else
                             <div class="flex-1">
                                 <a data-tooltip-target="tmeinteresa" data-tooltip-style="light"
                                     href="{{ route('login') }}">
-                                    <i class="fa-regular fa-bookmark fa-lg hover:text-[#00a2b0] hover:scale-125 transition-all duration-100"></i>
+                                    <i
+                                        class="fa-regular fa-bookmark fa-lg hover:text-[#00a2b0] hover:scale-125 transition-all duration-100"></i>
                                 </a>
                             </div>
                             <div class="flex-1 ">
                                 <a data-tooltip-target="tmegusta" data-tooltip-style="light" href="{{ route('login') }}">
-                                    <i class="fa-regular fa-heart  fa-lg   hover:text-rose-600 hover:scale-125 transition-all duration-100"></i>
+                                    <i
+                                        class="fa-regular fa-heart  fa-lg   hover:text-rose-600 hover:scale-125 transition-all duration-100"></i>
                                 </a>
                             </div>
                             <div class="flex-1">
                                 <a data-tooltip-target="tdescargar" data-tooltip-style="light" href="{{ route('login') }}">
-                                    <i class="fa-solid fa-download fa-lg hover:text-[#00a2b0] hover:scale-125 transition-all duration-100"></i>
+                                    <i
+                                        class="fa-solid fa-download fa-lg hover:text-[#00a2b0] hover:scale-125 transition-all duration-100"></i>
                                 </a>
                             </div>
 
@@ -304,11 +316,11 @@
                     </div>
                 </div>
 
-                
+
             </div>
 
             <div class="flex items-center">
-                <x-input id="myInput"   class=" w-full  px-2 h-7 mr-4" value="{{ $post_slug }}"> </x-input>              
+                <x-input id="myInput" class=" w-full  px-2 h-7 mr-4" value="{{ $post_slug }}"> </x-input>
                 <i class="fa-regular fa-copy fa-lg" onclick="myFunction()"></i>
             </div>
         </x-slot>
@@ -380,8 +392,10 @@
                                 <iframe class=" w-full" height="600px" src="pdfjs/web/viewer.html?file={{ Storage::url($post->image->urlarchivo) }}" frameborder="0"></iframe>
                         </object> --}}
 
-                         <iframe class=" w-full" height="600px" src="{{ asset('pdfjs/web/viewer.html')}}?file=https://patrimonioelsantuario.gov.co/storage/{{$post->image->urlarchivo}}" frameborder="0"></iframe> 
-                         <!--<iframe class=" w-full" height="600px" src="http://patrimonioelsantuario.gov.co/pdfjs/web/viewer.html?file=http://patrimonioelsantuario.gov.co/storage/{{$post->image->urlarchivo}}" frameborder="0"></iframe> -->
+                        <iframe class=" w-full" height="600px"
+                            src="{{ asset('pdfjs/web/viewer.html') }}?file=https://patrimonioelsantuario.gov.co/storage/{{ $post->image->urlarchivo }}"
+                            frameborder="0"></iframe>
+                        <!--<iframe class=" w-full" height="600px" src="http://patrimonioelsantuario.gov.co/pdfjs/web/viewer.html?file=http://patrimonioelsantuario.gov.co/storage/{{ $post->image->urlarchivo }}" frameborder="0"></iframe> -->
                     </div>
 
                 </div>
@@ -398,12 +412,12 @@
         </x-slot>
 
         <x-slot name="content">
-            <div >
+            <div>
                 <x-label>Descripción del error </x-label>
-                <textarea wire:model="mensaje"  rows="6"
-                        class=" pl-4 pt-2  border-blue-600 focus:border-indigo-500 focus:ring-indigo-500 focus:ring-opacity-50 rounded-md shadow-sm w-full "
-                        placeholder="Detalle el error que quiere reportar o notifique posibles violaciones a los derechos de autor." ></textarea>                
-            </div>    
+                <textarea wire:model="mensaje" rows="6"
+                    class=" pl-4 pt-2  border-blue-600 focus:border-indigo-500 focus:ring-indigo-500 focus:ring-opacity-50 rounded-md shadow-sm w-full "
+                    placeholder="Detalle el error que quiere reportar o notifique posibles violaciones a los derechos de autor."></textarea>
+            </div>
         </x-slot>
 
         <x-slot name="footer">
