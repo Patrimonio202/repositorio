@@ -97,17 +97,27 @@
                                     </div>
                                 @else
                                     <figure>
-                                        <a href="{{ route('posts.show', $post) }}">
-                                            <img class=" object-cover object-top  h-72 w-full rounded-xl hover:blur-sm cursor-pointer"
-                                                src="{{ Storage::url($post->image->url) }}" alt="{{ $post->name }}" />
-                                        </a>
+                                        @if (Storage::exists($post->image->url))
+                                            <a href="{{ route('posts.show', $post) }}">
+                                                <img class=" object-cover object-top  h-72 w-full rounded-xl hover:blur-sm cursor-pointer"
+                                                    src="{{ Storage::url($post->image->url) }}"
+                                                    alt="{{ $post->name }}" />
+                                            </a>
+                                        @else
+                                          <!-- este es el preview de audios -->
+                                            @if ($post->category_id == '2')
+                                                <img src="{{ Storage::url('Imagenes/PreviewAudios.jpg') }}"
+                                                    class="object-cover object-top  h-72 w-full rounded-xl hover:blur-sm cursor-pointer"
+                                                    alt="{{ $post->name }}" >
+                                            @endif
+                                        @endif
 
                                     </figure>
                                 @endif
 
                                 <div>
                                     <h1 class="text-xl font-semibold">
-                                       <a href="{{ route('posts.show', $post) }}"> {{ $post->name }}</a>
+                                        <a href="{{ route('posts.show', $post) }}"> {{ $post->name }}</a>
                                     </h1>
                                     <hr class="mt-1 mb-2">
                                     <div class="mb-2">
@@ -142,14 +152,14 @@
                             </article>
                         @endforeach
                     </div>
-                     <!-- Estos son los links de navegación -->
+                    <!-- Estos son los links de navegación -->
                     <div class="card-footer mt-8">
-                        {{$posts->links()}}
+                        {{ $posts->links() }}
                     </div>
-                </div>                
+                </div>
             </div>
 
-           
+
 
 
         </section>

@@ -47,6 +47,7 @@
                             @else
                                   <img src="{{ Storage::url('Imagenes/PreviewAudios.jpg') }}" alt="Album Cover"
                                     class="img-source w-3/6 rounded-xl" onclick="full_view(this);">
+                                    @section('ogImage', Storage::url('Imagenes/PreviewAudios.jpg'))
                                 
                             @endif
                         </div>
