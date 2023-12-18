@@ -22,6 +22,16 @@ class Showlw extends Component
 
 
     public $mensaje;//variables para enviar informacion
+    public $nombre;
+    public $contacto;
+
+    public function mount(){
+        if(auth()->user()){
+           $this->nombre=auth()->user()->name;
+           $this->contacto=auth()->user()->email;
+        }
+    }
+
     public function meinteresa($postId)
     {
         //$post = Post::find($postId);
@@ -101,10 +111,19 @@ class Showlw extends Component
     // enviamos mensaje de contacto
     public function enviarmensaje($post)
     {
+        if(!$this->nombre){
+            $this->nombre='Usuario';
+        }
+
+        if(!$this->contacto){
+            $this->contacto='sincorreo@patrimonio.gov.co';
+        }
+
+
         $datos   = ['asunto'=>'Reporte de daño',
-            'name' => 'Usuario', 
+            'name' => $this->nombre, 
            'message'=> $this->mensaje,
-         'email'=>'noregistrado@hotmail.com',
+         'email'=>$this->contacto,
          'pagina'=> Request::root() . "/posts/" . $post['slug'],
          'vista'=>'emails.contactanos'];
 
@@ -115,7 +134,7 @@ class Showlw extends Component
      
         //dd($datos 'cultura@elsantuario-antioquia.gov.co',);
         Mail::to(new Address('cultura@elsantuario-antioquia.gov.co') )
-            ->cc( new Address('sistemas@hospitalelsantuario.gov.co'))            
+            ->cc( new Address('sistemas@elsantuario-antioquia.gov.co'))            
             ->send(new CantactanosMailable($datos));
         $this->opene = false;
     }

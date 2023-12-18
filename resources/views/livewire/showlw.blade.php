@@ -414,6 +414,14 @@
 
         <x-slot name="content">
             <div>
+                <x-label>Nombre (no obligatorio)</x-label>
+                <input type="text" wire:model="nombre" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Nombre" required>
+            </div>
+            <div>
+                <x-label>Contacto (no obligatorio)</x-label>
+                <input type="text" wire:model="contacto"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Celular, correo..." required>
+            </div>
+            <div>
                 <x-label>Descripción del error </x-label>
                 <textarea wire:model="mensaje" rows="6"
                     class=" pl-4 pt-2  border-blue-600 focus:border-indigo-500 focus:ring-indigo-500 focus:ring-opacity-50 rounded-md shadow-sm w-full "
