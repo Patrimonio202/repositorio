@@ -123,9 +123,7 @@
 </div>
 
 <div class="mr-4 ml-4 mt-4  gap-8 md:ml-8 lg:mr-24 lg:ml-24 ">
-    <h1 class=" text-center text-[#08416b]" style="font-family:Raleway-ExtraBold">
-        Créditos de Antonio Botero:
-    </h1>
+   
 
     <div class=" text-justify text-sm  text-[#08416b]" style="font-family:Raleway-Regular">
         <p>
