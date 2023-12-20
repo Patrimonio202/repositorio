@@ -3,7 +3,7 @@
         alt="Titulo Colecciones bilbioteca">
 </div>
 
-<div class=" grid grid-cols-1  md:grid-cols-2 lg:grid-cols-2 gap-8 mb-16">
+<div class=" grid grid-cols-1  md:grid-cols-2 lg:grid-cols-2 gap-8 mb-16 mr-4 ml-4 lg:mr-24 lg:ml-24">
 
     <div class=" text-left text-sm  text-[#08416b]" style="font-family:Raleway-Regular">
         <p>

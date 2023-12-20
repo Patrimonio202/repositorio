@@ -10,10 +10,7 @@
             @break
 
             @case('archivo-patrimonial-de-el-santuario')
-                <div class=" mb-8 mt-8">
-                    <img src="{{ Storage::url('Imagenes/TituloColeccionPatrimonio.png') }}"
-                        class="inline-block  rounded-lg shadow-lg  " alt="Titulo Colecciones patrimonio">
-                </div>
+                <x-colecciones-archivopatrimonialelsantuario />
             @break
 
             @case('biblioteca-publica-municipal')
