@@ -128,25 +128,18 @@
     </h1>
 
     <div class=" text-justify text-sm  text-[#08416b]" style="font-family:Raleway-Regular">
-    <p>
-        <span class="font-bold">Productor creativo:</span> Christian Montes Salazar
-    <p>
-    <p>
-        <span class="font-bold">Investigador y realizador audiovisual:</span> Esneider González Salazar
-    <p>
-    <p>
-        <span class="font-bold">Investigador cultural:</span> Wilson Duque
-    <p>
-    <p>
-        <span class="font-bold">Curadora y artista visual:</span> Diana Guisao López
-    <p>
-    <p>
-        <span class="font-bold">Artista visual:</span> Sara Acevedo
-    <p>
+        <p>
+            <span class="font-bold">Productor creativo:</span> Christian Montes Salazar / <span
+                class="font-bold">Investigador y realizador audiovisual:</span> Esneider González Salazar / <span
+                class="font-bold">Investigador cultural:</span> Wilson Duque / <span class="font-bold">Curadora y
+                artista visual:</span> Diana Guisao López / <span class="font-bold">Artista visual:</span> Sara Acevedo
+        <p>       
+       
     </div>
     <br>
     <p class=" text-justify text-sm  text-[#08416b]" style="font-family:Raleway-Regular">
-    Proyecto ganador de la convocatoria de estímulos 2023 del Ministerio de las Culturas, las Artes y los Saberes, bajo
-    la supervisión del Archivo General de la Nación.
+        Proyecto ganador de la convocatoria de estímulos 2023 del Ministerio de las Culturas, las Artes y los Saberes,
+        bajo
+        la supervisión del Archivo General de la Nación.
     <p>
 </div>
