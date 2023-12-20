@@ -15,7 +15,8 @@
     <h1>(1919-2000)</h1>
 </div>
 
-<div class="   grid grid-cols-1  md:grid-cols-2 lg:grid-cols-2 mt-4  gap-8 mb-16 md:mr-8 md:ml-8 lg:mr-24 lg:ml-24 mr-4 ml-4 ">
+<div
+    class="   grid grid-cols-1  md:grid-cols-2 lg:grid-cols-2 mt-4  gap-8 mb-16 md:mr-8 md:ml-8 lg:mr-24 lg:ml-24 mr-4 ml-4 ">
 
     <div class=" text-left text-sm  text-[#08416b]" style="font-family:Raleway-Regular">
         <p>La fotografía es un poderoso medio para capturar la esencia de una época, y el legado de Don
@@ -114,9 +115,38 @@
         </p>
     </div>
 </div>
-       
+
 
 <div class=" flex items-center justify-center mb-8 mt-8  md:mt-16  lg:mt-16 mr-4 ml-4 md:ml-8 lg:mr-24 lg:ml-24 ">
     <img src="{{ Storage::url('Imagenes/Antonio_botero_frasefinal.png') }}"
         class=" md:lg:w-[700px] lg:w-[700px] object-cover object-center" alt="Frase final Antonio botero">
+</div>
+
+<div class="mr-4 ml-4 mt-4  gap-8 md:ml-8 lg:mr-24 lg:ml-24 ">
+    <h1 class=" text-center text-[#08416b]" style="font-family:Raleway-ExtraBold">
+        Créditos de Antonio Botero:
+    </h1>
+
+    <div class=" text-justify text-sm  text-[#08416b]" style="font-family:Raleway-Regular">
+    <p>
+        <span class="font-bold">Productor creativo:</span> Christian Montes Salazar
+    <p>
+    <p>
+        <span class="font-bold">Investigador y realizador audiovisual:</span> Esneider González Salazar
+    <p>
+    <p>
+        <span class="font-bold">Investigador cultural:</span> Wilson Duque
+    <p>
+    <p>
+        <span class="font-bold">Curadora y artista visual:</span> Diana Guisao López
+    <p>
+    <p>
+        <span class="font-bold">Artista visual:</span> Sara Acevedo
+    <p>
+    </div>
+    <br>
+    <p class=" text-justify text-sm  text-[#08416b]" style="font-family:Raleway-Regular">
+    Proyecto ganador de la convocatoria de estímulos 2023 del Ministerio de las Culturas, las Artes y los Saberes, bajo
+    la supervisión del Archivo General de la Nación.
+    <p>
 </div>
