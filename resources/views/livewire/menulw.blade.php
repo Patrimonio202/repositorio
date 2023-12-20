@@ -1,5 +1,5 @@
 <div x-data="menuld" data-dial-init class="fixed  z-50 end-6 bottom-6 group ">
-    <div x-show="isMobile" id="speed-dial-menu-bottom-right" class="flex flex-col hidden items-center mb-4 space-y-2 mt-8">
+    <div x-show="isMobile" id="speed-dial-menu-click" class="flex flex-col hidden items-center mb-4 space-y-2 mt-8">
         <div class=" w-96 flex justify-center items-center backdrop-blur-md  bg-white/30 rounded-full">
             <div class="flex-1 justify-end  mr-4">
                 <p class=" text-right  text-sm  text-[#08416b]" style="font-family:Raleway-Regular">Contenido aleatorio
@@ -105,8 +105,8 @@
         </div>
     </div>
     <div class="flex justify-end">
-        <button x-on:click="toggle" type="button" data-dial-toggle="speed-dial-menu-bottom-right"
-            aria-controls="speed-dial-menu-bottom-right" aria-expanded="false"
+        <button x-on:click="toggle" type="button" data-dial-toggle="speed-dial-menu-click" data-dial-trigger="click"
+        aria-controls="speed-dial-menu-click" aria-expanded="false"
             class="flex items-center justify-center text-white bg-blue-700 rounded-full w-14 h-14 hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:focus:ring-blue-800">
             <svg x-ref="targetDiv" class="w-5 h-5 transition-transform " aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
