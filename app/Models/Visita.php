@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Visita extends Model
 {
     use HasFactory;
+    protected $fillable=['fecha', 'pagina','tipo','num'];
 }

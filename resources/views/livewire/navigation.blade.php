@@ -36,13 +36,13 @@
                 @endforeach  --}}
 
                 <!-- acerca de -->
-                <div class="hidden  space-x-8 sm:-my-px  md:ml-1 lg:ml-10 sm:ml-10 sm:flex">
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link href="{{ route('inicio.acercade') }}" :active="request()->routeIs('inicio.acercade')">
                         {{ __('Acerca de') }}
                     </x-nav-link>
                 </div>
 
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div class="hidden space-x-8 sm:-my-px md:ml-1 lg:ml-10  sm:ml-10 sm:flex">
                     <x-nav-link href="{{ route('posts.category', 'imagenes') }}" :active="request()->Is('category/imagenes')">
                         {{ __('Imágenes') }}
                     </x-nav-link>

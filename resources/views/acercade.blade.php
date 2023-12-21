@@ -15,7 +15,7 @@
                     conservación y celebración de nuestro rico legado cultural, artístico y patrimonial. </p>
                 <br>
                 <p>
-                    Durante ese tiempo hemos recuperación y catalogado un tesoro de archivos en diversos formatos, que
+                    Durante ese tiempo hemos recuperado y catalogado un tesoro de archivos en diversos formatos, que
                     abarcan desde documentos históricos, libros y publicaciones, fotografías y videos, hasta grabaciones
                     musicales y partituras, solo por mencionar algunos de estos elementos que reflejan la profundidad y
                     diversidad de nuestra identidad cultural.
@@ -25,7 +25,7 @@
                     El equipo al frente de este proyecto, que es el punto de convergencia de varias disciplinas técnicas
                     y artísticas, estuvo integrado por:
                 </p>
-
+                <br>
                 <p> <span class="font-bold">Christian Montes Salazar</span>, director general y productor creativo</p>
                 <p><span class="font-bold">Wilson Duque Ramírez</span>, investigador cultural especialista en patrimonio
                 </p>

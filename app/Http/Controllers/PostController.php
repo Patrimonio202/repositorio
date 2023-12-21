@@ -7,7 +7,10 @@ use App\Models\Post;
 use App\Models\Subcategory;
 use App\Models\Tag;
 use App\Models\Tema;
+use App\Models\Visita;
 use App\Models\Vote;
+use Carbon\Carbon;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Storage;
@@ -22,8 +25,28 @@ class PostController extends Controller
 
   public function index()
   {
-    //$posts = Post::where('status', 2)->latest('id')->paginate(8);
-    //$posts = Post::where('status', 2)->latest('id')->paginate(8);
+    //Registramos la visita a nuestro sitio if (User::where('id', $user_id )->exists()) {
+    // your code...//
+   // }
+   date_default_timezone_set('America/Lima');
+   //$date = Carbon::now();    
+
+    $visita= new Visita();
+    $visita->fecha= date('Y-m-d');
+    $visita->pagina='Inicio';
+    $visita->tipo='1';
+    $visita->num='1';
+
+    $visitau=Visita::where('fecha', $visita->fecha)
+                     ->where('pagina', 'inicio')->first(); 
+                     
+    if($visitau){     
+      Visita::where('fecha', $visita->fecha)
+      ->where('pagina', 'inicio')->update(['num'=>$visitau->num+1]);
+    }else{
+      $visita->save();
+    }
+       
     return view('posts.index');
   }
 
