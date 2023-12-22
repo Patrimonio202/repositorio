@@ -46,15 +46,36 @@ class PostController extends Controller
     }else{
       $visita->save();
     }
-       
+
     return view('posts.index');
   }
 
   public function show(Post $post)
   {
-    //  $curso =Curso::find($id);
-    // $postf=Post::where('slug',$post)->get();    
-    //$postf=Post::find($post);         ->latest('id')
+    // guardamos las visitas
+    date_default_timezone_set('America/Lima');  
+
+    $visita= new Visita();
+    $visita->fecha= date('Y-m-d');
+    $visita->pagina=$post->slug;
+    $visita->tipo='2';
+    $visita->num='1';
+
+    $visitau=Visita::where('fecha', $visita->fecha)
+                     ->where('pagina', $post->slug)->first(); 
+                     
+    if($visitau){     
+      Visita::where('fecha', $visita->fecha)
+      ->where('pagina', $post->slug)->update(['num'=>$visitau->num+1]);
+    }else{
+      $visita->save();
+    }
+
+    //hasta aqui
+
+
+
+
     $this->authorize('published', $post);
     $similares = Post::where('category_id', $post->Category->id)
       ->where('status', 2)

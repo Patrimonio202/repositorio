@@ -3,6 +3,7 @@
 namespace App\Livewire\Admin;
 
 use App\Models\Post;
+use App\Models\Visita;
 use Livewire\Component;
 use Illuminate\Http\Request;
 
@@ -88,6 +89,10 @@ class Dashboard extends Component
 
     public function render()
     {
-        return view('livewire.admin.dashboard');
+        $visitas = Visita::orderBy('fecha', 'desc')
+        ->orderBy('pagina', 'desc')
+        ->paginate(50);
+
+        return view('livewire.admin.dashboard', compact('visitas'));
     }
 }

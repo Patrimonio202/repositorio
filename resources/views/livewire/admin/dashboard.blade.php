@@ -78,4 +78,29 @@
         
 
     </div>
+    <div class="row mt-4" >
+      <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Pagina</th>
+                <th>Cantidad</th>                
+            </tr>
+        </thead>
+
+        <tbody>
+             @foreach ($visitas as $visita)
+                <tr>
+                   <td>{{$visita->fecha}}</td>
+                    <td>{{$visita->pagina}}</td>
+                    <td>{{$visita->num}}</td>                   
+                </tr>
+            @endforeach 
+        </tbody>
+    </table>
+
+    <div >
+      {{$visitas->links()}}
+     </div>
+    </div>
 </div>
