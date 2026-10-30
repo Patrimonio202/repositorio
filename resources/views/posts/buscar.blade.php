@@ -100,7 +100,7 @@
                                         @if (Storage::exists($post->image->url))
                                             <a href="{{ route('posts.show', $post) }}">
                                                 <img class=" object-cover object-top  h-72 w-full rounded-xl hover:blur-sm cursor-pointer"
-                                                    src="{{ Storage::url($post->image->url) }}"
+                                                    src="{{ $post->image->miniatura_url }}" loading="lazy" decoding="async"
                                                     alt="{{ $post->name }}" />
                                             </a>
                                         @else

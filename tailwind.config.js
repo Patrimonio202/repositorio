@@ -9,6 +9,9 @@ export default {
         './vendor/laravel/jetstream/**/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
+        './app/Livewire/**/*.php',
+        './app/View/Components/**/*.php',
+        './node_modules/flowbite/**/*.js',
     ],
 
     theme: {

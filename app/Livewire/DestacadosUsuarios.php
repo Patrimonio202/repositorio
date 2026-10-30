@@ -67,28 +67,32 @@ class DestacadosUsuarios extends Component
         $this->posts_per_page +=3;
     }
 
-    public function edit($post){ 
-        $this->post_slug=Request::root()."/posts/".$post['slug'];       
-        $this->open=true;
+    // rendimiento v1.0 (30/10/2026): recibe solo el id (antes llegaba toda la publicacion desde el navegador)
+    public function edit($postId)
+    {
+        $slug = Post::whereKey($postId)->value('slug');
+        $this->post_slug = Request::root() . "/posts/" . $slug;
+        $this->open = true;
     }
 
-    public function download($post){    
-        $vpost=$post['image'];     
-        if($post['category_id']=='1') {
-            return Storage::download($vpost['url']);
-        }  
-        
-        if($post['category_id']=='2' || $post['category_id']=='3' ) {
-            return Storage::download($vpost['urlarchivo']);
-        }  
-       
+    // rendimiento v1.0 (30/10/2026): recibe solo el id y lee la ruta desde la base de datos (antes confiaba en datos enviados por el navegador)
+    public function download($postId)
+    {
+        $post = Post::with('image')->findOrFail($postId);
+        $vpost = $post->image;
+        if ($post->category_id == '1') {
+            return Storage::download($vpost->url);
+        }
+        if ($post->category_id == '2' || $post->category_id == '3') {
+            return Storage::download($vpost->urlarchivo);
+        }
     }
 
     public function render()
     {
         //$posts=Post::paginate($this->posts_per_page);
-        $votes= Vote::select('post_id')->where('user_id', auth()->user()->id)->where('voto', 2)->get();
-        $posts= Post::whereIn('id', $votes->toArray())->get();
+        $votes = Vote::where('user_id', auth()->id())->where('voto', 2)->pluck('post_id');
+        $posts = Post::with(['image', 'category'])->whereIn('id', $votes)->get();
         return view('livewire.destacados-usuarios',[
             'posts'=>$posts
         ]);

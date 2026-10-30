@@ -1,11 +1,11 @@
-<div  wire:init="loadPosts">    
+<div>    
     @if (!is_null($tags))
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2  my-2 -mr-4">
             @foreach ($tags as $tag)
                 <article class="relative bg-white  rounded-xl mr-4 md:mx-8 lg:mx-8  mt-6 mb-10   ">
                     <figure class="relative overflow-hidden bg-no-repeat bg-cover relative overflow-hidden bg-no-repeat bg-cover shadow-lg rounded-lg mx-4 my-4 ">
                         <div >
-                            <img src="{{ Storage::url($tag->url) }}"
+                            <img src="{{ $tag->miniatura_url }}" loading="lazy" decoding="async"
                                 class="w-full h-full md:h-80 lg:h-96  " />
                         
                                 <a href="{{ route('posts.colecciones', $tag) }}">

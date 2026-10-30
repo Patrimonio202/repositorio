@@ -71,34 +71,25 @@ class MultimediaPublicada extends Component
         }
     }
 
-    public function edit($post){    
-        //dd($post['slug']);  
-        $this->post_slug=Request::root()."/posts/".$post['slug'];
-       
-       // dd($this->post_slug);
-        $this->open=true;
+    // rendimiento v1.0 (30/10/2026): recibe solo el id (antes llegaba toda la publicacion desde el navegador)
+    public function edit($postId)
+    {
+        $slug = Post::whereKey($postId)->value('slug');
+        $this->post_slug = Request::root() . "/posts/" . $slug;
+        $this->open = true;
     }
 
-    public function download($post){    
-        $vpost = $post['image'];
-        if ($post['category_id'] == '1') {
-            //return Storage::download($vpost['url']);
-            return redirect(Storage::temporaryUrl(
-                $vpost['url'],
-                now()->addHour(),
-                ['ResponseContentDisposition' => 'attachment']
-            ));
+    // rendimiento v1.0 (30/10/2026): recibe solo el id y lee la ruta desde la base de datos (antes confiaba en datos enviados por el navegador)
+    public function download($postId)
+    {
+        $post = Post::with('image')->findOrFail($postId);
+        $vpost = $post->image;
+        if ($post->category_id == '1') {
+            return redirect(Storage::temporaryUrl($vpost->url, now()->addHour(), ['ResponseContentDisposition' => 'attachment']));
         }
-
-        if ($post['category_id'] == '2' || $post['category_id'] == '3') {
-            // return Storage::download($vpost['urlarchivo']);           
-                    return redirect(Storage::temporaryUrl(
-                        $vpost['urlarchivo'],
-                        now()->addHour(),
-                       // ['ResponseContentDisposition' => 'attachment']
-                    ));
+        if ($post->category_id == '2' || $post->category_id == '3') {
+            return redirect(Storage::temporaryUrl($vpost->urlarchivo, now()->addHour()));
         }
-       
     }
 
   
@@ -108,20 +99,20 @@ class MultimediaPublicada extends Component
         $posts=null;
         
         if($this->posts_per_page==3){            
-            $posts=Post::where('status', 2)->where('category_id','1')->latest('id')->take(3)->get();
+            $posts=Post::with(['image', 'category'])->where('status', 2)->where('category_id','1')->latest('id')->take(3)->get();
         }
         if($this->posts_per_page==6){            
-            $posts=Post::where('status', 2)->where('category_id','1')->latest('id')->take(3)
+            $posts=Post::with(['image', 'category'])->where('status', 2)->where('category_id','1')->latest('id')->take(3)
             ->union(Post::where('status', 2)->where('category_id','2')->latest('id')->take(3))->get();
         }
         if($this->posts_per_page==9){            
-            $posts=Post::where('status', 2)->where('category_id','1')->latest('id')->take(3)
+            $posts=Post::with(['image', 'category'])->where('status', 2)->where('category_id','1')->latest('id')->take(3)
             ->union(Post::where('status', 2)->where('category_id','2')->latest('id')->take(3))
             ->union(Post::where('status', 2)->where('category_id','3')->latest('id')->take(3))->get();
         }
 
         if($this->posts_per_page==12){            
-            $posts=Post::where('status', 2)->where('category_id','1')->latest('id')->take(3)
+            $posts=Post::with(['image', 'category'])->where('status', 2)->where('category_id','1')->latest('id')->take(3)
             ->union(Post::where('status', 2)->where('category_id','2')->latest('id')->take(3))
             ->union(Post::where('status', 2)->where('category_id','3')->latest('id')->take(3))
             ->union(Post::where('status', 2)->where('category_id','4')->latest('id')->take(3))->get();

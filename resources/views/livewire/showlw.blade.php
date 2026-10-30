@@ -114,7 +114,7 @@
 
                     <div class="flex right-0 md:mr-14  lg:mr-14 gap-6 ">
                         <div class="flex-1" data-tooltip-target="tcompartir" data-tooltip-style="light">
-                            <i wire:click="edit({{ $post }})"
+                            <i wire:click="edit({{ $post->id }})"
                                 class="fa-solid fa-share fa-lg hover:text-[#00a2b0] hover:scale-125 transition-all duration-100"></i>
                         </div>
                         @auth
@@ -128,7 +128,7 @@
                                     id="fastc-{{ $post->id }}"></i>
                             </div>
                             <div class="flex-1" data-tooltip-target="tdescargar" data-tooltip-style="light">
-                                <i wire:click="download({{ $post }})"
+                                <i wire:click="download({{ $post->id }})"
                                     class="  fa-solid fa-download fa-lg hover:text-[#00a2b0] hover:scale-125 transition-all duration-100"></i>
                             </div>
                         @else

@@ -4,33 +4,33 @@
         <!-- Item 1 -->
         <div class="hidden duration-700 ease-in-out " data-carousel-item>
             <a href="{{ route('inicio.acercade') }}">
-                <img src="{{ Storage::url('Imagenes/Imagen-barner-1.jpg') }}"
+                <img fetchpriority="high" src="{{ Storage::url('Imagenes/Imagen-barner-1.jpg') }}"
                     class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
             </a>
         </div>
         <!-- Item 2 -->
         <div class="hidden duration-700 ease-in-out cursor-pointer" data-carousel-item>          
-                <img src="{{ Storage::url('Imagenes/Imagen-barner-2.jpg') }}"
+                <img loading="lazy" decoding="async" src="{{ Storage::url('Imagenes/Imagen-barner-2.jpg') }}"
                     class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
             
         </div>
         <!-- Item 3 -->
         <div class="hidden duration-700 ease-in-out cursor-pointer" data-carousel-item>
            
-                <img src="{{ Storage::url('Imagenes/Imagen-barner-3.jpg') }}"
+                <img loading="lazy" decoding="async" src="{{ Storage::url('Imagenes/Imagen-barner-3.jpg') }}"
                     class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
           
         </div>
         <!-- Item 4 -->
         <div class="hidden duration-700 ease-in-out cursor-pointer" data-carousel-item>
            
-                <img src="{{ Storage::url('Imagenes/Imagen-barner-4.jpg') }}"
+                <img loading="lazy" decoding="async" src="{{ Storage::url('Imagenes/Imagen-barner-4.jpg') }}"
                     class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
           
         </div>
         <!-- Item 5 -->
         <div class="hidden duration-700 ease-in-out cursor-pointer" data-carousel-item>          
-                <img src="{{ Storage::url('Imagenes/Imagen-barner-5.jpg') }}"
+                <img loading="lazy" decoding="async" src="{{ Storage::url('Imagenes/Imagen-barner-5.jpg') }}"
                     class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
            
         </div>

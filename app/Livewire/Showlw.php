@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Mail\CantactanosMailable;
 use Livewire\Component;
+use App\Models\Post;
 use App\Models\Vote;
 use Illuminate\Mail\Mailables\Address;
 use Illuminate\Support\Facades\Mail;
@@ -74,37 +75,24 @@ class Showlw extends Component
         }
     }
 
-    public function edit($post)
+    // rendimiento v1.0 (30/10/2026): recibe solo el id (antes llegaba toda la publicacion desde el navegador)
+    public function edit($postId)
     {
-        //dd($post['slug']);  
-        $this->post_slug = Request::root() . "/posts/" . $post['slug'];
-
-        // dd($this->post_slug);
+        $slug = Post::whereKey($postId)->value('slug');
+        $this->post_slug = Request::root() . "/posts/" . $slug;
         $this->open = true;
     }
 
-    public function download($post)
+    // rendimiento v1.0 (30/10/2026): recibe solo el id y lee la ruta desde la base de datos (antes confiaba en datos enviados por el navegador)
+    public function download($postId)
     {
-        $vpost = $post['image'];
-        if ($post['category_id'] == '1') {
-           // return Storage::download($vpost['url']);
-            //  return redirect(Storage::temporaryUrl(
-            //      $vpost['url'],
-            //     now()->addHour(5)
-           
-            //  ));
-            return redirect(Storage::temporaryUrl($vpost['url'],now()->addHour()));
-           
+        $post = Post::with('image')->findOrFail($postId);
+        $vpost = $post->image;
+        if ($post->category_id == '1') {
+            return redirect(Storage::temporaryUrl($vpost->url, now()->addHour()));
         }
-
-        if ($post['category_id'] == '2' || $post['category_id'] == '3') {
-            // return Storage::download($vpost['urlarchivo']);           
-            // return redirect(Storage::temporaryUrl(
-            //     $vpost['urlarchivo'],
-            //     now()->addHour(2),
-            //     //['ResponseContentDisposition' => 'attachment']
-            // ));
-            return redirect(Storage::temporaryUrl($vpost['urlarchivo'],now()->addHour()));
+        if ($post->category_id == '2' || $post->category_id == '3') {
+            return redirect(Storage::temporaryUrl($vpost->urlarchivo, now()->addHour()));
         }
     }
 
