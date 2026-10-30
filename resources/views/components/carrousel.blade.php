@@ -4,33 +4,33 @@
         <!-- Item 1 -->
         <div class="hidden duration-700 ease-in-out " data-carousel-item>
             <a href="{{ route('inicio.acercade') }}">
-                <img fetchpriority="high" src="{{ Storage::url('Imagenes/Imagen-barner-1.jpg') }}"
+                <img fetchpriority="high" src="{{ \App\Models\Image::urlGrande('Imagenes/Imagen-barner-1.jpg') }}" srcset="{{ \App\Models\Image::srcsetBanner('Imagenes/Imagen-barner-1.jpg') }}" sizes="100vw"
                     class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
             </a>
         </div>
         <!-- Item 2 -->
         <div class="hidden duration-700 ease-in-out cursor-pointer" data-carousel-item>          
-                <img loading="lazy" decoding="async" src="{{ Storage::url('Imagenes/Imagen-barner-2.jpg') }}"
+                <img loading="lazy" decoding="async" src="{{ \App\Models\Image::urlGrande('Imagenes/Imagen-barner-2.jpg') }}" srcset="{{ \App\Models\Image::srcsetBanner('Imagenes/Imagen-barner-2.jpg') }}" sizes="100vw"
                     class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
             
         </div>
         <!-- Item 3 -->
         <div class="hidden duration-700 ease-in-out cursor-pointer" data-carousel-item>
            
-                <img loading="lazy" decoding="async" src="{{ Storage::url('Imagenes/Imagen-barner-3.jpg') }}"
+                <img loading="lazy" decoding="async" src="{{ \App\Models\Image::urlGrande('Imagenes/Imagen-barner-3.jpg') }}" srcset="{{ \App\Models\Image::srcsetBanner('Imagenes/Imagen-barner-3.jpg') }}" sizes="100vw"
                     class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
           
         </div>
         <!-- Item 4 -->
         <div class="hidden duration-700 ease-in-out cursor-pointer" data-carousel-item>
            
-                <img loading="lazy" decoding="async" src="{{ Storage::url('Imagenes/Imagen-barner-4.jpg') }}"
+                <img loading="lazy" decoding="async" src="{{ \App\Models\Image::urlGrande('Imagenes/Imagen-barner-4.jpg') }}" srcset="{{ \App\Models\Image::srcsetBanner('Imagenes/Imagen-barner-4.jpg') }}" sizes="100vw"
                     class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
           
         </div>
         <!-- Item 5 -->
         <div class="hidden duration-700 ease-in-out cursor-pointer" data-carousel-item>          
-                <img loading="lazy" decoding="async" src="{{ Storage::url('Imagenes/Imagen-barner-5.jpg') }}"
+                <img loading="lazy" decoding="async" src="{{ \App\Models\Image::urlGrande('Imagenes/Imagen-barner-5.jpg') }}" srcset="{{ \App\Models\Image::srcsetBanner('Imagenes/Imagen-barner-5.jpg') }}" sizes="100vw"
                     class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
            
         </div>
@@ -100,3 +100,10 @@
     </button>
 
 </div>
+
+<script>
+    // rendimiento v1.1 (30/10/2026): los banners 2 a 5 se descargan cuando la pagina ya termino de cargar (sin competir con el contenido)
+    window.addEventListener('load', function () {
+        document.querySelectorAll('#default-carousel img[loading="lazy"]').forEach(function (i) { i.loading = 'eager'; });
+    });
+</script>

@@ -12,6 +12,7 @@ use App\Models\Subcategory;
 use App\Models\Tema;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
+use App\Models\Image;
 
 class PostController extends Controller
 {
@@ -51,6 +52,7 @@ class PostController extends Controller
         if ($request->file('file')) {
             $nameimagen = $request->file('file')->getClientOriginalName();
             $url =  Storage::putFileAs('archivos', $request->file('file'), $nameimagen, 'public');   //me almacena la informacion de la carpeta temporal a la public
+            Image::generarVariantes($url);   // rendimiento v1.2 (30/10/2026): miniatura al subir
             //$url=Storage::put('archivos', $request->file('file')); 
             $urlarchivo = '';
 
@@ -125,9 +127,11 @@ class PostController extends Controller
         if ($request->file('file')) {
             if ($post->image) {
                 Storage::delete($post->image->url);  // con este eliminamos la foto cargada
+                Image::eliminarVariantes($post->image->url);
             }
             $nameimagen = $request->file('file')->getClientOriginalName();
             $url =  Storage::putFileAs('archivos', $request->file('file'), $nameimagen, 'public');   //me almacena la informacion de la carpeta temporal a la public
+            Image::generarVariantes($url);   // rendimiento v1.2 (30/10/2026): miniatura al subir
             //si tiene la imagen
             if ($post->image) {
                 $post->image->update([
@@ -186,6 +190,7 @@ class PostController extends Controller
         $this->authorize('author', $post);
         if ($post->image->url) {
             Storage::delete($post->image->url);  // con este eliminamos la foto cargada
+            Image::eliminarVariantes($post->image->url);
         }
         if ($post->image->urlarchivo) {
             Storage::delete($post->image->urlarchivo);
@@ -220,6 +225,8 @@ class PostController extends Controller
         }
         $namearchivo = $request->idimagen . '.' . $ext;
         Storage::putFileAs('Imagenes', $request->file('file'), $namearchivo, 'public');
+        // rendimiento v1.2 (30/10/2026): miniaturas (los banners tambien en 1920 px)
+        Image::generarVariantes('Imagenes/' . $namearchivo, str_starts_with($request->idimagen, 'Imagen-barner'));
         return redirect()->route('admin.updateimagenes')->with('info', 'la imagen se actualizó correctamente');
     }
 }
