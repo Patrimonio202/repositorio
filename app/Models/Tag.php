@@ -20,5 +20,9 @@ class Tag extends Model
         return $this->belongsToMany(Post::class);
     }
 
-    
+    // rendimiento v1.0 (30/10/2026): miniatura de la imagen de la coleccion (o el original si no existe)
+    public function getMiniaturaUrlAttribute(): string
+    {
+        return Image::urlMiniatura($this->url);
+    }
 }

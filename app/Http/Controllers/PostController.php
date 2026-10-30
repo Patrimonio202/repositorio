@@ -23,6 +23,16 @@ class PostController extends Controller
     return view('posts.temporizador');
   }
 
+  // rendimiento v1.0 (30/10/2026): una sola consulta en el caso comun (antes: SELECT + UPDATE en cada visita)
+  private function registrarVisita(string $pagina, string $tipo): void
+  {
+    $fecha = date('Y-m-d');
+    $filas = Visita::where('fecha', $fecha)->where('pagina', $pagina)->increment('num');
+    if (!$filas) {
+      Visita::create(['fecha' => $fecha, 'pagina' => $pagina, 'tipo' => $tipo, 'num' => '1']);
+    }
+  }
+
   public function index()
   {
     //Registramos la visita a nuestro sitio if (User::where('id', $user_id )->exists()) {
@@ -31,21 +41,7 @@ class PostController extends Controller
    date_default_timezone_set('America/Lima');
    //$date = Carbon::now();    
 
-    $visita= new Visita();
-    $visita->fecha= date('Y-m-d');
-    $visita->pagina='Inicio';
-    $visita->tipo='1';
-    $visita->num='1';
-
-    $visitau=Visita::where('fecha', $visita->fecha)
-                     ->where('pagina', 'inicio')->first(); 
-                     
-    if($visitau){     
-      Visita::where('fecha', $visita->fecha)
-      ->where('pagina', 'inicio')->update(['num'=>$visitau->num+1]);
-    }else{
-      $visita->save();
-    }
+    $this->registrarVisita('Inicio', '1');
 
     return view('posts.index');
   }
@@ -55,21 +51,7 @@ class PostController extends Controller
     // guardamos las visitas
     date_default_timezone_set('America/Lima');  
 
-    $visita= new Visita();
-    $visita->fecha= date('Y-m-d');
-    $visita->pagina=$post->slug;
-    $visita->tipo='2';
-    $visita->num='1';
-
-    $visitau=Visita::where('fecha', $visita->fecha)
-                     ->where('pagina', $post->slug)->first(); 
-                     
-    if($visitau){     
-      Visita::where('fecha', $visita->fecha)
-      ->where('pagina', $post->slug)->update(['num'=>$visitau->num+1]);
-    }else{
-      $visita->save();
-    }
+    $this->registrarVisita($post->slug, '2');
 
     //hasta aqui
 
@@ -77,12 +59,14 @@ class PostController extends Controller
 
 
     $this->authorize('published', $post);
-    $similares = Post::where('category_id', $post->Category->id)
+    // rendimiento v1.0 (30/10/2026): se sortean 4 ids en PHP (antes ORDER BY RAND() sobre toda la categoria con el texto completo)
+    $ids = Post::where('category_id', $post->category_id)
       ->where('status', 2)
       ->where('id', '!=', $post->id)
-      ->inRandomOrder()
-      ->take(4)
-      ->get();
+      ->pluck('id');
+    $similares = $ids->isEmpty()
+      ? (new Post)->newCollection()
+      : Post::with(['image', 'category'])->whereIn('id', $ids->shuffle()->take(4)->all())->get();
     return view('posts.show', compact('post', 'similares'));
   }
 
@@ -105,7 +89,7 @@ class PostController extends Controller
   public function tag(Tag $tag)
   {
    
-    $posts = $tag->posts()->where('status', 2)->latest('id')->paginate(4);
+    $posts = $tag->posts()->with(['image', 'category'])->where('status', 2)->latest('id')->paginate(4);
     return view('posts.tag', compact('posts', 'tag'));
   }
 
@@ -140,6 +124,7 @@ class PostController extends Controller
                 ->get();
 
     $posts = Post::where('status', 2)
+      ->with(['image', 'category'])
       ->filter(request()->all())
       ->orderBy('id', 'desc')
       ->paginate(24);

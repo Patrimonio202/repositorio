@@ -102,7 +102,7 @@
 
     <!--flowbite -->
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script> --}}
-    <script src="/vendor/flowbite/js/cdnjs.cloudflare.com_ajax_libs_flowbite_1.8.1_flowbite.min.js"></script>
+    {{-- rendimiento v1.0 (30/10/2026): se usa solo Flowbite 2.2.0 del layout (antes se cargaba tambien la 1.8.1) --}}
     <!--hasta aqui -->
     <script>
         // const changeState= () =>{

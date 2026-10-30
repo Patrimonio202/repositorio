@@ -37,8 +37,8 @@
 
     <!--flowbite -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
+    {{-- rendimiento v1.0 (30/10/2026): se retira el compilador de Tailwind por CDN (corria en el navegador de cada visitante); los estilos salen de @vite --}}
 
     <!-- para el efecto de imagenes -->
     <link href="{{ asset('vendor/flowbite/css/efectoimagenes.css') }}" rel="stylesheet" />
@@ -48,20 +48,11 @@
     <link href="{{ asset('fontawesome-free-6.4.2-web/css/all.min.css') }}" rel="stylesheet" />
     <!--hasta aqui -->
 
-    <!-- Glider .css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/glider-js/1.7.8/glider.min.css"
-        integrity="sha512-YM6sLXVMZqkCspZoZeIPGXrhD9wxlxEF7MzniuvegURqrTGV2xTfqq1v9FJnczH+5OGFl5V78RgHZGaK34ylVg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!--hasta aqui -->
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    <!-- Glider .js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/glider-js/1.7.8/glider.min.js"
-        integrity="sha512-AZURF+lGBgrV0WM7dsCFwaQEltUV5964wxMv+TSzbb6G1/Poa9sFxaCed8l8CcFRTiP7FsCgCyOm/kf1LARyxA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <!--hasta aqui -->
+    {{-- rendimiento v1.0 (30/10/2026): Glider retirado (no se usaba en ninguna vista) --}}
 
 
 

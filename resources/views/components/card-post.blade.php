@@ -3,7 +3,7 @@
 <div>
   <article class="mb-8 bg-white shadow-lg rounded-lg overflow-hidden">
       @if ($post->image)
-          <img class="w-full h-80 object-cover object-center" src="{{ Storage::url($post->image->url) }}" alt="">
+          <img class="w-full h-80 object-cover object-center" src="{{ $post->image->miniatura_url }}" loading="lazy" decoding="async" alt="">
       @else
           <img class="w-full h-72 object-cover object-center" src="https://cdn.pixabay.com/photo/2023/10/03/08/24/goose-8290811_1280.jpg" alt="">
       @endif

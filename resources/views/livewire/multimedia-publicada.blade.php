@@ -14,7 +14,7 @@
                     <figure>
                         <div class="relative overflow-hidden bg-no-repeat bg-cover relative overflow-hidden bg-no-repeat bg-cover shadow-lg rounded-lg mx-4 -mt-4"
                             data-mdb-ripple="true" data-mdb-ripple-color="light">
-                            <img src="{{ Storage::url($post->image->url) }}"
+                            <img src="{{ $post->image->miniatura_url }}" loading="lazy" decoding="async"
                                 class="w-full h-full md:h-60 lg:h-60 object-cover object-center lg:object-top md:object-top " />
                             <a href="{{ route('posts.show', $post) }}">
                                 <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed opacity-0 hover:opacity-100 transition duration-300 ease-in-out"
@@ -46,7 +46,7 @@
 
                 <div class="flex absolute bottom-5 right-0 px-6 gap-6 ">
                     <div class="flex-1" data-tooltip-target="tcompartir" data-tooltip-style="light">
-                        <i wire:click="edit({{ $post }})" class="fa-solid fa-share fa-lg hover:text-[#08416b]"></i>
+                        <i wire:click="edit({{ $post->id }})" class="fa-solid fa-share fa-lg hover:text-[#08416b]"></i>
                     </div>
                     @auth
                         <div class="flex-1" data-tooltip-target="tmeinteresa" data-tooltip-style="light" >
@@ -59,7 +59,7 @@
                                 id="fastc-{{ $post->id }}"></i>
                         </div>
                         <div class="flex-1" data-tooltip-target="tdescargar" data-tooltip-style="light" >                              
-                            <i wire:click="download({{ $post }})" class="fa-solid fa-download fa-lg hover:text-[#08416b]"></i>                                
+                            <i wire:click="download({{ $post->id }})" class="fa-solid fa-download fa-lg hover:text-[#08416b]"></i>                                
                         </div>
                     @else
                         <div class="flex-1">
