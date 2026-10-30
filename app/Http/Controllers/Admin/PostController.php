@@ -11,6 +11,7 @@ use App\Models\Post;
 use App\Models\Subcategory;
 use App\Models\Tema;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 
 class PostController extends Controller
 {
@@ -20,7 +21,7 @@ class PostController extends Controller
         $this->middleware('can:admin.posts.create')->only('create', 'store');
         $this->middleware('can:admin.posts.edit')->only('edit', 'update');
         $this->middleware('can:admin.posts.destroy')->only('destroy');
-        $this->middleware('can:admin.imagenes')->only('imagenes');
+        $this->middleware('can:admin.imagenes')->only('imagenes', 'updateimagenes');
     }
     /**
      * Display a listing of the resource.
@@ -200,12 +201,25 @@ class PostController extends Controller
 
     public function updateimagenes(Request $request)
     {
-        // dd($request->idimagen);
-        if ($request->file('file')) {
-            // dd($request->file('file')->getClientOriginalExtension());
-            $namearchivo = $request->idimagen . '.' .  $request->file('file')->getClientOriginalExtension();
-            $urlarchivo =  Storage::putFileAs('Imagenes', $request->file('file'), $namearchivo, 'public');
+        // parche-subidas v1.0 (30/10/2026): solo identificadores de la lista y solo imagenes reales
+        $permitidos = [
+            'Imagen-barner-1', 'Imagen-barner-2', 'Imagen-barner-3', 'Imagen-barner-4', 'Imagen-barner-5',
+            'Favicon', 'Logo', 'Imagenes', 'Audios', 'Libros', 'Videos', 'Fondologin',
+            'TituloImagenes', 'TituloAudios', 'TituloPublicaciones', 'TituloVideos',
+            'ImagenCompartirRepositorio',
+        ];
+        $request->validate([
+            'idimagen' => ['required', Rule::in($permitidos)],
+            'file' => ['required', 'image', 'mimes:jpg,jpeg,png,webp', 'max:10240'],
+        ]);
+
+        // la extension sale del contenido real del archivo, no de lo que diga el cliente
+        $ext = strtolower($request->file('file')->guessExtension() ?: 'jpg');
+        if ($ext === 'jpeg') {
+            $ext = 'jpg';
         }
+        $namearchivo = $request->idimagen . '.' . $ext;
+        Storage::putFileAs('Imagenes', $request->file('file'), $namearchivo, 'public');
         return redirect()->route('admin.updateimagenes')->with('info', 'la imagen se actualizó correctamente');
     }
 }

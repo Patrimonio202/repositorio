@@ -50,7 +50,9 @@ class TagController extends Controller
         $request->validate([
             'name'=>'required',
             'slug'=>'required|unique:tags',
-            'color'=>'required'
+            'color'=>'required',
+            // parche-subidas v1.0 (30/10/2026)
+            'file'=>['nullable', 'image', 'mimes:jpg,jpeg,png,webp,gif', new \App\Rules\ExtensionPermitida(['jpg', 'jpeg', 'png', 'webp', 'gif'])]
         ]);
 
         $tag= new Tag();
@@ -106,7 +108,9 @@ class TagController extends Controller
         $request->validate([
             'name'=>'required',
             'slug'=>"required|unique:tags,slug,$tag->id" ,
-            'color'=>'required'
+            'color'=>'required',
+            // parche-subidas v1.0 (30/10/2026)
+            'file'=>['nullable', 'image', 'mimes:jpg,jpeg,png,webp,gif', new \App\Rules\ExtensionPermitida(['jpg', 'jpeg', 'png', 'webp', 'gif'])]
         ]);
 
        // $tagf= new Tag();

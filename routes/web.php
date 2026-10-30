@@ -52,8 +52,9 @@ Route::get('buscar',[PostController::class,'buscar'])->name('posts.buscar');
 //Route::get('prueba', function () { return view('posts.prueba');})->name('posts.prueba');
 //Route::get('/leo', WelcomeController::class)->name('posts.leo');
 Route::get('carrusel', function () { return view('posts.carrusel');})->name('posts.carrusel');
-Route::get('sincronizar', WelcomeController::class)->name('posts.sincronizar');
-Route::post('/leo', [PostController::class,'meencanta'] )->name('posts.meencanta');
+// parche-subidas v1.0 (30/10/2026): rutas de prueba publicas retiradas (sincronizar leia desde S3 sin autenticacion)
+// Route::get('sincronizar', WelcomeController::class)->name('posts.sincronizar');
+// Route::post('/leo', [PostController::class,'meencanta'] )->name('posts.meencanta');
 //hasta aqui las rutas de pruebas
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
@@ -91,8 +92,11 @@ Route::post('/email/verification-notification', function (Request $request) {
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
 //ruta para cargar las imagenes
-Route::get('/admin/imagenes', [AdminPostController::class,'imagenes'])->name('admin.imagenes');
-Route::post('/admin/imagenes', [AdminPostController::class,'updateimagenes'] )->name('admin.updateimagenes');//este metodo es para actualizar formulario
+// parche-subidas v1.0 (30/10/2026): antes estas rutas eran publicas (subida anonima de archivos)
+Route::middleware(['auth', 'can:admin.imagenes'])->group(function () {
+    Route::get('/admin/imagenes', [AdminPostController::class,'imagenes'])->name('admin.imagenes');
+    Route::post('/admin/imagenes', [AdminPostController::class,'updateimagenes'] )->name('admin.updateimagenes');//este metodo es para actualizar formulario
+});
 
 //rutas de las politicas
 Route::get('/privacy-policy', function () { return view('policy');});
