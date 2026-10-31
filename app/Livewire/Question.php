@@ -3,7 +3,7 @@
 namespace App\Livewire;
 
 use Livewire\Component;
-use app\Models\Question as ModelsQuestion;
+use App\Models\Question as ModelsQuestion;
 
 class Question extends Component
 {
@@ -45,6 +45,7 @@ class Question extends Component
 
     public function store()
     {
+        abort_unless(auth()->check(), 403); // seguridad v1.0 (30/10/2026)
         $this->validate([
             'message' => 'required'
         ]);
@@ -63,6 +64,7 @@ class Question extends Component
     {
        // dd($questionId);
         $question = ModelsQuestion::find($questionId);
+        $this->autorizar($question); // seguridad v1.0 (30/10/2026)
         $this->question_edit = [
             'id' => $question->id,
             'body' => $question->body
@@ -76,6 +78,7 @@ class Question extends Component
         ]);
 
         $question = ModelsQuestion::find($this->question_edit['id']);
+        $this->autorizar($question); // seguridad v1.0 (30/10/2026)
 
         $question->update([
             'body' => $this->question_edit['body']
@@ -89,6 +92,7 @@ class Question extends Component
     public function destroy($questionId)
     {
         $question = ModelsQuestion::find($questionId);
+        $this->autorizar($question); // seguridad v1.0 (30/10/2026)
         $question->delete();
         $this->getQuestions();
         $this->reset('question_edit');
@@ -103,6 +107,13 @@ class Question extends Component
     {
         $this->cant += 10;
         $this->getQuestions();
+    }
+
+    // seguridad v1.0 (30/10/2026): solo el autor del comentario o quien puede editar publicaciones
+    private function autorizar($modelo): void
+    {
+        $usuario = auth()->user();
+        abort_unless($modelo && $usuario && ((int) $modelo->user_id === (int) $usuario->id || $usuario->can('admin.posts.edit')), 403);
     }
 
     public function render()

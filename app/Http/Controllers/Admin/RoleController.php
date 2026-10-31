@@ -45,7 +45,7 @@ class RoleController extends Controller
             'name'=>'required'
         ]);
 
-        $role= Role::create($request->all());
+        $role= Role::create($request->only('name'));
         $role-> permissions()->sync($request->permissions);
 
         return redirect()->route('admin.roles.edit', $role)->with('info', 'El rol se creó con éxito');
@@ -77,7 +77,7 @@ class RoleController extends Controller
             'name'=>'required'
         ]);
 
-        $role->update($request->all());
+        $role->update($request->only('name'));
         $role-> permissions()->sync($request->permissions);
 
         return redirect()->route('admin.roles.edit', $role)->with('info', 'El rol se actualizó con éxito');

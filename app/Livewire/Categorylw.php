@@ -26,6 +26,7 @@ class Categorylw extends Component
      //este es para darle me interesa
      public function meinteresa($postId)
      {
+        abort_unless(auth()->check(), 403); // seguridad v1.0 (30/10/2026): requiere sesion
         //$post = Post::find($postId);
  
          //dd($post->userVotes->id); 
@@ -50,6 +51,7 @@ class Categorylw extends Component
     // este metodo es para darle me gusta a una publicación
     public function megusta($postId)
     {      
+        abort_unless(auth()->check(), 403); // seguridad v1.0 (30/10/2026): requiere sesion
         $vote = new Vote();
         $vote->voto='1';
         $vote->post_id = $postId;        
@@ -93,6 +95,7 @@ class Categorylw extends Component
     // rendimiento v1.0 (30/10/2026): recibe solo el id y lee la ruta desde la base de datos (antes confiaba en datos enviados por el navegador)
     public function download($postId)
     {
+        abort_unless(auth()->check(), 403); // seguridad v1.0 (30/10/2026): requiere sesion
         $post = Post::with('image')->findOrFail($postId);
         $vpost = $post->image;
         if ($post->category_id == '1') {

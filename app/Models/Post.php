@@ -5,10 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use App\Support\HtmlSeguro;
 
 class Post extends Model
 {
     use HasFactory;
+
+    protected ?string $cuerpoSeguroMemo = null;
     
     protected $fillable = [
         'name',
@@ -26,6 +29,12 @@ class Post extends Model
     protected $cats=[
         'created_at'=>'datetime'
     ];
+
+    // cuerpo_seguro v1.0 (30/10/2026): el cuerpo de la publicacion sin codigo peligroso (ver App\Support\HtmlSeguro)
+    public function getCuerpoSeguroAttribute(): string
+    {
+        return $this->cuerpoSeguroMemo ??= HtmlSeguro::limpiar($this->body);
+    }
 
     // resumen v1.1 (30/10/2026): extracto en TEXTO PLANO del cuerpo de la publicacion.
     // Antes se cortaba el HTML a 100 caracteres con Str::limit() y se imprimia sin escapar:

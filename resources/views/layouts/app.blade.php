@@ -37,8 +37,8 @@
 
     <!--flowbite -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.css" rel="stylesheet" />
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.css" rel="stylesheet" integrity="sha384-9RvGIP60CGpvMZ55Bb+ZnGeyi1F1npDqvaxMgydGNBhNVSw8vXw5xrDyoSgBIvf3" crossorigin="anonymous" />
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js" integrity="sha384-oY5Ps82UMKVD1Z10KXof/m1e6kkxR/sfoF4dgEuI6BWqf3Phrk5RNeA0qh+J5gk+" crossorigin="anonymous"></script>
     {{-- rendimiento v1.0 (30/10/2026): se retira el compilador de Tailwind por CDN (corria en el navegador de cada visitante); los estilos salen de @vite --}}
 
     <!-- para el efecto de imagenes -->

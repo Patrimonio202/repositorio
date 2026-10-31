@@ -346,7 +346,8 @@ return [
             'text' => 'Subcategorías',
             'route'  => 'admin.subcategories.index',
             'icon' => 'fab fa-fw fa-algolia',
-            'active'=>['subcategories*']          
+            'active'=>['subcategories*'],
+            'can'  => 'admin.categories.index'          
         ],
         [
             'text' => 'Etiquetas',

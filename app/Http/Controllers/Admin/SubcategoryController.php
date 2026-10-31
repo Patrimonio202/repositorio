@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 
 class SubcategoryController extends Controller
 {
+    // seguridad v1.0 (30/10/2026): antes cualquier usuario con sesion podia entrar
+    public function __construct()
+    {
+        $this->middleware('can:admin.categories.index');
+    }
+
     /**
      * Display a listing of the resource. 
      */

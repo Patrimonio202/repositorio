@@ -2,7 +2,7 @@
 
 namespace App\Livewire;
 
-use app\Models\Answer as ModelsAnswer;
+use App\Models\Answer as ModelsAnswer;
 use Livewire\Component;
 
 
@@ -50,6 +50,7 @@ class Answer extends Component
     }
 
     public function store(){
+        abort_unless(auth()->check(), 403); // seguridad v1.0 (30/10/2026)
 
         $this->validate([
             'answer_created.body'=>'required'
@@ -70,6 +71,7 @@ class Answer extends Component
     public function edit($answerId){
 
         $answer=ModelsAnswer::find($answerId);
+        $this->autorizar($answer); // seguridad v1.0 (30/10/2026)
 
         $this->answer_edit=[
             'id'=>$answer->id,
@@ -83,6 +85,7 @@ class Answer extends Component
         ]);
 
         $answer=ModelsAnswer::find($this->answer_edit['id']);
+        $this->autorizar($answer); // seguridad v1.0 (30/10/2026)
 
         $answer->update([
             'body'=>$this->answer_edit['body']
@@ -95,6 +98,7 @@ class Answer extends Component
     public function destroy($questionId){
         //dd($questionId);
         $answer=ModelsAnswer::find($questionId);
+        $this->autorizar($answer); // seguridad v1.0 (30/10/2026)
         
         $answer->delete();
         
@@ -102,6 +106,7 @@ class Answer extends Component
     }
 
     public function answer_to_answer_store(){
+        abort_unless(auth()->check(), 403); // seguridad v1.0 (30/10/2026)
       
         $this->validate([
         'answer_to_answer.body'=>'required'
@@ -130,6 +135,13 @@ class Answer extends Component
         }
         $this->getAnswers();
        // $this->open=!$this->open;       
+    }
+
+    // seguridad v1.0 (30/10/2026): solo el autor del comentario o quien puede editar publicaciones
+    private function autorizar($modelo): void
+    {
+        $usuario = auth()->user();
+        abort_unless($modelo && $usuario && ((int) $modelo->user_id === (int) $usuario->id || $usuario->can('admin.posts.edit')), 403);
     }
 
     public function render()

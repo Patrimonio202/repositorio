@@ -16,6 +16,9 @@ class AuthController extends Controller
 
     public function callback(){     
         $user = Socialite::driver('facebook')->stateless()->user();
+        if (!filter_var($user->getEmail(), FILTER_VALIDATE_EMAIL)) { // seguridad v1.0 (30/10/2026): sin correo no se crea ni se busca ninguna cuenta
+            return redirect()->route('login')->withErrors(['email' => 'Tu cuenta no compartio un correo electronico valido. Inicia sesion con otro metodo.']);
+        }
        
         // $user= User::create([
         //     'name'=>$user-> getName(),
@@ -41,6 +44,9 @@ class AuthController extends Controller
 
     public function callbackg(){
         $user = Socialite::driver('google')->stateless()->user();       
+        if (!filter_var($user->getEmail(), FILTER_VALIDATE_EMAIL)) { // seguridad v1.0 (30/10/2026): sin correo no se crea ni se busca ninguna cuenta
+            return redirect()->route('login')->withErrors(['email' => 'Tu cuenta no compartio un correo electronico valido. Inicia sesion con otro metodo.']);
+        }
         //busca con el email, si encuentra el registro devuelve el objeto, y si no, lo crea en el sistema
         
         $user=User::firstOrCreate([

@@ -7,7 +7,7 @@
         @section('title', $post->name)
         @section('ogUrl', Request::fullUrl())
         {{-- <div class="text-lg text-gray-500 mb-2">
-            {!! $post->body !!}
+            {!! $post->cuerpo_seguro !!}
         </div> --}}
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -165,7 +165,7 @@
                         {{ $post->name }}
                     </h1>
                     <div style="font-family:Raleway-Regular" class="  text-justify text-xs">
-                        {!! $post->body !!}
+                        {!! $post->cuerpo_seguro !!}
                         @section('ogDesc', strip_tags($post->body))
                     </div>
 
