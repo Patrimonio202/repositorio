@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Storage;
 class MultimediaPublicada extends Component
 {
     use WithPagination;
-    public $posts_per_page=6;
+    public $posts_per_page=3;
     public $totalRecords;
     public array $randomPostIds = [];
 

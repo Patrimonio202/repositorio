@@ -1,58 +1,166 @@
 <x-app-layout>
-    <div class="mx-auto max-w-[1600px] px-4 pt-5 sm:px-6 lg:px-8">
+    
+     
+    <div class="container my-4 md:my-4 lg:my-4 px-6 mx-auto   ">
         <x-carrousel />
     </div>
 
-    <section class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-        <div class="rounded-2xl border border-slate-200/80 bg-white p-4 shadow-sm md:flex md:items-center md:gap-6 md:p-5">
-            <nav class="mb-4 flex items-center justify-center gap-2 md:mb-0" aria-label="Buscar por tipo de archivo">
-                @foreach ([
-                    [1, 'Imagenes.jpg', 'Imágenes'],
-                    [3, 'Libros.jpg', 'Publicaciones'],
-                    [4, 'Videos.jpg', 'Videos'],
-                    [2, 'Audios.jpg', 'Audios'],
-                ] as [$category, $image, $label])
-                    <a href="{{ route('posts.buscar') . '?category%5B%5D=' . $category }}"
-                        class="group grid h-12 w-12 place-items-center rounded-xl border border-slate-200 bg-slate-50 transition hover:-translate-y-0.5 hover:border-cyan-500 hover:bg-cyan-50"
-                        title="Explorar {{ strtolower($label) }}" aria-label="Explorar {{ strtolower($label) }}">
-                        <img src="{{ Storage::url('Imagenes/' . $image) }}" class="h-7 w-7 object-contain transition group-hover:scale-110" alt="">
-                    </a>
-                @endforeach
-            </nav>
 
-            <form action="{{ route('posts.buscar') }}" class="relative flex-1">
-                <label for="home-search" class="sr-only">Buscar en el repositorio</label>
-                <span class="pointer-events-none absolute inset-y-0 left-4 flex items-center text-slate-400"><i class="fas fa-search"></i></span>
-                <input type="search" name="textobuscar" id="home-search" required
-                    class="h-12 w-full rounded-xl border-slate-200 bg-slate-50 pl-11 pr-28 text-sm text-slate-900 placeholder:text-slate-400 focus:border-cyan-500 focus:ring-cyan-500"
-                    placeholder="Buscar imágenes, publicaciones, audios o videos...">
-                <button type="submit" class="absolute bottom-1.5 right-1.5 top-1.5 rounded-lg bg-slate-900 px-5 text-sm font-semibold text-white transition hover:bg-cyan-700">Buscar</button>
-            </form>
+    <div
+        class="grid grid-cols-1    lg:flex max-w-7xl lg:mx-auto mx-4   bg-white rounded-lg  shadow-lg  items-center  text-center py-8 px-6 gap-4 mt-8 lg:pr-16 ">
+
+
+        <div class="mb-2 lg:mb-4 md:mt-6 lg:mt-6 lg:mr-4">
+            <a href="{{ route('posts.buscar') . '?category%5B%5D=1' }}">
+                <img src="{{ Storage::url('Imagenes/Imagenes.jpg') }}"
+                    class="inline-block w-10 h-10 ml-4 rounded-xl hover:scale-150 transition-all duration-100"
+                    alt="...">
+            </a>
+
+            <a href="{{ route('posts.buscar') . '?category%5B%5D=3' }}">
+                <img src="{{ Storage::url('Imagenes/Libros.jpg') }}"
+                    class="inline-block h-10 w-10 object-cover object-center ml-4 rounded-xl hover:scale-150 transition-all duration-100"
+                    alt="...">
+            </a>
+            <a href="{{ route('posts.buscar') . '?category%5B%5D=4' }}">
+                <img src="{{ Storage::url('Imagenes/Videos.jpg') }}"
+                    class="inline-block h-10 w-10 object-cover object-center ml-4 rounded-xl hover:scale-150 transition-all duration-100"
+                    alt="...">
+            </a>
+            <a href="{{ route('posts.buscar') . '?category%5B%5D=2' }}">
+                <img src="{{ Storage::url('Imagenes/Audios.jpg') }}"
+                    class="inline-block h-10 w-10 object-cover object-center ml-4 rounded-xl hover:scale-150 transition-all duration-100"
+                    alt="...">
+            </a>
         </div>
-    </section>
 
-    <section class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8" aria-labelledby="featured-title">
-        <header class="mb-7 flex items-end justify-between border-b border-slate-200 pb-5">
-            <div>
-                <span class="mb-2 inline-block text-xs font-bold uppercase tracking-[.2em] text-cyan-700">Explora el patrimonio</span>
-                <h2 id="featured-title" class="text-2xl font-bold tracking-tight text-slate-900 md:text-3xl">Colecciones destacadas</h2>
-                <p class="mt-2 max-w-2xl text-sm text-slate-500">Recorridos temáticos que reúnen la memoria cultural de El Santuario.</p>
-            </div>
-        </header>
-        <livewire:destacada-posts lazy />
-    </section>
 
-    <section class="bg-white/65 py-12" aria-labelledby="recent-title">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <header class="mb-7 flex flex-col gap-3 border-b border-slate-200 pb-5 sm:flex-row sm:items-end sm:justify-between">
-                <div>
-                    <span class="mb-2 inline-block text-xs font-bold uppercase tracking-[.2em] text-amber-600">Descubre algo diferente</span>
-                    <h2 id="recent-title" class="text-2xl font-bold tracking-tight text-slate-900 md:text-3xl">Archivos recientes</h2>
-                    <p class="mt-2 max-w-2xl text-sm text-slate-500">Una selección aleatoria de publicaciones cambia cada vez que visitas la portada.</p>
+
+
+
+
+        <div class=" md:flex-1 lg:flex-1 pl-0  ml-0">
+            <label for="default-search"
+                class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Buscar</label>
+            <div class="relative">
+                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                    </svg>
                 </div>
-                <a href="{{ route('posts.buscar') }}" class="text-sm font-semibold text-cyan-700 hover:text-cyan-900">Ver todo el repositorio →</a>
-            </header>
-            @livewire('multimedia-publicada')
+                <form action="{{ route('posts.buscar') }}">
+                    <input type="search" name="textobuscar" id="default-search"
+                        class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Buscar imagenes, libros, audios, videos..." required>
+                    <button type="submit"
+                        class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Buscar</button>
+                </form>
+            </div>
         </div>
-    </section>
+
+
+
+
+
+
+
+    </div>
+
+    <div class="container my-4 px-6 mx-auto">
+        <section>
+            <div class="flex justify-center mt-14">
+                <img src="{{ Storage::url('Imagenes/Titulo_ColeccionesDestacadas.png') }}"
+                    class=" h-16 w-96 object-cover" alt="Titulo colecciones destacadas">
+            </div>
+            <hr>
+
+            {{-- @livewire('destacada-posts')   --}}
+            <livewire:destacada-posts lazy />
+
+        </section>
+    </div>
+
+
+    <!--Multimedia publicada -->
+    <div class="container my-4 px-6 mx-auto ">
+        <section>
+            <div class="flex justify-center">
+                <img src="{{ Storage::url('Imagenes/Titulo_ArchivosRecientes.png') }}"
+                    class="h-16 w-80 object-cover object-center" alt="Titulo archivos recientes">
+            </div>
+            <hr>
+            @livewire('multimedia-publicada')
+
+
+        </section>
+    </div>
+    <!--Hasta aqui -->
+    
+
+
+    <!--flowbite -->
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script> --}}
+    {{-- rendimiento v1.0 (30/10/2026): se usa solo Flowbite 2.2.0 del layout (antes se cargaba tambien la 1.8.1) --}}
+    <!--hasta aqui -->
+    <script>
+        // const changeState= () =>{
+        function changeState(idpost) {
+            const split = idpost.split('-')
+            const fas = document.getElementById(idpost);
+            //me gusta
+            if (split[0] == 'fas' || split[0] == 'fastc') {
+                fas.classList.toggle('fa-regular');
+                fas.classList.toggle('fa-thumbs-up');
+                fas.classList.toggle('fa-lg');
+
+                fas.classList.toggle('fa-solid');
+                fas.classList.toggle('fa-thumbs-up');
+                fas.classList.toggle('fa-lg');
+            }
+            // document.getElementById("fas").classList.add("fa-solid", "fa-thumbs-up", "fa-lg");
+            //me encanta
+            if (split[0] == 'encantaj' || split[0] == 'encantajtc') {
+                fas.classList.toggle('fa-regular');
+                fas.classList.toggle('fa-heart');
+                fas.classList.toggle('fa-lg');
+
+                fas.classList.toggle('fa-solid');
+                fas.classList.toggle('fa-heart');
+                fas.classList.toggle('fa-lg');
+            }
+
+            //compartir
+            if (split[0] == 'compartirj' || split[0] == 'compartirjtc') {
+                alert('Modulo en proceso de construccion');
+            }
+
+        }
+    </script>
+
+    @push('js')
+        <script>
+            // $(document).ready(() => {
+            //     alert('prueba');
+            //     const breakpoint = 500;
+            //     $(window).scroll(() => toggleActionByBreakpoint(breakpoint));
+
+            //     function toggleActionByBreakpoint(breakpoint) {
+            //         const currentScrollPos = $(this).scrollTop();
+            //         console.log(currentScrollPos);
+
+            //         const isScrollOverPos = currentScrollPos > breakpoint;
+            //         const isScrollUnderPos = currentScrollPos < breakpoint;
+
+            //         // if (isScrollOverPos) $("body").css('background-color', 'green');
+            //         // if (isScrollUnderPos) $("body").css('background-color', 'red');
+            //         if (isScrollOverPos) alert('leo el mejor');
+            //         if (isScrollUnderPos) alert('leo el mejor');
+            //     }
+            // });
+            
+        </script>
+    @endpush
+
 </x-app-layout>
