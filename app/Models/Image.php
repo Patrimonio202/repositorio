@@ -137,6 +137,12 @@ class Image extends Model
                 return true;   // vigente: el original no cambio despues de crearla
             }
 
+            // No bloquear una visita publica procesando imagenes grandes.
+            // Las variantes se generan al subirlas desde administracion.
+            if (!$forzar) {
+                return false;
+            }
+
             return self::generar($origen, $destino, $variante, $forzar);
         } catch (Throwable $e) {
             return false;

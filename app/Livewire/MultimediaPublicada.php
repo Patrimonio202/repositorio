@@ -20,6 +20,17 @@ class MultimediaPublicada extends Component
     public $open=false;  // con este abrimos el modal
     public $post_slug;
 
+    public function placeholder()
+    {
+        return <<<'HTML'
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-2 -mr-4" aria-hidden="true">
+            <div class="h-96 mr-4 md:mx-8 lg:mx-8 my-10 rounded-xl bg-white"></div>
+            <div class="hidden h-96 md:block md:mx-8 my-10 rounded-xl bg-white"></div>
+            <div class="hidden h-96 lg:block lg:mx-8 my-10 rounded-xl bg-white"></div>
+        </div>
+        HTML;
+    }
+
     //este es para darle me interesa
     public function meinteresa($postId)
     {

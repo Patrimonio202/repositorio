@@ -91,7 +91,7 @@
                     class="h-16 w-80 object-cover object-center" alt="Titulo archivos recientes">
             </div>
             <hr>
-            @livewire('multimedia-publicada')
+            <livewire:multimedia-publicada lazy />
 
 
         </section>

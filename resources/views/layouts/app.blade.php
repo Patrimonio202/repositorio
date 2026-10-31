@@ -36,6 +36,7 @@
 
 
     <!--flowbite -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.css" rel="stylesheet" />
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
     {{-- rendimiento v1.0 (30/10/2026): se retira el compilador de Tailwind por CDN (corria en el navegador de cada visitante); los estilos salen de @vite --}}
@@ -61,8 +62,9 @@
     <!-- Styles -->
     @livewireStyles
 
-    <!-- prueba de zoom imagen-->
-    <link href="{{ asset('csspersonalizados/csszoomimage.css') }}" rel="stylesheet" />
+    @if (request()->routeIs('posts.show'))
+        <link href="{{ asset('csspersonalizados/csszoomimage.css') }}" rel="stylesheet" />
+    @endif
 
 
 
