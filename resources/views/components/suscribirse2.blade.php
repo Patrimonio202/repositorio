@@ -46,9 +46,10 @@
 
         </div>
 
-        <!-- Newsletter sign-up form -->
-        <div>
-            <form action="">
+        <!-- Newsletter sign-up form - v1.0 (30/10/2026): envia el correo a SuscriptorController (confirmacion por correo) -->
+        <div id="boletin">
+            <form action="{{ route('suscriptores.store') }}" method="POST">
+                @csrf
                 <div class="grid-cols-1 grid items-center justify-center gap-4 md:grid-cols-3">
                     <div class="md:mb-6 md:ml-auto">
                         <p class="">
@@ -57,19 +58,19 @@
                     </div>
 
                     <!-- Newsletter sign-up input field -->
-                    <div class="relative md:mb-6" data-te-input-wrapper-init>
-                        <input type="text"
+                    <div class="relative md:mb-6">
+                        <label for="boletin-email" class="sr-only">Dirección de correo electrónico</label>
+                        <input id="boletin-email" type="email" name="email" value="{{ old('email') }}" required
+                            maxlength="190" autocomplete="email"
                             class=" bg-transparent border border-white-500 text-white-900 dark:text-white-400 placeholder-white-700 dark:placeholder-white-500 text-sm rounded-lg focus:ring-white focus:border-white block w-full p-2.5 dark:border-white  "
                             placeholder="Dirección de correo electronico" />
 
-
-                        {{-- <input type="text"
-                            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] text-neutral-200 outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                            id="exampleFormControlInput1" placeholder="Email address" />  --}}
-                        {{-- <label for="exampleFormControlInput1"
-                            class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-200 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-neutral-200 peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-neutral-200">Direccion
-                            de correo electronico
-                        </label> --}}
+                        {{-- campo trampa para bots: las personas no lo ven ni lo llenan --}}
+                        <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
+                            <label>No llenar este campo
+                                <input type="text" name="sitio_web" tabindex="-1" autocomplete="off" value="">
+                            </label>
+                        </div>
                     </div>
 
                     <!-- Newsletter sign-up submit button -->
@@ -81,6 +82,19 @@
                         </button>
                     </div>
                 </div>
+
+                <label class="mb-4 text-xs" style="display:flex;align-items:center;justify-content:center;gap:8px;">
+                    <input type="checkbox" name="acepto" value="1" required @checked(old('acepto'))>
+                    <span>Acepto la <a href="/privacy-policy" target="_blank" style="text-decoration:underline;">política de privacidad</a>
+                        y el tratamiento de mi correo para recibir el boletín.</span>
+                </label>
+
+                @if (session('boletin_ok'))
+                    <p role="status" class="mb-4 text-sm" style="color:#86efac;">{{ session('boletin_ok') }}</p>
+                @endif
+                @if ($errors->boletin->any())
+                    <p role="alert" class="mb-4 text-sm" style="color:#fca5a5;">{{ $errors->boletin->first() }}</p>
+                @endif
             </form>
         </div>
 

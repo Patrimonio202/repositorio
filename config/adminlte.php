@@ -355,6 +355,12 @@ return [
             'active'=>['tags*'],
             'can'  => 'admin.tags.index'
         ],        
+        [
+            'text' => 'Suscriptores',
+            'route'  => 'admin.suscriptores.index',
+            'icon' => 'far fa-fw fa-envelope',
+            'can'  => 'admin.users.index'
+        ],
         ['header' => 'CONTENIDO'],
         [
             'text'       => 'Publicaciones',           

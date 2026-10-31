@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\PostController as AdminPostController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\SuscriptorController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -47,6 +48,11 @@ Route::get('category/{category}',[PostController::class,'category'])->name('post
 Route::get('tag/{tag}',[PostController::class,'tag'])->name('posts.tag');
 Route::get('destacados',[PostController::class,'destacado'])->middleware(['auth', 'verified'])->name('posts.destacado');
 Route::get('buscar',[PostController::class,'buscar'])->name('posts.buscar');
+
+// Boletin (v1.0 30/10/2026): suscripcion con confirmacion por correo
+Route::post('suscribirse', [SuscriptorController::class, 'store'])->middleware('throttle:5,1')->name('suscriptores.store');
+Route::get('suscripcion/confirmar/{token}', [SuscriptorController::class, 'confirmar'])->middleware('throttle:30,1')->name('suscriptores.confirmar');
+Route::get('suscripcion/baja/{token}', [SuscriptorController::class, 'baja'])->middleware('throttle:30,1')->name('suscriptores.baja');
 
 //route de pruebas
 //Route::get('prueba', function () { return view('posts.prueba');})->name('posts.prueba');

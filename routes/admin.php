@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SubcategoryController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\SuscriptorController;
 
 
 Route::get('admin', [HomeController::class,'index'])->middleware('can:admin.home')->name('admin.home');
@@ -20,3 +21,6 @@ Route::resource('admin/subcategories', SubcategoryController::class)->except('sh
 Route::resource('admin/tags', TagController::class)->except('show')->names('admin.tags');
 Route::resource('admin/posts', PostController::class)->except('show')->names('admin.posts');
 
+// Suscriptores del boletin (v1.0 30/10/2026): solo con el permiso de gestionar usuarios (contienen correos personales)
+Route::get('admin/suscriptores', [SuscriptorController::class, 'index'])->middleware('can:admin.users.index')->name('admin.suscriptores.index');
+Route::get('admin/suscriptores/exportar', [SuscriptorController::class, 'exportar'])->middleware('can:admin.users.index')->name('admin.suscriptores.exportar');
