@@ -25,12 +25,13 @@ class PostIndex extends Component
         //             ->where('name','LIKE','%'.$this->search.'%')
         //             ->latest('id')
         //             ->paginate(5);
-        $posts=Post::where('name','LIKE','%'.$this->search.'%')
+        $posts=Post::with('tema')
+                   ->where('name','LIKE','%'.$this->search.'%')
                     ->orWhere('body', 'like', '%'.$this->search.'%')
                     ->orWhere('anocreacion', 'like', '%'.$this->search.'%')
                     ->orWhere('autor', 'like', '%'.$this->search.'%')
                    ->latest('id')
-                   ->paginate(50);
+                   ->paginate(15);
         return view('livewire.admin.post-index',compact('posts'));
     }
 }

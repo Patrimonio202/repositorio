@@ -4,10 +4,11 @@
 
 @section('content_header')
 @can('admin.categories.create')
-<a class="btn btn-secondary float-right" href="{{route('admin.categories.create')}}">Agregar categoria</a>
+<a class="btn btn-admin-primary float-right" href="{{route('admin.categories.create')}}"><i class="fas fa-plus"></i> Nueva categoría</a>
 @endcan
 
-    <h1>Lista de Categorias</h1>
+    <span class="admin-eyebrow">Organización</span>
+    <h1>Categorías</h1>
 @stop
 
 @section('content')

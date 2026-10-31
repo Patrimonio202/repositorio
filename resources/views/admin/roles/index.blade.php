@@ -3,8 +3,9 @@
 @section('title', 'Cultura')
 
 @section('content_header')
-<a class="btn btn-secondary btn-sm float-right" href="{{ route('admin.roles.create') }}">Nuevo rol</a>
-    <h1>Lista de roles</h1>
+<a class="btn btn-admin-primary float-right" href="{{ route('admin.roles.create') }}"><i class="fas fa-plus"></i> Nuevo rol</a>
+    <span class="admin-eyebrow">Accesos y seguridad</span>
+    <h1>Roles y permisos</h1>
 @stop
 
 @section('content')

@@ -3,8 +3,9 @@
 @section('title', 'Cultura')
 
 @section('content_header')
-    <a class="btn btn-secondary btn-sm float-right" href="{{ route('admin.posts.create') }}">Nuevo post</a>
-    <h1>Listado de posts</h1>
+    <a class="btn btn-admin-primary float-right" href="{{ route('admin.posts.create') }}"><i class="fas fa-plus"></i> Nueva publicación</a>
+    <span class="admin-eyebrow">Gestión de contenido</span>
+    <h1>Publicaciones</h1>
 @stop
 
 @section('content')

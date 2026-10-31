@@ -9,7 +9,18 @@ class Post extends Model
 {
     use HasFactory;
     
-    protected $guarded=['id', 'created_at', 'updated_at'];
+    protected $fillable = [
+        'name',
+        'slug',
+        'body',
+        'anocreacion',
+        'autor',
+        'destacada',
+        'status',
+        'category_id',
+        'subcategory_id',
+        'tema_id',
+    ];
 
     protected $cats=[
         'created_at'=>'datetime'

@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'Cultura',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'logo' => '<b>Cultura</b>',
+    'logo' => '<b>Archivo</b> Cultura',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -187,14 +187,14 @@ return [
     */
 
     'classes_body' => '',
-    'classes_brand' => '',
+    'classes_brand' => 'bg-navy',
     'classes_brand_text' => '',
-    'classes_content_wrapper' => '',
+    'classes_content_wrapper' => 'admin-modern-wrapper',
     'classes_content_header' => '',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-dark-primary elevation-4',
+    'classes_sidebar' => 'sidebar-dark-navy elevation-0',
     'classes_sidebar_nav' => '',
-    'classes_topnav' => 'navbar-white navbar-light',
+    'classes_topnav' => 'navbar-white navbar-light border-bottom-0',
     'classes_topnav_nav' => 'navbar-expand',
     'classes_topnav_container' => 'container',
 
@@ -312,13 +312,13 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'Dashboard',
+            'text'        => 'Resumen',
             'route'         => 'admin.home',
             'icon'        => 'fas fa-tachometer-alt fa-fw',  
             'can'  => 'admin.home'          
         ],
         [
-            'text'        => 'Imagenes',
+            'text'        => 'Biblioteca visual',
             'route'         => 'admin.imagenes',
             'icon'        => 'fas fa-image fa-fw',  
             'can'  => 'admin.imagenes'          
@@ -330,20 +330,20 @@ return [
             'can'  => 'admin.users.index'             
         ],    
         [
-            'text'        => 'Lista de roles',
+            'text'        => 'Roles y permisos',
             'route'         => 'admin.roles.index',
             'icon'        => 'fas fa-users-cog fa-fw',  
             'can'  => 'admin.roles.index'             
         ],    
         [
-            'text' => 'Categorias',
+            'text' => 'Categorías',
             'route'  => 'admin.categories.index',
             'icon' => 'fab fa-fw fa-buffer',
             'active'=>['categories*'],
             'can'  => 'admin.categories.index'
         ],
         [
-            'text' => 'Subcategorias',
+            'text' => 'Subcategorías',
             'route'  => 'admin.subcategories.index',
             'icon' => 'fab fa-fw fa-algolia',
             'active'=>['subcategories*']          
@@ -355,15 +355,15 @@ return [
             'active'=>['tags*'],
             'can'  => 'admin.tags.index'
         ],        
-        ['header' => 'OPCIONES DE BLOG'],
+        ['header' => 'CONTENIDO'],
         [
-            'text'       => 'Lista de post',           
+            'text'       => 'Publicaciones',           
             'route'        => 'admin.posts.index',
             'icon' => 'fas fa-fw fa-clipboard',
             'can'  => 'admin.posts.index'
         ],
         [
-            'text'       => 'Crear nuevo post',            
+            'text'       => 'Nueva publicación',            
             'route'        => 'admin.posts.create',
             'icon' => 'fas fa-fw fa-file',
             'can'  => 'admin.posts.create'
@@ -405,6 +405,21 @@ return [
     */
 
     'plugins' => [
+        'AdminModern' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'csspersonalizados/admin-modern.css',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'jspersonalizados/admin-modern.js',
+                ],
+            ],
+        ],
         'Datatables' => [
             'active' => false,
             'files' => [

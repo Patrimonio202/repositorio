@@ -1,11 +1,12 @@
-<div>
-   <div class="card">
-       <div class="card-header">
-        <input wire:model.live="search" class="form-control" placeholder="Ingrese el nombre o correo de un usuario">
+<div class="admin-listing">
+   <div class="card admin-table-card">
+       <div class="card-header admin-toolbar">
+        <div class="admin-search"><i class="fas fa-search"></i><input wire:model.live.debounce.300ms="search" class="form-control" placeholder="Buscar por nombre o correo..."></div>
+        <span class="result-count">{{ $users->total() }} usuarios</span>
        </div>
 @if($users->count())
-       <div class="card-body">
-        <table class="table table-striped">
+       <div class="card-body p-0 table-responsive">
+        <table class="table admin-table mb-0">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -18,11 +19,11 @@
             <tbody>
                 @foreach ($users as $user)
                     <tr>
-                        <td>{{$user->id}}</td>
-                        <td>{{$user->name}}</td>
-                        <td>{{$user->email}}</td>
-                        <td width="10px">
-                            <a class="btn btn-primary" href="{{route('admin.users.edit', $user)}}">Editar</a>
+                        <td><span class="id-badge">#{{$user->id}}</span></td>
+                        <td><div class="user-cell"><span class="user-avatar">{{ strtoupper(substr($user->name, 0, 1)) }}</span><strong>{{$user->name}}</strong></div></td>
+                        <td><span class="text-muted">{{$user->email}}</span></td>
+                        <td class="text-right">
+                            <a class="btn btn-admin-edit btn-sm" href="{{route('admin.users.edit', $user)}}"><i class="fas fa-user-shield"></i> Gestionar rol</a>
                         </td>
                     </tr>
                 @endforeach
@@ -34,8 +35,7 @@
         {{$users->links()}}
        </div>
        @else
-       <div class="card-body">
-        <strong>No hay registros</strong>
+       <div class="admin-empty"><i class="fas fa-users"></i><strong>No encontramos usuarios</strong><span>Prueba con otro término de búsqueda.</span></div>
        </div>
        @endif
    </div>

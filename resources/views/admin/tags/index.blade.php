@@ -4,10 +4,11 @@
 
 @section('content_header')
     @can('admin.tags.create')
-        <a class="btn btn-secondary float-right" href="{{ route('admin.tags.create') }}">Nueva etiqueta</a>
+        <a class="btn btn-admin-primary float-right" href="{{ route('admin.tags.create') }}"><i class="fas fa-plus"></i> Nueva etiqueta</a>
     @endcan
 
-    <h1>Mostrar listado de etiqueta</h1>
+    <span class="admin-eyebrow">Clasificación</span>
+    <h1>Etiquetas y colecciones</h1>
 @stop
 
 @section('content')

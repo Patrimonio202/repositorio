@@ -84,7 +84,7 @@
                             </form>
                         @else
                             <p>
-                                {!! $question->body !!}
+                                {{ $question->body }}
                             </p>
                         @endif
                     </div>

@@ -1,9 +1,15 @@
 @extends('adminlte::page')
 
-@section('title', 'Cultura')
+@section('title', 'Panel de administración')
 
 @section('content_header')
-    <h1>Tablero principal</h1>
+    <div class="d-flex align-items-center justify-content-between admin-page-heading">
+        <div>
+            <span class="admin-eyebrow">Administración</span>
+            <h1>Panel principal</h1>
+        </div>
+        <span class="admin-date"><i class="far fa-calendar-alt"></i> {{ now()->translatedFormat('d M, Y') }}</span>
+    </div>
 @stop
 
 @section('content')
@@ -11,9 +17,7 @@
 @stop
 
 @section('css')
-   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> 
-     <!-- https://themeon.net/nifty/v2.9.1/icons-ionicons.html -->
-   
+    <link rel="stylesheet" href="{{ asset('csspersonalizados/admin-modern.css') }}">
 @stop
 
 @section('js')

@@ -48,7 +48,12 @@ class PostController extends Controller
     public function store(PostRequest $request)
     {
         // tener pendiente, en produccion cambiamos las rutas
-        $post = Post::create($request->all());
+        $post = new Post($request->safe()->only([
+            'name', 'slug', 'body', 'anocreacion', 'autor', 'destacada',
+            'status', 'category_id', 'subcategory_id', 'tema_id',
+        ]));
+        $post->user()->associate($request->user());
+        $post->save();
         if ($request->file('file')) {
             $nameimagen = $request->file('file')->getClientOriginalName();
             $url =  Storage::putFileAs('archivos', $request->file('file'), $nameimagen, 'public');   //me almacena la informacion de la carpeta temporal a la public
@@ -122,7 +127,10 @@ class PostController extends Controller
     public function update(PostRequest $request, Post $post)
     {
         // $this->authorize('author', $post);
-        $post->update($request->all());
+        $post->update($request->safe()->only([
+            'name', 'slug', 'body', 'anocreacion', 'autor', 'destacada',
+            'status', 'category_id', 'subcategory_id', 'tema_id',
+        ]));
         //validamos si tiene una imagen el posts
         if ($request->file('file')) {
             if ($post->image) {
