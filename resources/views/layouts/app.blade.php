@@ -27,17 +27,12 @@
     <!--  <link rel="icon" href="/favicon-navegadores.png" sizes="32x32" type="image/png"> -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{ Storage::url('Imagenes/Favicon.png') }}" />
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
     <!-- Fonts de google-->
     <link href="{{ asset('Fonts/stylefont.css') }}" rel="stylesheet" />
 
 
-    <!--flowbite -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.css" rel="stylesheet" />
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
+    <!-- Flowbite local: evita bloquear la portada esperando un CDN externo -->
+    <script defer src="{{ asset('vendor/flowbite/js/cdnjs.cloudflare.com_ajax_libs_flowbite_1.8.1_flowbite.min.js') }}"></script>
     {{-- rendimiento v1.0 (30/10/2026): se retira el compilador de Tailwind por CDN (corria en el navegador de cada visitante); los estilos salen de @vite --}}
 
     <!-- para el efecto de imagenes -->
@@ -56,13 +51,15 @@
 
 
 
-    <!-- video de youtube -->
-    <x-embed-styles />
+    @if (request()->routeIs('posts.show'))
+        <x-embed-styles />
+    @endif
     <!-- Styles -->
     @livewireStyles
 
-    <!-- prueba de zoom imagen-->
-    <link href="{{ asset('csspersonalizados/csszoomimage.css') }}" rel="stylesheet" />
+    @if (request()->routeIs('posts.show'))
+        <link href="{{ asset('csspersonalizados/csszoomimage.css') }}" rel="stylesheet" />
+    @endif
 
 
 
@@ -82,7 +79,7 @@
         </main>
         <!--menu visible -->
         {{-- <x-speed-dial /> --}}
-         @livewire('menulw')
+         <livewire:menulw lazy />
         <!--Hasta aqui -->
         <x-suscribirse2 />
     </div>

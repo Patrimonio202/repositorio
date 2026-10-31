@@ -1,31 +1,26 @@
-<div>    
-    @if (!is_null($tags))
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2  my-2 -mr-4">
-            @foreach ($tags as $tag)
-                <article class="relative bg-white  rounded-xl mr-4 md:mx-8 lg:mx-8  mt-6 mb-10   ">
-                    <figure class="relative overflow-hidden bg-no-repeat bg-cover relative overflow-hidden bg-no-repeat bg-cover shadow-lg rounded-lg mx-4 my-4 ">
-                        <div >
-                            <img src="{{ $tag->miniatura_url }}" loading="lazy" decoding="async"
-                                class="w-full h-full md:h-80 lg:h-96  " />
-                        
-                                <a href="{{ route('posts.colecciones', $tag) }}">
-                                    <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed opacity-0 hover:opacity-100 transition duration-300 ease-in-out"
-                                        style="background-color: rgba(251, 251, 251, 0.15)"></div>
-                                </a>
-                            </div>
-                    </figure>
-                    <div class=" mb-8">
-                        <h1 style="font-family:Raleway-ExtraBold" class=" text-center text-xs ">
-                            <a href="{{ route('posts.colecciones', $tag) }}">{{ Str::limit($tag->titulocoleccion, 50) }}</a>
-                        </h1>    
-                    </div> 
-                </article>  
-                             
-            @endforeach
-        </div> 
-    @else
-        <div wire.target="loadPosts" class="mb-4 h-48 flex justify-center items-center bg-white shadow-xl border border-gray-100 rounded-lg">
-            <div class="rounded animate-spin ease duration-300 w-10 h-10 border-2 border-indigo-500"></div>
-        </div>
-    @endif
+<div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-7">
+        @forelse ($tags as $tag)
+            <a href="{{ route('posts.colecciones', $tag) }}"
+                class="group relative block overflow-hidden rounded-2xl bg-slate-900 shadow-sm ring-1 ring-black/5 transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+                <div class="aspect-[16/9] overflow-hidden">
+                    <img src="{{ $tag->miniatura_url }}" loading="lazy" decoding="async"
+                        class="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                        alt="{{ $tag->titulocoleccion }}">
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-900/10 to-transparent"></div>
+                <div class="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5 md:p-6">
+                    <div>
+                        <span class="mb-2 inline-flex rounded-full bg-white/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-white backdrop-blur-md">Colección</span>
+                        <h3 class="text-lg font-semibold leading-tight text-white md:text-xl">{{ Str::limit($tag->titulocoleccion, 62) }}</h3>
+                    </div>
+                    <span class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white text-slate-900 transition group-hover:bg-cyan-500 group-hover:text-white" aria-hidden="true">→</span>
+                </div>
+            </a>
+        @empty
+            <div class="col-span-full rounded-2xl border border-dashed border-slate-300 bg-white p-10 text-center text-sm text-slate-500">
+                No hay colecciones destacadas disponibles.
+            </div>
+        @endforelse
+    </div>
 </div>
