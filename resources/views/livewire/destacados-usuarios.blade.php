@@ -60,7 +60,7 @@
                             </p>
                         </div>
                         <div class="mb-8 pb-2 ">
-                            {!! Str::limit($post->body, 100) !!} <a class="font-bold text-blue-600 no-underline hover:underline"
+                            {{ $post->resumen(100) }} <a class="font-bold text-blue-600 no-underline hover:underline"
                                 href="{{ route('posts.show', $post) }}">Leer mas</a>
                         </div>
                     </div>

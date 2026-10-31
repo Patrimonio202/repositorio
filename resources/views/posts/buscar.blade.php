@@ -139,7 +139,7 @@
                                     </p>
 
                                     <div class="mb-4">
-                                        {!! Str::limit($post->body, 200, '...') !!}
+                                        {{ $post->resumen(200) }}
                                     </div>
                                     <div>
                                         <a href="{{ route('posts.show', $post) }}"
