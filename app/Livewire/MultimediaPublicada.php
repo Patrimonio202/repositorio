@@ -64,16 +64,24 @@ class MultimediaPublicada extends Component
 
     public function mount()
     {
-        // Seleccion aleatoria eficiente: solo baraja IDs una vez y conserva
-        // el mismo orden durante todas las interacciones de Livewire.
-        $this->randomPostIds = Post::where('status', 2)
+        // v1.1 (30/10/2026): las 6 primeras son publicaciones al azar que NO son videos
+        // (categoria 4) y las 6 ultimas son videos al azar. Solo se barajan IDs, una vez,
+        // y el orden se conserva durante todas las interacciones de Livewire.
+        $noVideos = Post::where('status', 2)
+            ->where('category_id', '!=', 4)
             ->whereHas('image')
             ->pluck('id')
             ->shuffle()
-            ->take(12)
-            ->values()
-            ->all();
+            ->take(6);
 
+        $videos = Post::where('status', 2)
+            ->where('category_id', 4)
+            ->whereHas('image', fn ($q) => $q->whereNotNull('urlyoutube')->where('urlyoutube', '!=', ''))
+            ->pluck('id')
+            ->shuffle()
+            ->take(6);
+
+        $this->randomPostIds = $noVideos->concat($videos)->values()->all();
         $this->totalRecords = count($this->randomPostIds);
     }
     public function loadMore(){

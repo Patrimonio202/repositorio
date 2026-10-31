@@ -27,13 +27,15 @@ class Post extends Model
         'created_at'=>'datetime'
     ];
 
-    // resumen v1.0 (30/10/2026): extracto en TEXTO PLANO del cuerpo de la publicacion.
+    // resumen v1.1 (30/10/2026): extracto en TEXTO PLANO del cuerpo de la publicacion.
     // Antes se cortaba el HTML a 100 caracteres con Str::limit() y se imprimia sin escapar:
     // si el corte dejaba abiertas etiquetas como <i>, <strong> o <!--, el navegador metia
     // las tarjetas siguientes dentro de ellas y la cuadricula se descuadraba.
     public function resumen(int $limite = 100, string $fin = '...'): string
     {
-        $texto = html_entity_decode(strip_tags((string) $this->body), ENT_QUOTES | ENT_HTML5, 'UTF-8');
+        // v1.1: las etiquetas de bloque (p, br, div...) se cambian por un espacio para que los parrafos no queden pegados
+        $html = preg_replace('~</?(?:p|br|div|li|ul|ol|h[1-6]|blockquote|tr|td|th|table|figure|figcaption)\b[^>]*>~i', ' ', (string) $this->body);
+        $texto = html_entity_decode(strip_tags($html), ENT_QUOTES | ENT_HTML5, 'UTF-8');
         $texto = trim(preg_replace('/\s+/u', ' ', $texto));
         return Str::limit($texto, $limite, $fin);
     }
