@@ -12,7 +12,8 @@ use Illuminate\Support\Facades\Storage;
 class MultimediaPublicada extends Component
 {
     use WithPagination;
-    public $posts_per_page=3;
+    // Dos filas completas en escritorio; las siguientes cargas suman otra fila.
+    public $posts_per_page=6;
     public $totalRecords;
     public array $randomPostIds = [];
 
