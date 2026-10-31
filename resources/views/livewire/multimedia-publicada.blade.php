@@ -4,10 +4,8 @@
             <article class="group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-slate-200/80 transition duration-300 hover:-translate-y-1 hover:shadow-xl">
                 <a href="{{ route('posts.show', $post) }}" class="relative block aspect-[16/10] overflow-hidden bg-slate-100">
                     @if ($post->category_id == '4')
-                        <div class="relative flex h-full w-full items-center justify-center bg-gradient-to-br from-slate-800 to-slate-950">
-                            <img src="{{ Storage::url('Imagenes/Videos.jpg') }}" loading="lazy" decoding="async"
-                                class="absolute inset-0 h-full w-full object-cover opacity-40" alt="">
-                            <span class="relative grid h-16 w-16 place-items-center rounded-full bg-white/90 text-xl text-cyan-700 shadow-xl transition group-hover:scale-110" aria-hidden="true"><i class="fas fa-play"></i></span>
+                        <div class="h-full w-full [&_iframe]:h-full [&_iframe]:w-full">
+                            <x-embed url="{{ $post->image->urlyoutube }}" />
                         </div>
                     @else
                         <img src="{{ $post->image->miniatura_url }}" loading="lazy" decoding="async"

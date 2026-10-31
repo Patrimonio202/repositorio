@@ -52,7 +52,7 @@
                 </div>
                 <a href="{{ route('posts.buscar') }}" class="text-sm font-semibold text-cyan-700 hover:text-cyan-900">Ver todo el repositorio →</a>
             </header>
-            <livewire:multimedia-publicada lazy />
+            @livewire('multimedia-publicada')
         </div>
     </section>
 </x-app-layout>
