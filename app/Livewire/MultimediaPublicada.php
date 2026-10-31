@@ -12,11 +12,23 @@ use Illuminate\Support\Facades\Storage;
 class MultimediaPublicada extends Component
 {
     use WithPagination;
-    public $posts_per_page=3;
+    public $posts_per_page=6;
     public $totalRecords;
+    public array $randomPostIds = [];
 
     public $open=false;  // con este abrimos el modal
     public $post_slug;
+
+    public function placeholder()
+    {
+        return <<<'HTML'
+        <div class="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3" aria-hidden="true">
+            <div class="h-96 animate-pulse rounded-2xl bg-slate-200"></div>
+            <div class="hidden h-96 animate-pulse rounded-2xl bg-slate-200 md:block"></div>
+            <div class="hidden h-96 animate-pulse rounded-2xl bg-slate-200 xl:block"></div>
+        </div>
+        HTML;
+    }
 
     //este es para darle me interesa
     public function meinteresa($postId)
@@ -62,12 +74,21 @@ class MultimediaPublicada extends Component
 
     public function mount()
     {
-        //$this->totalRecords=Post::count();
-        $this->totalRecords=9;
+        // Seleccion aleatoria eficiente: solo baraja IDs una vez y conserva
+        // el mismo orden durante todas las interacciones de Livewire.
+        $this->randomPostIds = Post::where('status', 2)
+            ->whereHas('image')
+            ->pluck('id')
+            ->shuffle()
+            ->take(12)
+            ->values()
+            ->all();
+
+        $this->totalRecords = count($this->randomPostIds);
     }
     public function loadMore(){
-        if ($this->posts_per_page<12){
-        $this->posts_per_page +=3;
+        if ($this->posts_per_page < $this->totalRecords) {
+            $this->posts_per_page = min($this->posts_per_page + 3, $this->totalRecords);
         }
     }
 
@@ -94,30 +115,16 @@ class MultimediaPublicada extends Component
 
   
     public function render()
-    {       
-        //$posts=Post::where('status', 2)->latest('id')->paginate($this->posts_per_page);
-        $posts=null;
-        
-        if($this->posts_per_page==3){            
-            $posts=Post::with(['image', 'category'])->where('status', 2)->where('category_id','1')->latest('id')->take(3)->get();
-        }
-        if($this->posts_per_page==6){            
-            $posts=Post::with(['image', 'category'])->where('status', 2)->where('category_id','1')->latest('id')->take(3)
-            ->union(Post::where('status', 2)->where('category_id','2')->latest('id')->take(3))->get();
-        }
-        if($this->posts_per_page==9){            
-            $posts=Post::with(['image', 'category'])->where('status', 2)->where('category_id','1')->latest('id')->take(3)
-            ->union(Post::where('status', 2)->where('category_id','2')->latest('id')->take(3))
-            ->union(Post::where('status', 2)->where('category_id','3')->latest('id')->take(3))->get();
-        }
+    {
+        $visibleIds = array_slice($this->randomPostIds, 0, $this->posts_per_page);
+        $positions = array_flip($visibleIds);
 
-        if($this->posts_per_page==12){            
-            $posts=Post::with(['image', 'category'])->where('status', 2)->where('category_id','1')->latest('id')->take(3)
-            ->union(Post::where('status', 2)->where('category_id','2')->latest('id')->take(3))
-            ->union(Post::where('status', 2)->where('category_id','3')->latest('id')->take(3))
-            ->union(Post::where('status', 2)->where('category_id','4')->latest('id')->take(3))->get();
-        }      
-       
+        $posts = Post::with(['image', 'category'])
+            ->whereIn('id', $visibleIds)
+            ->get()
+            ->sortBy(fn (Post $post) => $positions[$post->id] ?? PHP_INT_MAX)
+            ->values();
+
         return view('livewire.multimedia-publicada', compact('posts'));
     }
 }
