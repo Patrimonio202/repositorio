@@ -3,7 +3,8 @@
 @section('title', 'Cultura')
 
 @section('content_header')
-    <h1>Editar post</h1>
+    <span class="admin-eyebrow">Gestión de contenido</span>
+    <h1>Editar publicación</h1>
 @stop
 
 @section('content')

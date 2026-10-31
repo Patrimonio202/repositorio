@@ -1,43 +1,42 @@
-<div class="card">
- <div class="card-header">
-    <input wire:model.live="search" class="form-control" placeholder="Ingrese el nombre de un post">
+<div class="card admin-table-card admin-listing">
+ <div class="card-header admin-toolbar">
+    <div class="admin-search"><i class="fas fa-search"></i><input wire:model.live.debounce.300ms="search" class="form-control" placeholder="Buscar publicaciones..."></div>
+    <span class="result-count">{{ $posts->total() }} publicaciones</span>
  </div>
 @if ($posts->count())   
 
-  <div class="card-body">
-    <table class="table table-striped">
+  <div class="card-body p-0 table-responsive">
+    <table class="table admin-table mb-0">
         <thead>
          <tr>
             <th>ID</th>
-            <th>nombre</th>
+            <th>Publicación</th>
             <th>Año creación</th>
             <th>Autor</th>
             <th>Destacada</th>
             <th>Tema</th>
-            <th colspan="2"></th>
+            <th class="text-right">Acciones</th>
          </tr>
         </thead>
         <tbody>
             @foreach ($posts as $post)
                 <tr>
-                    <td>{{$post->id}}</td>
-                    <td>{{$post->name}}</td>
+                    <td><span class="id-badge">#{{$post->id}}</span></td>
+                    <td><strong class="post-title">{{$post->name}}</strong></td>
                     <td>{{$post->anocreacion}}</td>
                     <td>{{$post->autor}}</td>
                     @if ($post->destacada==1)
-                        <td>No</td>
+                        <td><span class="status-badge status-muted">No</span></td>
                     @else
-                       <td>Si</td>
+                       <td><span class="status-badge status-featured"><i class="fas fa-star"></i> Sí</span></td>
                     @endif                    
                     <td>{{$post->tema->name}}</td>
-                    <td with="10px">
-                        <a class="btn btn-primary btn-sm" href="{{route('admin.posts.edit',$post )}}">Editar</a>
-                    </td>
-                    <td with="10px">
-                        <form action="{{route('admin.posts.destroy',$post )}}" method="POST">
+                    <td class="text-right admin-actions">
+                        <a class="btn btn-admin-edit btn-sm" href="{{route('admin.posts.edit',$post )}}" title="Editar"><i class="fas fa-pen"></i><span>Editar</span></a>
+                        <form action="{{route('admin.posts.destroy',$post )}}" method="POST" class="d-inline delete-form">
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
+                            <button class="btn btn-admin-delete btn-sm" type="submit" title="Eliminar"><i class="far fa-trash-alt"></i><span>Eliminar</span></button>
                         </form>
                     </td>
                 </tr>
@@ -52,8 +51,7 @@
     {{$posts->links()}}
   </div>
   @else
-  <div class="card-body">
-    <strong>No hay ningún registro...</strong>
+  <div class="admin-empty"><i class="far fa-file-alt"></i><strong>No encontramos publicaciones</strong><span>Prueba con otro término o crea una publicación nueva.</span></div>
   </div>
   @endif
 </div>

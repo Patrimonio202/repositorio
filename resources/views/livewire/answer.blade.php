@@ -103,7 +103,7 @@
                             </form>
                         @else
                             <p>
-                                {!! $answer->body !!}
+                                {{ $answer->body }}
                             </p>
                             @auth
                                 <button wire:click="$set('answer_to_answer.id',{{ $answer->id }})">

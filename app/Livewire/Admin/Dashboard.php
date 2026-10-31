@@ -5,14 +5,22 @@ namespace App\Livewire\Admin;
 use App\Models\Post;
 use App\Models\Visita;
 use Livewire\Component;
-use Illuminate\Http\Request;
+use Livewire\WithPagination;
 
 class Dashboard extends Component
 {
+    use WithPagination;
+
+    protected $paginationTheme = 'bootstrap';
+
     public $totalimagenes;
     public $totalaudios;
     public $totaldocumentos;
     public $totalvideos;
+    public $totalposts;
+    public $publicados;
+    public $visitashoy;
+    public $totalvisitas;
 
     //datos del disco
     public $diskuse;
@@ -31,6 +39,10 @@ class Dashboard extends Component
         $this->totalaudios=Post::where('category_id', 2)->count(); 
         $this->totaldocumentos=Post::where('category_id', 3)->count(); 
         $this->totalvideos=Post::where('category_id', 4)->count(); 
+        $this->totalposts = Post::count();
+        $this->publicados = Post::where('status', 2)->count();
+        $this->visitashoy = Visita::whereDate('fecha', now()->toDateString())->sum('num');
+        $this->totalvisitas = Visita::sum('num');
         //dd(disk_total_space('/'));    
         $this->check_disk_space();     
         // $this->total_ram_cpu();
@@ -38,10 +50,16 @@ class Dashboard extends Component
 
     public function check_disk_space() {
 
-        $total_disk = disk_total_space('/');
+        $total_disk = disk_total_space(base_path());
+        if (!$total_disk) {
+            $this->total_disk_size = 0;
+            $this->disk_used_size = 0;
+            $this->diskuse = '0%';
+            return;
+        }
         $this->total_disk_size = $total_disk / 1073741824;
 
-        $free_disk = disk_free_space('/');
+        $free_disk = disk_free_space(base_path());
         $used_disk = $total_disk - $free_disk;
 
         $this->disk_used_size = $used_disk / 1073741824;
@@ -91,7 +109,7 @@ class Dashboard extends Component
     {
         $visitas = Visita::orderBy('fecha', 'desc')
         ->orderBy('pagina', 'desc')
-        ->paginate(50);
+        ->paginate(12);
 
         return view('livewire.admin.dashboard', compact('visitas'));
     }

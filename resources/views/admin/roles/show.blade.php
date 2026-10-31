@@ -3,7 +3,8 @@
 @section('title', 'Cultura')
 
 @section('content_header')
-    <h1>Cultura</h1>
+    <span class="admin-eyebrow">Accesos y seguridad</span>
+    <h1>Detalle del rol</h1>
 @stop
 
 @section('content')
