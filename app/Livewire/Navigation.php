@@ -4,7 +4,6 @@ namespace App\Livewire;
 
 use App\Models\Category;
 use Livewire\Component;
-use Illuminate\Support\Facades\Cache;
 
 class Navigation extends Component
 {
@@ -17,7 +16,7 @@ class Navigation extends Component
 
     public function render()
     {
-         $categories = Cache::remember('navigation.categories', now()->addMinutes(30), fn () => Category::all());
+         $categories= Category::all();
         return view('livewire.navigation', compact('categories'));
     }
 }

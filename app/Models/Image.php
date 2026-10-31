@@ -137,13 +137,6 @@ class Image extends Model
                 return true;   // vigente: el original no cambio despues de crearla
             }
 
-            // Nunca generar miniaturas durante una visita publica: procesar una
-            // imagen grande puede bloquear la respuesta varios segundos. Las
-            // variantes se crean al subir/reemplazar desde administracion.
-            if (!$forzar) {
-                return false;
-            }
-
             return self::generar($origen, $destino, $variante, $forzar);
         } catch (Throwable $e) {
             return false;
